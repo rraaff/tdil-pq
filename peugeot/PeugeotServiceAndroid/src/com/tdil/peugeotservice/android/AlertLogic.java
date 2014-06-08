@@ -1,10 +1,12 @@
 package com.tdil.peugeotservice.android;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.tdil.peugeotservice.R;
+import com.tdil.peugeotservice.android.utils.Login;
 
 public class AlertLogic {
 
@@ -34,12 +36,16 @@ public class AlertLogic {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						 alertBackHandler.setOpened(true);
-						openSendAlertView.setVisibility(View.GONE);
-//						sendAlertView.setVisibility(View.VISIBLE);
-						Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
-						sendAlertView.setVisibility(View.VISIBLE);
-						sendAlertButtonContainer.startAnimation(rightToLeft);
+						if (Login.getLoggedUser(activity).getMustCompleteEmergencyData()) {
+							activity.startActivity(new Intent(activity, UpdateEmergencyConfigActivity.class));
+						} else {
+							 alertBackHandler.setOpened(true);
+							openSendAlertView.setVisibility(View.GONE);
+	//						sendAlertView.setVisibility(View.VISIBLE);
+							Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
+							sendAlertView.setVisibility(View.VISIBLE);
+							sendAlertButtonContainer.startAnimation(rightToLeft);
+						}
 					}
 				});
 		}

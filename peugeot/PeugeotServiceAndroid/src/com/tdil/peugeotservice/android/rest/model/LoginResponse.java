@@ -78,7 +78,7 @@ public class LoginResponse {
 		this.guardPhone = guardPhone;
 	}
 
-	public boolean isMustChangePassword() {
+	public boolean getMustChangePassword() {
 		return mustChangePassword;
 	}
 
@@ -86,7 +86,7 @@ public class LoginResponse {
 		this.mustChangePassword = mustChangePassword;
 	}
 
-	public boolean isMustCompleteEmergencyData() {
+	public boolean getMustCompleteEmergencyData() {
 		return mustCompleteEmergencyData;
 	}
 
