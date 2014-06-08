@@ -136,6 +136,15 @@
 	    android:background="@drawable/bg_emergency_button_init"
 	    android:minHeight="35dp"
 	    android:minWidth="44dp" />
+
+	<Button
+	    android:id="@+id/guardPhoneCallButton"
+	    android:layout_width="35dp"
+	    android:layout_height="44dp"
+	    android:layout_gravity="left|bottom"
+	    android:background="@drawable/bg_emergency_button_init"
+	    android:minHeight="35dp"
+	    android:minWidth="44dp" />
 	
 	<LinearLayout
 	    android:id="@+id/sendAlertView"

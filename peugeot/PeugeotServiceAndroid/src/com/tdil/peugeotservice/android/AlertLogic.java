@@ -1,9 +1,11 @@
 package com.tdil.peugeotservice.android;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.tdil.peugeotservice.R;
 import com.tdil.peugeotservice.android.utils.Login;
@@ -23,6 +25,26 @@ public class AlertLogic {
 //				});
 //		}
 	
+		
+		final View guardPhoneCallButton = activity.findViewById(R.id.guardPhoneCallButton);
+		if (guardPhoneCallButton != null) {
+			guardPhoneCallButton.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						try {
+						 String uri = "tel:"+ Login.getLoggedUser(activity).getGuardPhone();
+	                     Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+	                     activity.startActivity(callIntent);
+						}catch(Exception e) {
+		                    Toast.makeText(activity,"Ha ocurrido un error realizando la llamada...",
+		                        Toast.LENGTH_LONG).show();
+		                }
+
+					}
+				});
+		}
+		
 		final View openSendAlertView = activity.findViewById(R.id.openSendAlertView);
 		final View sendAlertView = activity.findViewById(R.id.sendAlertView);
 		final View sendAlertButtonContainer = activity.findViewById(R.id.sendAlertButtonContainer);
