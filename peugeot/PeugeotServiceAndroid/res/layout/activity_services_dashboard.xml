@@ -112,7 +112,8 @@
 				            android:id="@+id/myVehiclesButton"
 				            android:onClick="@string/dologin"
 				            android:text="@string/btn_my_vehicles"
-				            style="@style/ButtonListItems" />
+				            style="@style/ButtonListItems" 
+				            android:visibility="gone"/>
 	
 				        <Button
 				            android:id="@+id/officialServicesButton"

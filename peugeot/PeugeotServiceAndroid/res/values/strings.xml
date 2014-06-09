@@ -67,6 +67,9 @@
 
     <string name="lbl_birth_date">Fecha de nac.</string>
     
+    <string name="notReceiveAlerts">No enviarme alertas de service</string>
+    <string name="notDealerAlerts">No quiero ser contactado por la agencia para programar el service</string>
+    
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_register">Registrarme</string>

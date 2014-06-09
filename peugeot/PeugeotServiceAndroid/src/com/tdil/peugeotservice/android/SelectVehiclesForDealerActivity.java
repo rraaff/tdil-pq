@@ -9,11 +9,11 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -35,12 +35,11 @@ import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.EmailBean;
+import com.tdil.peugeotservice.android.rest.model.AdviceConfiguration;
 import com.tdil.peugeotservice.android.rest.model.RESTResponse;
 import com.tdil.peugeotservice.android.rest.prevent.model.DealerBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBeanCollection;
-import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 @SuppressLint("ResourceAsColor")
@@ -56,6 +55,9 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 	@Email(message ="Ingrese un email válido", order = 2)
 	@TextRule(order = 1, minLength = 4, message = "Ingrese el email donde desea recibir el aviso.")
 	private TextView email;
+	
+	private CheckBox notReceiveEmail;
+	private CheckBox notDealerEmail;
 	
 	private Spinner vehiclesSpinner;
 	
@@ -91,6 +93,9 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 		vehiclesSpinner = (Spinner) findViewById(R.id.vehiclesForDealersSpinner);
 		email = (TextView) findViewById(R.id.emailForServiceEditText);
 		
+		notReceiveEmail = (CheckBox) findViewById(R.id.notReceiveAlertsCheckbox);
+		notDealerEmail = (CheckBox) findViewById(R.id.notDealerAlertsCheckbox);
+		
 		((TextView)findViewById(R.id.dealerNameTextView)).setText(dealer.getName() != null ? dealer.getName() : "-");
 		((TextView)findViewById(R.id.dealerAddressTextView)).setText(dealer.getAddress() != null ? dealer.getAddress() : "-");
 
@@ -100,16 +105,26 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
-				EmailBean em = gson.fromJson(task.getResult(),
-						EmailBean.class);
+				AdviceConfiguration em = gson.fromJson(task.getResult(),
+						AdviceConfiguration.class);
 				email.setText(em.getEmail());
+				if (em.getReceiveEmail()) {
+					notReceiveEmail.setChecked(false);
+				} else {
+					notReceiveEmail.setChecked(true);
+				}
+				if (em.getDealerEmail()) {
+					notDealerEmail.setChecked(false);
+				} else {
+					notDealerEmail.setChecked(true);
+				}
 			}
 
 			@Override
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(SelectVehiclesForDealerActivity.this);
 			}
-		}, RESTConstants.GET_EMAIL_FOR_ADVICE, new RestParams(), null).executeSerial((Void) null);
+		}, RESTConstants.ADVICE_CONFIGURATION, new RestParams(), null).executeSerial((Void) null);
 		
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
@@ -229,7 +244,9 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 			}
 		}, RESTConstants.CHANGE_DEALER, new RestParams(RESTConstants.P_DEALER, dealer.getId())
 			.put(RESTConstants.P_VEHICLE, selectedVehicle.getId())
-			.put(RESTConstants.P_EMAIL, email.getText().toString()), null)
+			.put(RESTConstants.P_EMAIL, email.getText().toString())
+			.put(RESTConstants.P_NOT_SERVICE_EMAIL, notReceiveEmail.isChecked() ? "1" : "0")
+			.put(RESTConstants.P_NOT_DEALER_EMAIL, notDealerEmail.isChecked() ? "1" : "0"), null)
 		.executeSerial((Void) null);
 	}
 

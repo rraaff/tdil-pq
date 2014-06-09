@@ -17,6 +17,9 @@ public interface RESTConstants {
 	public static final String P_VEHICLE = "{vehicleId}";
 	public static final String P_DEALER = "{dealerId}";
 	public static final String P_EMAIL = "{email}";
+	public static final String P_NOT_SERVICE_EMAIL = "{notReceiveEmail}";
+	public static final String P_NOT_DEALER_EMAIL = "{notDealerEmail}";
+	
 	public static final String P_DATE = "{date}";
 	public static final String P_KM = "{km}";
 	public static final String P_LAT = "{lat}";
@@ -48,9 +51,9 @@ public interface RESTConstants {
 	public static final String DEALERS_CITIES = "/dealers/cities/{stateId}";
 	public static final String DEALERS = "/dealers/list/{cityId}";
 	
-	public static final String CHANGE_DEALER = "/vehicles/{vehicleId}/changeDealer/{dealerId}/{email}";
+	public static final String CHANGE_DEALER = "/vehicles/{vehicleId}/changeDealer/{dealerId}/{email}/{notReceiveEmail}/{notDealerEmail}";
 	
-	public static final String GET_EMAIL_FOR_ADVICE = "/vehicles/emailForAdvice";
+	public static final String ADVICE_CONFIGURATION = "/vehicles/adviceConfiguration";
 	public static final String ADD_SERVICE = "/vehicles/{vehicleId}/addservice/{date}/{km}";
 	public static final String GET_ADVICES = "/vehicles/advices";
 	public static final String DISMISS_ADVICES = "/vehicles/dismissAdvices";

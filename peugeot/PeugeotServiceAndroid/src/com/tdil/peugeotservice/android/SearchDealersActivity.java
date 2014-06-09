@@ -126,6 +126,7 @@ public class SearchDealersActivity extends PeugeotActivity {
 						Intent intent = new Intent(SearchDealersActivity.this, DealersListActivity.class);
 						intent.putExtra(DealersListActivity.CITY, selectedCity);
 						SearchDealersActivity.this.startActivity(intent);
+						SearchDealersActivity.this.finish();
 					}
 				}
 			});
