@@ -4,28 +4,55 @@ import android.view.View;
 
 public class AlertBackHandler {
 
-	private boolean opened = false;
+	private boolean openedSendAlert = false;
+	private boolean openedGuardPhoneCall = false;
 	private View openSendAlertView;
 	private View sendAlertView;
 	
-	public AlertBackHandler(View openSendAlertView, View sendAlertView) {
+	private View openGuardPhoneCallView;
+	private View sendGuardPhoneCallView;
+	
+	public AlertBackHandler(View openSendAlertView, View sendAlertView, View openGuardPhoneCallView, View sendGuardPhoneCallView) {
 		super();
 		this.openSendAlertView = openSendAlertView;
 		this.sendAlertView = sendAlertView;
+		
+		this.openGuardPhoneCallView = openGuardPhoneCallView;
+		this.sendGuardPhoneCallView = sendGuardPhoneCallView;
 	}
-
 
 	public boolean isOpened() {
-		return opened;
+		return isOpenedSendAlert() || isOpenedGuardPhoneCall();
 	}
 
-	public void setOpened(boolean opened) {
-		this.opened = opened;
+	public boolean isOpenedSendAlert() {
+		return openedSendAlert;
+	}
+
+	public void setOpenedSendAlert(boolean opened) {
+		this.openedSendAlert = opened;
 	}
 	
 	public void close() {
-		setOpened(false);
-		openSendAlertView.setVisibility(View.VISIBLE);
-		sendAlertView.setVisibility(View.GONE);
+		if (isOpenedSendAlert()) {
+			setOpenedSendAlert(false);
+			openSendAlertView.setVisibility(View.VISIBLE);
+			sendAlertView.setVisibility(View.GONE);
+		}
+		if (isOpenedGuardPhoneCall()) {
+			setOpenedGuardPhoneCall(false);
+			openGuardPhoneCallView.setVisibility(View.VISIBLE);
+			sendGuardPhoneCallView.setVisibility(View.GONE);
+		}
+	}
+
+
+	public boolean isOpenedGuardPhoneCall() {
+		return openedGuardPhoneCall;
+	}
+
+
+	public void setOpenedGuardPhoneCall(boolean openedGuardPhoneCall) {
+		this.openedGuardPhoneCall = openedGuardPhoneCall;
 	}
 }

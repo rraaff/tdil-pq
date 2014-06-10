@@ -12,6 +12,8 @@ public class Login {
 	 public static final String USER = "user";
 	
 	private static LoginResponse loggedUser;
+	
+	private static boolean redirectedToEmergency = false;
 
 	public static LoginResponse getLoggedUser(Context context) {
 		if (loggedUser == null) {
@@ -30,5 +32,13 @@ public class Login {
 		Gson gson = new Gson();
 		editor.putString(USER, gson.toJson(loggedUser));
 		editor.commit();
+	}
+
+	public static boolean getRedirectedToEmergency() {
+		return redirectedToEmergency;
+	}
+
+	public static void setRedirectedToEmergency(boolean redirectedToEmergency) {
+		Login.redirectedToEmergency = redirectedToEmergency;
 	}
 }

@@ -26,7 +26,7 @@ private AlertBackHandler alertBackHandler;
 	public void alertSent() {
 		openSendAlertView.setVisibility(View.VISIBLE);
 		sendAlertView.setVisibility(View.GONE);
-		alertBackHandler.setOpened(false);
+		alertBackHandler.setOpenedSendAlert(false);
 	}
 
 	@Override

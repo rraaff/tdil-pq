@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,7 @@ import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
-import com.tdil.peugeotservice.android.rest.model.DocumentTypeBean;
+import com.tdil.peugeotservice.android.rest.model.LoginResponse;
 import com.tdil.peugeotservice.android.rest.model.RESTResponse;
 import com.tdil.peugeotservice.android.rest.model.RelationBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.ContactDataBean;
@@ -279,7 +278,9 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 				Gson gson = new Gson();
 				RESTResponse resp = gson.fromJson(task.getResult(), RESTResponse.class);
 				if (resp.getOk()) {
-					Login.getLoggedUser(UpdateEmergencyConfigActivity.this).setMustCompleteEmergencyData(false);
+					LoginResponse login = Login.getLoggedUser(UpdateEmergencyConfigActivity.this);
+					login.setMustCompleteEmergencyData(false);
+					Login.setLoggedUser(UpdateEmergencyConfigActivity.this, login);
 					new AlertDialog.Builder(UpdateEmergencyConfigActivity.this)
 		               .setIcon(R.drawable.ic_launcher)
 		               .setTitle("Modificacion de datos")

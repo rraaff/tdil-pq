@@ -63,7 +63,10 @@ public class IndexActivity extends PeugeotActivity {
 			Login.getLoggedUser(this).setMustChangePassword(false);
 		} else {
 			if (Login.getLoggedUser(this).getMustCompleteEmergencyData()) {
-				this.startActivity(new Intent(this, UpdateEmergencyConfigActivity.class));
+				if (!Login.getRedirectedToEmergency()) {
+					Login.setRedirectedToEmergency(true);
+					this.startActivity(new Intent(this, UpdateEmergencyConfigActivity.class));
+				}
 			}
 		}
 		/* EJEMPLO DE ANIMACION findViewById(R.id.btnFooterServices).setOnTouchListener(new View.OnTouchListener() {

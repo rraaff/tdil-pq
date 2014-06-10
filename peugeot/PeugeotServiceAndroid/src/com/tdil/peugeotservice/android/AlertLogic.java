@@ -25,25 +25,12 @@ public class AlertLogic {
 //				});
 //		}
 	
+		final View openGuardPhoneCallButton = activity.findViewById(R.id.openGuardPhoneCallButton);
+		final View guardPhoneCallView = activity.findViewById(R.id.guardPhoneCallView);
+		final View sendGuardPhoneCallButtonContainer = activity.findViewById(R.id.guardPhoneCallButtonContainer);
 		
 		final View guardPhoneCallButton = activity.findViewById(R.id.guardPhoneCallButton);
-		if (guardPhoneCallButton != null) {
-			guardPhoneCallButton.setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						try {
-						 String uri = "tel:"+ Login.getLoggedUser(activity).getGuardPhone();
-	                     Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
-	                     activity.startActivity(callIntent);
-						}catch(Exception e) {
-		                    Toast.makeText(activity,"Ha ocurrido un error realizando la llamada...",
-		                        Toast.LENGTH_LONG).show();
-		                }
-
-					}
-				});
-		}
+		final View closeGuardPhoneCallButton = activity.findViewById(R.id.closeGuardPhoneCallButton);
 		
 		final View openSendAlertView = activity.findViewById(R.id.openSendAlertView);
 		final View sendAlertView = activity.findViewById(R.id.sendAlertView);
@@ -51,8 +38,66 @@ public class AlertLogic {
 		
 		final View sendAlertButton = activity.findViewById(R.id.sendAlertButton);
 		final View closeSendAlertButton = activity.findViewById(R.id.closeSendAlertButton);
-		final AlertBackHandler alertBackHandler = new AlertBackHandler(openSendAlertView, sendAlertView);
+		final AlertBackHandler alertBackHandler = new AlertBackHandler(openSendAlertView, sendAlertView, openGuardPhoneCallButton, guardPhoneCallView);
+		
 		activity.setBackHandler(alertBackHandler);
+		
+		if(openGuardPhoneCallButton != null) {
+			openGuardPhoneCallButton.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						 alertBackHandler.setOpenedGuardPhoneCall(true);
+						 openGuardPhoneCallButton.setVisibility(View.GONE);
+//						sendAlertView.setVisibility(View.VISIBLE);
+						Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
+						guardPhoneCallView.setVisibility(View.VISIBLE);
+						sendGuardPhoneCallButtonContainer.startAnimation(rightToLeft);
+					}
+				});
+		}
+		if (guardPhoneCallButton != null) {
+			guardPhoneCallButton.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						try {
+							alertBackHandler.setOpenedSendAlert(false);
+							openGuardPhoneCallButton.setVisibility(View.VISIBLE);
+							guardPhoneCallView.setVisibility(View.GONE);
+							 String uri = "tel:"+ Login.getLoggedUser(activity).getGuardPhone();
+		                     Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+		                     activity.startActivity(callIntent);
+							}catch(Exception e) {
+			                    Toast.makeText(activity,"Ha ocurrido un error realizando la llamada...",
+			                        Toast.LENGTH_LONG).show();
+			                }
+					}
+				});
+		}
+		if (guardPhoneCallView != null) {
+			guardPhoneCallView.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						alertBackHandler.setOpenedGuardPhoneCall(false);
+						openGuardPhoneCallButton.setVisibility(View.VISIBLE);
+						guardPhoneCallView.setVisibility(View.GONE);
+					}
+				});
+		}
+		if(closeGuardPhoneCallButton != null) {
+			closeGuardPhoneCallButton.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						alertBackHandler.setOpenedSendAlert(false);
+						openGuardPhoneCallButton.setVisibility(View.VISIBLE);
+						guardPhoneCallView.setVisibility(View.GONE);
+					}
+				});
+		}
+		
 		if(openSendAlertView != null) {
 			openSendAlertView.setOnClickListener(
 				new View.OnClickListener() {
@@ -61,7 +106,7 @@ public class AlertLogic {
 						if (Login.getLoggedUser(activity).getMustCompleteEmergencyData()) {
 							activity.startActivity(new Intent(activity, UpdateEmergencyConfigActivity.class));
 						} else {
-							 alertBackHandler.setOpened(true);
+							 alertBackHandler.setOpenedSendAlert(true);
 							openSendAlertView.setVisibility(View.GONE);
 	//						sendAlertView.setVisibility(View.VISIBLE);
 							Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
@@ -79,7 +124,7 @@ public class AlertLogic {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						alertBackHandler.setOpened(false);
+						alertBackHandler.setOpenedSendAlert(false);
 						openSendAlertView.setVisibility(View.VISIBLE);
 						sendAlertView.setVisibility(View.GONE);
 					}
@@ -90,7 +135,7 @@ public class AlertLogic {
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
-						alertBackHandler.setOpened(false);
+						alertBackHandler.setOpenedSendAlert(false);
 						openSendAlertView.setVisibility(View.VISIBLE);
 						sendAlertView.setVisibility(View.GONE);
 					}
