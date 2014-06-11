@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tdil.peugeotservice"
     android:versionCode="1"
-    android:versionName="1.00.02.b" >
+    android:versionName="1.00.03.b" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
-            android:text="PEUGEOT AXS"
+            android:text="@string/app_name"
             android:textColor="@color/lightBlue"
             android:textSize="24sp" 
             android:layout_width="0dp"

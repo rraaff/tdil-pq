@@ -2,7 +2,7 @@
 <resources>
 
     
-    <string name="app_name">Peugeot AXS</string>
+    <string name="app_name">Peugeot Car Safe</string>
     <string name="action_settings">Buscando actualizaciones</string>
     <string name="action_loading">Cargando Información</string>
     <string name="action_system_loading">Cargando información del sistema</string>
@@ -25,14 +25,14 @@
     
     
     <!-- Titles -->
-    <string name="title_activity_check_for_update">Peugeot AXS</string>
+    <string name="title_activity_check_for_update">Peugeot Car Safe</string>
     <string name="title_activity_first_access">PRIMER ACCESO</string>
     <string name="title_activity_login">INGRESO DE USUARIOS</string>
     <string name="title_request_reset">RECUPERAR CLAVE</string>
     <string name="title_activity_register">Registrate</string>
     <string name="title_activity_update">Mis datos</string>
     <string name="title_activity_change_password">Mi clave</string>
-    <string name="title_activity_login_for_action_bar">Peugeot AXS</string>
+    <string name="title_activity_login_for_action_bar">Peugeot Car Safe</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
     <string name="title_activity_add_service">Registrar service</string>
@@ -102,7 +102,7 @@
     
     <string name="btn_male">Masculino</string>
     <string name="btn_female">Femenino</string>
-    <string name="btn_optIn">Acepto recibir contactos de Peugeot AXS y sus compañías asociadas</string>
+    <string name="btn_optIn">Acepto recibir contactos de Peugeot Car Safe y sus compañías asociadas</string>
     
     <string name="btn_dismiss_advices">No recordar</string>
     <string name="btn_snooze_advices">Mas tarde</string>

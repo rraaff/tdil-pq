@@ -39,31 +39,40 @@ public class SquareViewGroup extends ViewGroup {
 		
 		
 /*
+Tamaño de los botones 28% del ancho de la pantalla 
 
-widthAndHeightBoton = 9.84 % del ancho de la pantalla
-
-topPrimerBoton		= 16.199 % del ancho de la pantalla
-leftPrimerBoton		= 70.174 % del ancho de la pantalla
-
-topSegundoBoton		= 47.009 % del ancho de la pantalla
-leftSegundoBoton	= 86.071 % del ancho de la pantalla
-
-topTercerBoton		= 80.545 % del ancho de la pantalla
-leftTercerBoton		= 81.377 % del ancho de la pantalla
+rd_icon_location.png
+	X: 15,90% 
+	Y: 4,17%
+rd_icon_pois.png
+	X: 73.42%
+	Y: 36.74%
+rd_icon_recorridos.png
+	X: 55,19%
+	Y: 69,05%
+rd_icon_services.png
+	X: 54,98%
+	Y: 4,17%
+rd_icon_velocidades.png
+	X: 16,39%
+	Y: 69,05%
+rd_icon_zonas.png
+	X: -1,69%
+	Y: 36,47%
 
 */	
-		int widthAndHeightBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(9.84)).divide(BigDecimal.valueOf(100)).intValue();
+		int widthAndHeightBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(28)).divide(BigDecimal.valueOf(100)).intValue();
 		
-		int topPrimerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(16.199)).divide(BigDecimal.valueOf(100)).intValue();
-		int leftPrimerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(70.174)).divide(BigDecimal.valueOf(100)).intValue();
+		int topPrimerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(50.00)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftPrimerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(89.30)).divide(BigDecimal.valueOf(100)).intValue();
 		topPrimerBoton = topPrimerBoton - (widthAndHeightBoton / 2);
 		leftPrimerBoton = leftPrimerBoton - (widthAndHeightBoton / 2);
 		
 		View v = getChildAt(0);
 		v.layout(leftPrimerBoton, topPrimerBoton, leftPrimerBoton + widthAndHeightBoton, topPrimerBoton + widthAndHeightBoton);
 
-		int topSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(47.009)).divide(BigDecimal.valueOf(100)).intValue();
-		int leftSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(86.071)).divide(BigDecimal.valueOf(100)).intValue();
+		int topSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(17.20)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(30.60)).divide(BigDecimal.valueOf(100)).intValue();
 		topSegundoBoton = topSegundoBoton - (widthAndHeightBoton / 2);
 		leftSegundoBoton = leftSegundoBoton - (widthAndHeightBoton / 2);
 		
@@ -71,8 +80,8 @@ leftTercerBoton		= 81.377 % del ancho de la pantalla
 		v = getChildAt(1);
 		v.layout(leftSegundoBoton, topSegundoBoton, leftSegundoBoton + widthAndHeightBoton, topSegundoBoton + widthAndHeightBoton);
 		
-		int topTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(80.545)).divide(BigDecimal.valueOf(100)).intValue();
-		int leftTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(81.377)).divide(BigDecimal.valueOf(100)).intValue();
+		int topTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(17.20)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(70.20)).divide(BigDecimal.valueOf(100)).intValue();
 		topTercerBoton = topTercerBoton - (widthAndHeightBoton / 2);
 		leftTercerBoton = leftTercerBoton - (widthAndHeightBoton / 2);
 		

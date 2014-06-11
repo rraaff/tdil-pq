@@ -13,7 +13,7 @@
 
         <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="81dp"
+            android:layout_height="160dp"
             android:background="@color/black"
             android:gravity="top" >
 
@@ -25,16 +25,16 @@
 
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="81dp"
+                    android:layout_height="160dp"
                     android:layout_gravity="center_vertical|center_horizontal"
                     android:layout_weight="1" >
 
                     <ImageView
                         android:id="@+id/gr_iso"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
                         android:layout_gravity="left|center_vertical"
-                        android:layout_margin="10dp"
+                        android:layout_marginLeft="24dp"
                         android:src="@drawable/iso" />
 
                     <ImageView
@@ -42,17 +42,17 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
                         android:layout_weight="1"
                         android:src="@drawable/signature" />
 
                     <ImageView
                         android:id="@+id/gr_userIcon"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
                         android:layout_gravity="center_vertical|right"
-                        android:layout_margin="10dp"
+                        android:layout_margin="24dp"
                         android:src="@drawable/icon_user" />
 
                 </LinearLayout>
