@@ -8,143 +8,73 @@
         android:id="@+id/loginObjects"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="center_vertical|center_horizontal"
-        android:gravity="center_vertical|center_horizontal|top"
+        android:background="@drawable/bg_ondas"
+        android:gravity="center_vertical"
         android:orientation="vertical" >
+        
+        <ImageView
+            android:id="@+id/main_logo"
+            style="@style/mainLogoAtLogin"
+            android:layout_margin="30dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/main_logo" />
 
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="fill_vertical|fill_horizontal"
-            android:layout_weight="1"
-            android:background="@color/black"
-            android:gravity="top" >
+        <LinearLayout
+            style="@style/LoginScreen" >
+            
+            <TextView
+                android:id="@+id/loadingInfoText"
+                style="@style/MainTitles"
+                android:text="@string/title_activity_first_access" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cmnt_text_first_access"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
             <TableRow
-                android:id="@+id/signatureBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_weight="10"
-                android:background="@drawable/ac_secondary_bar" >
+                android:id="@+id/buttonWrapper"
+                style="@style/buttonWrapper"
+                android:layout_height="match_parent" >
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="81dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1" >
+                <Button
+                    android:id="@+id/notClientButton"
+                    style="@style/ButtonBackward"
+                    android:onClick="@string/dologin"
+                    android:text="@string/btn_not_client" />
 
-                    <ImageView
-                        android:id="@+id/gr_iso"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="left|center_vertical"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/iso"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/gr_signature"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/signature" />
-
-                    <ImageView
-                        android:id="@+id/gr_userIcon"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/icon_user"
-                        android:visibility="invisible" />
-
-                </LinearLayout>
-
+                <Button
+                    android:id="@+id/alreadyClientButton"
+                    style="@style/ButtonForward"
+                    android:onClick="@string/dologin"
+                    android:text="@string/btn_already_client" />
             </TableRow>
-        
-			<TableRow
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content"
-			    android:layout_gravity="center_horizontal"
-			    android:layout_weight="25"
-			    android:background="@drawable/bg_white_degrade"
-			    android:fadingEdge="vertical"
-			    android:gravity="center_horizontal"
-			    android:paddingBottom="4dp"
-			    android:paddingTop="4dp"
-			    android:scrollbarAlwaysDrawVerticalTrack="true"
-			    android:scrollbarStyle="insideOverlay"
-			    android:scrollbars="vertical" >
-                
-			    <ScrollView
-		            android:layout_width="match_parent"
-		            android:layout_height="fill_parent" >
 
-				    <LinearLayout
-				        android:layout_width="fill_parent"
-				        android:layout_height="wrap_content"
-				        android:orientation="vertical" >
-	
-				        <!-- Button
-				            android:id="@+id/sendEmergencyButton"
-				            style="@style/ButtonListItems"
-				            android:onClick="@string/dologin"
-				            android:text="@string/btn_send_emergency" 
-				            android:visibility=""/ -->
-	
-				        <!-- Button
-				            android:id="@+id/configEmergencyButton"
-				            android:onClick="@string/dologin"
-				            android:text="@string/btn_config_emergencias"
-				            style="@style/ButtonListItems" /-->
-	
-				        <Button
-				            android:id="@+id/alreadyClientButton"
-				            style="@style/ButtonListItems"
-				            android:onClick="@string/dologin"
-				            android:text="@string/btn_already_client" />
-	
-				        <Button
-				            android:id="@+id/notClientButton"
-				            style="@style/ButtonListItems"
-				            android:onClick="@string/dologin"
-				            android:text="@string/btn_not_client" />
-	
-				    </LinearLayout>
-				    
-				</ScrollView>
+		</LinearLayout>
 
-			</TableRow>
-        
-	        <TableLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="81dp"
-	            android:layout_gravity="bottom"
-	            android:layout_weight="2"
-	            android:background="@drawable/bg_white_degrade" >
-	
-	            <TableRow
-	                android:id="@+id/applogoBar"
-	                android:layout_width="wrap_content"
-	                android:layout_height="wrap_content" >
-	
-	                <ImageView
-	                    android:id="@+id/appLogoNegro"
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:src="@drawable/app_logo_negro" />
-	
-	            </TableRow>
-	
-	
-	        </TableLayout>
+	    <ImageView
+	        android:id="@+id/placahome"
+	        android:layout_width="wrap_content"
+	        android:layout_height="80dp"
+	        android:layout_gravity="bottom|center_horizontal"
+	        android:layout_margin="30dp"
+	        android:layout_weight="1"
+	        android:adjustViewBounds="true"
+	        android:contentDescription="@string/action_loading"
+	        android:gravity="bottom|center_horizontal"
+	        android:maxWidth="240dp"
+	        android:src="@drawable/app_logo" />
 
-	    </TableLayout>
-	
     </LinearLayout>
-
 </merge>
