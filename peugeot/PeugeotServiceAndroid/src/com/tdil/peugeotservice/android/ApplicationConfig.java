@@ -18,13 +18,14 @@ public class ApplicationConfig {
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/PeugeotServiceWeb/";
 
 // MARCOS
-	public static final String APP_DOMAIN = "192.168.1.39:8380";
+	public static final String APP_DOMAIN = "192.168.0.145:8380";
 	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/PeugeotServiceWeb/";
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
 	public static final String URL_PARKINGS = URL_WEBSITE + "productoPoiAndroid.jsp";
 	public static final String URL_PREVENT = URL_WEBSITE + "goToPreventLoginAndroid.do?timezone=-180&USING_APK=true";
+	public static final String URL_NOT_CLIENT = URL_WEBSITE + "peugeot_app.jsp";
 	
 	public static int default_timeout = 10000;
 	

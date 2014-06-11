@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+        
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="81dp"
+            android:background="@color/black"
+            android:gravity="top" >
+
+            <TableRow
+                android:id="@+id/signatureBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ac_secondary_bar" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="81dp"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/gr_iso"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/iso"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/gr_signature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/signature" />
+
+                    <ImageView
+                        android:id="@+id/gr_userIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/icon_user"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
+            </TableRow>
+
+        </TableLayout>
+        
+	    <WebView
+	        android:id="@+id/parkingsWebView"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent" />
+
+    </LinearLayout>
+
+    
+</FrameLayout>

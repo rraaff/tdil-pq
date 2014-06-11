@@ -43,6 +43,24 @@
 	        android:icon="@drawable/iso"
             android:theme="@style/AppTheme">
         </activity>
+        
+        <activity
+            android:name="com.tdil.peugeotservice.android.FirstAccessActivity"
+            android:label="@string/title_activity_first_access"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+	        android:icon="@drawable/iso"
+            android:theme="@style/AppTheme">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.peugeotservice.android.NotClientActivity"
+            android:label="@string/title_activity_first_access"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+	        android:icon="@drawable/iso"
+            android:theme="@style/AppTheme">
+        </activity>
 
         <activity
             android:name="com.tdil.peugeotservice.android.LoginActivity"

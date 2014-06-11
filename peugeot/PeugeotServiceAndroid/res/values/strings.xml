@@ -26,6 +26,7 @@
     
     <!-- Titles -->
     <string name="title_activity_check_for_update">Peugeot AXS</string>
+    <string name="title_activity_first_access">PRIMER ACCESO</string>
     <string name="title_activity_login">INGRESO DE USUARIOS</string>
     <string name="title_request_reset">RECUPERAR CLAVE</string>
     <string name="title_activity_register">Registrate</string>
@@ -122,6 +123,10 @@
     <string name="btn_select_for_my_services">Seleccionar para mis services</string>
     <string name="btn_send_emergency">Enviar emergencia</string>
     <string name="btn_close_historic">Cerrar</string>
+    
+    <string name="btn_already_client">Soy cliente</string>
+    <string name="btn_not_client">No soy cliente</string>
+    
     
     <string name="lst_itm_km">Km</string>
     <string name="lst_itm_needs_service">Requiere service</string>

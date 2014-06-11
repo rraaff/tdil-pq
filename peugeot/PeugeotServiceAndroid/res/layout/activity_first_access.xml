@@ -1,0 +1,150 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ServicesDashboardActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:gravity="center_vertical|center_horizontal|top"
+        android:orientation="vertical" >
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="fill_vertical|fill_horizontal"
+            android:layout_weight="1"
+            android:background="@color/black"
+            android:gravity="top" >
+
+            <TableRow
+                android:id="@+id/signatureBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="10"
+                android:background="@drawable/ac_secondary_bar" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="81dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1" >
+
+                    <ImageView
+                        android:id="@+id/gr_iso"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/iso"
+                        android:visibility="invisible" />
+
+                    <ImageView
+                        android:id="@+id/gr_signature"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:src="@drawable/signature" />
+
+                    <ImageView
+                        android:id="@+id/gr_userIcon"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_vertical|right"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/icon_user"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+
+            </TableRow>
+        
+			<TableRow
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="center_horizontal"
+			    android:layout_weight="25"
+			    android:background="@drawable/bg_white_degrade"
+			    android:fadingEdge="vertical"
+			    android:gravity="center_horizontal"
+			    android:paddingBottom="4dp"
+			    android:paddingTop="4dp"
+			    android:scrollbarAlwaysDrawVerticalTrack="true"
+			    android:scrollbarStyle="insideOverlay"
+			    android:scrollbars="vertical" >
+                
+			    <ScrollView
+		            android:layout_width="match_parent"
+		            android:layout_height="fill_parent" >
+
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:orientation="vertical" >
+	
+				        <!-- Button
+				            android:id="@+id/sendEmergencyButton"
+				            style="@style/ButtonListItems"
+				            android:onClick="@string/dologin"
+				            android:text="@string/btn_send_emergency" 
+				            android:visibility=""/ -->
+	
+				        <!-- Button
+				            android:id="@+id/configEmergencyButton"
+				            android:onClick="@string/dologin"
+				            android:text="@string/btn_config_emergencias"
+				            style="@style/ButtonListItems" /-->
+	
+				        <Button
+				            android:id="@+id/alreadyClientButton"
+				            style="@style/ButtonListItems"
+				            android:onClick="@string/dologin"
+				            android:text="@string/btn_already_client" />
+	
+				        <Button
+				            android:id="@+id/notClientButton"
+				            style="@style/ButtonListItems"
+				            android:onClick="@string/dologin"
+				            android:text="@string/btn_not_client" />
+	
+				    </LinearLayout>
+				    
+				</ScrollView>
+
+			</TableRow>
+        
+	        <TableLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="81dp"
+	            android:layout_gravity="bottom"
+	            android:layout_weight="2"
+	            android:background="@drawable/bg_white_degrade" >
+	
+	            <TableRow
+	                android:id="@+id/applogoBar"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" >
+	
+	                <ImageView
+	                    android:id="@+id/appLogoNegro"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:src="@drawable/app_logo_negro" />
+	
+	            </TableRow>
+	
+	
+	        </TableLayout>
+
+	    </TableLayout>
+	
+    </LinearLayout>
+
+</merge>

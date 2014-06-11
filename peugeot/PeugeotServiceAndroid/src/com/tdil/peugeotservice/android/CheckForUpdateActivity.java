@@ -76,12 +76,18 @@ public class CheckForUpdateActivity extends PeugeotActivity {
                     /* Post a Handler for the UI to pick up and open the Dialog */
                     mHandler.post(showUpdate);
                 } else {
-                	AppStart appStart = checkAppStart();
-                	// activate activity
-                	Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
-                	intent.putExtra(LoginActivity.FROM_LAUNCH, LoginActivity.FROM_LAUNCH);
-                	startActivity(intent);
-                	finish();
+                	StartHistory appStart = checkAppStart();
+                	if (!appStart.isClient()) {
+                		Intent intent = new Intent(CheckForUpdateActivity.this, FirstAccessActivity.class);
+	                	startActivity(intent);
+	                	finish();
+                	} else {
+	                	// activate activity
+	                	Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
+	                	intent.putExtra(LoginActivity.FROM_LAUNCH, LoginActivity.FROM_LAUNCH);
+	                	startActivity(intent);
+	                	finish();
+                	}
                 }
             } catch (Exception e) {
             	e.printStackTrace();
@@ -130,6 +136,33 @@ public class CheckForUpdateActivity extends PeugeotActivity {
            }
     };    
     
+    public class StartHistory {
+    	
+    	private AppStart appStart;
+    	private boolean client;
+    	
+		public StartHistory(AppStart appStart, boolean client) {
+			super();
+			this.appStart = appStart;
+			this.client = client;
+		}
+		
+		public AppStart getAppStart() {
+			return appStart;
+		}
+		public void setAppStart(AppStart appStart) {
+			this.appStart = appStart;
+		}
+		public boolean isClient() {
+			return client;
+		}
+		public void setClient(boolean client) {
+			this.client = client;
+		}
+    	
+    	
+    }
+    
     /**
      * Distinguishes different kinds of app starts: <li>
      * <ul>
@@ -153,7 +186,8 @@ public class CheckForUpdateActivity extends PeugeotActivity {
      * The app version code (not the version name!) that was used on the last
      * start of the app.
      */
-    private static final String LAST_APP_VERSION = "last_app_version";
+    public static final String LAST_APP_VERSION = "last_app_version";
+    public static final String IS_CLIENT = "is_client";
 
     /**
      * Caches the result of {@link #checkAppStart()}. To allow idempotent method
@@ -166,17 +200,18 @@ public class CheckForUpdateActivity extends PeugeotActivity {
      * 
      * @return the type of app start
      */
-    public AppStart checkAppStart() {
+    public StartHistory checkAppStart() {
+    	boolean client = false;
         if (appStart == null) {
             try {
             	final String PREFS_NAME = "AXSPrefsFile";
             	SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             	int currentVersionCode = getPackageManager().getPackageInfo(
     					"com.tdil.peugeotservice", 0).versionCode;
-                int lastVersionCode = settings.getInt(
-                        LAST_APP_VERSION, -1);
+                int lastVersionCode = settings.getInt(LAST_APP_VERSION, -1);
                 // String versionName = pInfo.versionName;
                 appStart = checkAppStart(currentVersionCode, lastVersionCode);
+                client = settings.getBoolean(IS_CLIENT, false);
                 // Update version in preferences
                 settings.edit()
                         .putInt(LAST_APP_VERSION, currentVersionCode).commit();
@@ -185,7 +220,7 @@ public class CheckForUpdateActivity extends PeugeotActivity {
             	appStart = AppStart.NORMAL;
             }
         }
-        return appStart;
+        return new StartHistory(appStart, client);
     }
 
     public AppStart checkAppStart(int currentVersionCode, int lastVersionCode) {
