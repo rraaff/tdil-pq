@@ -71,7 +71,7 @@
         <ScrollView
             android:id="@+id/scrollView1"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="320dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -97,9 +97,8 @@
 	                    android:id="@+id/documentType"
 	                    android:layout_width="fill_parent"
 	                    android:layout_height="wrap_content"
-	                    android:layout_marginBottom="3dp"
-	                    android:layout_marginTop="3dp"
-	                    android:background="@color/bgFormFieldsLight" />
+	                    android:background="@color/bgFormFieldsLight"
+	                    style="@style/FormsElements_editText"  />
 	
 	                <EditText
 	                    android:id="@+id/documentNumber"
@@ -184,7 +183,8 @@
 	                    android:id="@+id/state"
 	                    android:layout_width="match_parent"
 	                    android:layout_height="wrap_content"
-	                    android:background="@color/bgFormFieldsLight" />
+	                    android:background="@color/bgFormFieldsLight"
+	                    style="@style/FormsElements_editText" />
 	
 	                <EditText
 	                    android:id="@+id/city"
@@ -211,7 +211,8 @@
 	                    android:id="@+id/addressType"
 	                    android:layout_width="match_parent"
 	                    android:layout_height="wrap_content"
-	                    android:background="@color/bgFormFieldsLight" />
+	                    android:background="@color/bgFormFieldsLight"
+	                    style="@style/FormsElements_editText" />
 	
 	                <EditText
 	                    android:id="@+id/postalCode"
@@ -231,14 +232,39 @@
 	
 		            <Button
 		                android:id="@+id/updateButton"
+		                android:layout_width="fill_parent"
 		                android:onClick="@string/dologin"
 		                android:text="@string/btn_tag_modify"
 			            style="@style/ButtonDarkForward"
-			            android:layout_margin="16dp" />
+			            android:layout_marginTop="16dp"
+			            android:layout_marginBottom="160dp" />
 	
 	            </LinearLayout>
 			</LinearLayout>
         </ScrollView>
+        
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:background="@drawable/bg_white_degrade" >
+
+            <TableRow
+                android:id="@+id/applogoBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/appLogoNegro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_logo_negro" />
+
+            </TableRow>
+
+
+        </TableLayout>
     </LinearLayout>
     
     <!-- START ALERTA -->
@@ -247,10 +273,10 @@
 	    android:id="@+id/openSendAlertView"
 	    android:layout_width="35dp"
 	    android:layout_height="44dp"
+	    android:layout_gravity="right|bottom"
+	    android:background="@drawable/bg_emergency_button_init"
 	    android:minHeight="35dp"
-	    android:minWidth="44dp"
-	    android:layout_gravity="right|center"
-	    android:background="@drawable/bg_emergency_button_init" />
+	    android:minWidth="44dp" />
 	
 	<LinearLayout
 	    android:id="@+id/sendAlertView"

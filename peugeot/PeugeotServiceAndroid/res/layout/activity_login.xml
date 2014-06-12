@@ -69,7 +69,8 @@
 
                 <TableRow
                     android:id="@+id/tablePassword"
-                    style="@style/fieldsetLike" >
+                    style="@style/fieldsetLike"
+                    android:layout_marginBottom="5dp" >
 
                     <TextView
                         android:id="@+id/labelPassword"
@@ -86,7 +87,8 @@
 
                 <TableRow
                     android:id="@+id/tableRememberMe"
-                    style="@style/fieldsetLike" >
+                    style="@style/fieldsetLike"
+                    android:layout_marginBottom="0dp" >
 
                     <CheckBox
                         android:id="@+id/rememberPasswordCheckbox"
@@ -119,6 +121,7 @@
                 <Button
                     android:id="@+id/requestResetPassword"
                     style="@style/ButtonBackward"
+                    android:layout_weight="1"
                     android:text="@string/btn_tag_forgotpass" />
 
                 <Button
@@ -131,11 +134,13 @@
             </TableRow>
 
         </LinearLayout>
+
 	    <ImageView
 	        android:id="@+id/placahome"
 	        android:layout_width="wrap_content"
 	        android:layout_height="80dp"
 	        android:layout_gravity="bottom|center_horizontal"
+	        android:layout_margin="10dp"
 	        android:layout_weight="1"
 	        android:adjustViewBounds="true"
 	        android:contentDescription="@string/action_loading"

@@ -10,16 +10,16 @@ public class ApplicationConfig {
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 // PRE-PROD
-//	public static final String APP_DOMAIN = "www.lojack-app.com.ar:8180";
-//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
+	public static final String APP_DOMAIN = "www.lojack-app.com.ar:8180";
+	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 // PABLO
 //	public static final String APP_DOMAIN = "192.168.252.136:8380";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/PeugeotServiceWeb/";
 
 // MARCOS
-	public static final String APP_DOMAIN = "192.168.0.145:8380";
-	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/PeugeotServiceWeb/";
+//	public static final String APP_DOMAIN = "192.168.0.145:8380";
+//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/PeugeotServiceWeb/";
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	

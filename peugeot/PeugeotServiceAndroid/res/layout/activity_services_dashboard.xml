@@ -101,6 +101,13 @@
 				            android:onClick="@string/dologin"
 				            android:text="@string/btn_config_emergencias"
 				            style="@style/ButtonListItems" /-->
+
+				        <ImageView
+				            android:id="@+id/imageView1"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center_horizontal"
+				            android:src="@drawable/icon_services_locations_dashboard" />
 	
 				        <Button
 				            android:id="@+id/myServicesButton"
@@ -114,12 +121,26 @@
 				            android:text="@string/btn_my_vehicles"
 				            style="@style/ButtonListItems" 
 				            android:visibility="gone"/>
+
+				        <ImageView
+				            android:id="@+id/imageView2"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center_horizontal"
+				            android:src="@drawable/icon_my_services_dashboard" />
 	
 				        <Button
 				            android:id="@+id/officialServicesButton"
 				            android:onClick="@string/dologin"
 				            android:text="@string/btn_official_services"
 				            style="@style/ButtonListItems" />
+
+				        <ImageView
+				            android:id="@+id/imageView3"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:layout_gravity="center_horizontal"
+				            android:src="@drawable/icon_official_services_dashboard" />
 	
 				        <Button
 				            android:id="@+id/searchDealersButton"

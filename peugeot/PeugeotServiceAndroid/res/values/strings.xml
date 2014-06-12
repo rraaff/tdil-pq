@@ -50,7 +50,7 @@
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
     <string name="cmnt_camera_tooltip">Presioná las flechas para orientar la cámara</string>
-    <string name="cmnt_text_first_access">Si has descargado recientemente la aplicación y no posee cuenta, presioná «NO TENGO CUENTA» y si ya conoce su usuario, ingrese ahora haciendo tap en el botón «TENGO CUENTA»</string>
+    <string name="cmnt_text_first_access">Si has descargado recientemente la aplicación y no tenes cuenta, presioná «NO TENGO». Y si ya has creado tu cuenta ingrese ahora haciendo tap en el botón «TENGO CUENTA».</string>
 
     <!-- Ruedita -->
     <string name="rd_main_promo_title">Viví LoAPP 1.1</string>
@@ -75,10 +75,10 @@
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_register">Registrarme</string>
-    <string name="btn_tag_modify">Modificar</string>
+    <string name="btn_tag_modify">Guardar</string>
     <string name="btn_tag_modify_my_data"> </string>
     <string name="btn_tag_change_password">Mi clave</string>
-    <string name="btn_tag_forgotpass">Recordar clave</string>
+    <string name="btn_tag_forgotpass">Recuperar clave</string>
     <string name="btn_tag_reset_password">Enviar</string>
     <string name="btn_tag_reset_password_back">Volver</string>
     
@@ -126,7 +126,7 @@
     <string name="btn_close_historic">Cerrar</string>
     
     <string name="btn_already_client">TENGO CUENTA</string>
-    <string name="btn_not_client">NO TENGO CUENTA</string>
+    <string name="btn_not_client">NO TENGO</string>
     
     
     <string name="lst_itm_km">Km</string>

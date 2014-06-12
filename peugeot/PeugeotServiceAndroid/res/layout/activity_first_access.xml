@@ -51,14 +51,17 @@
                 <Button
                     android:id="@+id/notClientButton"
                     style="@style/ButtonBackward"
+                    android:layout_weight="1"
                     android:onClick="@string/dologin"
                     android:text="@string/btn_not_client" />
 
                 <Button
                     android:id="@+id/alreadyClientButton"
                     style="@style/ButtonForward"
+                    android:layout_weight="0"
                     android:onClick="@string/dologin"
                     android:text="@string/btn_already_client" />
+
             </TableRow>
 
 		</LinearLayout>
