@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.view.View;
 
 import com.tdil.peugeotservice.R;
-import com.tdil.peugeotservice.android.utils.Login;
 
 public class FooterLogic  {
 
@@ -65,7 +64,27 @@ public class FooterLogic  {
 	}
 
 	public static void handlePreventAccess(final Activity activity) {
-		activity.startActivity(new Intent(activity, PreventActivity.class));
+		Intent intent = new Intent(activity, PreventActivity.class);
+		intent.putExtra(PreventActivity.URL_PARAM, "");
+		activity.startActivity(intent);
+	}
+	
+	public static void handleSecureZoneAccess(final Activity activity) {
+		Intent intent = new Intent(activity, PreventActivity.class);
+		intent.putExtra(PreventActivity.URL_PARAM, "&open=secureZones");
+		activity.startActivity(intent);
+	}
+	
+	public static void handleSpeedAccess(final Activity activity) {
+		Intent intent = new Intent(activity, PreventActivity.class);
+		intent.putExtra(PreventActivity.URL_PARAM, "&open=speed");
+		activity.startActivity(intent);
+	}
+	
+	public static void handleHistoricAccess(final Activity activity) {
+		Intent intent = new Intent(activity, PreventActivity.class);
+		intent.putExtra(PreventActivity.URL_PARAM, "&open=historic");
+		activity.startActivity(intent);
 	}
 	
 	public static void handlePeugeotAccess(final Activity activity) {

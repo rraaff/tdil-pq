@@ -99,6 +99,30 @@
                 android:text="@string/btn_services"
                 android:textColor="@color/new_wheel_link" />
 
+            <Button
+                android:id="@+id/btnFooterSecureZone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_zonas"
+                android:text="@string/btn_prevent"
+                android:textColor="@color/new_wheel_link" />
+            
+            <Button
+                android:id="@+id/btnFooterSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_velocidades"
+                android:text="@string/btn_prevent"
+                android:textColor="@color/new_wheel_link" />
+            
+            <Button
+                android:id="@+id/btnFooterHistoric"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_recorridos"
+                android:text="@string/btn_prevent"
+                android:textColor="@color/new_wheel_link" />
+            
         </com.tdil.thalamus.android.view.SquareViewGroup>
 
         <TableLayout

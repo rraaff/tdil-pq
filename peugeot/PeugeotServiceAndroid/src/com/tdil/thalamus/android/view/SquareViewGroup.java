@@ -71,23 +71,47 @@ rd_icon_zonas.png
 		View v = getChildAt(0);
 		v.layout(leftPrimerBoton, topPrimerBoton, leftPrimerBoton + widthAndHeightBoton, topPrimerBoton + widthAndHeightBoton);
 
+		// Posicion item 2
 		int topSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(17.20)).divide(BigDecimal.valueOf(100)).intValue();
 		int leftSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(30.60)).divide(BigDecimal.valueOf(100)).intValue();
 		topSegundoBoton = topSegundoBoton - (widthAndHeightBoton / 2);
 		leftSegundoBoton = leftSegundoBoton - (widthAndHeightBoton / 2);
 		
-		// Posicion item 2
 		v = getChildAt(1);
 		v.layout(leftSegundoBoton, topSegundoBoton, leftSegundoBoton + widthAndHeightBoton, topSegundoBoton + widthAndHeightBoton);
 		
+		// Posicion item 3
 		int topTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(17.20)).divide(BigDecimal.valueOf(100)).intValue();
 		int leftTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(70.20)).divide(BigDecimal.valueOf(100)).intValue();
 		topTercerBoton = topTercerBoton - (widthAndHeightBoton / 2);
 		leftTercerBoton = leftTercerBoton - (widthAndHeightBoton / 2);
 		
-		// Posicion item 3
 		v = getChildAt(2);
 		v.layout(leftTercerBoton, topTercerBoton, leftTercerBoton + widthAndHeightBoton, topTercerBoton + widthAndHeightBoton);
+		
+		// Posicion item 4 TOP: 50,00% LEFT: 10,70%
+		int topCuartoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(50.00)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftCuartoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(10.70)).divide(BigDecimal.valueOf(100)).intValue();
+		topCuartoBoton = topCuartoBoton - (widthAndHeightBoton / 2);
+		leftCuartoBoton = leftCuartoBoton - (widthAndHeightBoton / 2);
+		v = getChildAt(3); // btnFooterSecureZone
+		v.layout(leftCuartoBoton, topCuartoBoton, leftCuartoBoton + widthAndHeightBoton, topCuartoBoton + widthAndHeightBoton);
+		
+		// Posicion item 5 TOP: 50,00% LEFT: 10,70%
+		int topQuintoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(82.80)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftQuintoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(30.60)).divide(BigDecimal.valueOf(100)).intValue();
+		topQuintoBoton = topQuintoBoton - (widthAndHeightBoton / 2);
+		leftQuintoBoton = leftQuintoBoton - (widthAndHeightBoton / 2);
+		v = getChildAt(4); // btnFooterSpeed
+		v.layout(leftQuintoBoton, topQuintoBoton, leftQuintoBoton + widthAndHeightBoton, topQuintoBoton + widthAndHeightBoton);
+		
+		// Posicion item 5 TOP: 50,00% LEFT: 10,70%
+		int topSextoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(82.80)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftSextoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(70.20)).divide(BigDecimal.valueOf(100)).intValue();
+		topSextoBoton = topSextoBoton - (widthAndHeightBoton / 2);
+		leftSextoBoton = leftSextoBoton - (widthAndHeightBoton / 2);
+		v = getChildAt(5); // historic
+		v.layout(leftSextoBoton, topSextoBoton, leftSextoBoton + widthAndHeightBoton, topQuintoBoton + widthAndHeightBoton);
 
 	}
 

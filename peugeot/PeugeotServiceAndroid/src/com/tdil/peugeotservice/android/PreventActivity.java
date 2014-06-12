@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.GeolocationPermissions;
@@ -25,6 +24,7 @@ import com.tdil.peugeotservice.android.utils.Login;
  */
 public class PreventActivity extends PeugeotActivity {
 
+	public static final String URL_PARAM = "URL_PARAM";
 	// UI references.
 	private WebView parkingsWebView;
 
@@ -69,6 +69,11 @@ public class PreventActivity extends PeugeotActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
+		
+		Bundle extras = getIntent().getExtras();
+		
+		final String param = (String)extras.getSerializable(URL_PARAM);
+		
 		setContentView(R.layout.activity_prevent);
 		setTypeface(this, R.id.sendAlertButton);
 		customizeActionBar();
@@ -124,7 +129,7 @@ public class PreventActivity extends PeugeotActivity {
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT + "&apkToken=" + Login.getLoggedUser(this).getApkToken());
+			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT + "&apkToken=" + Login.getLoggedUser(this).getApkToken() + param);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

@@ -54,6 +54,28 @@ public class IndexActivity extends PeugeotActivity {
 				IndexActivity.this.startActivity(new Intent(IndexActivity.this, ServicesDashboardActivity.class));
 			}
 		});
+		
+		findViewById(R.id.btnFooterSecureZone).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FooterLogic.handleSecureZoneAccess(IndexActivity.this);
+			}
+		});
+		
+		findViewById(R.id.btnFooterSpeed).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FooterLogic.handleSpeedAccess(IndexActivity.this);
+			}
+		});
+		
+		findViewById(R.id.btnFooterHistoric).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				FooterLogic.handleHistoricAccess(IndexActivity.this);
+			}
+		});
+		
 		new com.tdil.peugeotservice.android.utils.DownloadImageTask((ImageView)findViewById(R.id.gr_userIcon))
 		.execute(ApplicationConfig.URL_WEBSITE
 				+ Login.getLoggedUser(IndexActivity.this).getAvatar());
