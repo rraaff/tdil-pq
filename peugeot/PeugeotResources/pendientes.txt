@@ -1,0 +1,50 @@
+La D es de DONE.
+ 
+DEBUG DE LA APLICACIÓN ANDROID
+==============================
+Revisión en pantalla de 480x800
+ 
+[D]- action bar
+[D]  - Nombre
+ 
+[_]- Footer
+[_]  - Que los botones de emergencia y llamada estén dentro del footer centrados a mitad de altura
+ 
+[D]- Check for update
+[D]  - Achicar logo
+ 
+[D]- Primer Acceso
+[D]  - No se ven los botones
+[D]  - Editar el texto
+[D]  - El Menú no debería tener los links a secciones internas
+[D]  - El botón de back del action bar, me saca de la aplicación
+ 
+[D]- Login
+[D]  - El botón de back del action bar no hace nada. La cosa es ¿Lo mostramos? ¿o le permitimos volver a Primer Acceso?
+le saque el back
+[D]  - Modificar texto del botón "recordar clave" por "Recuperar clave"
+[D]  - Achicar espacios en el form de login
+ 
+[D]- Recordar Clave
+[D]  - Funcionalmente: Perfecta
+ 
+[_]- Configuración de emergencia
+[D]  - Mejorar lectura de los campos vacíos
+[D]  - Implementar footer
+[D]  - Sacar margen lateral al botón, agregar margen superior, cambiar texto "Guardar"
+[D]  - Cambiar estilos en los campos de texto y spinners
+[_]  - Los campos de texto no me aceptan los nombres con acentos.
+[_]  - Dice que graba pero no graba los datos
+ 
+[D]- Index (Ruedita)
+[D]  - Lo veo perfecto!
+ 
+[_]- Mi Clave
+[_]  - Le cambié la clave, me dijo que la cambió y no la cambió
+ 
+[_]- Mis Datos
+[D]  - Spinners y estilos
+[D]  - Implementar footer
+[_]  - No trae los datos
+ 
+---------- hasta acá llegué ----------------
