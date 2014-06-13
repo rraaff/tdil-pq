@@ -27,8 +27,12 @@ public class PeugeotActivity extends ActionBarActivity {
 	}
 	
 	protected void customizeActionBar() {
+		customizeActionBar(true);
+	}
+	
+	protected void customizeActionBar(boolean displayHomeAsUpEnabled) {
 			ActionBar actionBar = getSupportActionBar();
-			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setDisplayHomeAsUpEnabled(displayHomeAsUpEnabled);
 			actionBar.setDisplayShowCustomEnabled(true);
 			actionBar.setDisplayShowTitleEnabled(false);
 	//		actionBar.setIcon(R.drawable.ic_ac_back_white);
@@ -45,6 +49,8 @@ public class PeugeotActivity extends ActionBarActivity {
 	//		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); 
 	//		getSupportActionBar().setCustomView(R.layout.actionbar);
 		}
+	
+	
 
 	public static void setTypeface(PeugeotActivity context, int id) {
 		View view = context.findViewById(id);

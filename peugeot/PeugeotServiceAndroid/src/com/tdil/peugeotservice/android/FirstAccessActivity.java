@@ -34,7 +34,7 @@ public class FirstAccessActivity extends PeugeotActivity {
 		setTypeface(this, R.id.alreadyClientButton);
 		setTypeface(this, R.id.notClientButton);
 
-		customizeActionBar();
+		customizeActionBar(false);
 
 		//View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);
 		//sendEmergencyButton.setOnClickListener(new SendAlertOnClickListener(this));
@@ -102,13 +102,14 @@ public class FirstAccessActivity extends PeugeotActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_full, menu);
+		//getMenuInflater().inflate(R.menu.menu_full, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
+		//return MenuLogic.handleOnOptionsItemSelected(this, item);
+		return false;
 	}
 
 	/**

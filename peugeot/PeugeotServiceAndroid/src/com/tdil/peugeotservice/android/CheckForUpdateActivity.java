@@ -212,6 +212,7 @@ public class CheckForUpdateActivity extends PeugeotActivity {
                 // String versionName = pInfo.versionName;
                 appStart = checkAppStart(currentVersionCode, lastVersionCode);
                 client = settings.getBoolean(IS_CLIENT, false);
+//                client = false;
                 // Update version in preferences
                 settings.edit()
                         .putInt(LAST_APP_VERSION, currentVersionCode).commit();

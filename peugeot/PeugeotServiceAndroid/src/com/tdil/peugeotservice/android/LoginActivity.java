@@ -97,7 +97,7 @@ public class LoginActivity extends PeugeotActivity implements IRestClientObserve
 		
 		setTypeface(this, R.id.requestResetPassword);
 		setTypeface(this, R.id.loginButtons);
-		customizeActionBar();
+		customizeActionBar(false);
 		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
