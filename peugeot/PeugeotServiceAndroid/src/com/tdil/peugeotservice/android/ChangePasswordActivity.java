@@ -31,6 +31,7 @@ import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
 import com.tdil.peugeotservice.android.rest.model.ChangePasswordBean;
 import com.tdil.peugeotservice.android.rest.model.LoginResponse;
+import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
 /**
@@ -148,6 +149,12 @@ public class ChangePasswordActivity extends PeugeotActivity implements
 								new DialogInterface.OnClickListener() {
 									public void onClick(DialogInterface dialog,
 											int whichButton) {
+										if (Login.getLoggedUser(ChangePasswordActivity.this).getMustCompleteEmergencyData()) {
+											if (!Login.getRedirectedToEmergency()) {
+												Login.setRedirectedToEmergency(true);
+												ChangePasswordActivity.this.startActivity(new Intent(ChangePasswordActivity.this, UpdateEmergencyConfigActivity.class));
+											}
+										}
 										ChangePasswordActivity.this.finish();
 									}
 								}).show();
@@ -159,6 +166,21 @@ public class ChangePasswordActivity extends PeugeotActivity implements
 			}
 		}, RESTConstants.CHANGE_PASSWORD, new RestParams(), json)
 				.executeSerial((Void) null);
+	}
+	
+	@Override
+	public void onBackPressed() {
+		if (getBackHandler().isOpened()) {
+			getBackHandler().close();
+		} else {
+			if (Login.getLoggedUser(this).getMustCompleteEmergencyData()) {
+				if (!Login.getRedirectedToEmergency()) {
+					Login.setRedirectedToEmergency(true);
+					this.startActivity(new Intent(this, UpdateEmergencyConfigActivity.class));
+				}
+			}
+			super.onBackPressed();
+		}
 	}
 
 

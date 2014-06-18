@@ -21,7 +21,7 @@ import android.view.Menu;
 
 import com.tdil.peugeotservice.R;
 
-public class CheckForUpdateActivity extends PeugeotActivity {
+public class CheckForUpdateActivity extends Activity {
 	
 	private Handler mHandler;
 
@@ -30,8 +30,8 @@ public class CheckForUpdateActivity extends PeugeotActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_check_for_update);
-		setTypeface(this, R.id.loadingInfoText);
-		customizeActionBar();
+		//setTypeface(this, R.id.loadingInfoText);
+		//customizeActionBar();
 		mHandler = new Handler();
 		checkUpdate.start();
 	}
@@ -39,7 +39,7 @@ public class CheckForUpdateActivity extends PeugeotActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.check_for_update, menu);
+		//getMenuInflater().inflate(R.menu.check_for_update, menu);
 		return true;
 	}
 	
