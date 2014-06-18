@@ -31,6 +31,7 @@ import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
 import com.tdil.peugeotservice.android.rest.model.ChangePasswordBean;
 import com.tdil.peugeotservice.android.rest.model.LoginResponse;
+import com.tdil.peugeotservice.android.rest.model.RESTResponse;
 import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
 
@@ -139,25 +140,36 @@ public class ChangePasswordActivity extends PeugeotActivity implements
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
-				// TODO analizar la respuesta para mostrar un mensaje u otro
+				RESTResponse resp = gson.fromJson(task.getResult(), RESTResponse.class);
+				if (resp.getOk()) {
+					new AlertDialog.Builder(ChangePasswordActivity.this)
+					.setIcon(R.drawable.ic_launcher)
+					.setTitle("Cambio de clave")
+					.setMessage("Se ha cambiado la clave")
+					.setPositiveButton("OK",
+							new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,
+								int whichButton) {
+							if (Login.getLoggedUser(ChangePasswordActivity.this).getMustCompleteEmergencyData()) {
+								if (!Login.getRedirectedToEmergency()) {
+									Login.setRedirectedToEmergency(true);
+									ChangePasswordActivity.this.startActivity(new Intent(ChangePasswordActivity.this, UpdateEmergencyConfigActivity.class));
+								}
+							}
+							ChangePasswordActivity.this.finish();
+						}
+					}).show();
+				} else {
+					new AlertDialog.Builder(ChangePasswordActivity.this)
+		               .setIcon(R.drawable.ic_launcher)
+		               .setTitle("Cambio de clave")
+		               .setMessage("Ha ocurrido un error cambiando la clave")
+		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		                       public void onClick(DialogInterface dialog, int whichButton) {
+		                       }
+		               }).show();
+				}
 
-				new AlertDialog.Builder(ChangePasswordActivity.this)
-						.setIcon(R.drawable.ic_launcher)
-						.setTitle("Cambio de clave")
-						.setMessage("Se ha cambiado la clave")
-						.setPositiveButton("OK",
-								new DialogInterface.OnClickListener() {
-									public void onClick(DialogInterface dialog,
-											int whichButton) {
-										if (Login.getLoggedUser(ChangePasswordActivity.this).getMustCompleteEmergencyData()) {
-											if (!Login.getRedirectedToEmergency()) {
-												Login.setRedirectedToEmergency(true);
-												ChangePasswordActivity.this.startActivity(new Intent(ChangePasswordActivity.this, UpdateEmergencyConfigActivity.class));
-											}
-										}
-										ChangePasswordActivity.this.finish();
-									}
-								}).show();
 			}
 
 			@Override
