@@ -1,0 +1,124 @@
+ <merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".HomeActivity" >
+ <!-- START footer -->
+        <LinearLayout
+            android:id="@+id/footerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_white_degrade" >
+            
+            <LinearLayout
+			    android:id="@+id/guardPhoneCallView"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:gravity="center"
+			    android:background="@drawable/toplayer85"
+			    android:visibility="gone" >
+			
+			    <LinearLayout
+			        android:id="@+id/guardPhoneCallButtonContainer"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/toplayer85"
+			        android:gravity="center_horizontal|center_vertical"
+			        android:visibility="visible" >
+			
+				<Button
+				    android:id="@+id/guardPhoneCallButton"
+				    android:layout_width="131dp"
+				    android:layout_height="44dp"
+				    android:background="@drawable/bg_escolta_centro"
+				    android:gravity="center_vertical|left"
+				    android:minHeight="44dp"
+				    android:minWidth="131dp"
+				    android:paddingLeft="44dp"
+				    android:text="LLAMADA\nDE ESCOLTA"
+				    android:textColor="@color/bgBase"
+				    android:textSize="8sp" />
+				
+				<Button
+				    android:id="@+id/closeGuardPhoneCallButton"
+				    android:layout_width="22dp"
+				    android:layout_height="44dp"
+				    android:background="@drawable/bg_escolta_close"
+				    android:gravity="center_vertical|right" />
+				</LinearLayout>
+			</LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sendAlertView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:background="@drawable/toplayer85"
+                android:visibility="gone" >
+
+                <LinearLayout
+                    android:id="@+id/sendAlertButtonContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/toplayer85"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:visibility="visible" >
+
+                    <Button
+                        android:id="@+id/sendAlertButton"
+                        android:layout_width="131dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_emergency_button_center"
+                        android:gravity="center_vertical|left"
+                        android:minHeight="44dp"
+                        android:minWidth="131dp"
+                        android:paddingLeft="44dp"
+                        android:text="REPORTAR\nUNA EMERGENCIA"
+                        android:textColor="@color/bgBase"
+                        android:textSize="8sp" />
+
+                    <Button
+                        android:id="@+id/closeSendAlertButton"
+                        android:layout_width="22dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/bg_emergency_button_close"
+                        android:gravity="center_vertical|right" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/openGuardPhoneCallButton"
+                android:layout_width="35dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center_vertical|left"
+                android:background="@drawable/bg_escolta_icon"
+                android:minHeight="35dp"
+                android:minWidth="44dp" />
+                <ImageView
+                    android:id="@+id/appLogoNegro"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/app_logo_negro" />
+
+                <Button
+                    android:id="@+id/openSendAlertView"
+                    android:layout_width="35dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:background="@drawable/bg_emergency_button_init"
+                    android:minHeight="35dp"
+                    android:minWidth="44dp" />
+            
+            <!-- START escolta -->
+
+<!-- END escolta -->
+
+	
+<!-- END ALERTA -->
+        </LinearLayout>
+        <!-- END footer -->
+        
+</merge>
