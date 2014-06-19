@@ -71,10 +71,8 @@
             android:layout_gravity="top"
             android:background="@drawable/bg_base_rueda"
             android:baselineAligned="false"
-            android:gravity="center"
-            >
-<!-- android:minHeight="240dp"
-            android:minWidth="240dp"  -->
+            android:gravity="center">
+
             <Button
                 android:id="@+id/btnFooterParkings"
                 android:layout_width="wrap_content"

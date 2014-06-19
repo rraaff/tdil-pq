@@ -4,174 +4,144 @@
     android:layout_height="fill_parent"
     tools:context=".SelectVehiclesForDealerActivity" >
 
-    <!-- Login progress -->
-
-    <!-- Login form -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:background="@color/bgBaseGray" >
+        android:orientation="horizontal" >
 
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="81dp"
-            android:background="@color/black"
-            android:gravity="top" >
-
-            <TableRow
-                android:id="@+id/signatureBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ac_secondary_bar" >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="81dp"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:layout_weight="1" >
-
-                    <ImageView
-                        android:id="@+id/gr_iso"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="left|center_vertical"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/iso"
-                        android:visibility="invisible" />
-
-                    <ImageView
-                        android:id="@+id/gr_signature"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|center_vertical"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_weight="1"
-                        android:src="@drawable/signature" />
-
-                    <ImageView
-                        android:id="@+id/gr_userIcon"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center_vertical|right"
-                        android:layout_margin="10dp"
-                        android:src="@drawable/icon_user"
-                        android:visibility="invisible" />
-                </LinearLayout>
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:text="@string/lst_title_my_vehicles"
-            style="@style/FormTitles" />
-
-        <TextView
-            android:id="@+id/dealerNameTextView"
-            style="@style/FormsElements_editText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="..." />
-
-        <TextView
-            android:id="@+id/dealerAddressTextView"
-            style="@style/FormsElements_editText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="..." />
-        
-        <Spinner
-             android:id="@+id/vehiclesForDealersSpinner"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:background="@color/bgFormFieldsLight" />
-
-        <EditText
-            android:id="@+id/emailForServiceEditText"
-            style="@style/FormsElements_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:hint="@string/hnt_email"
-            android:inputType="textEmailAddress" >
-
-            <requestFocus />
-        </EditText>
-
-        <CheckBox
-            android:id="@+id/notReceiveAlertsCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notReceiveAlerts" />
-        <CheckBox
-            android:id="@+id/notDealerAlertsCheckbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/notDealerAlerts" />
-
-        <Button
-            android:id="@+id/updateVehiclesDealersButton"
-            style="@style/ButtonDarkForward"
-            android:layout_width="fill_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="25dp"
-            android:onClick="@string/dologin"
-            android:text="@string/btn_select_for_my_services" />
-
-    </LinearLayout>
-<!-- START ALERTA -->
-	
-	<Button
-	    android:id="@+id/openSendAlertView"
-	    android:layout_width="35dp"
-	    android:layout_height="44dp"
-	    android:minHeight="35dp"
-	    android:minWidth="44dp"
-	    android:layout_gravity="right|center"
-	    android:background="@drawable/bg_emergency_button_init" />
-	
-	<LinearLayout
-	    android:id="@+id/sendAlertView"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_gravity="right"
-	    android:background="@drawable/toplayer85"
-	    android:gravity="right"
-	    android:visibility="gone" >
-	
 	    <LinearLayout
-	        android:id="@+id/sendAlertButtonContainer"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="center_vertical"
-	        android:background="@drawable/toplayer85"
-	        android:gravity="center_horizontal|center_vertical|right"
-	        android:visibility="visible" >
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:orientation="vertical" >
 
-		<Button
-		    android:id="@+id/sendAlertButton"
-		    android:layout_width="131dp"
-		    android:layout_height="44dp"
-		    android:background="@drawable/bg_emergency_button_center"
-		    android:gravity="center_vertical|left"
-		    android:minHeight="44dp"
-		    android:minWidth="131dp"
-		    android:paddingLeft="44dp"
-		    android:text="REPORTAR\nUNA EMERGENCIA"
-		    android:textColor="@color/bgBase"
-		    android:textSize="8sp" />
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="81dp"
+	            android:orientation="vertical" >
+	            
+				<TableRow
+				    android:id="@+id/signatureBar"
+				    android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_weight="3"
+					android:background="@drawable/ac_secondary_bar">
+
+	                <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="81dp"
+	                    android:layout_gravity="center_vertical|center_horizontal"
+	                    android:layout_weight="1" >
+	
+	                    <ImageView
+	                        android:id="@+id/gr_iso"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="left|center_vertical"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/iso"
+	                        android:visibility="invisible" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_signature"
+	                        android:layout_width="0dp"
+	                        android:layout_height="wrap_content"
+	                        android:layout_gravity="center_horizontal|center_vertical"
+	                        android:layout_marginLeft="20dp"
+	                        android:layout_marginRight="20dp"
+	                        android:layout_weight="1"
+	                        android:src="@drawable/signature" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_userIcon"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="center_vertical|right"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/icon_user"
+	                        android:visibility="invisible" />
+	                </LinearLayout>
+	            </TableRow>
+			</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:background="@color/bgBaseGray"
+	            android:orientation="vertical" >
+
+		        <TextView
+		            android:id="@+id/TextView01"
+		            android:text="@string/lst_title_my_vehicles"
+		            style="@style/FormTitles" />
 		
-		<Button
-		    android:id="@+id/closeSendAlertButton"
-		    android:layout_width="22dp"
-		    android:layout_height="44dp"
-		    android:background="@drawable/bg_emergency_button_close"
-		    android:gravity="center_vertical|right" />
+		        <TextView
+		            android:id="@+id/dealerNameTextView"
+		            style="@style/FormsElements_editText"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:text="..." />
+		
+		        <TextView
+		            android:id="@+id/dealerAddressTextView"
+		            style="@style/FormsElements_editText"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:text="..." />
+		        
+		        <Spinner
+		             android:id="@+id/vehiclesForDealersSpinner"
+		             android:layout_width="match_parent"
+		             android:layout_height="wrap_content"
+		             android:background="@color/bgFormFieldsLight" />
+		
+		        <EditText
+		            android:id="@+id/emailForServiceEditText"
+		            style="@style/FormsElements_editText"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:clickable="false"
+		            android:hint="@string/hnt_email"
+		            android:inputType="textEmailAddress" >
+		
+		            <requestFocus />
+		        </EditText>
+		
+		        <CheckBox
+		            android:id="@+id/notReceiveAlertsCheckbox"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/notReceiveAlerts"
+		            android:textColor="@color/bgBase" />
+
+		        <CheckBox
+		            android:id="@+id/notDealerAlertsCheckbox"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/notDealerAlerts"
+		            android:textColor="@color/bgBase" />
+		
+		        <Button
+		            android:id="@+id/updateVehiclesDealersButton"
+		            style="@style/ButtonDarkForward"
+		            android:layout_width="fill_parent"
+		            android:layout_marginLeft="15dp"
+		            android:layout_marginRight="15dp"
+		            android:layout_marginTop="25dp"
+		            android:onClick="@string/dologin"
+		            android:text="@string/btn_select_for_my_services" />
+
+			</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="90dp"
+	            android:orientation="vertical" >
+
+				<include layout="@layout/footer" />
+
+			</LinearLayout>
+
 		</LinearLayout>
-	 
-	</LinearLayout>
-<!-- END ALERTA -->
+    </LinearLayout>
 </merge>

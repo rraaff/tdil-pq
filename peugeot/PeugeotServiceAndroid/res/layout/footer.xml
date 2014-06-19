@@ -4,13 +4,14 @@
     android:layout_height="wrap_content"
     tools:context=".HomeActivity" >
  <!-- START footer -->
+
         <LinearLayout
             android:id="@+id/footerContainer"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="fill_parent"
             android:layout_gravity="bottom"
-            android:orientation="horizontal"
-            android:background="@drawable/bg_white_degrade" >
+            android:background="@drawable/bg_white_degrade"
+            android:orientation="horizontal" >
             
             <LinearLayout
 			    android:id="@+id/guardPhoneCallView"
@@ -20,33 +21,31 @@
 			    android:background="@drawable/toplayer85"
 			    android:visibility="gone" >
 			
-			    <LinearLayout
+			   <LinearLayout
 			        android:id="@+id/guardPhoneCallButtonContainer"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
-			        android:background="@drawable/toplayer85"
 			        android:gravity="center_horizontal|center_vertical"
 			        android:visibility="visible" >
-			
-				<Button
-				    android:id="@+id/guardPhoneCallButton"
-				    android:layout_width="131dp"
-				    android:layout_height="44dp"
-				    android:background="@drawable/bg_escolta_centro"
-				    android:gravity="center_vertical|left"
-				    android:minHeight="44dp"
-				    android:minWidth="131dp"
-				    android:paddingLeft="44dp"
-				    android:text="LLAMADA\nDE ESCOLTA"
-				    android:textColor="@color/bgBase"
-				    android:textSize="8sp" />
-				
+
 				<Button
 				    android:id="@+id/closeGuardPhoneCallButton"
-				    android:layout_width="22dp"
-				    android:layout_height="44dp"
+				    android:layout_width="48dp"
+				    android:layout_height="70dp"
 				    android:background="@drawable/bg_escolta_close"
 				    android:gravity="center_vertical|right" />
+
+				<Button
+				    android:id="@+id/guardPhoneCallButton"
+				    android:layout_width="202dp"
+				    android:layout_height="70dp"
+				    android:background="@drawable/bg_escolta_centro"
+				    android:gravity="center_vertical|left"
+				    android:paddingLeft="10dp"
+				    android:text="@string/btn_tag_guardPhoneCall"
+				    android:textColor="@color/bgBase"
+				    android:textSize="13sp" />
+
 				</LinearLayout>
 			</LinearLayout>
 
@@ -62,27 +61,24 @@
                     android:id="@+id/sendAlertButtonContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/toplayer85"
                     android:gravity="center_horizontal|center_vertical"
                     android:visibility="visible" >
 
                     <Button
                         android:id="@+id/sendAlertButton"
-                        android:layout_width="131dp"
-                        android:layout_height="44dp"
+                        android:layout_width="201dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/bg_emergency_button_center"
                         android:gravity="center_vertical|left"
-                        android:minHeight="44dp"
-                        android:minWidth="131dp"
-                        android:paddingLeft="44dp"
-                        android:text="REPORTAR\nUNA EMERGENCIA"
+                        android:paddingLeft="75dp"
+                        android:text="@string/btn_tag_SendAlert"
                         android:textColor="@color/bgBase"
-                        android:textSize="8sp" />
+                        android:textSize="13sp" />
 
                     <Button
                         android:id="@+id/closeSendAlertButton"
-                        android:layout_width="22dp"
-                        android:layout_height="44dp"
+                        android:layout_width="48dp"
+                        android:layout_height="70dp"
                         android:background="@drawable/bg_emergency_button_close"
                         android:gravity="center_vertical|right" />
                 </LinearLayout>
@@ -90,8 +86,8 @@
 
             <Button
                 android:id="@+id/openGuardPhoneCallButton"
-                android:layout_width="35dp"
-                android:layout_height="44dp"
+                android:layout_width="62dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center_vertical|left"
                 android:background="@drawable/bg_escolta_icon"
                 android:minHeight="35dp"
@@ -105,8 +101,8 @@
 
                 <Button
                     android:id="@+id/openSendAlertView"
-                    android:layout_width="35dp"
-                    android:layout_height="44dp"
+                    android:layout_width="65dp"
+                    android:layout_height="70dp"
                     android:layout_gravity="center_vertical|right"
                     android:background="@drawable/bg_emergency_button_init"
                     android:minHeight="35dp"

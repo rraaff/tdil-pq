@@ -81,6 +81,9 @@
     <string name="btn_tag_forgotpass">Recuperar clave</string>
     <string name="btn_tag_reset_password">Enviar</string>
     <string name="btn_tag_reset_password_back">Volver</string>
+    <string name="btn_tag_guardPhoneCall">INICIAR LLAMADA\nDE ASISTENCIA</string>
+    <string name="btn_tag_SendAlert">REPORTAR\nUNA EMERGENCIA</string>
+    
     
     <string name="btn_tag_go">Ir</string>
     

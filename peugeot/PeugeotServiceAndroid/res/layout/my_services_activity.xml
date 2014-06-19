@@ -4,27 +4,23 @@
     android:layout_height="fill_parent"
     tools:context=".MyServicesActivity" >
 
-    <!-- Login progress -->
-
-    <!-- Login form -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@color/bgBaseGray"
         android:orientation="vertical" >
 
-        <TableLayout
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="81dp"
-            android:background="@color/black"
-            android:gravity="top" >
-
-            <TableRow
-                android:id="@+id/signatureBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ac_secondary_bar" >
+            android:orientation="vertical" >
+            
+			<TableRow
+			    android:id="@+id/signatureBar"
+			    android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				android:background="@drawable/ac_secondary_bar">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -61,20 +57,36 @@
                         android:visibility="invisible" />
                 </LinearLayout>
             </TableRow>
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/lastChanges"
-            android:text="@string/lst_title_my_services"
-            style="@style/FormTitles" />
-        
-        <ListView
-            android:id="@+id/myServices"
-            android:layout_width="fill_parent"
+		</LinearLayout>
+		
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:layout_height="0dp" >
-        </ListView>
+            android:orientation="vertical" >
 
-		<include layout="@layout/footer" />
+	        <TextView
+	            android:id="@+id/lastChanges"
+	            android:text="@string/lst_title_my_services"
+	            style="@style/FormTitles" />
+	        
+	        <ListView
+	            android:id="@+id/myServices"
+	            android:layout_width="fill_parent"
+	            android:layout_weight="1"
+	            android:layout_height="0dp" >
+	        </ListView>
+
+		</LinearLayout>
+		
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="vertical" >
+
+			<include layout="@layout/footer" />
+			
+		</LinearLayout>
+
     </LinearLayout>
 </merge>
