@@ -122,9 +122,9 @@ public class AlertLogic {
 						 alertBackHandler.setOpenedGuardPhoneCall(true);
 						 openGuardPhoneCallButton.setVisibility(View.GONE);
 //						sendAlertView.setVisibility(View.VISIBLE);
-						Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
+//						Animation rightToLeft = AnimationUtils.loadAnimation(activity, R.anim.opensendalert);
 						guardPhoneCallView.setVisibility(View.VISIBLE);
-						sendGuardPhoneCallButtonContainer.startAnimation(rightToLeft);
+//						sendGuardPhoneCallButtonContainer.startAnimation(rightToLeft);
 					}
 				});
 		}
