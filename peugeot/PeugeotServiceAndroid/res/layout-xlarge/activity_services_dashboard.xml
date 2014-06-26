@@ -17,7 +17,7 @@
 
 	        <LinearLayout
 	            android:layout_width="match_parent"
-	            android:layout_height="81dp"
+	            android:layout_height="182dp"
 	            android:orientation="vertical" >
 	            
 				<TableRow
@@ -43,14 +43,14 @@
 							android:visibility="invisible" />
 	
 		                <ImageView
-							android:id="@+id/gr_signature"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_gravity="center_horizontal|center_vertical"
-							android:layout_marginLeft="20dp"
-							android:layout_marginRight="20dp"
-							android:layout_weight="1"
-							android:src="@drawable/signature" />
+		                    android:id="@+id/gr_signature"
+		                    android:layout_width="0dp"
+		                    android:layout_height="wrap_content"
+		                    android:layout_gravity="center_horizontal|center_vertical"
+		                    android:layout_marginLeft="160dp"
+		                    android:layout_marginRight="160dp"
+		                    android:layout_weight="1"
+		                    android:src="@drawable/signature" />
 	
 		                <ImageView
 							android:id="@+id/gr_userIcon"
@@ -79,6 +79,9 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content"
 				        android:layout_gravity="fill_horizontal"
+				        android:layout_marginLeft="50dp"
+				        android:layout_marginRight="50dp"
+				        android:layout_marginTop="50dp"
 				        android:gravity="fill_horizontal"
 				        android:orientation="vertical" >
 
@@ -103,7 +106,8 @@
 				                <TextView
 				                    android:id="@+id/textView1"
 				                    style="@style/ServiceDashboardTitles"
-				                    android:text="@string/btn_my_services" />
+				                    android:text="@string/btn_my_services"
+				                    android:textSize="22sp" />
 
 				            </LinearLayout>
 
@@ -123,13 +127,14 @@
 				                    android:layout_marginBottom="10dp"
 				                    android:text="En esta sección podés registrar los services que hayas realizado a tus vehículos. Te recomendamos mantener actualizada esta lista."
 				                    android:textColor="@color/bgBaseGray"
-				                    android:textSize="12sp" />
+				                    android:textSize="16sp" />
 
 				                <Button
 				                    android:id="@+id/myServicesButton"
 				                    style="@style/ButtonLink"
 				                    android:onClick="@string/dologin"
-				                    android:text="@string/btn_tag_login"/>
+				                    android:text="@string/btn_tag_login"
+				                    android:textSize="16sp" />
 
 				            </LinearLayout>
 
@@ -162,7 +167,8 @@
 				                <TextView
 				                    android:id="@+id/textView1"
 				                    style="@style/ServiceDashboardTitles"
-				                    android:text="@string/btn_official_services" />
+				                    android:text="@string/btn_official_services"
+				                    android:textSize="22sp" />
 
 				            </LinearLayout>
 
@@ -182,13 +188,14 @@
 				                    android:layout_marginBottom="10dp"
 				                    android:text="Accedé a una lista completa de la información de services para cada uno de tus vehículos."
 				                    android:textColor="@color/bgBaseGray"
-				                    android:textSize="12sp" />
+				                    android:textSize="16sp" />
 
 				                <Button
 				                    android:id="@+id/officialServicesButton"
 				                    style="@style/ButtonLink"
 				                    android:onClick="@string/dologin"
-				                    android:text="@string/btn_tag_login"/>
+				                    android:text="@string/btn_tag_login"
+				                    android:textSize="16sp" />
 
 				            </LinearLayout>
 
@@ -217,7 +224,8 @@
 				                <TextView
 				                    android:id="@+id/textView1"
 				                    style="@style/ServiceDashboardTitles"
-				                    android:text="@string/btn_services_locations" />
+				                    android:text="@string/btn_services_locations"
+				                    android:textSize="22sp" />
 
 				            </LinearLayout>
 
@@ -237,14 +245,14 @@
 				                    android:layout_marginBottom="10dp"
 				                    android:text="Seleccioná la agencia o service autorizado dónde deseas realizar el próximo service para tu vehículo. El sistema le avisará al centro elegido que lo has elegido para llevar a cabo la revisión períodica de tu vehículo."
 				                    android:textColor="@color/bgBaseGray"
-				                    android:textSize="12sp" />
-
+				                    android:textSize="16sp" />
 
 				                <Button
 				                    android:id="@+id/searchDealersButton"
 				                    style="@style/ButtonLink"
 				                    android:onClick="@string/dologin"
-				                    android:text="@string/btn_tag_login"/>
+				                    android:text="@string/btn_tag_login"
+				                    android:textSize="16sp" />
 
 				            </LinearLayout>
 
@@ -271,7 +279,7 @@
 
 	        <LinearLayout
 	            android:layout_width="match_parent"
-	            android:layout_height="90dp"
+	            android:layout_height="160dp"
 	            android:orientation="vertical" >
 
 				<include layout="@layout/footer" />

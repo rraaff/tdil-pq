@@ -12,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="0.85"
+            android:layout_weight="1"
             android:orientation="vertical" >
 
 			<WebView
@@ -23,14 +23,14 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <!-- LinearLayout
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="vertical" >
 			
     		<include layout="@layout/footer" />
     		
-    	</LinearLayout>
+    	</LinearLayout-->
 
     </LinearLayout>
   
