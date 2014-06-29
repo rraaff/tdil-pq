@@ -137,10 +137,25 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 				});
 		contact1relationSpinner.setAdapter(adapter);
 		
+		
 		contact1phone = (TextView) findViewById(R.id.contact1PhoneEditText);
 		securityWord = (TextView) findViewById(R.id.securityWordEditText);
 		healthInsurance = (TextView) findViewById(R.id.healthInsuranceEditText);
 		
+		final List<RelationBean> filteredRelations = RelationBean.filteredRelations();
+		BeanMappingListAdapter<RelationBean> filteredadapter = new BeanMappingListAdapter<RelationBean>(
+				UpdateEmergencyConfigActivity.this,
+				android.R.layout.simple_spinner_item, filteredRelations,
+				new BeanMappingFunction<RelationBean>() {
+					public String key(RelationBean t) {
+						return t.getKey();
+					};
+					
+					@Override
+					public String value(RelationBean t) {
+						return t.getValue();
+					}
+				});
 		contact2name = (TextView) findViewById(R.id.contact2NameEditText);
 		contact2relationSpinner = (Spinner) findViewById(R.id.contact2RelationSpinner);
 		contact2relationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -155,7 +170,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
-		contact2relationSpinner.setAdapter(adapter);
+		contact2relationSpinner.setAdapter(filteredadapter);
 		contact2phone = (TextView) findViewById(R.id.contact2PhoneEditText);
 		
 		contact3name = (TextView) findViewById(R.id.contact3NameEditText);
@@ -172,7 +187,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
-		contact3relationSpinner.setAdapter(adapter);
+		contact3relationSpinner.setAdapter(filteredadapter);
 		contact3phone = (TextView) findViewById(R.id.contact3PhoneEditText);
 
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -197,7 +212,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 				
 				contact2name.setText(contactDataBean.getContact2name());
 				index = 0;
-				for (RelationBean bean : allRelations) {
+				for (RelationBean bean : filteredRelations) {
 					if (bean.getKey().equals(contactDataBean.getContact2relation())) {
 						UpdateEmergencyConfigActivity.this.contact2relationSpinner
 								.setSelection(index);
@@ -208,7 +223,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 				
 				contact3name.setText(contactDataBean.getContact3name());
 				index = 0;
-				for (RelationBean bean : allRelations) {
+				for (RelationBean bean : filteredRelations) {
 					if (bean.getKey().equals(contactDataBean.getContact3relation())) {
 						UpdateEmergencyConfigActivity.this.contact3relationSpinner
 								.setSelection(index);

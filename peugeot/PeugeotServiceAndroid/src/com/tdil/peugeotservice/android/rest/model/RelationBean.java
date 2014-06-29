@@ -16,6 +16,15 @@ public class RelationBean {
 
 	public static List<RelationBean> allRelations() {
 		List<RelationBean> result = new ArrayList<RelationBean>();
+		result.add(new RelationBean("OWNER", "Titular del Servicio"));
+		result.add(new RelationBean("RELATIVE", "Familiar"));
+		result.add(new RelationBean("FRIEND", "Amigo"));
+		result.add(new RelationBean("COWORKER", "Trabajo"));
+		return result;
+	}
+	
+	public static List<RelationBean> filteredRelations() {
+		List<RelationBean> result = new ArrayList<RelationBean>();
 		result.add(new RelationBean("RELATIVE", "Familiar"));
 		result.add(new RelationBean("FRIEND", "Amigo"));
 		result.add(new RelationBean("COWORKER", "Trabajo"));
