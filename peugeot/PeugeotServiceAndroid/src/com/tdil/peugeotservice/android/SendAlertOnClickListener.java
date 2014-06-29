@@ -45,13 +45,13 @@ private AlertBackHandler alertBackHandler;
 		final LocationManager manager = (LocationManager) activity.getSystemService( Context.LOCATION_SERVICE );
 		Location lastKnownLocation = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 		if (lastKnownLocation != null) {
-			ServicesDashboardActivity.sendAlert(activity, lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude(), mPhoneNumber, this);
+			ServicesDashboardActivity.sendAlert(activity, lastKnownLocation.getLongitude(), lastKnownLocation.getLatitude(), mPhoneNumber, this, false);
 		} else {
 			Location lastKnownLocation1 = manager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 	    	if (lastKnownLocation1 != null) {
-	    		ServicesDashboardActivity.sendAlert(activity, lastKnownLocation1.getLongitude(), lastKnownLocation1.getLatitude(), mPhoneNumber, this);
+	    		ServicesDashboardActivity.sendAlert(activity, lastKnownLocation1.getLongitude(), lastKnownLocation1.getLatitude(), mPhoneNumber, this, true);
 	    	} else {
-	    		ServicesDashboardActivity.sendAlert(activity, 0, 0, mPhoneNumber, this);
+	    		ServicesDashboardActivity.sendAlert(activity, 0, 0, mPhoneNumber, this, false);
 	    	}
 		}
 	}

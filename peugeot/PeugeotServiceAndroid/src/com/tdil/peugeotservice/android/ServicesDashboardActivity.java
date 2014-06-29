@@ -175,26 +175,52 @@ public class ServicesDashboardActivity extends PeugeotActivity {
 	}
 
 	public static void sendAlert(final Activity activity, final double longitude, final double latitude,
-			final String mPhoneNumber, final SendAlertOnClickListener listener) {
+			final String mPhoneNumber, final SendAlertOnClickListener listener, final boolean fromNetwork) {
 		new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 				if (task.getStatusCode() == 201) {
 					if (longitude != 0) {
-						new AlertDialog.Builder(activity)
-						.setIcon(R.drawable.ic_launcher)
-						.setTitle("Envio de alerta")
-						.setMessage(
-								"Se ha enviado el mensaje de alerta")
-								.setPositiveButton("OK",
-										new DialogInterface.OnClickListener() {
-									public void onClick(
-											DialogInterface dialog,
-											int whichButton) {
-										listener.alertSent();
-									}
-								}).show();
+						// si el alerta fue por gps
+						if (!fromNetwork) {
+							new AlertDialog.Builder(activity)
+							.setIcon(R.drawable.ic_launcher)
+							.setTitle("Envio de alerta")
+							.setMessage(
+									"Se ha enviado el mensaje de alerta")
+									.setPositiveButton("OK",
+											new DialogInterface.OnClickListener() {
+										public void onClick(
+												DialogInterface dialog,
+												int whichButton) {
+											listener.alertSent();
+										}
+									}).show();
+						} else {
+							final AlertResponseBean resp = gson.fromJson(task.getResult(),
+									AlertResponseBean.class);
+							final LocationManager manager = (LocationManager) activity.getSystemService( Context.LOCATION_SERVICE );
+							final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+				    	    builder.setMessage("Se ha enviado el alerta. " +
+				    	    		"Desea encender el GPS para enviar una informacion mas precisa?")
+				    	           .setCancelable(false)
+				    	           .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				    	               public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+				    	            	   activity.startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+				    	                   manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
+				    	                		   new UpdateLocationListener(resp, manager, activity, listener, false));
+				    	               }
+				    	           })
+				    	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
+				    	               public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+				    	                    dialog.cancel();
+				    	                    listener.alertSent();
+				    	               }
+				    	           });
+				    	    final AlertDialog alert = builder.create();
+				    	    alert.show();
+						}
 					} else {
 						final AlertResponseBean resp = gson.fromJson(task.getResult(),
 								AlertResponseBean.class);
@@ -205,7 +231,7 @@ public class ServicesDashboardActivity extends PeugeotActivity {
 					    	if ( manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER )) {
 					    		// pido la ubicacion basada en wifi o antena
 					    		manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0,
-					    				new UpdateLocationListener(resp, manager, activity, listener));
+					    				new UpdateLocationListener(resp, manager, activity, listener, true));
 					    	} else {
 					    		final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 					    	    builder.setMessage("Se ha enviado el alerta pero su ubicacion no pudo ser determinada. " +
@@ -215,7 +241,7 @@ public class ServicesDashboardActivity extends PeugeotActivity {
 					    	               public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
 					    	            	   activity.startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
 					    	                   manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
-					    	                		   new UpdateLocationListener(resp, manager, activity, listener));
+					    	                		   new UpdateLocationListener(resp, manager, activity, listener, false));
 					    	               }
 					    	           })
 					    	           .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -228,8 +254,14 @@ public class ServicesDashboardActivity extends PeugeotActivity {
 					    	    alert.show();
 					    	}
 					    } else {
-					    	manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
-					    			new UpdateLocationListener(resp, manager, activity, listener));
+					    	if ( manager.isProviderEnabled( LocationManager.NETWORK_PROVIDER )) {
+					    		// pido la ubicacion basada en wifi o antena
+					    		manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1, 0,
+					    				new UpdateLocationListener(resp, manager, activity, listener, true));
+					    	} else {
+					    		manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 0,
+					    			new UpdateLocationListener(resp, manager, activity, listener, false));
+					    	}
 					    }
 					} 
 				}else {
