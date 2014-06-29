@@ -65,16 +65,22 @@ public class CheckForUpdateActivity extends Activity {
                 }
 
                 /* Convert the Bytes read to a String. */
-                final String s = new String(baf.toByteArray());         
+                final String s = new String(baf.toByteArray());
+                // Hacer un substring 
+                String arr[] = s.split("-");
                 
                 /* Get current Version Number */
                 int curVersion = getPackageManager().getPackageInfo("com.tdil.peugeotservice", 0).versionCode;
-                int newVersion = Integer.valueOf(s);
+                int newVersion = Integer.valueOf(arr[0]);
                 
                 /* Is a higher version than the current already out? */
                 if (newVersion > curVersion) {
                     /* Post a Handler for the UI to pick up and open the Dialog */
-                    mHandler.post(showUpdate);
+                	if ("BlackBerry10".equals(arr[1])) {
+                		mHandler.post(showUpdateBlackBerry10);
+                	} else {
+                		mHandler.post(showUpdate);
+                	}
                 } else {
                 	StartHistory appStart = checkAppStart();
                 	if (!appStart.isClient()) {
@@ -134,7 +140,24 @@ public class CheckForUpdateActivity extends Activity {
             })
             .show();
            }
-    };    
+    };
+    
+    /* This Runnable creates a Dialog and asks the user to open the Market */ 
+    private Runnable showUpdateBlackBerry10 = new Runnable(){
+           public void run(){
+            new AlertDialog.Builder(CheckForUpdateActivity.this)
+            .setIcon(R.drawable.ic_launcher)
+            .setTitle("Actualizar")
+            .setMessage("Hay una versión disponible disponible. Por favor realice la actualización")
+            .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                            /* User clicked OK so do some stuff */
+                    	CheckForUpdateActivity.this.finish();
+                    }
+            })
+            .show();
+           }
+    };
     
     public class StartHistory {
     	
