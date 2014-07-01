@@ -37,7 +37,7 @@
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
     <string name="title_activity_add_service">Registrar service</string>
     
-    <string name="title_parkings">Points of Interest</string>
+    <string name="title_parkings">POI</string>
     <string name="title_prevent">Car Security</string>
     
     <string name="title_home">HOME</string>
@@ -101,7 +101,7 @@
     <string name="btn_footer_home">[Home Deprecated]</string>
     <string name="btn_footer_prevent">[Car Security]</string>
     <string name="btn_footer_pets">[PETS deprecated]</string>
-    <string name="btn_footer_config">[Points of Interest]</string>
+    <string name="btn_footer_config">[POI]</string>
     <string name="btn_footer_data">Data</string>
     
     <string name="btn_male">Masculino</string>
