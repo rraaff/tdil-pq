@@ -155,7 +155,7 @@ public class OfficialServicesVehiclesListAdapter extends BaseAdapter implements 
 			holder.lastServiceDate.setText(iterAlarm.getLastservicedate());
 			holder.lastServiceKm.setText(iterAlarm.getLastservicekm());
 			
-			holder.inWarranty.setText(iterAlarm.isWarrantyexpired() ? "SI" : "NO");
+			holder.inWarranty.setText(iterAlarm.isWarrantyexpired() ? "NO" : "SI");
 			if (iterAlarm.isWarrantyexpired()) {
 				holder.inWarranty.setTextColor(Color.rgb(227,27,35));
 			} else {
