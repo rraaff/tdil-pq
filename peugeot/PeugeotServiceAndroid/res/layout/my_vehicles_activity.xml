@@ -81,13 +81,15 @@
 		            android:layout_width="fill_parent"
 		            android:layout_height="fill_parent" >
 		        </ListView>
+
 		        <TextView
 	                android:id="@+id/warningNoVehicles"
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
+	                android:gravity="center_horizontal"
+		            android:textColor="@color/bgBase"
 	                android:text="@string/lst_no_vehicles"
-	                android:visibility="gone" 
-	                />
+	                android:visibility="gone" />
 
 			</LinearLayout>
 
