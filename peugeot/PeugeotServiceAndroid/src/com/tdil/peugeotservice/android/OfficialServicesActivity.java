@@ -58,11 +58,18 @@ public class OfficialServicesActivity extends PeugeotActivity {
 
 				VehicleValueObjectBeanCollection col = gson.fromJson(task.getResult(),
 						VehicleValueObjectBeanCollection.class);
-				CustomListViewValuesArr = new ArrayList<VehicleValueObjectBean>(col.getList());
-				Resources res = getResources();
-				adapter = new OfficialServicesVehiclesListAdapter(OfficialServicesActivity.this,
+				if (col.getList().size() == 0) {
+					list.setVisibility(View.GONE);
+					findViewById(R.id.warningNoVehicles).setVisibility(View.VISIBLE);
+				} else {
+					list.setVisibility(View.VISIBLE);
+					findViewById(R.id.warningNoVehicles).setVisibility(View.GONE);
+					CustomListViewValuesArr = new ArrayList<VehicleValueObjectBean>(col.getList());
+					Resources res = getResources();
+					adapter = new OfficialServicesVehiclesListAdapter(OfficialServicesActivity.this,
 						CustomListViewValuesArr, res);
-				list.setAdapter(adapter);
+					list.setAdapter(adapter);
+				}
 			}
 
 			@Override

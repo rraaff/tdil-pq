@@ -23,6 +23,8 @@
     <string name="lst_title_advices">Avisos</string>
     <string name="lst_title_alerts">Alertas</string>
     
+    <string name="lst_no_vehicles">Usted no tiene ningún vehículo asociado</string>
+    
     
     <!-- Titles -->
     <string name="title_activity_check_for_update">Peugeot Car Safe</string>
