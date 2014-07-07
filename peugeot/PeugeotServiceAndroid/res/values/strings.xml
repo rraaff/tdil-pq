@@ -167,7 +167,7 @@
     <string name="hnt_password">Clave</string>
     <string name="hnt_actual_password">Clave actual</string>
     <string name="hnt_new_password">Nueva Clave</string>
-    <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
+    <string name="hnt_retype_new_password">Repetir nueva Clave</string>
    
     <string name="hnt_service_km">Kilometraje recorrido</string>
     

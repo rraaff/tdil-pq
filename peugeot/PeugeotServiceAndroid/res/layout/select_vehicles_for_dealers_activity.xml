@@ -77,29 +77,44 @@
 		
 		        <TextView
 		            android:id="@+id/dealerNameTextView"
-		            style="@style/FormsElements_editText"
 		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
-		            android:text="..." />
+		            android:layout_marginLeft="12dp"
+		            android:layout_marginRight="12dp"
+		            android:text=" "
+		            android:textColor="@color/bgBase"
+		            android:textSize="16sp" />
 		
 		        <TextView
 		            android:id="@+id/dealerAddressTextView"
-		            style="@style/FormsElements_editText"
 		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
-		            android:text="..." />
+		            android:layout_marginLeft="12dp"
+		            android:layout_marginRight="12dp"
+		            android:layout_marginTop="12dp"
+		            android:text=" "
+		            android:textColor="@color/bgBase"
+		            android:textSize="16sp" />
 		        
 		        <Spinner
-		             android:id="@+id/vehiclesForDealersSpinner"
-		             android:layout_width="match_parent"
-		             android:layout_height="wrap_content"
-		             android:background="@color/bgFormFieldsLight" />
+		            android:id="@+id/vehiclesForDealersSpinner"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="12dp"
+		            android:layout_marginRight="12dp"
+		            android:layout_marginTop="12dp"
+		            android:background="@color/bgFormFieldsLight" />
 		
 		        <EditText
 		            android:id="@+id/emailForServiceEditText"
 		            style="@style/FormsElements_editText"
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:layout_marginLeft="12dp"
+		            android:layout_marginRight="12dp"
+		            android:layout_marginTop="12dp"
+		            android:layout_weight="0"
 		            android:clickable="false"
 		            android:hint="@string/hnt_email"
 		            android:inputType="textEmailAddress" >
@@ -109,15 +124,19 @@
 		
 		        <CheckBox
 		            android:id="@+id/notReceiveAlertsCheckbox"
-		            android:layout_width="wrap_content"
+		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="12dp"
+		            android:layout_marginRight="12dp"
 		            android:text="@string/notReceiveAlerts"
 		            android:textColor="@color/bgBase" />
 
 		        <CheckBox
 		            android:id="@+id/notDealerAlertsCheckbox"
-		            android:layout_width="wrap_content"
+		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="12dp"
+		            android:layout_marginRight="12dp"
 		            android:text="@string/notDealerAlerts"
 		            android:textColor="@color/bgBase" />
 		
