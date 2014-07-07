@@ -2,6 +2,7 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgBaseGray"
     android:paddingTop="0dip"
     android:stretchColumns="1" >
 
@@ -170,7 +171,7 @@
 
 			    <TextView
 			        android:id="@+id/model_warranty_text"
-			        android:layout_width="fill_parent"
+			        android:layout_width="141dp"
 			        android:layout_height="wrap_content"
 			        android:layout_marginTop="2dp"
 			        android:text="2 años o 100,000km"

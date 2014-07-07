@@ -16,14 +16,14 @@
     <string name="desc_avatar_image">Avatar</string>
     
     <!-- List Items strings -->
-    <string name="lst_title_my_services">Mis services:</string>
-    <string name="lst_title_my_vehicles">Mis vehículos:</string>
-    <string name="lst_title_official_services">Agencias/Service autorizados:</string>
-    <string name="lst_title_dealers">Concesionarios:</string>
+    <string name="lst_title_my_services">Registrar Mis Services:</string>
+    <string name="lst_title_my_vehicles">Consultar Mis Services:</string>
+    <string name="lst_title_official_services">Concesionarios Autorizados:</string>
+    <string name="lst_title_dealers">Concesionarios Autorizados:</string>
     <string name="lst_title_advices">Avisos</string>
     <string name="lst_title_alerts">Alertas</string>
     
-    <string name="lst_no_vehicles">Usted no tiene ningún vehículo asociado</string>
+    <string name="lst_no_vehicles">No tienes ningún vehículo asociado</string>
     
     
     <!-- Titles -->
@@ -55,8 +55,8 @@
     <string name="cmnt_text_first_access">Si has descargado recientemente la aplicación y no tenes cuenta, presioná «NO TENGO». Y si ya has creado tu cuenta ingrese ahora haciendo tap en el botón «TENGO CUENTA».</string>
 
     <!-- Ruedita -->
-    <string name="rd_main_promo_title">Viví LoAPP 1.1</string>
-    <string name="rd_main_hookline">El Primer sistema de tecnología del mundo que integra la seguridad de tu auto, tu casa y tu familia</string>
+    <string name="rd_main_promo_title">Peugeot Car Safe</string>
+    <string name="rd_main_hookline"> </string>
     <string name="rd_default_comment"> </string>
     
     <!-- labels -->
@@ -71,8 +71,8 @@
 
     <string name="lbl_birth_date">Fecha de nac.</string>
     
-    <string name="notReceiveAlerts">No enviarme alertas de service</string>
-    <string name="notDealerAlerts">No quiero ser contactado por la agencia para programar el service</string>
+    <string name="notReceiveAlerts">Deseo recibir alertas de service</string>
+    <string name="notDealerAlerts">Deseo ser contactado por el concesionario autorizado para programar el service</string>
     
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>
@@ -119,10 +119,10 @@
     <string name="tog_btn_default">ON/OFF</string>
     
     <string name="btn_config_emergencias">Configuración emergencias</string>
-    <string name="btn_my_services">Mis Services</string>
+    <string name="btn_my_services">Registrar Mis Services</string>
     <string name="btn_my_vehicles">Mis Vehiculos</string>
-    <string name="btn_official_services">Services Oficial</string>
-    <string name="btn_services_locations">Agencias/Service autorizados</string>
+    <string name="btn_official_services">Consultar Mis Services</string>
+    <string name="btn_services_locations">Concesionarios Autorizados</string>
     
     <string name="btn_search_dealers">Buscar</string>
     

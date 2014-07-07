@@ -90,8 +90,11 @@
 				    android:id="@+id/searchDealersButton"
 				    style="@style/ButtonDarkForward"
 				    android:layout_width="fill_parent"
+				    android:layout_margin="16dp"
+				    android:layout_marginLeft="0dp"
 				    android:onClick="@string/dologin"
 				    android:text="@string/btn_search_dealers" />
+
 			</LinearLayout>
 
 	        <LinearLayout

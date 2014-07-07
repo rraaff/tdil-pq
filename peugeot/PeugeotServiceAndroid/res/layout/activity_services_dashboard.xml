@@ -235,7 +235,7 @@
 				                    android:layout_width="wrap_content"
 				                    android:layout_height="wrap_content"
 				                    android:layout_marginBottom="10dp"
-				                    android:text="Seleccioná la agencia o service autorizado dónde deseas realizar el próximo service para tu vehículo. El sistema le avisará al centro elegido que lo has elegido para llevar a cabo la revisión períodica de tu vehículo."
+				                    android:text="Seleccioná el Concesionario Autorizado autorizado dónde deseas realizar el próximo service para tu vehículo. El sistema le avisará al centro elegido que lo has elegido para llevar a cabo la revisión períodica de tu vehículo."
 				                    android:textColor="@color/bgBaseGray"
 				                    android:textSize="12sp" />
 
