@@ -22,6 +22,7 @@ public interface RESTConstants {
 	
 	public static final String P_DATE = "{date}";
 	public static final String P_KM = "{km}";
+	public static final String P_KMRANGE = "{kmRange}";
 	public static final String P_LAT = "{lat}";
 	public static final String P_LON = "{lon}";
 	public static final String P_PHONE = "{phone}";
@@ -54,7 +55,7 @@ public interface RESTConstants {
 	public static final String CHANGE_DEALER = "/vehicles/{vehicleId}/changeDealer/{dealerId}/{email}/{notReceiveEmail}/{notDealerEmail}";
 	
 	public static final String ADVICE_CONFIGURATION = "/vehicles/adviceConfiguration";
-	public static final String ADD_SERVICE = "/vehicles/{vehicleId}/addservice/{date}/{km}";
+	public static final String ADD_SERVICE = "/vehicles/{vehicleId}/addservice/{date}/{km}/{kmRange}";
 	public static final String GET_ADVICES = "/vehicles/advices";
 	public static final String DISMISS_ADVICES = "/vehicles/dismissAdvices";
 	

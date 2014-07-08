@@ -1,6 +1,8 @@
 package com.tdil.peugeotservice.android;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -15,8 +17,10 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +31,8 @@ import com.mobsandgeeks.saripaar.Validator.ValidationListener;
 import com.mobsandgeeks.saripaar.annotation.Regex;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.peugeotservice.R;
+import com.tdil.peugeotservice.android.gui.BeanMappingFunction;
+import com.tdil.peugeotservice.android.gui.BeanMappingListAdapter;
 import com.tdil.peugeotservice.android.rest.client.HttpMethod;
 import com.tdil.peugeotservice.android.rest.client.IRestClientObserver;
 import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
@@ -34,6 +40,7 @@ import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
 import com.tdil.peugeotservice.android.rest.model.RESTResponse;
+import com.tdil.peugeotservice.android.rest.model.RelationBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.VehicleValueObjectBean;
 import com.tdil.peugeotservice.android.utils.DateUtils;
 import com.tdil.peugeotservice.android.utils.Messages;
@@ -50,6 +57,7 @@ public class AddServiceActivity extends PeugeotActivity implements ValidationLis
 	private int mYear;
     private int mMonth;
     private int mDay;
+    private String kmRangeSelected = "0";
     private Validator validator;
     static final int DATE_DIALOG_ID = 1;
     
@@ -79,6 +87,7 @@ public class AddServiceActivity extends PeugeotActivity implements ValidationLis
 		
 		customizeActionBar();
 		
+		
 		serviceKmEditText = (EditText) findViewById(R.id.serviceKmEditText);
 		if ("-".equals(vehicleValueObjectBean.getKm())) {
 			serviceKmEditText.setText("");
@@ -106,6 +115,38 @@ public class AddServiceActivity extends PeugeotActivity implements ValidationLis
 						validator.validate();
 					}
 				});
+		
+		final List<String> kmRange = new ArrayList<String>();
+		for (int i = 1; i < 31; i++) {
+			kmRange.add(String.valueOf(i * 10000));
+		}
+		BeanMappingListAdapter<String> filteredadapter = new BeanMappingListAdapter<String>(
+			AddServiceActivity.this,
+			android.R.layout.simple_spinner_item, kmRange,
+			new BeanMappingFunction<String>() {
+				public String key(String t) {
+					return t;
+				};
+				
+				@Override
+				public String value(String t) {
+					return t;
+				}
+			});
+		Spinner kmRangeSpinner = (Spinner)findViewById(R.id.kmRangeSpinner);
+		kmRangeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				String item = (String) arg0
+						.getItemAtPosition(arg2);
+				AddServiceActivity.this.kmRangeSelected = item;
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+		kmRangeSpinner.setAdapter(filteredadapter);
 	}
 
     @Override
@@ -167,7 +208,8 @@ public class AddServiceActivity extends PeugeotActivity implements ValidationLis
 			}
 		}, RESTConstants.ADD_SERVICE, new RestParams(RESTConstants.P_VEHICLE, vehicleValueObjectBean.getId())
 			.put(RESTConstants.P_DATE, mDay + "-" + (mMonth + 1) + "-" + mYear)
-			.put(RESTConstants.P_KM, serviceKmEditText.getText().toString()), null)
+			.put(RESTConstants.P_KM, serviceKmEditText.getText().toString())
+			.put(RESTConstants.P_KMRANGE, kmRangeSelected), null)
 		.executeSerial((Void) null);
 	}
 
