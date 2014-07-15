@@ -89,28 +89,35 @@
 	                    
 				<Spinner
 				    android:id="@+id/dealersStatesSpinner"
-                    style="@style/FormsElements_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@color/bgFormFieldsLight" />
+				    style="@style/FormsElements_editText"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="15dp"
+				    android:layout_marginRight="15dp"
+				    android:layout_weight="0"
+				    android:background="@color/bgFormFieldsLight" />
 				
 				<Spinner
 				    android:id="@+id/dealersCitiesSpinner"
-                    style="@style/FormsElements_editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@color/bgFormFieldsLight" />
+				    style="@style/FormsElements_editText"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_marginLeft="15dp"
+				    android:layout_marginRight="15dp"
+				    android:layout_weight="0"
+				    android:background="@color/bgFormFieldsLight" />
 			
 				<Button
 				    android:id="@+id/searchDealersButton"
 				    style="@style/ButtonDarkForward"
 				    android:layout_width="fill_parent"
+				    android:layout_marginBottom="60dp"
+				    android:layout_marginLeft="15dp"
+				    android:layout_marginRight="15dp"
+				    android:layout_marginTop="50dp"
 				    android:onClick="@string/dologin"
 				    android:text="@string/btn_search_dealers" />
+
 			</LinearLayout>
 
 	        <LinearLayout

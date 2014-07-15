@@ -82,6 +82,7 @@
 		            android:layout_height="wrap_content"
 		            android:layout_marginLeft="15dp"
 		            android:layout_marginRight="15dp"
+		            android:layout_weight="0"
 		            android:text="..." />
 		
 		        <TextView
@@ -91,6 +92,7 @@
 		            android:layout_height="wrap_content"
 		            android:layout_marginLeft="15dp"
 		            android:layout_marginRight="15dp"
+		            android:layout_weight="0"
 		            android:text="..." />
 		        
 		        <Spinner
@@ -101,6 +103,7 @@
 		            android:layout_marginLeft="15dp"
 		            android:layout_marginRight="15dp"
 		            android:layout_marginTop="5dp"
+		            android:layout_weight="0"
 		            android:background="@color/bgFormFieldsLight" />
 		
 		        <EditText
@@ -110,6 +113,7 @@
 		            android:layout_height="wrap_content"
 		            android:layout_marginLeft="15dp"
 		            android:layout_marginRight="15dp"
+		            android:layout_weight="0"
 		            android:clickable="false"
 		            android:hint="@string/hnt_email"
 		            android:inputType="textEmailAddress" >
