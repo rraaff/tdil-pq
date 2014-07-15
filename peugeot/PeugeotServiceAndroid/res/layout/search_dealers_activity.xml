@@ -71,29 +71,63 @@
 	            android:background="@color/bgBaseGray"
 	            android:orientation="vertical" >
 
-				<TextView
-				    android:id="@+id/loadingInfoText"
-				    android:text="@string/title_activity_search_dealers"
-				    style="@style/FormTitles" />
-				
-				<Spinner
-				    android:id="@+id/dealersStatesSpinner"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" />
-				
-				<Spinner
-				    android:id="@+id/dealersCitiesSpinner"
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" />
-			
-				<Button
-				    android:id="@+id/searchDealersButton"
-				    style="@style/ButtonDarkForward"
-				    android:layout_width="fill_parent"
-				    android:layout_margin="16dp"
-				    android:layout_marginLeft="0dp"
-				    android:onClick="@string/dologin"
-				    android:text="@string/btn_search_dealers" />
+	            <ScrollView
+	                android:id="@+id/scrollView1"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content" >
+
+	                <LinearLayout
+	                    android:layout_width="match_parent"
+	                    android:layout_height="match_parent"
+	                    android:orientation="vertical" >
+
+	                    <TextView
+	                        android:id="@+id/loadingInfoText"
+	                        style="@style/FormTitles"
+	                        android:paddingLeft="15dp"
+	                        android:paddingRight="15dp"
+	                        android:text="@string/title_activity_search_dealers_large" />
+
+	                    <TextView
+	                        android:id="@+id/textView1"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:paddingBottom="15dp"
+	                        android:paddingLeft="15dp"
+	                        android:paddingRight="15dp"
+	                        android:text="@string/title_activity_search_dealers_bajada"
+	                        android:textColor="@color/bgFormFieldsLight"
+	                        android:textSize="13sp" />
+
+	                    <Spinner
+	                        android:id="@+id/dealersStatesSpinner"
+	                        style="@style/FormsElements_editText"
+	                        android:layout_width="match_parent"
+	                        android:layout_height="wrap_content"
+	                        android:layout_marginLeft="15dp"
+	                        android:layout_marginRight="15dp"
+	                        android:background="@color/bgFormFieldsLight" />
+
+	                    <Spinner
+	                        android:id="@+id/dealersCitiesSpinner"
+	                        style="@style/FormsElements_editText"
+	                        android:layout_width="match_parent"
+	                        android:layout_height="wrap_content"
+	                        android:layout_marginLeft="15dp"
+	                        android:layout_marginRight="15dp"
+	                        android:background="@color/bgFormFieldsLight" />
+
+	                    <Button
+	                        android:id="@+id/searchDealersButton"
+	                        style="@style/ButtonDarkForward"
+	                        android:layout_width="fill_parent"
+	                        android:layout_margin="16dp"
+	                        android:layout_marginLeft="0dp"
+	                        android:onClick="@string/dologin"
+	                        android:text="@string/btn_search_dealers" />
+	                </LinearLayout>
+
+	            </ScrollView>
 
 			</LinearLayout>
 

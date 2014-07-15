@@ -83,7 +83,7 @@
 		                <TextView
 		                    android:id="@+id/TextView01"
 		                    style="@style/FormTitles"
-		                    android:text="@string/lst_title_my_vehicles" />
+		                    android:text="@string/lst_title_dealers" />
 
 		                <TextView
 		                    android:id="@+id/dealerNameTextView"

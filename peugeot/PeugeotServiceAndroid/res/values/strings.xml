@@ -16,11 +16,12 @@
     <string name="desc_avatar_image">Avatar</string>
     
     <!-- List Items strings -->
-    <string name="lst_title_my_services">Registrar Mis Services:</string>
-    <string name="lst_title_my_vehicles">Consultar Mis Services:</string>
-    <string name="lst_title_official_services">Concesionarios Autorizados:</string>
-    <string name="lst_title_dealers">Concesionarios Autorizados:</string>
-    <string name="lst_title_advices">Avisos</string>
+    <string name="lst_title_my_services">Registrar Mis Services</string>
+    <string name="lst_title_my_vehicles">Consultar Mis Services</string>
+    <string name="lst_title_my_vehicles_new">Consultar Mis Services</string>
+    <string name="lst_title_official_services">Concesionarios Autorizados</string>
+    <string name="lst_title_dealers">Concesionarios Autorizados</string>
+    <string name="lst_title_advices">Avisos de services requerido</string>
     <string name="lst_title_alerts">Alertas</string>
     
     <string name="lst_no_vehicles">No tienes ningún vehículo asociado</string>
@@ -37,7 +38,10 @@
     <string name="title_activity_login_for_action_bar">Peugeot Car Safe</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>
+    <string name="title_activity_search_dealers_large">Selecciona la concesionaria autorizada donde deseas realizar el próximo service</string>
+    <string name="title_activity_search_dealers_bajada">Elegí la provicia, luego la ciudad, presioná el botón buscar. una vez cargados los resultados seleccioná haciendo clic en la lista el Concesionario Autorizado en el que deseas realizar el service de tu vehículo.</string>
     <string name="title_activity_add_service">Registrar service</string>
+    <string name="title_activity_add_service_info">Registrar información de un service</string>
     
     <string name="title_parkings">POI</string>
     <string name="title_prevent">Car Security</string>
@@ -73,6 +77,10 @@
     
     <string name="notReceiveAlerts">Deseo recibir alertas de service</string>
     <string name="notDealerAlerts">Deseo ser contactado por el concesionario autorizado para programar el service</string>
+    
+    <string name="lbl_services_select_services">Seleccione service</string>
+    <string name="lbl_services_service_date">Fecha del service</string>
+    <string name="lbl_services_service_km_done">Kilometros recorridos totales al service</string>
     
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>

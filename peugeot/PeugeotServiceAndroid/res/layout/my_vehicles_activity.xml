@@ -73,7 +73,7 @@
 
 		        <TextView
 		            android:id="@+id/lastChanges"
-		            android:text="@string/lst_title_my_vehicles"
+		            android:text="@string/lst_title_my_vehicles_new"
 		            style="@style/FormTitles" />
 		        
 		        <ListView

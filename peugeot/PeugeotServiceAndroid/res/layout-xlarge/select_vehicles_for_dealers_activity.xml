@@ -72,7 +72,7 @@
 
 		        <TextView
 		            android:id="@+id/TextView01"
-		            android:text="@string/lst_title_my_vehicles"
+		            android:text="@string/lst_title_dealers"
 		            style="@style/FormTitles" />
 		
 		        <TextView
@@ -80,6 +80,8 @@
 		            style="@style/FormsElements_editText"
 		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="15dp"
+		            android:layout_marginRight="15dp"
 		            android:text="..." />
 		
 		        <TextView
@@ -87,19 +89,27 @@
 		            style="@style/FormsElements_editText"
 		            android:layout_width="fill_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="15dp"
+		            android:layout_marginRight="15dp"
 		            android:text="..." />
 		        
 		        <Spinner
-		             android:id="@+id/vehiclesForDealersSpinner"
-		             android:layout_width="match_parent"
-		             android:layout_height="wrap_content"
-		             android:background="@color/bgFormFieldsLight" />
+		            android:id="@+id/vehiclesForDealersSpinner"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:layout_marginLeft="15dp"
+		            android:layout_marginRight="15dp"
+		            android:layout_marginTop="5dp"
+		            android:background="@color/bgFormFieldsLight" />
 		
 		        <EditText
 		            android:id="@+id/emailForServiceEditText"
 		            style="@style/FormsElements_editText"
 		            android:layout_width="match_parent"
 		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="15dp"
+		            android:layout_marginRight="15dp"
 		            android:clickable="false"
 		            android:hint="@string/hnt_email"
 		            android:inputType="textEmailAddress" >
@@ -111,6 +121,9 @@
 		            android:id="@+id/notReceiveAlertsCheckbox"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
+		            android:layout_margin="15dp"
+		            android:layout_marginLeft="15dp"
+		            android:layout_marginRight="15dp"
 		            android:text="@string/notReceiveAlerts"
 		            android:textColor="@color/bgBase" />
 
@@ -118,6 +131,7 @@
 		            android:id="@+id/notDealerAlertsCheckbox"
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
+		            android:layout_margin="15dp"
 		            android:text="@string/notDealerAlerts"
 		            android:textColor="@color/bgBase" />
 		
