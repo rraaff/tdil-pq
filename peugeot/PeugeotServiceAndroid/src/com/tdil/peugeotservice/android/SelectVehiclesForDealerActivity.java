@@ -56,8 +56,8 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 	@TextRule(order = 1, minLength = 4, message = "Ingrese el email donde desea recibir el aviso.")
 	private TextView email;
 	
-	private CheckBox notReceiveEmail;
-	private CheckBox notDealerEmail;
+	private CheckBox receiveEmail;
+	private CheckBox dealerEmail;
 	
 	private Spinner vehiclesSpinner;
 	
@@ -93,8 +93,8 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 		vehiclesSpinner = (Spinner) findViewById(R.id.vehiclesForDealersSpinner);
 		email = (TextView) findViewById(R.id.emailForServiceEditText);
 		
-		notReceiveEmail = (CheckBox) findViewById(R.id.notReceiveAlertsCheckbox);
-		notDealerEmail = (CheckBox) findViewById(R.id.notDealerAlertsCheckbox);
+		receiveEmail = (CheckBox) findViewById(R.id.notReceiveAlertsCheckbox);
+		dealerEmail = (CheckBox) findViewById(R.id.notDealerAlertsCheckbox);
 		
 		((TextView)findViewById(R.id.dealerNameTextView)).setText(dealer.getName() != null ? dealer.getName() : "-");
 		((TextView)findViewById(R.id.dealerAddressTextView)).setText(dealer.getAddress() != null ? dealer.getAddress() : "-");
@@ -109,14 +109,14 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 						AdviceConfiguration.class);
 				email.setText(em.getEmail());
 				if (em.getReceiveEmail()) {
-					notReceiveEmail.setChecked(false);
+					receiveEmail.setChecked(true);
 				} else {
-					notReceiveEmail.setChecked(true);
+					receiveEmail.setChecked(false);
 				}
 				if (em.getDealerEmail()) {
-					notDealerEmail.setChecked(false);
+					dealerEmail.setChecked(true);
 				} else {
-					notDealerEmail.setChecked(true);
+					dealerEmail.setChecked(false);
 				}
 			}
 
@@ -245,8 +245,8 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 		}, RESTConstants.CHANGE_DEALER, new RestParams(RESTConstants.P_DEALER, dealer.getId())
 			.put(RESTConstants.P_VEHICLE, selectedVehicle.getId())
 			.put(RESTConstants.P_EMAIL, email.getText().toString())
-			.put(RESTConstants.P_NOT_SERVICE_EMAIL, notReceiveEmail.isChecked() ? "1" : "0")
-			.put(RESTConstants.P_NOT_DEALER_EMAIL, notDealerEmail.isChecked() ? "1" : "0"), null)
+			.put(RESTConstants.P_SERVICE_EMAIL, receiveEmail.isChecked() ? "1" : "0")
+			.put(RESTConstants.P_DEALER_EMAIL, dealerEmail.isChecked() ? "1" : "0"), null)
 		.executeSerial((Void) null);
 	}
 

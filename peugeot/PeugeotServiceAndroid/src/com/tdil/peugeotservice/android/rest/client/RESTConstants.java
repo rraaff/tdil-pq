@@ -17,8 +17,8 @@ public interface RESTConstants {
 	public static final String P_VEHICLE = "{vehicleId}";
 	public static final String P_DEALER = "{dealerId}";
 	public static final String P_EMAIL = "{email}";
-	public static final String P_NOT_SERVICE_EMAIL = "{notReceiveEmail}";
-	public static final String P_NOT_DEALER_EMAIL = "{notDealerEmail}";
+	public static final String P_SERVICE_EMAIL = "{receiveEmail}";
+	public static final String P_DEALER_EMAIL = "{dealerEmail}";
 	
 	public static final String P_DATE = "{date}";
 	public static final String P_KM = "{km}";
@@ -65,5 +65,8 @@ public interface RESTConstants {
 	
 	public static final String GET_CONTACT_DATA = "/users/contactData";
 	public static final String POST_CONTACT_DATA = "/users/contactData";
+	
+	public static final String GET_CONTACT_DATA_V1 = "/users/v1/contactData";
+	public static final String POST_CONTACT_DATA_V1 = "/users/v1/contactData";
 	
 }

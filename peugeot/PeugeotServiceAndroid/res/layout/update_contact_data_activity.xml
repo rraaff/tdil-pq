@@ -88,37 +88,93 @@
 			                android:layout_marginTop="0dp"
 			                android:orientation="vertical"
 			                android:padding="20dp" >
-			                <TextView
+			                <TextView
 			                    android:id="@+id/loadingInfoText"
 			                    style="@style/MainTitles"
 			                    android:layout_marginTop="0dp"
-			                    android:text="@string/title_contact1"
+			                    android:text="@string/title_service_owner"
 			                    android:textColor="@color/bgBase" />
 			
-			                <EditText
+			                <TextView
 			                    android:id="@+id/contact1NameEditText"
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
 			                    android:hint="@string/hnt_contact1name"
 			                    style="@style/FormsElements_editText" />
-			
-			                <Spinner
-			                    android:id="@+id/contact1RelationSpinner"
-			                    android:layout_width="fill_parent"
-			                    android:layout_height="wrap_content"
-			                    android:background="@color/bgFormFieldsLight"
-			                    style="@style/FormsElements_editText" />
+			                
+			                
 			
 			                <EditText
 			                    android:id="@+id/contact1PhoneEditText"
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
 			                    android:hint="@string/hnt_contact1phone"
-			                    android:inputType="number"
 			                    style="@style/FormsElements_editText" >
 			
 			                    <requestFocus />
 			                </EditText>
+			                
+			                <CheckBox
+	                            android:id="@+id/samePhoneForAllCheckbox"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                            android:layout_marginBottom="3dp"
+	                            android:layout_marginTop="3dp"
+	                            android:text="@string/btn_samePhoneForAllCheckbox"
+	                            android:textColor="@color/bgBase" />
+			                
+			                <LinearLayout
+			                    android:id="@+id/onlyOneVehicleLayer"
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_marginTop="0dp"
+			                android:orientation="vertical"
+			                android:padding="20dp" >
+			                    <EditText
+			                    android:id="@+id/uniqueVehiclePhone"
+			                    android:layout_width="match_parent"
+			                    android:layout_height="wrap_content"
+			                    android:hint="@string/hnt_contact1phone"
+			                    style="@style/FormsElements_editText" >
+			
+			                </EditText>
+			                    
+			                </LinearLayout>
+			                <LinearLayout
+			                    android:id="@+id/moreThanOneVehicleLayer"
+			                android:layout_width="match_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_marginTop="0dp"
+			                android:orientation="vertical"
+			                android:padding="20dp" >
+			                    
+			                    <EditText
+			                    android:id="@+id/sameVehiclePhone"
+			                    android:layout_width="match_parent"
+			                    android:layout_height="wrap_content"
+			                    android:hint="@string/hnt_contact1phone"
+			                    style="@style/FormsElements_editText" />
+			                    
+			                    <LinearLayout
+			                    android:id="@+id/allVehiclesPhonesLayer"
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginTop="0dp"
+				                android:orientation="vertical"
+				                android:padding="20dp" >
+			                    
+			                    </LinearLayout>
+			                    
+			                    <CheckBox
+	                            android:id="@+id/samePhoneForEachVehicleCheckbox"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                            android:layout_marginBottom="3dp"
+	                            android:layout_marginTop="3dp"
+	                            android:text="@string/btn_samePhoneForEachVehicleCheckbox"
+	                            android:textColor="@color/bgBase" />
+			                    
+			                </LinearLayout>
 			
 			                <EditText
 			                    android:id="@+id/securityWordEditText"
