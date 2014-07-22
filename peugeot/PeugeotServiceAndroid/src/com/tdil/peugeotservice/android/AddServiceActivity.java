@@ -87,6 +87,13 @@ public class AddServiceActivity extends PeugeotActivity implements ValidationLis
 		
 		customizeActionBar();
 		
+		/*String kmVehicle = vehicleValueObjectBean.getKm();
+		kmVehicle = kmVehicle.replace(".", "");
+		kmVehicle = kmVehicle.replace(",", "");
+		Integer kmRaInteger = Integer.valueOf(kmVehicle);
+		Integer kmRaIndex = Math.round((kmRaInteger + 2000) / 10000);
+		kmRaInteger = kmRaIndex * 10000;
+		kmRangeSelected = String.valueOf(kmRaInteger);*/
 		
 		serviceKmEditText = (EditText) findViewById(R.id.serviceKmEditText);
 		if ("-".equals(vehicleValueObjectBean.getKm())) {
@@ -147,6 +154,7 @@ public class AddServiceActivity extends PeugeotActivity implements ValidationLis
 			}
 		});
 		kmRangeSpinner.setAdapter(filteredadapter);
+		//UpdateEmergencyConfigActivity.this.contact3relationSpinner.setSelection(index);
 	}
 
     @Override

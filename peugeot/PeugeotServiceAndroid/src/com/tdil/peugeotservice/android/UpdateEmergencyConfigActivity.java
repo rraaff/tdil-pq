@@ -1,18 +1,31 @@
 package com.tdil.peugeotservice.android;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.codec.binary.StringUtils;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,9 +45,11 @@ import com.tdil.peugeotservice.android.rest.client.IRestClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTClientTask;
 import com.tdil.peugeotservice.android.rest.client.RESTConstants;
 import com.tdil.peugeotservice.android.rest.client.RestParams;
+import com.tdil.peugeotservice.android.rest.model.ContactDataV1Bean;
 import com.tdil.peugeotservice.android.rest.model.LoginResponse;
 import com.tdil.peugeotservice.android.rest.model.RESTResponse;
 import com.tdil.peugeotservice.android.rest.model.RelationBean;
+import com.tdil.peugeotservice.android.rest.model.VehiclePhoneBean;
 import com.tdil.peugeotservice.android.rest.prevent.model.ContactDataBean;
 import com.tdil.peugeotservice.android.utils.Login;
 import com.tdil.peugeotservice.android.utils.Messages;
@@ -51,9 +66,9 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
     @TextRule(order = 1, minLength = 1, maxLength = 150, message = "Ingrese el nombre.")
     @Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
     private TextView contact1name;
-	private Spinner contact1relationSpinner;
-	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 11 digitos.")
-	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
+	
+	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 20 digitos.")
+	@Regex(order = 8, pattern = "[0-9]{2}+-[0-9]{7,13}", message = "Ingrese un numero en formato 54-00000000")
 	private TextView contact1phone;
 
 	@TextRule(order = 1, minLength = 1, maxLength = 20, message = "Ingrese la palabra de seguridad.")
@@ -63,25 +78,37 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 	@TextRule(order = 1, minLength = 1, maxLength = 100, message = "Ingrese su cobertura médica.")
     private TextView healthInsurance;
 
-	@TextRule(order = 1, minLength = 1, maxLength = 150, message = "Ingrese el nombre.")
-    @Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
+	@TextRule(order = 1, maxLength = 150, message = "Ingrese el nombre.")
+    @Regex(order = 2, pattern = "[A-Za-z ']*", message = "El nombre es invalido")
     private TextView contact2name;
 	private Spinner contact2relationSpinner;
-	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 11 digitos.")
+	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 20 digitos.")
 	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView contact2phone;
 	
-	@TextRule(order = 1, minLength = 1, maxLength = 150, message = "Ingrese el nombre.")
-    @Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
+	@TextRule(order = 1, maxLength = 150, message = "Ingrese el nombre.")
+    @Regex(order = 2, pattern = "[A-Za-z ']*", message = "El nombre es invalido")
     private TextView contact3name;
 	private Spinner contact3relationSpinner;
-	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 11 digitos.")
+	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 20 digitos.")
 	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
 	private TextView contact3phone;
+	
+	private ContactDataV1Bean actual;
+	private CheckBox samePhoneForAllCheckbox;
+	private CheckBox samePhoneForEachVehicleCheckbox;
+	private EditText uniqueVehiclePhone;
+	private EditText sameVehiclePhone;
+	private LinearLayout allVehiclesPhonesLayer;
+	private LinearLayout moreThanOneVehicleLayer;
+	private LinearLayout onlyOneVehicleLayer;
+	
+	private Map<String, EditText> domainsToPhones = new HashMap<String, EditText>();
 	
 	private String contact1relationSelected;
 	private String contact2relationSelected;
 	private String contact3relationSelected;
+	private LinearLayout allPhonesContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -105,22 +132,85 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 		setTypeface(this, R.id.	updateEmergenccyConfigButton);
 		setTypeface(this, R.id.sendAlertButton);
 		
+		setTypeface(this, R.id.samePhoneForAllCheckbox);
+		setTypeface(this, R.id.uniqueVehiclePhone);
+		setTypeface(this, R.id.sameVehiclePhone);
+		setTypeface(this, R.id.samePhoneForEachVehicleCheckbox);
+		
+		
 		customizeActionBar();
+		
+		uniqueVehiclePhone = (EditText) findViewById(R.id.uniqueVehiclePhone);
+		sameVehiclePhone = (EditText) findViewById(R.id.sameVehiclePhone);
+		samePhoneForAllCheckbox = (CheckBox) findViewById(R.id.samePhoneForAllCheckbox);
+		samePhoneForEachVehicleCheckbox = (CheckBox) findViewById(R.id.samePhoneForEachVehicleCheckbox);
+		allVehiclesPhonesLayer = (LinearLayout)findViewById(R.id.allVehiclesPhonesLayer);
+		moreThanOneVehicleLayer = (LinearLayout)findViewById(R.id.moreThanOneVehicleLayer);
+		onlyOneVehicleLayer = (LinearLayout)findViewById(R.id.onlyOneVehicleLayer);
+		
+		if (domainsToPhones.size() == 1) {
+			validator.put(uniqueVehiclePhone, new Rule<EditText>("Ingrese un numero en formato 54-00000000") {
+				public boolean isValid(EditText view) {
+					if (!samePhoneForAllCheckbox.isChecked()) {
+						Pattern pattern = Pattern.compile("^[0-9]{2}+-[0-9]{8,15}$");
+						String toValidate = view.getText().toString();
+		    			Matcher m = pattern.matcher(toValidate);
+		    			return m.find();
+					}
+					return true;
+				};
+			});
+		} else {
+			validator.put(sameVehiclePhone, new Rule<EditText>("Ingrese un numero en formato 54-00000000") {
+				public boolean isValid(EditText view) {
+					if (!samePhoneForAllCheckbox.isChecked() && samePhoneForEachVehicleCheckbox.isChecked()) {
+						Pattern pattern = Pattern.compile("^[0-9]{2}+-[0-9]{8,15}$");
+						String toValidate = view.getText().toString();
+		    			Matcher m = pattern.matcher(toValidate);
+		    			return m.find();
+					}
+					return true;
+				};
+			});
+		}
+		
+		samePhoneForAllCheckbox.setOnClickListener(
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					if (samePhoneForAllCheckbox.isChecked()) {
+						if (domainsToPhones.size() == 1) {
+							onlyOneVehicleLayer.setVisibility(View.GONE);
+						} else {
+							moreThanOneVehicleLayer.setVisibility(View.GONE);
+						}
+					} else {
+						if (domainsToPhones.size() == 1) {
+							onlyOneVehicleLayer.setVisibility(View.VISIBLE);
+						} else {
+							moreThanOneVehicleLayer.setVisibility(View.VISIBLE);
+						}
+					}
+				}
+			});
+		
+		samePhoneForEachVehicleCheckbox.setOnClickListener(
+			new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					if (samePhoneForEachVehicleCheckbox.isChecked()) {
+						sameVehiclePhone.setVisibility(View.VISIBLE);
+						allVehiclesPhonesLayer.setVisibility(View.GONE);
+					} else {
+						sameVehiclePhone.setVisibility(View.GONE);
+						allVehiclesPhonesLayer.setVisibility(View.VISIBLE);
+					}
+				}
+			});
+		
+		allPhonesContainer = (LinearLayout) findViewById(R.id.allVehiclesPhonesLayer);
 
 		contact1name = (TextView) findViewById(R.id.contact1NameEditText);
-		contact1relationSpinner = (Spinner) findViewById(R.id.contact1RelationSpinner);
-		contact1relationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				RelationBean item = (RelationBean) arg0
-						.getItemAtPosition(arg2);
-				UpdateEmergencyConfigActivity.this.contact1relationSelected = item.getKey();
-			}
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-			}
-		});
 		final List<RelationBean> allRelations = RelationBean.allRelations();
 		BeanMappingListAdapter<RelationBean> adapter = new BeanMappingListAdapter<RelationBean>(
 				UpdateEmergencyConfigActivity.this,
@@ -135,7 +225,6 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 						return t.getValue();
 					}
 				});
-		contact1relationSpinner.setAdapter(adapter);
 		
 		
 		contact1phone = (TextView) findViewById(R.id.contact1PhoneEditText);
@@ -194,19 +283,74 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
-				ContactDataBean contactDataBean = gson.fromJson(task.getResult(),
-						ContactDataBean.class);
-				contact1name.setText(contactDataBean.getContact1name());
-				int index = 0;
-				for (RelationBean bean : allRelations) {
-					if (bean.getKey().equals(contactDataBean.getContact1relation())) {
-						UpdateEmergencyConfigActivity.this.contact1relationSpinner
-								.setSelection(index);
+				ContactDataV1Bean contactDataBean = gson.fromJson(task.getResult(),
+						ContactDataV1Bean.class);
+				
+				actual = contactDataBean;
+				Set<String> vehiclesPhones = new HashSet<String>();
+				for (VehiclePhoneBean vpb : contactDataBean.getVehiclesPhones()) {
+					TextView myEditText = new TextView(UpdateEmergencyConfigActivity.this); // Pass it an Activity or Context
+					myEditText.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)); // Pass two args; must be LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, or an integer pixel value.
+					myEditText.setText(vpb.getDomain());
+					// TODO ver pablo el color
+					myEditText.setTextColor(Color.rgb(227,27,35));
+					setTypeface(UpdateEmergencyConfigActivity.this, myEditText);
+					allPhonesContainer.addView(myEditText);
+					
+					EditText aVehiclePhoneText = (EditText)getLayoutInflater().inflate(R.layout.edit_text, null);
+					aVehiclePhoneText.setText(vpb.getPhone());
+					vehiclesPhones.add(vpb.getPhone());
+					setTypeface(UpdateEmergencyConfigActivity.this, aVehiclePhoneText);
+					allPhonesContainer.addView(aVehiclePhoneText);
+					// agrego el validador
+					validator.put(aVehiclePhoneText, new Rule<EditText>("Ingrese un numero en formato 54-00000000") {
+						public boolean isValid(EditText view) {
+							if (!samePhoneForAllCheckbox.isChecked() && !samePhoneForEachVehicleCheckbox.isChecked()) {
+								Pattern pattern = Pattern.compile("^[0-9]{2}+-[0-9]{8,15}$");
+								String toValidate = view.getText().toString();
+				    			Matcher m = pattern.matcher(toValidate);
+				    			return m.find();
+							}
+							return true;
+						};
+					});
+					domainsToPhones.put(vpb.getDomain(), aVehiclePhoneText);
+				}
+				if (vehiclesPhones.size() == 1) {
+					uniqueVehiclePhone.setText(contactDataBean.getVehiclesPhones().get(0).getPhone());
+					sameVehiclePhone.setText(contactDataBean.getVehiclesPhones().get(0).getPhone());
+					samePhoneForEachVehicleCheckbox.setChecked(true);
+					allVehiclesPhonesLayer.setVisibility(View.GONE);
+				}  
+				if (contactDataBean.getContact1phone() != null && contactDataBean.getContact1phone().length() > 0) {
+					vehiclesPhones.add(contactDataBean.getContact1phone());
+					contact1phone.setText(contactDataBean.getContact1phone());
+				}
+				if (contactDataBean.getVehiclesPhones().size() == 1) {
+					contact1phone.setText(vehiclesPhones.iterator().next());
+					moreThanOneVehicleLayer.setVisibility(View.GONE);
+					onlyOneVehicleLayer.setVisibility(View.VISIBLE);
+					if (vehiclesPhones.size() == 1) {
+						onlyOneVehicleLayer.setVisibility(View.GONE);
+						samePhoneForAllCheckbox.setChecked(true);
+					} else {
+						samePhoneForAllCheckbox.setChecked(false);
 					}
-					index = index + 1;
+				} else {
+					moreThanOneVehicleLayer.setVisibility(View.VISIBLE);
+					onlyOneVehicleLayer.setVisibility(View.GONE);
+					if (vehiclesPhones.size() == 1) {
+						contact1phone.setText(vehiclesPhones.iterator().next());
+						moreThanOneVehicleLayer.setVisibility(View.GONE);
+						samePhoneForAllCheckbox.setChecked(true);
+					} else {
+						samePhoneForAllCheckbox.setChecked(false);
+					}
 				}
 				
-				contact1phone.setText(contactDataBean.getContact1phone());
+				
+				contact1name.setText(contactDataBean.getContact1name());
+				int index = 0;
 				securityWord.setText(contactDataBean.getContact1secword());
 				healthInsurance.setText(contactDataBean.getContact1healthi());
 				
@@ -237,7 +381,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateEmergencyConfigActivity.this);
 			}
-		}, RESTConstants.GET_CONTACT_DATA, new RestParams(), null).executeSerial((Void) null);
+		}, RESTConstants.GET_CONTACT_DATA_V1, new RestParams(), null).executeSerial((Void) null);
 		
 		findViewById(R.id.updateEmergenccyConfigButton).setOnClickListener(
 			new View.OnClickListener() {
@@ -250,6 +394,39 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 
     @Override
     public void preValidation() {
+    	/*Pattern pattern = Pattern.compile("[0-9]{2}+-[0-9]{7,11}");
+    	String message = "Ingrese un numero en formato 54-00000000";
+    	if(!samePhoneForAllCheckbox.isChecked()) {
+    		if (actual.getVehiclesPhones().size() == 1) {
+    			String toValidate = uniqueVehiclePhone.getText().toString();
+    			Matcher m = pattern.matcher(toValidate);
+    			if (!m.find()) {
+    				EditText failedView = uniqueVehiclePhone;
+    				failedView.requestFocus();
+    	            ((EditText) failedView).setError(message);
+    			}
+    		} else {
+    			if (samePhoneForEachVehicleCheckbox.isChecked()) {
+    				String toValidate = sameVehiclePhone.getText().toString();
+        			Matcher m = pattern.matcher(toValidate);
+        			if (!m.find()) {
+        				EditText failedView = uniqueVehiclePhone;
+        				failedView.requestFocus();
+        	            ((EditText) failedView).setError(message);
+        			}
+    			} else {
+    				for (Map.Entry<String, EditText> entry : domainsToPhones.entrySet()) {
+    					String toValidate = entry.getValue().getText().toString();
+    					Matcher m = pattern.matcher(toValidate);
+            			if (!m.find()) {
+            				EditText failedView = entry.getValue();
+            				failedView.requestFocus();
+            	            ((EditText) failedView).setError(message);
+            			}
+					}
+    			}
+    		}
+    	}*/
     }
     @Override
     public void onFailure(View failedView, Rule<?> failedRule) {
@@ -270,9 +447,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
     }
 
 	protected void updateConfigData() {
-		ContactDataBean contactDataBean = new ContactDataBean();
-		contactDataBean.setContact1name(contact1name.getText().toString());
-		contactDataBean.setContact1relation(contact1relationSelected);
+		ContactDataV1Bean contactDataBean = actual;
 		contactDataBean.setContact1phone(contact1phone.getText().toString());
 		contactDataBean.setContact1secword(securityWord.getText().toString());
 		contactDataBean.setContact1healthi(healthInsurance.getText().toString());
@@ -284,6 +459,25 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 		contactDataBean.setContact3name(contact3name.getText().toString());
 		contactDataBean.setContact3relation(contact3relationSelected);
 		contactDataBean.setContact3phone(contact3phone.getText().toString());
+		if (samePhoneForAllCheckbox.isChecked()) {
+			for (VehiclePhoneBean vpb : actual.getVehiclesPhones()) {
+				vpb.setPhone(contact1phone.getText().toString());
+			}
+		} else {
+			if (actual.getVehiclesPhones().size() == 1) {
+				actual.getVehiclesPhones().get(0).setPhone(uniqueVehiclePhone.getText().toString());
+			} else {
+				if (samePhoneForEachVehicleCheckbox.isChecked()) {
+					for (VehiclePhoneBean vpb : actual.getVehiclesPhones()) {
+						vpb.setPhone(sameVehiclePhone.getText().toString());
+					}
+				} else {
+					for (VehiclePhoneBean vpb : actual.getVehiclesPhones()) {
+						vpb.setPhone(domainsToPhones.get(vpb.getDomain()).getText().toString());
+					}
+				}
+			}
+		}
 		
 		Gson gson = new Gson();
 		String json = gson.toJson(contactDataBean);
@@ -320,7 +514,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(UpdateEmergencyConfigActivity.this);
 			}
-		}, RESTConstants.POST_CONTACT_DATA, new RestParams(), json).executeSerial((Void) null);
+		}, RESTConstants.POST_CONTACT_DATA_V1, new RestParams(), json).executeSerial((Void) null);
 	}
 
 

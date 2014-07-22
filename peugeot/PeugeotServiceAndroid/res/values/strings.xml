@@ -49,6 +49,7 @@
     <string name="title_home">HOME</string>
   
     <string name="title_contact1">Primer contacto</string>
+    <string name="title_service_owner">Titular del servicio</string>
     <string name="title_contact2">Segundo contacto</string>
     <string name="title_contact3">Tercer contacto</string>
     
@@ -93,6 +94,9 @@
     <string name="btn_tag_reset_password_back">Volver</string>
     <string name="btn_tag_guardPhoneCall">INICIAR LLAMADA\nDE ASISTENCIA</string>
     <string name="btn_tag_SendAlert">REPORTAR\nUNA EMERGENCIA</string>
+    
+    <string name="btn_samePhoneForAllCheckbox">Usar el mismo numero para enviarme las alertas de salida de zona y exceso de velocidad</string>
+    <string name="btn_samePhoneForEachVehicleCheckbox">Usar el mismo numero para todos mis vehículos</string>
     
     
     <string name="btn_tag_go">Ir</string>
