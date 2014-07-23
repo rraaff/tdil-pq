@@ -1,4 +1,0 @@
-<% 	
-request.getSession(); // force session to start
-com.tdil.tuafesta.web.WebsiteUser websiteUser = (com.tdil.tuafesta.web.WebsiteUser)session.getAttribute("user");
-%>
