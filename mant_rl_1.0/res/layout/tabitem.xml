@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1"
+    android:background="@drawable/bar_bg"
+    android:paddingTop="0dip" >
+
+  <TableRow android:layout_width="fill_parent" >
+
+	<ImageView
+	    android:id="@+id/logAlarmAvatar"
+	    android:layout_width="48dp"
+	    android:layout_height="48dp"
+	    android:layout_gravity="center_vertical"
+	    android:layout_marginLeft="5dp"
+	    android:background="@color/grayTabBase"
+	    android:contentDescription="@string/desc_avatar_image"
+	    android:maxHeight="50dp"
+	    android:scaleType="centerCrop" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
+        android:gravity="fill_horizontal"
+        android:paddingTop="0dip">
+
+      <TableRow
+          android:layout_width="fill_parent"
+          android:layout_gravity="fill_horizontal" >
+
+	     <TextView
+	         android:id="@+id/logAlarmStatus"
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:layout_gravity="left|center_vertical"
+	         android:layout_marginLeft="10dip"
+	         android:layout_marginTop="4dip"
+	         android:layout_span="1"
+	         android:layout_weight="1"
+	         android:textColor="#000000"
+	         android:textSize="16sp" />
+
+		</TableRow>
+
+	    <TableRow android:layout_width="fill_parent" >
+
+	        <TextView
+	            android:id="@+id/logAlarmUser"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_gravity="left|center_vertical"
+	            android:layout_marginLeft="10dip"
+	            android:layout_marginTop="4dip"
+	            android:layout_weight="1"
+	            android:gravity="left"
+	            android:text=""
+	            android:textColor="#000000"
+	            android:textSize="16sp" />
+	    </TableRow>
+	    <TableRow android:layout_width="fill_parent" >
+
+	        <Button
+	            android:id="@+id/viewAlarmLogButton"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/btn_tag_see_log" />
+
+	    </TableRow>
+
+	  </TableLayout>
+
+    <ToggleButton
+        android:id="@+id/toggleAlarmActivation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tog_btn_default" />
+
+ </TableRow>
+ 	
+     
+</TableLayout>
