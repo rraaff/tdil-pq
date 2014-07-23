@@ -446,11 +446,11 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 	private Spinner addressTypes;
 
 	@TextRule(order = 1, minLength = 1, maxLength = 50, message = "Ingrese el nombre.")
-	@Regex(order = 2, pattern = "[A-Za-z ']+", message = "El nombre es invalido")
+	@Regex(order = 2, pattern = "[A-Za-z áéíóúÁÉÍÓÚñÑ']+", message = "El nombre es invalido")
 	private TextView firstName;
 
 	@TextRule(order = 3, minLength = 1, maxLength = 50, message = "Ingrese el apellido.")
-	@Regex(order = 4, pattern = "[A-Za-z ']+", message = "El apellido es invalido")
+	@Regex(order = 4, pattern = "[A-Za-z áéíóúÁÉÍÓÚñÑ']+", message = "El apellido es invalido")
 	private TextView lastName;
 
 	private RadioButton male;

@@ -100,8 +100,9 @@ public class SuccessAsyncRESTClientTask extends AsyncTask<Void, Void, Boolean> i
 			statusCode = httpResponse.getStatusLine().getStatusCode();
 			// Convert response to string using String Builder
 			try {
-				BufferedReader bReader = new BufferedReader(new InputStreamReader(
-						inputStream, "iso-8859-1"), 8);
+				BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"), 8);
+				//BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream, "ISO-8859-1"), 8);
+				//BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"), 8);
 				StringBuilder sBuilder = new StringBuilder();
 
 				String line = null;

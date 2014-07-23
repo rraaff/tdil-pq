@@ -94,23 +94,37 @@
 			                    android:layout_marginTop="0dp"
 			                    android:text="@string/title_service_owner"
 			                    android:textColor="@color/bgBase" />
-			
+
 			                <TextView
 			                    android:id="@+id/contact1NameEditText"
+			                    style="@style/FormsElements_editText"
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact1name"
-			                    style="@style/FormsElements_editText" />
-			
-			                <EditText
-			                    android:id="@+id/contact1PhoneEditText"
+			                    android:hint="@string/hnt_contact1name" />
+
+			                <LinearLayout
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact1phone"
-			                    style="@style/FormsElements_editText" >
-			
-			                    <requestFocus />
-			                </EditText>
+			                    android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView1"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_phone"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/contact1PhoneEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_contact1phone" />
+
+			                </LinearLayout>
 			                
 			                <CheckBox
 	                            android:id="@+id/samePhoneForAllCheckbox"
@@ -123,124 +137,304 @@
 			                
 			                <LinearLayout
 			                    android:id="@+id/onlyOneVehicleLayer"
-			                android:layout_width="match_parent"
-			                android:layout_height="wrap_content"
-			                android:layout_marginTop="0dp"
-			                android:orientation="vertical"
-			                android:padding="20dp" >
-			                    <EditText
-			                    android:id="@+id/uniqueVehiclePhone"
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact1phone"
-			                    style="@style/FormsElements_editText" >
-			
-			                </EditText>
-			                    
+			                    android:layout_marginTop="0dp"
+			                    android:orientation="vertical"
+			                    android:padding="0dp" >
+
+			                    <TextView
+			                        android:id="@+id/textView2"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_phone_sms"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/uniqueVehiclePhone"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="match_parent"
+			                        android:layout_height="wrap_content"
+			                        android:hint="@string/hnt_contact1phone" >
+
+			                    </EditText>
 			                </LinearLayout>
+
 			                <LinearLayout
 			                    android:id="@+id/moreThanOneVehicleLayer"
-			                android:layout_width="match_parent"
-			                android:layout_height="wrap_content"
-			                android:layout_marginTop="0dp"
-			                android:orientation="vertical"
-			                android:padding="20dp" >
-			                    
-			                    <EditText
-			                    android:id="@+id/sameVehiclePhone"
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact1phone"
-			                    style="@style/FormsElements_editText" />
+			                    android:layout_marginTop="0dp"
+			                    android:orientation="vertical"
+			                    android:padding="0dp" >
+
+			                    <TextView
+			                        android:id="@+id/textView3"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_phone_sms"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+				                    android:id="@+id/sameVehiclePhone"
+				                    android:layout_width="match_parent"
+				                    android:layout_height="wrap_content"
+				                    android:hint="@string/hnt_contact1phone"
+				                    style="@style/FormsElements_editText" />
 			                    
 			                    <LinearLayout
-			                    android:id="@+id/allVehiclesPhonesLayer"
-				                android:layout_width="match_parent"
-				                android:layout_height="wrap_content"
-				                android:layout_marginTop="0dp"
-				                android:orientation="vertical"
-				                android:padding="20dp" >
+				                    android:id="@+id/allVehiclesPhonesLayer"
+					                android:layout_width="match_parent"
+					                android:layout_height="wrap_content"
+					                android:layout_marginTop="0dp"
+					                android:orientation="vertical"
+					                android:padding="20dp" >
 			                    
 			                    </LinearLayout>
 			                    
 			                    <CheckBox
-	                            android:id="@+id/samePhoneForEachVehicleCheckbox"
-	                            android:layout_width="wrap_content"
-	                            android:layout_height="wrap_content"
-	                            android:layout_marginBottom="3dp"
-	                            android:layout_marginTop="3dp"
-	                            android:text="@string/btn_samePhoneForEachVehicleCheckbox"
-	                            android:textColor="@color/bgBase" />
+		                            android:id="@+id/samePhoneForEachVehicleCheckbox"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:layout_marginBottom="3dp"
+		                            android:layout_marginTop="3dp"
+		                            android:text="@string/btn_samePhoneForEachVehicleCheckbox"
+		                            android:textColor="@color/bgBase" />
 			                    
 			                </LinearLayout>
-			
-			                <EditText
-			                    android:id="@+id/securityWordEditText"
+
+			                <LinearLayout
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_security_word"
-			                    style="@style/FormsElements_editText" />
-			
-			                <EditText
-			                    android:id="@+id/healthInsuranceEditText"
-			                    android:layout_width="fill_parent"
+			                    android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView4"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_security_word"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/securityWordEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="match_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_security_word" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
+			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_health_insurance"
-			                    style="@style/FormsElements_editText" />
+			                    android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView5"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_health_insurance"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/healthInsuranceEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_health_insurance" >
+
+			                        <requestFocus />
+			                    </EditText>
+
+			                </LinearLayout>
 			
 			                <TextView
 			                    android:id="@+id/TextView01"
 			                    style="@style/MainTitles"
 			                    android:text="@string/title_contact2"
 			                    android:textColor="@color/bgBase" />
-			
-			                <EditText
-			                    android:id="@+id/contact2NameEditText"
+
+			                <LinearLayout
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact2name"
-			                    style="@style/FormsElements_editText" />
-			
-			                <Spinner
-			                    android:id="@+id/contact2RelationSpinner"
-			                    android:layout_width="fill_parent"
-			                    android:layout_height="wrap_content"
-								android:background="@color/bgFormFieldsLight"
-								style="@style/FormsElements_editText" />
-			
-			                <EditText
-			                    android:id="@+id/contact2PhoneEditText"
+			                    android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView6"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_nombre"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/contact2NameEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="match_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_contact2name" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact1phone"
-			                    style="@style/FormsElements_editText" />
-			
-			                <TextView
-			                    android:id="@+id/TextView02"
-			                    style="@style/MainTitles"
-			                    android:text="@string/title_contact3"
-			                    android:textColor="@color/bgBase" />
-			
-			                <EditText
-			                    android:id="@+id/contact3NameEditText"
+			                    android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView7"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_relationship"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <Spinner
+			                        android:id="@+id/contact2RelationSpinner"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:background="@color/bgFormFieldsLight" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact3name"
-			                    style="@style/FormsElements_editText" />
-			
-			                <Spinner
-			                    android:id="@+id/contact3RelationSpinner"
-			                    android:layout_width="fill_parent"
-			                    android:layout_height="wrap_content"
-			                    android:background="@color/bgFormFieldsLight"
-			                    style="@style/FormsElements_editText" />
-			
-			                <EditText
-			                    android:id="@+id/contact3PhoneEditText"
+			                    android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView7"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_phone"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/contact2PhoneEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="match_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_contact1phone" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
+			                    android:layout_width="match_parent"
+			                    android:layout_height="wrap_content" >
+
+			                    <TextView
+			                        android:id="@+id/TextView02"
+			                        style="@style/MainTitles"
+			                        android:text="@string/title_contact3"
+			                        android:textColor="@color/bgBase" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_contact3phone"
-			                    style="@style/FormsElements_editText" />
+								android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView8"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_nombre"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/contact3NameEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="match_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_contact3name" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
+			                    android:layout_width="match_parent"
+			                    android:layout_height="wrap_content"
+								android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView9"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_relationship"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <Spinner
+			                        android:id="@+id/contact3RelationSpinner"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:background="@color/bgFormFieldsLight" />
+
+			                </LinearLayout>
+
+			                <LinearLayout
+			                    android:layout_width="match_parent"
+			                    android:layout_height="wrap_content"
+								android:orientation="vertical" >
+
+			                    <TextView
+			                        android:id="@+id/textView10"
+			                        android:layout_width="fill_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_marginRight="2dp"
+			                        android:layout_marginTop="2dp"
+			                        android:text="@string/lbl_update_contact_phone"
+			                        android:textColor="@color/bgBase"
+			                        android:textSize="13sp" />
+
+			                    <EditText
+			                        android:id="@+id/contact3PhoneEditText"
+			                        style="@style/FormsElements_editText"
+			                        android:layout_width="match_parent"
+			                        android:layout_height="wrap_content"
+			                        android:layout_weight="1"
+			                        android:ems="10"
+			                        android:hint="@string/hnt_contact3phone" />
+
+			                </LinearLayout>
 			
 			                <Button
 			                    android:id="@+id/updateEmergenccyConfigButton"

@@ -83,6 +83,13 @@
     <string name="lbl_services_service_date">Fecha del service</string>
     <string name="lbl_services_service_km_done">Kilometros recorridos totales al service</string>
     
+    <string name="lbl_update_contact_phone">Teléfono</string>
+    <string name="lbl_update_contact_phone_sms">Teléfono SMS</string>
+    <string name="lbl_update_contact_security_word">Palabra de seguridad</string>
+    <string name="lbl_update_contact_health_insurance">Cobertura médica</string>
+    <string name="lbl_update_contact_nombre">Nombre</string>
+    <string name="lbl_update_contact_relationship">Relación</string>
+    
     <!-- Buttons -->
     <string name="btn_tag_login">Ingresar</string>
     <string name="btn_tag_register">Registrarme</string>
