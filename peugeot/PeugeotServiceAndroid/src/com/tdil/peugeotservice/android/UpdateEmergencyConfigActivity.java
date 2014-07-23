@@ -68,7 +68,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
     private TextView contact1name;
 	
 	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 20 digitos.")
-	@Regex(order = 8, pattern = "[0-9]{2}+-[0-9]{7,13}", message = "Ingrese un numero en formato 54-00000000")
+	@Regex(order = 8, pattern = "[0-9]{2}+-[0-9]{8,15}", message = "Ingrese un numero en formato 54-00000000")
 	private TextView contact1phone;
 
 	@TextRule(order = 1, minLength = 1, maxLength = 20, message = "Ingrese la palabra de seguridad.")
@@ -83,7 +83,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
     private TextView contact2name;
 	private Spinner contact2relationSpinner;
 	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 20 digitos.")
-	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
+	@Regex(order = 8, pattern = "[0-9]{2}+-[0-9]{8,15}", message = "Ingrese un numero en formato 54-00000000")
 	private TextView contact2phone;
 	
 	@TextRule(order = 1, maxLength = 150, message = "Ingrese el nombre.")
@@ -91,7 +91,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
     private TextView contact3name;
 	private Spinner contact3relationSpinner;
 	@TextRule(order = 7, maxLength = 20, message = "Ingrese hasta 20 digitos.")
-	@Regex(order = 8, pattern = "[0-9]*", message = "Ingrese solo numeros")
+	@Regex(order = 8, pattern = "[0-9]{2}+-[0-9]{8,15}", message = "Ingrese un numero en formato 54-00000000")
 	private TextView contact3phone;
 	
 	private ContactDataV1Bean actual;

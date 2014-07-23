@@ -213,7 +213,6 @@
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
 			                    android:hint="@string/hnt_contact1phone"
-			                    android:inputType="number"
 			                    style="@style/FormsElements_editText" />
 			
 			                <TextView
@@ -241,7 +240,6 @@
 			                    android:layout_width="match_parent"
 			                    android:layout_height="wrap_content"
 			                    android:hint="@string/hnt_contact3phone"
-			                    android:inputType="number"
 			                    style="@style/FormsElements_editText" />
 			
 			                <Button
