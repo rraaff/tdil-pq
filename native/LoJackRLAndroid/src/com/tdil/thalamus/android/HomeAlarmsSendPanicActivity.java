@@ -30,7 +30,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmsSendPanicActivity extends Activity {
+public class HomeAlarmsSendPanicActivity extends LoJackActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -48,7 +48,7 @@ public class HomeAlarmsSendPanicActivity extends Activity {
 		setContentView(R.layout.activity_home_alarms_send_panic);
 
 		list = (ListView) findViewById(R.id.alarmsList);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		customizeActionBar();
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {

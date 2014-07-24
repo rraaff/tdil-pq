@@ -3,7 +3,6 @@ package com.tdil.thalamus.android;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,13 +15,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
@@ -33,7 +30,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
-public class IndexActivity extends Activity {
+public class IndexActivity extends LoJackActivity {
 
 	private static final String HOME = "HOME";
 	private static final String PARKINGS = "PARKINGS";
@@ -53,29 +50,29 @@ public class IndexActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
+		customizeActionBar(Login.getLoggedUser(this).getName(), true);
 
 //		BitmapFactory.Options options = new BitmapFactory.Options();
 //		options.inSampleSize = 4;
 		
-		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
 		
 //		Pablo, este pedazo era el viejo on drag
-		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
-		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
-		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
-		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
-		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
-		
-		findViewById(R.id.btnClubLJ).setOnTouchListener(new StartDragOnTouchListener(this, CLUB_LJ, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_club_on)));
-		
-		
-		findViewById(R.id.btnFooterPrevent).setOnDragListener(new ButtonDragListener(PREVENT));
-		findViewById(R.id.btnFooterPets).setOnDragListener(new ButtonDragListener(PETS));
-		findViewById(R.id.btnFooterParkings).setOnDragListener(new ButtonDragListener(PARKINGS));
-		findViewById(R.id.btnFooterTV).setOnDragListener(new ButtonDragListener(TV));
-		findViewById(R.id.btnFooterHome).setOnDragListener(new ButtonDragListener(HOME));
-		
-		findViewById(R.id.btnClubLJ).setOnDragListener(new ButtonDragListener(CLUB_LJ));
+//		findViewById(R.id.btnFooterPrevent).setOnTouchListener(new StartDragOnTouchListener(this, PREVENT, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_cars_on)));
+//		findViewById(R.id.btnFooterPets).setOnTouchListener(new StartDragOnTouchListener(this, PETS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_pets_on)));
+//		findViewById(R.id.btnFooterParkings).setOnTouchListener(new StartDragOnTouchListener(this, PARKINGS, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_park_on)));
+//		findViewById(R.id.btnFooterTV).setOnTouchListener(new StartDragOnTouchListener(this, TV, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+//		findViewById(R.id.btnFooterHome).setOnTouchListener(new StartDragOnTouchListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+//		
+//		findViewById(R.id.btnClubLJ).setOnTouchListener(new StartDragOnTouchListener(this, CLUB_LJ, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_ljtv_on)));
+//		
+//		
+//		findViewById(R.id.btnFooterPrevent).setOnDragListener(new ButtonDragListener(PREVENT));
+//		findViewById(R.id.btnFooterPets).setOnDragListener(new ButtonDragListener(PETS));
+//		findViewById(R.id.btnFooterParkings).setOnDragListener(new ButtonDragListener(PARKINGS));
+//		findViewById(R.id.btnFooterTV).setOnDragListener(new ButtonDragListener(TV));
+//		findViewById(R.id.btnFooterHome).setOnDragListener(new ButtonDragListener(HOME));
+//		
+//		findViewById(R.id.btnClubLJ).setOnDragListener(new ButtonDragListener(CLUB_LJ));
 		
 //		Pablo, este es el nuevo onclick y on long clic
 		/*
@@ -110,53 +107,53 @@ public class IndexActivity extends Activity {
 				FooterLogic.handleTvAccess(IndexActivity.this);
 			}
 		});
-		
-		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragOnLongClickListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		*/
+//		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragOnLongClickListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
 		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				FooterLogic.handleHomeAccess(IndexActivity.this, false);
 			}
 		});
-		*/
+		
 		
 
-		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
-		Button button = (Button)findViewById(R.id.vluCount);
-		if (Login.getLoggedUser(this).getVluMessages() > 0) {
-			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
-			button.setOnClickListener(new ViewVLUMessagesListener(this));
-		} else {
-			if (Login.getLoggedUser(this).getVluClient()) {
-				button.setBackgroundResource(R.drawable.badge_ok);
-				button.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Context context = getApplicationContext();
-						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
-						int duration = Toast.LENGTH_SHORT;
-						Toast toast = Toast.makeText(context, text, duration);
-						toast.show();
-					}
-				});
-			} else {
-				button.setVisibility(View.GONE);
-			}
-		}
-	}
+//		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
+//		Button button = (Button)findViewById(R.id.vluCount);
+//		if (Login.getLoggedUser(this).getVluMessages() > 0) {
+//			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
+//			button.setOnClickListener(new ViewVLUMessagesListener(this));
+//		} else {
+//			if (Login.getLoggedUser(this).getVluClient()) {
+//				button.setBackgroundResource(R.drawable.badge_ok);
+//				button.setOnClickListener(new OnClickListener() {
+//					@Override
+//					public void onClick(View v) {
+//						Context context = getApplicationContext();
+//						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
+//						int duration = Toast.LENGTH_SHORT;
+//						Toast toast = Toast.makeText(context, text, duration);
+//						toast.show();
+//					}
+//				});
+//			} else {
+//				button.setVisibility(View.GONE);
+//			}
+//		}
+//	}
 	
-	private class ViewVLUMessagesListener implements OnClickListener {
-		private IndexActivity activity;
-		
-		ViewVLUMessagesListener(IndexActivity activity) {
-			this.activity = activity;
-		}
-
-		@Override
-		public void onClick(View arg0) {
-			Intent intent = new Intent(getBaseContext(), VLUMessagesActivity.class);
-			startActivity(intent);
-		}
+//	private class ViewVLUMessagesListener implements OnClickListener {
+//		private IndexActivity activity;
+//		
+//		ViewVLUMessagesListener(IndexActivity activity) {
+//			this.activity = activity;
+//		}
+//
+//		@Override
+//		public void onClick(View arg0) {
+//			Intent intent = new Intent(getBaseContext(), VLUMessagesActivity.class);
+//			startActivity(intent);
+//		}
 	}
 	
 //	@Override
@@ -177,211 +174,211 @@ public class IndexActivity extends Activity {
 //	}
 	
 	
-	public class StartDragOnLongClickListener implements OnLongClickListener {
+//	public class StartDragOnLongClickListener implements OnLongClickListener {
+//
+//		private IndexActivity activity;
+//		private String localState;
+//		private Bitmap bitmap;
+//
+//		public StartDragOnLongClickListener(IndexActivity activity, String localState, Bitmap bitmap) {
+//			super();
+//			this.activity = activity;
+//			this.localState = localState;
+//			this.bitmap = bitmap;
+//		}
+//		
+//		@Override
+//		public boolean onLongClick(View v) {
+//			Button fruit = (Button) v;
+//			v.setAlpha(0.3f);
+//			// No responde
+//			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
+//
+//			ClipData data = ClipData.newPlainText("", "");
+//			v.startDrag(data, myShadowBuilder, localState, 0);
+//
+//			return true;
+//		}
+//	};
 
-		private IndexActivity activity;
-		private String localState;
-		private Bitmap bitmap;
-
-		public StartDragOnLongClickListener(IndexActivity activity, String localState, Bitmap bitmap) {
-			super();
-			this.activity = activity;
-			this.localState = localState;
-			this.bitmap = bitmap;
-		}
-		
-		@Override
-		public boolean onLongClick(View v) {
-			Button fruit = (Button) v;
-			v.setAlpha(0.3f);
-			// No responde
-			View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
-
-			ClipData data = ClipData.newPlainText("", "");
-			v.startDrag(data, myShadowBuilder, localState, 0);
-
-			return true;
-		}
-	};
-
-	public class StartDragOnTouchListener implements OnTouchListener {
-
-		private IndexActivity activity;
-		private String localState;
-		private Bitmap bitmap;
-
-		public StartDragOnTouchListener(IndexActivity activity, String localState, Bitmap bitmap) {
-			super();
-			this.activity = activity;
-			this.localState = localState;
-			this.bitmap = bitmap;
-		}
-
-		@Override
-		public boolean onTouch(View v, MotionEvent motionEvent) {
-			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-				Button fruit = (Button) v;
-				v.setAlpha(0.3f);
-				// No responde
-				View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
+//	public class StartDragOnTouchListener implements OnTouchListener {
+//
+//		private IndexActivity activity;
+//		private String localState;
+//		private Bitmap bitmap;
+//
+//		public StartDragOnTouchListener(IndexActivity activity, String localState, Bitmap bitmap) {
+//			super();
+//			this.activity = activity;
+//			this.localState = localState;
+//			this.bitmap = bitmap;
+//		}
+//
+//		@Override
+//		public boolean onTouch(View v, MotionEvent motionEvent) {
+//			if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//				Button fruit = (Button) v;
+//				v.setAlpha(0.3f);
+//				// No responde
+//				View.DragShadowBuilder myShadowBuilder = new MyShadowBuilder(v, bitmap);
+//	
+//				ClipData data = ClipData.newPlainText("", "");
+//				v.startDrag(data, myShadowBuilder, localState, 0);
+//	
+//				return true;
+//			} else {
+//			    return false;
+//			}
+//		}
+//	};
 	
-				ClipData data = ClipData.newPlainText("", "");
-				v.startDrag(data, myShadowBuilder, localState, 0);
+//	public class ButtonDragListener implements OnDragListener {
+//		
+//		private String buttonTarget;
+//		
+//		public ButtonDragListener(String buttonTarget) {
+//			super();
+//			this.buttonTarget = buttonTarget;
+//		}
+//
+//		@Override
+//		public boolean onDrag(View v, DragEvent event) {
+//			int dragEvent = event.getAction();
+//			TextView dropButton = (TextView) v;
+//
+//			switch (dragEvent) {
+//			case DragEvent.ACTION_DRAG_ENDED:
+//				findViewById(R.id.btnFooterHome).setAlpha(1);
+//				findViewById(R.id.btnFooterParkings).setAlpha(1);
+//				findViewById(R.id.btnFooterPets).setAlpha(1);
+//				findViewById(R.id.btnFooterPrevent).setAlpha(1);
+//				findViewById(R.id.btnFooterTV).setAlpha(1);
+//				findViewById(R.id.btnClubLJ).setAlpha(1);
+//				break;
+//			case DragEvent.ACTION_DRAG_ENTERED:
+//				break;
+//
+//			case DragEvent.ACTION_DRAG_EXITED:
+//				break;
+//
+//			case DragEvent.ACTION_DROP:
+//				findViewById(R.id.btnFooterHome).setAlpha(1);
+//				findViewById(R.id.btnFooterParkings).setAlpha(1);
+//				findViewById(R.id.btnFooterPets).setAlpha(1);
+//				findViewById(R.id.btnFooterPrevent).setAlpha(1);
+//				findViewById(R.id.btnFooterTV).setAlpha(1);
+//				findViewById(R.id.btnClubLJ).setAlpha(1);
+//				if (HOME.equals(event.getLocalState()) && HOME.equals(this.buttonTarget)) {
+//					FooterLogic.handleHomeAccess(IndexActivity.this, false);
+//				}
+//				if (PETS.equals(event.getLocalState()) && PETS.equals(this.buttonTarget)) {
+//					FooterLogic.handlePetsAccess(IndexActivity.this);
+//				}
+//				if (PREVENT.equals(event.getLocalState()) && PREVENT.equals(this.buttonTarget)) {
+//					FooterLogic.handlePreventAccess(IndexActivity.this);
+//				}
+//				if (PARKINGS.equals(event.getLocalState()) && PARKINGS.equals(this.buttonTarget)) {
+//					FooterLogic.handleParkingsAccess(IndexActivity.this);
+//				}
+//				if (TV.equals(event.getLocalState()) && TV.equals(this.buttonTarget)) {
+//					FooterLogic.handleTvAccess(IndexActivity.this);
+//				}
+//				if (CLUB_LJ.equals(event.getLocalState()) && CLUB_LJ.equals(this.buttonTarget)) {
+//					FooterLogic.handleClubLoJackAccess(IndexActivity.this);
+//				}
+//				
+//				break;
+//			}
+//
+//			return true;
+//		}
+//
+//	};
 	
-				return true;
-			} else {
-			    return false;
-			}
-		}
-	};
-	
-	public class ButtonDragListener implements OnDragListener {
-		
-		private String buttonTarget;
-		
-		public ButtonDragListener(String buttonTarget) {
-			super();
-			this.buttonTarget = buttonTarget;
-		}
+//	OnDragListener dragListener1 = new OnDragListener() {
+//		@Override
+//		public boolean onDrag(View v, DragEvent event) {
+//			int dragEvent = event.getAction();
+//			TextView dropButton = (TextView) v;
+//
+//			switch (dragEvent) {
+//			case DragEvent.ACTION_DRAG_ENDED:
+//				findViewById(R.id.btnFooterHome).setAlpha(1);
+//				findViewById(R.id.btnFooterParkings).setAlpha(1);
+//				findViewById(R.id.btnFooterPets).setAlpha(1);
+//				findViewById(R.id.btnFooterPrevent).setAlpha(1);
+//				findViewById(R.id.btnFooterTV).setAlpha(1);
+//				break;
+//			case DragEvent.ACTION_DRAG_ENTERED:
+//				dropButton.setBackgroundResource(R.drawable.rd_droppon);
+//				
+//				// Get instance of Vibrator from current Context
+//				Vibrator vv = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+//
+//				// Vibrate for 100 milliseconds
+//				vv.vibrate(100);
+//				break;
+//
+//			case DragEvent.ACTION_DRAG_EXITED:
+//				dropButton.setBackgroundResource(R.drawable.transparente);
+//				break;
+//
+//			case DragEvent.ACTION_DROP:
+//				dropButton.setBackgroundResource(R.drawable.transparente);
+//				if (HOME.equals(event.getLocalState())) {
+//					FooterLogic.handleHomeAccess(IndexActivity.this, false);
+//				}
+//				if (PETS.equals(event.getLocalState())) {
+//					FooterLogic.handlePetsAccess(IndexActivity.this);
+//				}
+//				if (PREVENT.equals(event.getLocalState())) {
+//					FooterLogic.handlePreventAccess(IndexActivity.this);
+//				}
+//				if (PARKINGS.equals(event.getLocalState())) {
+//					FooterLogic.handleParkingsAccess(IndexActivity.this);
+//				}
+//				if (TV.equals(event.getLocalState())) {
+//					FooterLogic.handleTvAccess(IndexActivity.this);
+//				}
+//				if (CLUB_LJ.equals(event.getLocalState())) {
+//					FooterLogic.handleClubLoJackAccess(IndexActivity.this);
+//				}
+//				
+//				break;
+//			}
+//
+//			return true;
+//		}
+//
+//	};
 
-		@Override
-		public boolean onDrag(View v, DragEvent event) {
-			int dragEvent = event.getAction();
-			TextView dropButton = (TextView) v;
-
-			switch (dragEvent) {
-			case DragEvent.ACTION_DRAG_ENDED:
-				findViewById(R.id.btnFooterHome).setAlpha(1);
-				findViewById(R.id.btnFooterParkings).setAlpha(1);
-				findViewById(R.id.btnFooterPets).setAlpha(1);
-				findViewById(R.id.btnFooterPrevent).setAlpha(1);
-				findViewById(R.id.btnFooterTV).setAlpha(1);
-				findViewById(R.id.btnClubLJ).setAlpha(1);
-				break;
-			case DragEvent.ACTION_DRAG_ENTERED:
-				break;
-
-			case DragEvent.ACTION_DRAG_EXITED:
-				break;
-
-			case DragEvent.ACTION_DROP:
-				findViewById(R.id.btnFooterHome).setAlpha(1);
-				findViewById(R.id.btnFooterParkings).setAlpha(1);
-				findViewById(R.id.btnFooterPets).setAlpha(1);
-				findViewById(R.id.btnFooterPrevent).setAlpha(1);
-				findViewById(R.id.btnFooterTV).setAlpha(1);
-				findViewById(R.id.btnClubLJ).setAlpha(1);
-				if (HOME.equals(event.getLocalState()) && HOME.equals(this.buttonTarget)) {
-					FooterLogic.handleHomeAccess(IndexActivity.this, false);
-				}
-				if (PETS.equals(event.getLocalState()) && PETS.equals(this.buttonTarget)) {
-					FooterLogic.handlePetsAccess(IndexActivity.this);
-				}
-				if (PREVENT.equals(event.getLocalState()) && PREVENT.equals(this.buttonTarget)) {
-					FooterLogic.handlePreventAccess(IndexActivity.this);
-				}
-				if (PARKINGS.equals(event.getLocalState()) && PARKINGS.equals(this.buttonTarget)) {
-					FooterLogic.handleParkingsAccess(IndexActivity.this);
-				}
-				if (TV.equals(event.getLocalState()) && TV.equals(this.buttonTarget)) {
-					FooterLogic.handleTvAccess(IndexActivity.this);
-				}
-				if (CLUB_LJ.equals(event.getLocalState()) && CLUB_LJ.equals(this.buttonTarget)) {
-					FooterLogic.handleClubLoJackAccess(IndexActivity.this);
-				}
-				
-				break;
-			}
-
-			return true;
-		}
-
-	};
-	
-	OnDragListener dragListener1 = new OnDragListener() {
-		@Override
-		public boolean onDrag(View v, DragEvent event) {
-			int dragEvent = event.getAction();
-			TextView dropButton = (TextView) v;
-
-			switch (dragEvent) {
-			case DragEvent.ACTION_DRAG_ENDED:
-				findViewById(R.id.btnFooterHome).setAlpha(1);
-				findViewById(R.id.btnFooterParkings).setAlpha(1);
-				findViewById(R.id.btnFooterPets).setAlpha(1);
-				findViewById(R.id.btnFooterPrevent).setAlpha(1);
-				findViewById(R.id.btnFooterTV).setAlpha(1);
-				break;
-			case DragEvent.ACTION_DRAG_ENTERED:
-				dropButton.setBackgroundResource(R.drawable.rd_droppon);
-				
-				// Get instance of Vibrator from current Context
-				Vibrator vv = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-				// Vibrate for 100 milliseconds
-				vv.vibrate(100);
-				break;
-
-			case DragEvent.ACTION_DRAG_EXITED:
-				dropButton.setBackgroundResource(R.drawable.transparente);
-				break;
-
-			case DragEvent.ACTION_DROP:
-				dropButton.setBackgroundResource(R.drawable.transparente);
-				if (HOME.equals(event.getLocalState())) {
-					FooterLogic.handleHomeAccess(IndexActivity.this, false);
-				}
-				if (PETS.equals(event.getLocalState())) {
-					FooterLogic.handlePetsAccess(IndexActivity.this);
-				}
-				if (PREVENT.equals(event.getLocalState())) {
-					FooterLogic.handlePreventAccess(IndexActivity.this);
-				}
-				if (PARKINGS.equals(event.getLocalState())) {
-					FooterLogic.handleParkingsAccess(IndexActivity.this);
-				}
-				if (TV.equals(event.getLocalState())) {
-					FooterLogic.handleTvAccess(IndexActivity.this);
-				}
-				if (CLUB_LJ.equals(event.getLocalState())) {
-					FooterLogic.handleClubLoJackAccess(IndexActivity.this);
-				}
-				
-				break;
-			}
-
-			return true;
-		}
-
-	};
-
-	private class MyShadowBuilder extends View.DragShadowBuilder {
-		private Drawable shadow;
-
-		public MyShadowBuilder(View v, Bitmap bitmap) {
-			super(v);
-			shadow = new BitmapDrawable(IndexActivity.this.getResources(), bitmap);
-		}
-
-		@Override
-		public void onDrawShadow(Canvas canvas) {
-			shadow.draw(canvas);
-		}
-
-		@Override
-		public void onProvideShadowMetrics(Point shadowSize,
-				Point shadowTouchPoint) {
-			int height, width;
-			height = (int) getView().getHeight();
-			width = (int) getView().getHeight();
-
-			shadow.setBounds(0, 0, width, height);
-
-			shadowSize.set(width, height);
-			shadowTouchPoint.set(width / 2, height / 2);
-		}
-
-	}
+//	private class MyShadowBuilder extends View.DragShadowBuilder {
+//		private Drawable shadow;
+//
+//		public MyShadowBuilder(View v, Bitmap bitmap) {
+//			super(v);
+//			shadow = new BitmapDrawable(IndexActivity.this.getResources(), bitmap);
+//		}
+//
+//		@Override
+//		public void onDrawShadow(Canvas canvas) {
+//			shadow.draw(canvas);
+//		}
+//
+//		@Override
+//		public void onProvideShadowMetrics(Point shadowSize,
+//				Point shadowTouchPoint) {
+//			int height, width;
+//			height = (int) getView().getHeight();
+//			width = (int) getView().getHeight();
+//
+//			shadow.setBounds(0, 0, width, height);
+//
+//			shadowSize.set(width, height);
+//			shadowTouchPoint.set(width / 2, height / 2);
+//		}
+//
+//	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {

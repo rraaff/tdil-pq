@@ -22,7 +22,7 @@ import com.tdil.thalamus.android.utils.Login;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ParkingsActivity extends Activity {
+public class ParkingsActivity extends LoJackActivity {
 
 	// UI references.
 	private WebView parkingsWebView;
@@ -69,7 +69,7 @@ public class ParkingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_parkings);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		customizeActionBar();
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		

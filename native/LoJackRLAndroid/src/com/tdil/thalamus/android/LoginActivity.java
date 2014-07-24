@@ -54,7 +54,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity implements IRestClientObserver,
+public class LoginActivity extends LoJackActivity implements IRestClientObserver,
 		ValidationListener {
 
 	/*
@@ -101,6 +101,7 @@ public class LoginActivity extends Activity implements IRestClientObserver,
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_login);
+		customizeActionBar();
 		
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {

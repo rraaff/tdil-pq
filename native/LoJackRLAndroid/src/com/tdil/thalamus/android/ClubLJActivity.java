@@ -19,7 +19,7 @@ import com.tdil.thalamus.android.utils.Login;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ClubLJActivity extends Activity {
+public class ClubLJActivity extends LoJackActivity {
 
 	/**
 	 * The default email to populate the email field with.
@@ -31,8 +31,7 @@ public class ClubLJActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_clublj);
-		this.getActionBar().setTitle(Login.getLoggedUser(this).getName());
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		customizeActionBar(Login.getLoggedUser(this).getName(), true);
 		
 		((TextView)findViewById(R.id.userDNITextView)).setText(Login.getLoggedUser(this).getDni());
 		((TextView)findViewById(R.id.clubLJNameTextView)).setText(Login.getLoggedUser(this).getName());

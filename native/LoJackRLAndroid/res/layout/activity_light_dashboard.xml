@@ -79,7 +79,7 @@
 					        android:weightSum="6">
 				        
 					    	<!-- hide switch -->
-						    <Switch
+						    <ToggleButton
 						        android:id="@+id/switchActivate"
 								android:layout_width="0dp"
 								android:layout_height="12sp"
@@ -88,7 +88,7 @@
 						        android:textOff="OFF"
 						        android:textOn="ON" />
 						    
-						    <Switch
+						    <ToggleButton
 						        android:id="@+id/switchRandom"
 								android:layout_width="0dp"
 								android:layout_height="12sp"

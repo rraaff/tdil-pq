@@ -29,7 +29,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLightsActivity extends Activity implements ILightsActivity {
+public class HomeLightsActivity extends LoJackActivity implements ILightsActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -43,6 +43,7 @@ public class HomeLightsActivity extends Activity implements ILightsActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_lights);
+		customizeActionBar();
 		lightsList = (ListView) findViewById(R.id.lightsList);
 		loadLights();
 	}

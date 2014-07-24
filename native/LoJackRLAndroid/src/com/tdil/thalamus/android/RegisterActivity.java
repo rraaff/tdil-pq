@@ -65,7 +65,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RegisterActivity extends Activity implements IRestClientObserver, ValidationListener {
+public class RegisterActivity extends LoJackActivity implements IRestClientObserver, ValidationListener {
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -105,7 +105,7 @@ public class RegisterActivity extends Activity implements IRestClientObserver, V
 	    validator.setValidationListener(this);
 		
 		setContentView(R.layout.activity_register);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		customizeActionBar();
 		
 		document = (TextView) findViewById(R.id.documentNumber);
 		

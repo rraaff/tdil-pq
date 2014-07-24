@@ -62,7 +62,7 @@
                                 android1:textColor="@color/lst_itm_title"
                                 android1:textSize="16sp" />
 
-                            <Switch
+                            <ToggleButton
                                 android1:id="@+id/btnToggleAlarm"
                                 android1:layout_width="0dp"
                                 android1:layout_height="12sp"

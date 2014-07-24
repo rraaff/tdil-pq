@@ -23,4 +23,23 @@
 	<color name="pressed_example">#CCCC0000</color>
 	
 	<color name="color_transparent">#00000000</color>
+	<color name="white">#FFFFFF</color>
+    
+	
+	<color name="bgBaseGray">#4c4c58</color>
+	<color name="bgFormFields">#cfcfda</color>
+	<color name="bgFormFieldsLight">#cfcfda</color>
+	
+	<color name="MainTitles">#00aad5</color>
+	<color name="SecondayTitles">#595a67</color>
+	<color name="labels">#595a67</color>
+	<color name="backButtonsText">#3e3f49</color>
+	
+	<color name="lightBlue">#00aad5</color>
+	
+	<color name="ActionBarBG">#373641</color>
+	
+	<!-- Item list -->
+	
+	<color name="new_wheel_link">#00d8ff</color>
 </resources>

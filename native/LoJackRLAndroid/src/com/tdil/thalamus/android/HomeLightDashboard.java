@@ -1,7 +1,6 @@
 package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -12,10 +11,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Switch;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -36,7 +35,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLightDashboard extends Activity implements ILightsActivity{
+public class HomeLightDashboard extends LoJackActivity implements ILightsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -53,8 +52,8 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	private int times = 0;
 	private static int max_times = 10;
 	private static long sleep = 2000;
-	private Switch activateDeactivateSwitch;
-	private Switch randomSwitch;
+	private ToggleButton activateDeactivateSwitch;
+	private ToggleButton randomSwitch;
 	
 	private TabSpec tabCameras;
 	private TabHost tabHost;
@@ -63,6 +62,7 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_light_dashboard);
+		customizeActionBar();
 		Bundle extras = getIntent().getExtras();
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		tabHost = (TabHost) findViewById(R.id.tabhost);
@@ -85,16 +85,15 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 		
 		tabHost.setCurrentTab(1);
 		
-		Switch activateDeactivate = (Switch)findViewById(R.id.switchActivate);
+		ToggleButton activateDeactivate = (ToggleButton)findViewById(R.id.switchActivate);
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
-		Switch random = (Switch)findViewById(R.id.switchRandom);
+		ToggleButton random = (ToggleButton)findViewById(R.id.switchRandom);
 		random.setOnCheckedChangeListener(new ToggleRandomListener(this));
 		View viewlog = findViewById(R.id.goToViewLightLog);
 		viewlog.setOnClickListener(new ViewLightLogListener(this));
 		light = (Light)extras.getSerializable(LIGHT);
 		hasMore = !"FALSE".equals((String)extras.getSerializable(HAS_MORE));
 		init();
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		int numberOfTabs = tabHost.getTabWidget().getChildCount();
 	    for(int t=0; t<numberOfTabs; t++){
@@ -132,8 +131,8 @@ public class HomeLightDashboard extends Activity implements ILightsActivity{
 
 	public void init() {
 		ignore = true;
-		activateDeactivateSwitch = (Switch)findViewById(R.id.switchActivate);
-		randomSwitch = (Switch)findViewById(R.id.switchRandom);
+		activateDeactivateSwitch = (ToggleButton)findViewById(R.id.switchActivate);
+		randomSwitch = (ToggleButton)findViewById(R.id.switchRandom);
 		
 		TextView description = (TextView) findViewById(R.id.lightDescription);
 		description.setText(light.getDescription());

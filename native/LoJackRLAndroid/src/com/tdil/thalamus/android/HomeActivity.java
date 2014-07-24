@@ -16,7 +16,7 @@ import com.tdil.lojack.rl.R;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeActivity extends Activity {
+public class HomeActivity extends LoJackActivity {
 
 	/**
 	 * The default email to populate the email field with.
@@ -28,6 +28,7 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home);
+		customizeActionBar();
 		findViewById(R.id.alarmas).setOnClickListener(
 			new View.OnClickListener() {
 				@Override

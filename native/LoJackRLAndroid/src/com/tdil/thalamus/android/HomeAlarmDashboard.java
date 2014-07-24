@@ -1,7 +1,6 @@
 package com.tdil.thalamus.android;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -12,10 +11,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Switch;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -36,7 +35,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
+public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -53,7 +52,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	
 	public static final String ALARM = "ALARM";
 	public static final String HAS_MORE = "HAS_MORE";
-	private Switch activateDeactivate;
+	private ToggleButton activateDeactivate;
 	
 	private TabSpec tabCameras;
 	private TabHost tabHost;
@@ -63,6 +62,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_alarm_dashboard);
+		customizeActionBar();
 		Bundle extras = getIntent().getExtras();
 		
 		tabHost = (TabHost) findViewById(R.id.tabhost);
@@ -87,12 +87,11 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 		
 		hasMore = !"FALSE".equals((String)extras.getSerializable(HAS_MORE));
 		
-		activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
+		activateDeactivate = (ToggleButton)findViewById(R.id.btnToggleAlarm);
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
 		View viewlog = findViewById(R.id.goToAlarmViewLog);
 		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
 		init();
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
 		int numberOfTabs = tabHost.getTabWidget().getChildCount();
 	    for(int t=0; t<numberOfTabs; t++){
@@ -128,7 +127,7 @@ public class HomeAlarmDashboard extends Activity implements IAlarmsActivity{
 	}
 
 	public void init() {
-		Switch activateDeactivate = (Switch)findViewById(R.id.btnToggleAlarm);
+		ToggleButton activateDeactivate = (ToggleButton)findViewById(R.id.btnToggleAlarm);
 		TextView description = (TextView) findViewById(R.id.alarmDescription);
 		description.setText(alarm.getDescription());
 		

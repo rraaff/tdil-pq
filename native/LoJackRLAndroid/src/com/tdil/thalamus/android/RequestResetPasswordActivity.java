@@ -33,7 +33,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class RequestResetPasswordActivity extends Activity implements IRestClientObserver {
+public class RequestResetPasswordActivity extends LoJackActivity implements IRestClientObserver {
 
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
@@ -56,7 +56,7 @@ public class RequestResetPasswordActivity extends Activity implements IRestClien
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_request_reset);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		customizeActionBar();
 		
 		final Spinner spinner = (Spinner) findViewById(R.id.documentType);
 		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

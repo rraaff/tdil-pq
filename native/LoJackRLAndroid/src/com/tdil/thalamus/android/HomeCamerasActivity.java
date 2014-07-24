@@ -27,7 +27,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeCamerasActivity extends Activity {
+public class HomeCamerasActivity extends LoJackActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -41,11 +41,11 @@ public class HomeCamerasActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_cameras);
+		customizeActionBar();
 
 		cameraList = (ListView) findViewById(R.id.camerasList);
 
 		loadCameras();
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	public void loadCameras() {

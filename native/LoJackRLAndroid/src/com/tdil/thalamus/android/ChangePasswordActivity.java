@@ -37,7 +37,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ChangePasswordActivity extends Activity implements
+public class ChangePasswordActivity extends LoJackActivity implements
 		IRestClientObserver, ValidationListener {
 
 	/*
@@ -78,7 +78,7 @@ public class ChangePasswordActivity extends Activity implements
 		validator.setValidationListener(this);
 
 		setContentView(R.layout.activity_change_password);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		customizeActionBar(true);
 		oldPassword = (EditText)findViewById(R.id.oldPassword);
 		newPassword = (EditText)findViewById(R.id.new_password);
 		retypePassword = (EditText)findViewById(R.id.retype_new_password);

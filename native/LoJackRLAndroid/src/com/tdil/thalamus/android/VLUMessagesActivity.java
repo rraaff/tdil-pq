@@ -28,7 +28,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class VLUMessagesActivity extends Activity {
+public class VLUMessagesActivity extends LoJackActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -43,9 +43,9 @@ public class VLUMessagesActivity extends Activity {
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 
 		setContentView(R.layout.activity_vlu_messages);
+		customizeActionBar();
 
 		list = (ListView) findViewById(R.id.vluMessagesList);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {

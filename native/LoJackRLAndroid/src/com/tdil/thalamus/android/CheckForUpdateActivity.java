@@ -21,7 +21,7 @@ import android.view.Menu;
 
 import com.tdil.lojack.rl.R;
 
-public class CheckForUpdateActivity extends Activity {
+public class CheckForUpdateActivity extends LoJackActivity {
 	
 	private Handler mHandler;
 

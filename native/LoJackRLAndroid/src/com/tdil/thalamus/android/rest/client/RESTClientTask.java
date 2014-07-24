@@ -7,8 +7,13 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpException;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpEntityEnclosingRequestBase;
@@ -16,13 +21,16 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.protocol.HttpContext;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
+
+import com.tdil.thalamus.android.utils.Login;
+
 
 
 public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask {
@@ -42,6 +50,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	private boolean incomplete = false;
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
+	
+	private static ExecutorService SERIAL_EXECUTOR = Executors.newFixedThreadPool(1);
+	
 	static {
 		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
 	}
@@ -59,6 +70,20 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		this.url = url;
 		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
+	}
+	
+	public static DefaultHttpClient get1HttpClient(final Context context) {
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		if (context != null) {
+			httpClient.addRequestInterceptor(new HttpRequestInterceptor() {
+				@Override
+				public void process(HttpRequest arg0, HttpContext arg1)
+						throws HttpException, IOException {
+					arg0.addHeader("apkToken", Login.getLoggedUser(context).getApkToken());
+				}
+			});
+		}
+		return httpClient;
 	}
 
 	protected void onPreExecute() {
@@ -95,6 +120,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		if (incomplete) {
 			return Boolean.FALSE;
 		}
+		Context context = contextRef.get();
 		try {
 			// Set up HTTP post
 			HttpRequestBase httpPost = this.method.create(urlToExecute);
@@ -110,7 +136,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			// Convert response to string using String Builder
 			try {
 				BufferedReader bReader = new BufferedReader(new InputStreamReader(
-						inputStream, "iso-8859-1"), 8);
+						inputStream), 8);
 				StringBuilder sBuilder = new StringBuilder();
 
 				String line = null;
@@ -185,14 +211,14 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			
 		}
 	}
-
+	
 	@Override
 	protected void onCancelled() {
 		// TODO ver context.showProgress(false);
 	}
 
 	/* (non-Javadoc)
-	 * @see com.tdil.thalamus.android.rest.client.IRestClientTask#getResult()
+	 * @see com.tdil.peugeotservice.android.rest.client.IRestClientTask#getResult()
 	 */
 	@Override
 	public String getResult() {
@@ -200,7 +226,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	}
 
 	/* (non-Javadoc)
-	 * @see com.tdil.thalamus.android.rest.client.IRestClientTask#getStatusCode()
+	 * @see com.tdil.peugeotservice.android.rest.client.IRestClientTask#getStatusCode()
 	 */
 	@Override
 	public int getStatusCode() {
@@ -208,10 +234,14 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	}
 
 	/* (non-Javadoc)
-	 * @see com.tdil.thalamus.android.rest.client.IRestClientTask#setStatusCode(int)
+	 * @see com.tdil.peugeotservice.android.rest.client.IRestClientTask#setStatusCode(int)
 	 */
 	@Override
 	public void setStatusCode(int status) {
 		this.statusCode = status;
+	}
+
+	public void executeSerial(Void params) {
+		this.executeOnExecutor(SERIAL_EXECUTOR, params);
 	}
 }

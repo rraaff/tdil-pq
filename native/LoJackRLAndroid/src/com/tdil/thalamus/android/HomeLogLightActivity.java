@@ -28,7 +28,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeLogLightActivity extends Activity {
+public class HomeLogLightActivity extends LoJackActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -51,9 +51,9 @@ public class HomeLogLightActivity extends Activity {
 		idluz = extras.getInt(IDLUZ);
 
 		setContentView(R.layout.activity_home_light_log);
+		customizeActionBar();
 
 		list = (ListView) findViewById(R.id.lightLogList);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {

@@ -41,7 +41,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAlarmsActivity {
+public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivity, IAlarmsActivity {
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
 	public static final String TAB_ALARMAS = "ALARMAS";
@@ -74,6 +74,7 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_home_alarms);
+		customizeActionBar();
 		
 		String tab = null;
 		Bundle extras = getIntent().getExtras();
@@ -143,7 +144,6 @@ public class HomeAlarmsActivity extends Activity implements ILightsActivity, IAl
 			}
 		}
 		
-		getActionBar().setDisplayHomeAsUpEnabled(true);
 		FooterLogic.installFooterLogic(this);
 	}
 	
