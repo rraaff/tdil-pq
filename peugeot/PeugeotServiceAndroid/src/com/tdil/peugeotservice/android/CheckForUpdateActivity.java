@@ -21,6 +21,8 @@ import android.view.Menu;
 
 import com.tdil.peugeotservice.R;
 
+import com.mobext.mobextlibrary.*;
+
 public class CheckForUpdateActivity extends Activity {
 	
 	private Handler mHandler;
@@ -32,6 +34,10 @@ public class CheckForUpdateActivity extends Activity {
 		setContentView(R.layout.activity_check_for_update);
 		//setTypeface(this, R.id.loadingInfoText);
 		//customizeActionBar();
+		
+		// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
+		
 		mHandler = new Handler();
 		checkUpdate.start();
 	}
