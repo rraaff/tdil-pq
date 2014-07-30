@@ -16,7 +16,7 @@
             android:id="@+id/main_logo"
             style="@style/mainLogoAtLogin"
             android:layout_height="40dp"
-            android:layout_margin="25dp"
+            android:layout_margin="40dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/main_logo" />
         
@@ -37,8 +37,9 @@
                 android:padding="15dp" >
 
 	            <TableRow
-                    android:id="@+id/tableIDNumber"
-                    style="@style/fieldsetLike">
+	                android:id="@+id/tableIDNumber"
+	                style="@style/fieldsetLike"
+	                android:layout_marginBottom="0dp" >
                     
                     <TextView
                         android:id="@+id/labelIdNumber"
@@ -84,7 +85,8 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="40dp"
 	        android:layout_gravity="bottom|center_horizontal"
-	        android:layout_margin="25dp"
+	        android:layout_marginBottom="35dp"
+	        android:layout_marginTop="50dp"
 	        android:layout_weight="1"
 	        android:adjustViewBounds="true"
 	        android:contentDescription="@string/action_loading"
