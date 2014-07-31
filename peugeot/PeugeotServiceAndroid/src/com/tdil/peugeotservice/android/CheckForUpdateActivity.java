@@ -34,9 +34,6 @@ public class CheckForUpdateActivity extends Activity {
 		//setTypeface(this, R.id.loadingInfoText);
 		//customizeActionBar();
 		
-		// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
-		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
-		
 		mHandler = new Handler();
 		checkUpdate.start();
 	}
@@ -254,6 +251,12 @@ public class CheckForUpdateActivity extends Activity {
 
     public AppStart checkAppStart(int currentVersionCode, int lastVersionCode) {
         if (lastVersionCode == -1) {
+        	
+        	// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+    		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
+    		// Facebook 
+    		com.facebook.AppEventsLogger.activateApp(this, "YOUR_APP_ID");
+    		
             return AppStart.FIRST_TIME;
         } else if (lastVersionCode < currentVersionCode) {
             return AppStart.FIRST_TIME_VERSION;
