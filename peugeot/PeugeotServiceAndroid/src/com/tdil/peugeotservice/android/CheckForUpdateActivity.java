@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 
+import com.grab.Grab.Grab;
 import com.mobext.mobextlibrary.Mobext;
 import com.tdil.peugeotservice.R;
 
@@ -33,6 +34,8 @@ public class CheckForUpdateActivity extends Activity {
 		setContentView(R.layout.activity_check_for_update);
 		//setTypeface(this, R.id.loadingInfoText);
 		//customizeActionBar();
+		// TODO PABLO
+		Grab.init(this, "SECRET", false);
 		
 		mHandler = new Handler();
 		checkUpdate.start();
@@ -254,7 +257,7 @@ public class CheckForUpdateActivity extends Activity {
         	
         	// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
     		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
-    		// Facebook 
+    		// Facebook // TODO PABLO
     		com.facebook.AppEventsLogger.activateApp(this, "YOUR_APP_ID");
     		
             return AppStart.FIRST_TIME;
