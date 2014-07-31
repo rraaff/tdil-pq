@@ -19,9 +19,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 
+import com.mobext.mobextlibrary.Mobext;
 import com.tdil.peugeotservice.R;
-
-import com.mobext.mobextlibrary.*;
 
 public class CheckForUpdateActivity extends Activity {
 	
