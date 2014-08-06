@@ -257,8 +257,8 @@ public class CheckForUpdateActivity extends Activity {
         	
         	// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
     		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
-    		// Facebook // TODO PABLO
-    		com.facebook.AppEventsLogger.activateApp(this, "YOUR_APP_ID");
+    		// Facebook
+    		com.facebook.AppEventsLogger.activateApp(this, "295476740634833");
     		
             return AppStart.FIRST_TIME;
         } else if (lastVersionCode < currentVersionCode) {
