@@ -34,8 +34,9 @@ public class CheckForUpdateActivity extends Activity {
 		setContentView(R.layout.activity_check_for_update);
 		//setTypeface(this, R.id.loadingInfoText);
 		//customizeActionBar();
-		// TODO PABLO
-		Grab.init(this, "SECRET", false);
+		
+		// Twitter tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+		Grab.init(this, "com.tdil.peugeotservice", false);
 		
 		mHandler = new Handler();
 		checkUpdate.start();
@@ -257,7 +258,8 @@ public class CheckForUpdateActivity extends Activity {
         	
         	// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
     		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
-    		// Facebook
+    		
+    		// Facebook tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
     		com.facebook.AppEventsLogger.activateApp(this, "295476740634833");
     		
             return AppStart.FIRST_TIME;
