@@ -15,7 +15,7 @@ public class ApplicationConfig {
 	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 // PABLO
-//	public static final String APP_DOMAIN = "192.168.252.106:8380";
+//	public static final String APP_DOMAIN = "192.168.252.111:8380";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/PeugeotServiceWeb/";
 
 // MARCOS
