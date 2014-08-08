@@ -37,7 +37,7 @@ public class CheckForUpdateActivity extends Activity {
 		
 		try {
 			// Twitter tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
-			Grab.init(this, "com.tdil.peugeotservice", false);
+			Grab.init(this, "peugeotap_cca287636b2:a0a5b55e515dd511:yT5k7OavfToqVUa/eEqny6EZrW+0eVi6MI/3FLIrTlU=", false);
 		} catch (Exception e) {
  		   
  	   }
