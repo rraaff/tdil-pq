@@ -35,8 +35,12 @@ public class CheckForUpdateActivity extends Activity {
 		//setTypeface(this, R.id.loadingInfoText);
 		//customizeActionBar();
 		
-		// Twitter tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
-		Grab.init(this, "com.tdil.peugeotservice", false);
+		try {
+			// Twitter tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+			Grab.init(this, "com.tdil.peugeotservice", false);
+		} catch (Exception e) {
+ 		   
+ 	   }
 		
 		mHandler = new Handler();
 		checkUpdate.start();
@@ -255,12 +259,19 @@ public class CheckForUpdateActivity extends Activity {
 
     public AppStart checkAppStart(int currentVersionCode, int lastVersionCode) {
         if (lastVersionCode == -1) {
-        	
-        	// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
-    		Mobext.TrackFirstInstall(this.getBaseContext(), "198");
-    		
-    		// Facebook tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
-    		com.facebook.AppEventsLogger.activateApp(this, "295476740634833");
+        	CheckForUpdateActivity.this.runOnUiThread(new Runnable() {
+    	       public void run() {
+    	    	   try {
+    	    		// Mobext tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+    	       		Mobext.TrackFirstInstall(CheckForUpdateActivity.this.getBaseContext(), "198");
+    	       		
+    	       		// Facebook tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+    	       		com.facebook.AppEventsLogger.activateApp(CheckForUpdateActivity.this, "295476740634833");
+    	    	   } catch (Exception e) {
+    	    		   
+    	    	   }
+    	       }
+    	     });
     		
             return AppStart.FIRST_TIME;
         } else if (lastVersionCode < currentVersionCode) {
