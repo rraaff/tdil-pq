@@ -109,51 +109,83 @@ public class IndexActivity extends LoJackActivity {
 		});
 		*/
 //		findViewById(R.id.btnFooterHome).setOnLongClickListener(new StartDragOnLongClickListener(this, HOME, BitmapFactory.decodeResource(getResources(), R.drawable.rd_item_home_on)));
+		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handlePreventAccess(IndexActivity.this);
+			}
+		});
+		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handlePetsAccess(IndexActivity.this);
+			}
+		});
+		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handleParkingsAccess(IndexActivity.this);
+			}
+		});
+		findViewById(R.id.btnFooterTV).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handleTvAccess(IndexActivity.this);
+			}
+		});
 		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				FooterLogic.handleHomeAccess(IndexActivity.this, false);
 			}
 		});
+		findViewById(R.id.btnClubLJ).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				FooterLogic.handleClubLoJackAccess(IndexActivity.this);
+			}
+		});
+		Button button = (Button)findViewById(R.id.vluCount);
+		if (Login.getLoggedUser(this).getVluMessages() > 0) {
+			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
+			button.setOnClickListener(new ViewVLUMessagesListener(this));
+		} else {
+			if (Login.getLoggedUser(this).getVluClient()) {
+				button.setBackgroundResource(R.drawable.badge_ok);
+				button.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Context context = getApplicationContext();
+						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
+						int duration = Toast.LENGTH_SHORT;
+						Toast toast = Toast.makeText(context, text, duration);
+						toast.show();
+					}
+				});
+			} else {
+				button.setVisibility(View.GONE);
+			}
+		}
+	}
+		
+		
 		
 		
 
 //		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
-//		Button button = (Button)findViewById(R.id.vluCount);
-//		if (Login.getLoggedUser(this).getVluMessages() > 0) {
-//			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
-//			button.setOnClickListener(new ViewVLUMessagesListener(this));
-//		} else {
-//			if (Login.getLoggedUser(this).getVluClient()) {
-//				button.setBackgroundResource(R.drawable.badge_ok);
-//				button.setOnClickListener(new OnClickListener() {
-//					@Override
-//					public void onClick(View v) {
-//						Context context = getApplicationContext();
-//						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
-//						int duration = Toast.LENGTH_SHORT;
-//						Toast toast = Toast.makeText(context, text, duration);
-//						toast.show();
-//					}
-//				});
-//			} else {
-//				button.setVisibility(View.GONE);
-//			}
-//		}
-//	}
 	
-//	private class ViewVLUMessagesListener implements OnClickListener {
-//		private IndexActivity activity;
-//		
-//		ViewVLUMessagesListener(IndexActivity activity) {
-//			this.activity = activity;
-//		}
-//
-//		@Override
-//		public void onClick(View arg0) {
-//			Intent intent = new Intent(getBaseContext(), VLUMessagesActivity.class);
-//			startActivity(intent);
-//		}
+	private class ViewVLUMessagesListener implements OnClickListener {
+		private IndexActivity activity;
+		
+		ViewVLUMessagesListener(IndexActivity activity) {
+			this.activity = activity;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(getBaseContext(), VLUMessagesActivity.class);
+			startActivity(intent);
+		}
 	}
 	
 //	@Override
