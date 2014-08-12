@@ -192,29 +192,7 @@
         android:textSize="12sp"
         android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/main_promo_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:text="@string/rd_main_promo_title"
-        android:textAlignment="center"
-        android:textColor="@color/bgBase"
-        android:textSize="18sp" />
-    
-    <TextView
-        android:id="@+id/main_hookline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:paddingLeft="35dp"
-        android:paddingRight="35dp"
-        android:paddingTop="40dp"
-        android:text="@string/rd_main_hookline"
-        android:textAlignment="center"
-        android:textColor="@color/bgBase"
-        android:textSize="12sp" />
+
     
     <TextView
         android:id="@+id/dropTarget"

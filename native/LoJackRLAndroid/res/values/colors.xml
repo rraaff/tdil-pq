@@ -8,9 +8,10 @@
 	<color name="bgCream">#F0ECE6</color>
 	<color name="bgBase">#FFFFFF</color>
 	
-	<color name="orangeTitles">#ef5323</color>
+	<color name="orangeTitles">#EE4524</color>
 	<color name="orangeDark">#BC2800</color>
 	
+	<color name="actionBarYellow">#FFF100</color>
 	
 	<!-- Item list -->
 	<color name="lst_itm_title">#222222</color>
