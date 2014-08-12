@@ -102,5 +102,5 @@
 		android:baselineAlignBottom="true"
 		android:contentDescription="@string/action_loading"
 		android:maxWidth="250dp"
-		android:src="@drawable/logo_lojack" />
+		android:src="@drawable/img_logo_lojack" />
 </merge>

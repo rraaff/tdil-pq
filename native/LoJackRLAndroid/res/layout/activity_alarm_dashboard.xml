@@ -193,7 +193,7 @@
                             android1:contentDescription="@string/action_loading"
                             android1:maxHeight="144dp"
                             android1:maxWidth="350dp"
-                            android1:src="@drawable/logo_lojack" />
+                            android1:src="@drawable/img_logo_lojack" />
                     </RelativeLayout>
                 </LinearLayout>
 

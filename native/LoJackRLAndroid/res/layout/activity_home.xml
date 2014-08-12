@@ -87,8 +87,7 @@
         <RelativeLayout
             android:layout_width="320dp"
             android:layout_height="320dp"
-            android:layout_gravity="top|center"
-            android:background="@drawable/placalanding" >
+            android:layout_gravity="top|center">
 
 
 
@@ -105,6 +104,6 @@
         android:baselineAlignBottom="true"
         android:contentDescription="@string/action_loading"
         android:maxWidth="200dp"
-        android:src="@drawable/logo_lojack" />
+        android:src="@drawable/img_logo_lojack" />
 
 </merge>

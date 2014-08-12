@@ -65,7 +65,7 @@
 	        android:contentDescription="@string/action_loading"
 	        android:gravity="bottom"
 	        android:maxWidth="200dp"
-	        android:src="@drawable/logo_lojack" />
+	        android:src="@drawable/img_logo_lojack" />
 
     </LinearLayout>
 

@@ -50,8 +50,7 @@
 	            <ListView
 	                android:id="@+id/camerasList"
 	                android:layout_width="fill_parent"
-	                android:layout_height="wrap_content"
-	                android:background="@drawable/placalanding" >
+	                android:layout_height="wrap_content" >
 
 		        </ListView>
                 
@@ -59,8 +58,7 @@
                     android:id="@+id/homeContent"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_gravity="top|center"
-                    android:background="@drawable/placalanding" >
+                    android:layout_gravity="top|center" >
 		            
 		            <LinearLayout
 		                android:layout_width="match_parent"
@@ -72,7 +70,7 @@
 		                    android:layout_width="wrap_content"
 		                    android:layout_height="100dp"
 		                    android:layout_gravity="top"
-		                    android:src="@drawable/logo_lo_home" />
+		                    android:src="@drawable/img_logo_lojack" />
 		
 		                <LinearLayout
 		                    android:layout_width="fill_parent"
