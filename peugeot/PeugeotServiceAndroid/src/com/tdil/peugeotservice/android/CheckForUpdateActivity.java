@@ -35,13 +35,6 @@ public class CheckForUpdateActivity extends Activity {
 		//setTypeface(this, R.id.loadingInfoText);
 		//customizeActionBar();
 		
-		try {
-			// Twitter tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
-			Grab.init(this, "peugeotap_cca287636b2:a0a5b55e515dd511:yT5k7OavfToqVUa/eEqny6EZrW+0eVi6MI/3FLIrTlU=", false);
-		} catch (Exception e) {
- 		   
- 	   }
-		
 		mHandler = new Handler();
 		checkUpdate.start();
 	}
@@ -268,6 +261,13 @@ public class CheckForUpdateActivity extends Activity {
     	       		// Facebook tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
     	       		com.facebook.AppEventsLogger.activateApp(CheckForUpdateActivity.this, "295476740634833");
     	    	   } catch (Exception e) {
+    	    		   
+    	    	   }
+    	    	   
+    	    	   try {
+    	   			// Twitter tracking @PeugeotServiceAndroid added by Pablo Mendoza (ThatDayinLondon.com)
+    	    		   Grab.init(CheckForUpdateActivity.this, "peugeotap_cca287636b2:a0a5b55e515dd511:yT5k7OavfToqVUa/eEqny6EZrW+0eVi6MI/3FLIrTlU=", false);
+    	   			} catch (Exception e) {
     	    		   
     	    	   }
     	       }
