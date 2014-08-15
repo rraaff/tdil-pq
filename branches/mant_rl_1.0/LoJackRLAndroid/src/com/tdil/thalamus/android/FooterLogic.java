@@ -166,7 +166,7 @@ public class FooterLogic  {
 	}
 
 	public static void handleTvAccess(final Activity activity) {
-        Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://mision.metro951.com/widgets/1080.php"));
+        Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.getLoggedUser(activity).getGenericLinkDestination()));
         activity.startActivity(ljtvintent); 
 	}
 

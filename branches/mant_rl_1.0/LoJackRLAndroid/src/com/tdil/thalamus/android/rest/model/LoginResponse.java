@@ -32,6 +32,16 @@ public class LoginResponse {
 	private String dni;
 	private String clubLoJackUrlDestination;
 	
+	private String genericLinkDestination;
+	
+	public String getGenericLinkDestination() {
+		return genericLinkDestination;
+	}
+
+	public void setGenericLinkDestination(String genericLinkDestination) {
+		this.genericLinkDestination = genericLinkDestination;
+	}
+
 	public LoginResponse() {
 	}
 	
