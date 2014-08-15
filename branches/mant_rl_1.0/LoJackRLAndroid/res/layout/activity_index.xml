@@ -68,8 +68,8 @@
                             android:layout_alignParentLeft="true"
                             android:layout_marginBottom="20dp"
                             android:layout_marginLeft="43dp"
-                            android:background="@drawable/rd_item_metro"
-                            android:text="@string/btn_metro" />
+                            android:background="@drawable/rd_item_ljdef"
+                            android:text="@string/btn_def" />
 
                         <Button
                             android:id="@+id/btnClubLJ"
