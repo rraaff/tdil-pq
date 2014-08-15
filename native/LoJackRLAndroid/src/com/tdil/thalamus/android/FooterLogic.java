@@ -166,7 +166,7 @@ public class FooterLogic  {
 	}
 
 	public static void handleTvAccess(final Activity activity) {
-        Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lojack.tv"));
+        Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.getLoggedUser(activity).getGenericLinkDestination()));
         activity.startActivity(ljtvintent); 
 	}
 
