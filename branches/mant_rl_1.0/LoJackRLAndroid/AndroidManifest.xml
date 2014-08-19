@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tdil.lojack.rl"
     android:versionCode="15"
-    android:versionName="1.03.02" ><!-- Ultima publicada 1.03.01 / VC:14 -->
+    android:versionName="1.03.02" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
