@@ -7,15 +7,15 @@ public class ApplicationConfig {
 	+ "getNativeAppVersion.st?code=android";
 
 //PRODA
-	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
-	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
-
-//PREPRO
-//	public static final String APP_DOMAIN = "www.lojack-app.com.ar:81";
+//	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
+//PREPRO
+	public static final String APP_DOMAIN = "www.lojack-app.com.ar:81";
+	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
+
 //PABLO
-//	public static final String APP_DOMAIN = "192.168.252.109:8180";
+//	public static final String APP_DOMAIN = "192.168.252.118:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 
 //MARCOS
