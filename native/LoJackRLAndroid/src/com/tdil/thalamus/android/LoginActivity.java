@@ -258,6 +258,7 @@ public class LoginActivity extends LoJackActivity implements IRestClientObserver
 				});
 		remCheckBox = (CheckBox) findViewById(R.id.rememberPasswordCheckbox);
 
+		/*
 		findViewById(R.id.requestRegistration).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
@@ -267,7 +268,16 @@ public class LoginActivity extends LoJackActivity implements IRestClientObserver
 						startActivity(intent);
 					}
 				});
-
+		 */
+		findViewById(R.id.gotoMoreInfo).setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						Intent intent = new Intent(LoginActivity.this,
+								RegisterActivity.class);
+						startActivity(intent);
+					}
+				});
 		docNumberEdittext = (EditText) findViewById(R.id.documentNumber);
 		docNumberEdittext.setText(mDocNumber);
 		passwordEditText = (EditText) findViewById(R.id.password);

@@ -75,7 +75,8 @@
             android:id="@+id/tableRow3"
             android:layout_width="match_parent"
             android:layout_height="91dp"
-            android:layout_margin="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:padding="0dp" >
 
             <LinearLayout
@@ -85,23 +86,13 @@
 
                 <TextView
                     android:id="@+id/main_promo_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:text="@string/rd_main_promo_title"
-                    android:textAlignment="center"
-                    android:textColor="@color/bgBase"
-                    android:textSize="16sp" />
+                    style="@style/txt_mainpromo" />
 
                 <TextView
                     android:id="@+id/main_hookline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:text="@string/rd_main_hookline"
-                    android:textAlignment="center"
-                    android:textColor="@color/bgBase"
-                    android:textSize="12sp" />
+                    style="@style/txt_hookline"
+                    android:text="@string/rd_main_hookline" />
 
             </LinearLayout>
 

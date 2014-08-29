@@ -64,14 +64,15 @@
     <string name="btn_tag_lights">LUCES</string>
     <string name="btn_tag_cameras">CÁMARAS</string>
     <string name="btn_tag_camera">CÁMARA</string>
-    <string name="btn_tag_login"> </string>
-    <string name="btn_tag_register">Registrarme</string>
-    <string name="btn_tag_modify">Modificar</string>
-    <string name="btn_tag_modify_my_data"> </string>
-    <string name="btn_tag_change_password">Mi clave</string>
-    <string name="btn_tag_forgotpass">Recuperar clave</string>
-    <string name="btn_tag_reset_password">Enviar</string>
-    <string name="btn_tag_reset_password_back">Volver</string>
+    <string name="btn_tag_login">INGRESAR</string>
+    <string name="btn_tag_register">REGISTRARME</string>
+    <string name="btn_tag_modify">MODIFICAR</string>
+    <string name="btn_tag_modify_my_data">MODIFICAR</string>
+    <string name="btn_tag_change_password">MI CLAVE</string>
+    <string name="btn_tag_forgotpass">RECUPERAR CLAVE</string>
+    <string name="btn_tag_moreinfo">MÁS INFO SOBRE LOAPP 2.0</string>
+    <string name="btn_tag_reset_password">ENVIAR</string>
+    <string name="btn_tag_reset_password_back">VOLVER</string>
     
     <string name="btn_SendPanic">   </string>
     <string name="btn_tag_see_log">Ver log</string>
@@ -116,26 +117,26 @@
     
     
     <!-- Hints -->
-    <string name="hnt_doc_number">Número de documento</string>
-    <string name="hnt_doc_password">Clave</string>
-    <string name="hnt_doc_password1">Repetir clave</string>
-    <string name="hnt_firstname">Nombre</string>
-    <string name="hnt_apellido">Apellido</string>
-    <string name="hnt_email">E-mail</string>
-    <string name="hnt_area_code">Código de Area</string>
-    <string name="hnt_mobile">Celular</string>
-    <string name="hnt_calle1">Calle 1</string>
-    <string name="hnt_calle2">Calle 2</string>
-    <string name="hnt_postal_code">Código postal</string>
-    <string name="hnt_city">Ciudad</string>
-    <string name="hnt_birthdate">Fecha de nacimiento</string>
+    <string name="hnt_doc_number">NÚMERO DE DOCUMENTO</string>
+    <string name="hnt_doc_password">CLAVE DE ACCESO</string>
+    <string name="hnt_doc_password1">REPETIR CLAVE</string>
+    <string name="hnt_firstname">NOMBRE</string>
+    <string name="hnt_apellido">APELLIDO</string>
+    <string name="hnt_email">E-MAIL</string>
+    <string name="hnt_area_code">CÓDIGO DE ÁREA</string>
+    <string name="hnt_mobile">CELULAR</string>
+    <string name="hnt_calle1">CALLE 1</string>
+    <string name="hnt_calle2">CALLE 2</string>
+    <string name="hnt_postal_code">CÓDIGO POSTAL</string>
+    <string name="hnt_city">CIUDAD</string>
+    <string name="hnt_birthdate">NACIMIENTO</string>
     
-    <string name="hnt_password">Clave</string>
-    <string name="hnt_actual_password">Clave actual</string>
-    <string name="hnt_new_password">Nueva Clave</string>
-    <string name="hnt_retype_new_password">Reingrese nueva Clave</string>
+    <string name="hnt_password">CLAVE</string>
+    <string name="hnt_actual_password">CLAVE ACTUAL</string>
+    <string name="hnt_new_password">NUEVA CLAVE</string>
+    <string name="hnt_retype_new_password">REINGRESE CLAVE</string>
    
     <!-- Checkboxes and Radiobutton titles -->
-    <string name="crt_tag_rememberme">Recordarme</string>
+    <string name="crt_tag_rememberme">RECORDARME</string>
     
 </resources>

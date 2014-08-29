@@ -3,12 +3,13 @@
 	<color name="black">#000000</color>
     
     <color name="gray">#cacaca</color>
+    <color name="grayLightBase">#F2F2F2</color>
 	<color name="grayTabBase">#333333</color>
 	
 	<color name="bgCream">#F0ECE6</color>
 	<color name="bgBase">#FFFFFF</color>
 	
-	<color name="orangeTitles">#EE4524</color>
+	<color name="orangeTitles">#F05524</color>
 	<color name="orangeDark">#BC2800</color>
 	
 	<color name="actionBarYellow">#FFF100</color>
