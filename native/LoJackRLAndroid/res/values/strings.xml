@@ -29,7 +29,7 @@
 
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
-    <string name="title_activity_login">Ingreso de usuarios</string>
+    <string name="title_activity_login">INGRESAR</string>
     <string name="title_request_reset">RECUPERAR CLAVE</string>
     <string name="title_activity_register">REGISTRATE</string>
     <string name="title_activity_update">MODIFICAR</string>
@@ -47,6 +47,9 @@
     <string name="title_log_light">LOG LUCES</string>
     <string name="title_camera">CÁMARA</string>
     <string name="title_vlu">VLU</string>
+    <string name="subtitle_sex">SEXO</string>
+    <string name="subtitle_address">DIRECCIÓN</string>
+    
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>

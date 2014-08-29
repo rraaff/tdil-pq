@@ -4,103 +4,124 @@
     android:layout_height="fill_parent"
     tools:context=".LoginActivity" >
 
-    <!-- Login progress -->
-
     <LinearLayout
         android:id="@+id/loginObjects"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="fill_vertical|fill_horizontal"
-        android:background="@drawable/main_square"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        style="@style/main_container" >
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/table_portalogo"
+            android:layout_marginBottom="15dp" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                style="@style/logo_on_top"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:contentDescription="@string/action_loading" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/table_portamodal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" >
+
+            <LinearLayout 
+                style="@style/modal_container" >
+
+                <TextView
+                    android:id="@+id/loadingInfoText"
+                    style="@style/modal_maintitle"
+                    android:text="@string/title_request_reset" />
+
+                <LinearLayout
+                    style="@style/form_layout" >
+
+		            <Spinner
+		                android:id="@+id/documentType"
+		                style="@style/text_inputs_white_01" />
+		
+		            <EditText
+		                android:id="@+id/documentNumber"
+		                android:hint="@string/hnt_doc_number"
+		                android:inputType="number"
+		                style="@style/text_inputs_white_01" >
+		
+		                <requestFocus />
+		            </EditText>
+
+		            <LinearLayout
+		                android:layout_width="fill_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginBottom="5dp"
+		                android:layout_marginLeft="5dp"
+		                android:layout_marginRight="5dp"
+		                android:layout_marginTop="150dp"
+		                android:orientation="horizontal" >
+		                
+
+		                <LinearLayout
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="match_parent"
+		                    android:orientation="vertical" >
+
+		                    <Button
+		                        android:id="@+id/resetPasswordBack"
+		                        style="@style/btn_backwards"
+		                        android:onClick="@string/dologin"
+		                        android:text="@string/btn_tag_reset_password_back" />
+
+		                </LinearLayout>
+
+		                <LinearLayout
+		                    android:layout_width="match_parent"
+		                    android:layout_height="match_parent"
+		                    android:layout_gravity="fill_horizontal|center_vertical"
+		                    android:gravity="right" >
+
+		                    <Button
+		                        android:id="@+id/resetPasswordButton"
+		                        style="@style/btn_forward"
+		                        android:onClick="@string/dologin"
+		                        android:text="@string/btn_tag_reset_password" />
+
+		                </LinearLayout>
+
+			        </LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_marginBottom="60dp"
-            android:background="@drawable/toplayer85"
-            android:baselineAligned="true"
-            android:gravity="center_horizontal|center_vertical"
-            android:minWidth="250dp"
-            android:orientation="vertical"
-            android:padding="20dp"
-            android:textAlignment="center" >
+            android:layout_margin="0dp"
+            android:padding="0dp" >
 
-            <TextView
-                android:id="@+id/loadingInfoText"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:text="@string/title_request_reset"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textColor="@color/orangeTitles" />
+                android:layout_marginTop="10dp"
+                android:orientation="vertical" >
 
-            <Spinner
-                android:id="@+id/documentType"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@color/bgBase" />
+                <TextView
+                    android:id="@+id/main_promo_title"
+                    android:text="@string/rd_main_promo_title"
+                    style="@style/txt_mainpromo" />
 
-            <EditText
-                android:id="@+id/documentNumber"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:ems="10"
-                android:hint="@string/hnt_doc_number"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColor="@color/bgBase"
-                android:textColorLink="@color/orangeTitles"
-                android:textSize="14sp"
-                android:textStyle="normal" >
+                <TextView
+                    android:id="@+id/main_hookline"
+                    style="@style/txt_hookline"
+                    android:text="@string/rd_main_hookline" />
 
-                <requestFocus />
-            </EditText>
+            </LinearLayout>
+        </TableRow>
 
-            <Button
-                android:id="@+id/resetPasswordButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/btn_rojo_normal_holo_light"
-                android:minHeight="40dp"
-                android:onClick="@string/dologin"
-                android:text="@string/btn_tag_reset_password"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/resetPasswordBack"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
-                android:minHeight="40dp"
-                android:onClick="@string/dologin"
-                android:text="@string/btn_tag_reset_password_back"
-                android:textColor="#ffffff"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-	</LinearLayout>
-
-	<ImageView
-		android:id="@+id/placahome"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="bottom|center_horizontal"
-		android:layout_marginTop="20dp"
-		android:adjustViewBounds="true"
-		android:baselineAlignBottom="true"
-		android:contentDescription="@string/action_loading"
-		android:maxWidth="250dp"
-		android:src="@drawable/img_logo_lojack" />
+    </LinearLayout>
 </merge>
