@@ -4,68 +4,24 @@
     android:layout_height="fill_parent"
     tools:context=".VLUMessagesActivity" >
 
-    <!-- Login progress -->
-
-    <!-- Login form -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_gravity="top"
-        android:background="@drawable/main_square"
         android:gravity="top"
         android:orientation="vertical" >
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/lastChanges"
+            style="@style/modal_subtitleinform"
+            android:text="@string/lst_title_last_news" />
+
+        <ListView
+            android:id="@+id/vluMessagesList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_gravity="top"
-            android:layout_weight="10"
-            android:background="@color/grayTabBase"
-            android:gravity="top"
-            android:orientation="horizontal" >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:layout_weight="10"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:id="@+id/lastChanges"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_margin="3dp"
-                    android:text="@string/lst_title_last_news"
-                    android:textColor="@color/bgBase"
-                    android:textSize="16sp" />
-
-                <ListView
-                    android:id="@+id/vluMessagesList"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:layout_gravity="top"
-                    android:background="@color/bgBase" >
-
-                </ListView>
-            </LinearLayout>
-	        
-		</LinearLayout>
-
-	    <ImageView
-	        android:id="@+id/placahome"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_gravity="bottom|center_horizontal"
-	        android:layout_marginTop="10dp"
-	        android:layout_weight="1"
-	        android:adjustViewBounds="true"
-	        android:baselineAlignBottom="true"
-	        android:contentDescription="@string/action_loading"
-	        android:gravity="bottom"
-	        android:maxWidth="200dp"
-	        android:src="@drawable/img_logo_lojack" />
+            android:background="@color/grayLightBase"
+            android:divider="@drawable/bg_item_inlist"  >
+        </ListView>
 
     </LinearLayout>
 

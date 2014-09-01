@@ -17,17 +17,7 @@
 
 			<TextView
 			    android:id="@+id/alarmDescription"
-			    android:layout_width="wrap_content"
-			    android:layout_height="30dp"
-			    android:layout_gravity="center_vertical|center_horizontal"
-			    android:layout_marginLeft="16dp"
-			    android:layout_marginRight="16dp"
-			    android:layout_marginTop="5dp"
-			    android:layout_span="1"
-			    android:layout_weight="1"
-			    android:textColor="@color/lst_itm_title"
-			    android:textAllCaps="true"
-			    android:textSize="16sp" />
+			    style="@style/modal_subtitleinform" />
 	
 			<Button
 			    android:id="@+id/sendPanicSignalButton"

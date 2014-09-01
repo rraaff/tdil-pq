@@ -4,19 +4,23 @@
     android:layout_height="fill_parent"
     tools:context=".HomeLightsActivity" >
 
-    <!-- Login progress -->
-
-    <!-- Login form -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
+		<TextView
+            android:id="@+id/lastChanges"
+            style="@style/modal_subtitleinform"
+            android:text="@string/lst_title_lights_list" />
+
         <ListView
             android:id="@+id/lightsList"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:background="@color/grayLightBase"
+            android:divider="@drawable/bg_item_inlist" >
+
         </ListView>
 
     </LinearLayout>

@@ -160,6 +160,7 @@
 				            <Button
 				                android:id="@+id/updateButton"
 				                style="@style/btn_forward"
+				                android:layout_margin="8dp"
 				                android:onClick="@string/dologin"
 				                android:text="@string/btn_tag_modify" />
 			

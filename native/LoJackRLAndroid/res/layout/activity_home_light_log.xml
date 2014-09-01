@@ -4,10 +4,6 @@
     android:layout_height="fill_parent"
     tools:context=".HomeLogAlarmsActivity" >
 
-    <!-- Login progress -->
-
-    <!-- Login form -->
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -15,17 +11,15 @@
 
         <TextView
             android:id="@+id/lastChanges"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center_vertical"
-            android:text="@string/lst_title_last_changes"
-            android:textColor="@color/lst_itm_title"
-            android:textSize="16sp" />
+            style="@style/modal_subtitleinform"
+            android:text="@string/lst_title_last_changes" />
         
         <ListView
             android:id="@+id/lightLogList"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="fill_parent"
+            android:background="@color/grayLightBase"
+            android:divider="@drawable/bg_item_inlist" >
         </ListView>
 
     </LinearLayout>
