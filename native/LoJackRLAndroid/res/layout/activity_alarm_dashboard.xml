@@ -181,19 +181,6 @@
                         android1:layout_width="fill_parent"
                         android1:layout_height="fill_parent"
                         android1:layout_gravity="fill_vertical|fill_horizontal" >
-
-                        <ImageView
-                            android1:id="@+id/placahome"
-                            android1:layout_width="250dp"
-                            android1:layout_height="103dp"
-                            android1:layout_alignParentBottom="true"
-                            android1:layout_alignParentLeft="true"
-                            android1:layout_alignParentRight="true"
-                            android1:layout_alignParentTop="false"
-                            android1:contentDescription="@string/action_loading"
-                            android1:maxHeight="144dp"
-                            android1:maxWidth="350dp"
-                            android1:src="@drawable/img_logo_lojack" />
                     </RelativeLayout>
                 </LinearLayout>
 

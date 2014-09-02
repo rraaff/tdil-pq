@@ -31,9 +31,8 @@
 
         <ImageView
             android:id="@+id/vluAlertImage"
-            android:layout_width="1dp"
-            android:layout_height="1dp"
-            android:maxHeight="40dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="fitCenter"
             android:visibility="invisible" />
 

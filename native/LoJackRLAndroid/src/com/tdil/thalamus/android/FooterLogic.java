@@ -29,6 +29,7 @@ public class FooterLogic  {
 	
 	public static void installFooterLogic(final Activity activity, final boolean finishOnExit) {
 		
+		/*
 		View sendPanic = activity.findViewById(R.id.goToSendPanicActivity);
 		if (sendPanic != null) {
 			sendPanic.setOnClickListener(
@@ -41,7 +42,7 @@ public class FooterLogic  {
 					}
 				});
 			}
-		
+		*/
 		View home = activity.findViewById(R.id.btnFooterHome);
 		if (home!= null) {
 			home.setOnClickListener(

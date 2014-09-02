@@ -67,6 +67,11 @@
     
     
     <!-- Buttons -->
+    <string name="btn_tag_appmenu_home">Casa</string>
+    <string name="btn_tag_appmenu_cars">Auto</string>
+    <string name="btn_tag_appmenu_pets">Mascota</string>
+    <string name="btn_tag_appmenu_apps">Lugares</string>
+    
     <string name="btn_tag_alarms">ALARMAS</string>
     <string name="btn_tag_lights">LUCES</string>
     <string name="btn_tag_cameras">CÁMARAS</string>

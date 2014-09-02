@@ -18,9 +18,8 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
+            android:layout_marginTop="-6dp"
             android:background="@color/grayTabBase"
-            android:gravity="top"
             android:orientation="horizontal" >
 
             <Button
@@ -61,13 +60,13 @@
 
             <Button
                 android:id="@+id/updateButton"
+                style="@android:attr/buttonBarButtonStyle"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_gravity="center"
-                android:background="@drawable/icon_menu_gray"
+                android:background="@drawable/transparente"
                 android:text="@string/btn_tag_modify_my_data"
-                android:textColor="@color/bgBase"
-                style="@android:attr/buttonBarButtonStyle" />
+                android:textColor="@color/bgBase" />
 
             <Button
                 android:id="@+id/changePassword"
@@ -94,16 +93,5 @@
         </RelativeLayout>
 
     </LinearLayout>
-    
-    <ImageView
-        android:id="@+id/placahome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:adjustViewBounds="true"
-        android:baselineAlignBottom="true"
-        android:contentDescription="@string/action_loading"
-        android:maxWidth="200dp"
-        android:src="@drawable/img_logo_lojack" />
 
 </merge>
