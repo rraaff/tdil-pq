@@ -27,7 +27,7 @@ public class NaturalesMateriales {
 				createList("Solido", "Liquido", "Gaseoso")));
 		
 		result.addQuestion(new TrueFalseQuestion("Los materiales que NO SE DEGRADAN on el paso del tiempo son NO BIODEGRADABLES", true));
-		/*
+		
 		result.addQuestion(new OptionQuestion("Cual es el estado de una roca:", 
 				createList("Solido", "Liquido", "Gaseoso"), 
 				createList("Solido")));
@@ -173,7 +173,6 @@ public class NaturalesMateriales {
 		result.addQuestion(new OptionQuestion("Esqueleto de barras de hierro que se rellena con hormigon:", 
 				createList("Yeso", "Cemento", "Hormigon", "Hormigon armado"), 
 				createList("Hormigon armado")));
-		*/
 		
 		result.random();
 		return result;

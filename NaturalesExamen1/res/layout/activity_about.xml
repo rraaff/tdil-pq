@@ -71,7 +71,7 @@
                     android:src="@drawable/ic_launcher" />
 
                 <TextView
-                    android:id="@+id/TextView04"
+                    android:id="@+id/TextView041"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
