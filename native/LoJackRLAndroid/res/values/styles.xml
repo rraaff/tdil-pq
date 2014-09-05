@@ -300,7 +300,14 @@
         <item name="android:background">@color/grayTabBase</item>
         <item name="android:orientation">horizontal</item>
     </style>
-    
+
+    <style name="tab_locar_container">
+	    <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
     <style name="inlohome_tab_basic">
 		<item name="android:layout_width">0dp</item>
 		<item name="android:layout_height">match_parent</item>
@@ -477,5 +484,14 @@
 	    <item name="android:textColor">@color/black</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:textAlignment">textStart</item>
+	</style>
+	
+	<style name="btn_cars">
+	    <item name="android:layout_width">48dp</item>
+	    <item name="android:layout_height">48dp</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:background">@drawable/transparente</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:scaleType">centerInside</item>
 	</style>
 </resources>

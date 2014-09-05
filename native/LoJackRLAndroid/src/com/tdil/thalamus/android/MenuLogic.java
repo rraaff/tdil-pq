@@ -58,6 +58,11 @@ public class MenuLogic {
 			activity.startActivity(intentDemos);
 			activity.finish();
 			return true;
+		case R.id.menu_totestCar:
+			Intent intentDemosCar = new Intent(activity, DemoActivityCars.class);
+			activity.startActivity(intentDemosCar);
+			activity.finish();
+			return true;
 		case R.id.menu_update:
 			activity.startActivity(new Intent(activity, UpdateActivity.class));
 			return true;

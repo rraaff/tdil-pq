@@ -6,7 +6,7 @@
     android:layout_alignParentBottom="true"
     android:gravity="center"
     android:orientation="vertical" >
-
+    
 	<LinearLayout
 	    android:layout_width="wrap_content"
 	    android:layout_height="56dp"
@@ -19,7 +19,7 @@
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center_vertical"
-		    android:src="@drawable/logo_loapp_forfooter" />
+		    android:src="@drawable/logo_locar_forfooter" />
 	    
 	</LinearLayout>
 </LinearLayout>

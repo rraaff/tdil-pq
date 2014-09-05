@@ -182,6 +182,21 @@
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
+
+        <activity
+            android:name="com.tdil.thalamus.android.DemoActivity"
+            android:label="CARS maqueta"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name="com.tdil.thalamus.android.DemoActivityCars"
+            android:label="CARS maqueta"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
     </application>
 
 </manifest>

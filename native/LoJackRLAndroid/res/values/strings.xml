@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    
     <string name="app_name">LoJack</string>
     <string name="action_settings">Buscando actualizaciones</string>
     <string name="action_loading">Cargando Información</string>
@@ -14,6 +12,7 @@
     <!-- Descriptions -->
     <string name="desc_cam_image">Imagen de la Cámara</string>
     <string name="desc_avatar_image">Avatar</string>
+    <string name="default_image_descriptor">Imagen</string>
     
     <!-- List Items strings -->
     <string name="lst_title_last_changes">Últimos cambios</string>
