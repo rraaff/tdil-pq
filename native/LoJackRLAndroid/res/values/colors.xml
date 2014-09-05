@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="lojack_red">#B21221</color>
+    <color name="lojack_brown">#E13B14</color>
+    <color name="lojack_orange">#3D1818</color>
+    
 	<color name="black">#000000</color>
     
     <color name="gray">#cacaca</color>
     <color name="grayLightBase">#F2F2F2</color>
 	<color name="grayTabBase">#333333</color>
+	<color name="grayLightTabUnactive">#999999</color>
+	<color name="grayLightTabActive">#FFFFFF</color>
 	
 	<color name="bgCream">#F0ECE6</color>
 	<color name="bgBase">#FFFFFF</color>

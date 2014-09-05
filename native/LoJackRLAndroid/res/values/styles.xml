@@ -230,6 +230,24 @@
 	</style>
 	
 	<!-- NUEVOS PARA 2.0 -->
+	
+	<!-- FORMATEADORES -->
+	<style name="format_page_3rows1col_header">
+		<item name="android:layout_width">match_parent</item>
+     	<item name="android:layout_height">wrap_content</item>
+     </style>
+
+	<style name="format_page_3rows1col_middle">
+		<item name="android:layout_width">match_parent</item>
+     	<item name="android:layout_height">wrap_content</item>
+     </style>	
+
+	<style name="format_page_3rows1col_footer">
+		<item name="android:layout_width">match_parent</item>
+     	<item name="android:layout_height">wrap_content</item>
+     </style>
+	<!-- END FORMATEADORES -->
+
 	<style name="main_container">
 	    <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
@@ -275,8 +293,39 @@
         <item name="android:layout_marginTop">10dp</item>
     </style>
 
+    <style name="tab_lohome_container">
+	    <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/grayTabBase</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    
+    <style name="inlohome_tab_basic">
+		<item name="android:layout_width">0dp</item>
+		<item name="android:layout_height">match_parent</item>
+		<item name="android:layout_margin">0dp</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+    
+    <style name="inlohome_tab_separator">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">@color/grayLightTabUnactive</item>
+        <item name="android:src">@drawable/transparente</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+
+	<style name="appmenu_tab_basic">
+	    <item name="android:layout_width">0dp</item>
+	    <item name="android:layout_height">match_parent</item>
+	    <item name="android:layout_margin">0dp</item>
+	    <item name="android:layout_weight">1</item>
+	</style>
+
 	<!-- TEXTOS -->
-	
 	<style name="txt_mainpromo">
 	    <item name="android:layout_width">wrap_content</item>
 	    <item name="android:layout_height">wrap_content</item>
@@ -349,13 +398,6 @@
 	</style>
 	
 	<!-- BUTTONS -->
-	<style name="appmenu_tab_basic">
-	    <item name="android:layout_width">0dp</item>
-	    <item name="android:layout_height">match_parent</item>
-	    <item name="android:layout_margin">0dp</item>
-	    <item name="android:layout_weight">1</item>
-	</style>
-
 	<style name="appmenu_button_basic">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">fill_parent</item>
@@ -369,7 +411,19 @@
 	    <item name="android:textStyle">bold</item>
 	    <item name="android:background">@drawable/bg_application_menu_rojo</item>
 	</style>
-	
+
+	<style name="inlohome_button_basic">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">fill_parent</item>
+	    <item name="android:layout_weight">1</item>
+	    <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+	    <item name="android:gravity">center_vertical|center_horizontal</item>
+	    <item name="android:paddingBottom">6dp</item>
+	    <item name="android:textAllCaps">true</item>
+	    <item name="android:textColor">@color/grayLightTabUnactive</item>
+	    <item name="android:textSize">14sp</item>
+	</style>
+
 	<style name="appmenu_button_selected">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">fill_parent</item>

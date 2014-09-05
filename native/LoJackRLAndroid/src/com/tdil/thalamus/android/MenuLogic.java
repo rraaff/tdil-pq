@@ -53,6 +53,11 @@ public class MenuLogic {
 		case R.id.menu_action_parkings:
 			FooterLogic.handleParkingsAccess(activity);
 			return true;
+		case R.id.menu_totest:
+			Intent intentDemos = new Intent(activity, DemoActivity.class);
+			activity.startActivity(intentDemos);
+			activity.finish();
+			return true;
 		case R.id.menu_update:
 			activity.startActivity(new Intent(activity, UpdateActivity.class));
 			return true;
@@ -65,8 +70,8 @@ public class MenuLogic {
 		case R.id.menu_back:
 			activity.finish();
 			return true;
-		case R.id.secondaryMenu:
-			return true;
+		//case R.id.secondaryMenu:
+			//return true;
 		case R.id.menu_register:
 			Intent intent1 = new Intent(activity, RegisterActivity.class);
 			activity.startActivity(intent1);

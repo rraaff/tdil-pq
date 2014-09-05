@@ -151,4 +151,16 @@
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">RECORDARME</string>
     
+    <!-- TEASERS -->
+    <string name="inlohome_notclient_teaser">Lo/Home es un sistema integrado de seguridad, control y monitoreo que te permite saber todo lo que pasa en tu casa con solo mirar tu celular. En nuestro sistema exclusivo, la comunicación es permanente, incluso si se corta la luz o las líneas telefónicas.</string>
+    <string name="inlohome_notclient_teaser2">Con Lo/Home podés controlar las alarmas, controlar la conexión de luces y mirar las cámaras de seguridad de tu casa desde donde estés, ya sea desde la Web o desde tu dispositivo móvil.</string>
+    <string name="inlohome_notclient_teaser2_subtit_1">Alarmas:</string>
+    <string name="inlohome_notclient_teaser2_subtit_2">Cámaras de video:</string>
+    <string name="inlohome_notclient_teaser2_subtit_3">Control de luces:</string>
+    <string name="inlohome_notclient_teaser2_bajada_1">Un sistema de control a distancia de las alarmas digitales de tu hogar, que te permitea activarlas, desactivarlas o monitorear el estado de cada una de ellas, estés donde estés.</string>
+    <string name="inlohome_notclient_teaser2_bajada_2">Podés monitorear tu casa las 24hs desde donde estés. Desde una PC, laptop, tablet o celular, podés ver todo lo que pasa en tu casa. Incluso podés manejar la posición de las cámaras según tu necesidad.</string>
+    <string name="inlohome_notclient_teaser2_bajada_3">Encendé las luces desde tu tablet o celular antes de llegar, y el ingreso a tu hogar será mucho más seguro. Podés prenderlas a distancia, simulando la presencia de gente en la casa cuando aún no llegaste y ya se hizo de noche.</string>
+    
+    <!-- Rare -->
+    <string name="inlohome_tab_divider">|</string>
 </resources>

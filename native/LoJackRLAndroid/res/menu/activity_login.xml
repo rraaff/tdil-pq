@@ -26,6 +26,7 @@
 	    android:showAsAction="always|withText"
 	    android:title="@string/menu_secondary_title">
     	<menu-->
+    	
 		    <item
 		          android:id="@+id/menu_update"
 		          android:title="@string/menu_update"/>
