@@ -183,68 +183,95 @@
 	        android:screenOrientation="portrait">
         </activity>
 
+        <!-- HOME -->
         <activity
-            android:name="com.tdil.thalamus.android.DemoActivityHome"
+            android:name="com.tdil.thalamus.android.home.DemoActivityHome"
             android:label="CARS maqueta"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeAlarms"
+            android:name="com.tdil.thalamus.android.home.ActivityHomeIndex"
+            android:label="HOME"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.home.ActivityHomeAlarms"
             android:label="Listado de alarms"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeAlarmDashboard"
+            android:name="com.tdil.thalamus.android.home.ActivityHomeAlarmDashboard"
             android:label="Dashboard de alarma"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeAlarmLog"
+            android:name="com.tdil.thalamus.android.home.ActivityHomeAlarmLog"
             android:label="Log de alarma"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeLights"
+            android:name="com.tdil.thalamus.android.home.ActivityHomeLights"
             android:label="Listado de luces"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeLightDashboard"
+            android:name="com.tdil.thalamus.android.home.ActivityHomeLightDashboard"
             android:label="Dashboard de luz"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeLightLog"
+ 			android:name="com.tdil.thalamus.android.home.ActivityHomeLightLog"
             android:label="Log de luces"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeCameras"
+           android:name="com.tdil.thalamus.android.home.ActivityHomeCameras"
             android:label="Listado de camaras"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityHomeCamera"
+ 			android:name="com.tdil.thalamus.android.home.ActivityHomeCamera"
             android:label="Camara"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         
-
         <activity
             android:name="com.tdil.thalamus.android.DemoActivityCars"
             android:label="CARS maqueta"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <!-- NOT CLIENT -->
+        <activity
+     		android:name="com.tdil.thalamus.android.home.ActivityHomeNotClient"
+            android:label="Home no cliente"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityCarsNotClient"
+            android:label="CARS no cliente"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityPetsNotClient"
+            android:label="Pets no cliente"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>

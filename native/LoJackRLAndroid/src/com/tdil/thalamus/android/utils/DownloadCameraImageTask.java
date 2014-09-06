@@ -8,8 +8,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
-import com.tdil.thalamus.android.ActivityHomeCamera;
 import com.tdil.thalamus.android.HomeCameraActivity;
+import com.tdil.thalamus.android.home.ActivityHomeCamera;
 
 public class DownloadCameraImageTask extends AsyncTask<Void, Void, Bitmap> {
 	
