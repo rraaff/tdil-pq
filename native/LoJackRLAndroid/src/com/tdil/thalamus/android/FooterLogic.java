@@ -86,16 +86,16 @@ public class FooterLogic  {
 					}
 				});
 		}
-		View tv = activity.findViewById(R.id.btnFooterTV);
-		if (tv != null) {
-			tv.setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						handleTvAccess(activity); 
-					}
-				});
-		}
+//		View tv = activity.findViewById(R.id.btnFooterTV);
+//		if (tv != null) {
+//			tv.setOnClickListener(
+//				new View.OnClickListener() {
+//					@Override
+//					public void onClick(View view) {
+//						handleTvAccess(activity); 
+//					}
+//				});
+//		}
 	}
     		
 

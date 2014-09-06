@@ -127,12 +127,12 @@ public class IndexActivity extends LoJackActivity {
 				FooterLogic.handleParkingsAccess(IndexActivity.this);
 			}
 		});
-		findViewById(R.id.btnFooterTV).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				FooterLogic.handleTvAccess(IndexActivity.this);
-			}
-		});
+//		findViewById(R.id.btnFooterTV).setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				FooterLogic.handleTvAccess(IndexActivity.this);
+//			}
+//		});
 		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
