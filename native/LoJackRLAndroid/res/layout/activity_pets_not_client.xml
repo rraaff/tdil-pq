@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlopet_application_fullmenu" />
+        </TableRow>
+
+         <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+
+                        <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+                    
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forcar" />
+        </TableRow>
+    </LinearLayout>
+</merge>
