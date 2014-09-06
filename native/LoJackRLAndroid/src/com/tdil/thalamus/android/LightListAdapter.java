@@ -191,8 +191,8 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			HomeLightsActivity sct = (HomeLightsActivity) activity;
 			sct.onItemClick(mPosition);
 			Light light = sct.getLight(mPosition);
-			Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
-			intent.putExtra(HomeLightDashboard.LIGHT, light);
+			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightDashboard.class);
+			intent.putExtra(ActivityHomeLightDashboard.LIGHT, light);
 			activity.startActivity(intent);
 		}
 	}
@@ -206,8 +206,8 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
-			intent.putExtra(HomeLightDashboard.LIGHT, alarm);
+			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightDashboard.class);
+			intent.putExtra(ActivityHomeLightDashboard.LIGHT, alarm);
 			activity.startActivity(intent);
 			activity.finish();
 		}

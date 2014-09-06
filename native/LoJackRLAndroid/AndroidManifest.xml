@@ -198,7 +198,7 @@
         </activity>
         <activity
             android:name="com.tdil.thalamus.android.ActivityHomeAlarmDashboard"
-            android:label="Estado de alarma"
+            android:label="Dashboard de alarma"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
@@ -206,6 +206,12 @@
         <activity
             android:name="com.tdil.thalamus.android.ActivityHomeLights"
             android:label="Listado de luces"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityHomeLightDashboard"
+            android:label="Dashboard de luz"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
