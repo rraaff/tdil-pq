@@ -26,21 +26,11 @@
             android:layout_height="fill_parent"
             android:layout_weight=".97" >
 
-            <ScrollView
-                android:id="@+id/scrollView1"
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent" >
-
-                <!-- TODO: (MARCOS) ¿Esto podría ser un webview con una página específica no? -->
-                
-                <LinearLayout
-                    android:id="@+id/ishome_notclient"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                </LinearLayout>
-            </ScrollView>
+                        <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+                    
 
         </TableRow>
 
