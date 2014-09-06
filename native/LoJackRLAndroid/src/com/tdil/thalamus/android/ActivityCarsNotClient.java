@@ -21,14 +21,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.PreventActivity.GeoWebChromeClient;
-import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.home.DemoActivityHome.GeoWebChromeClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.utils.Login;
 
 
 
-public class DemoActivityHome extends LoJackWithProductMenuActivity {
+public class ActivityCarsNotClient extends ActionBarActivity {
 
 	private WebView webView;
 	
@@ -48,7 +47,7 @@ public class DemoActivityHome extends LoJackWithProductMenuActivity {
 		@Override
 		public void onProgressChanged(WebView view, int newProgress) {
 			// TODO Auto-generated method stub
-			DemoActivityHome.this.setProgress(newProgress * 100);
+			ActivityCarsNotClient.this.setProgress(newProgress * 100);
 			super.onProgressChanged(view, newProgress);
 		}
 	}
@@ -56,10 +55,9 @@ public class DemoActivityHome extends LoJackWithProductMenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.demo_activity_lohome_main);
-        HeaderLogic.installTabLogic(this);
-        
-        webView = (WebView) findViewById(R.id.webView);
+        setContentView(R.layout.activity_locar_not_client);
+
+    	webView = (WebView) findViewById(R.id.webView);
 		
 		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
 		//setContentView(webView);
@@ -111,7 +109,7 @@ public class DemoActivityHome extends LoJackWithProductMenuActivity {
 			}
 		});
 		try {
-			webView.loadUrl(ApplicationConfig.URL_DEMO_HOME + "?apkToken=" + Login.getLoggedUser(this).getApkToken());
+			webView.loadUrl(ApplicationConfig.URL_CARS_NOT_CLIENT + "?apkToken=" + Login.getLoggedUser(this).getApkToken());
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
@@ -130,19 +128,4 @@ public class DemoActivityHome extends LoJackWithProductMenuActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() { }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                  Bundle savedInstanceState) {
-              View rootView = inflater.inflate(R.layout.fragment_display_message,
-                      container, false);
-              return rootView;
-        }
-    }*/
 }

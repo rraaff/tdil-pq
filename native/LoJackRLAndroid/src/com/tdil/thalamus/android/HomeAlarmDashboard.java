@@ -19,7 +19,8 @@ import android.widget.ToggleButton;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
-import com.tdil.thalamus.android.logic.AlarmsLogic;
+import com.tdil.thalamus.android.home.IAlarmsActivity;
+import com.tdil.thalamus.android.home.logic.AlarmsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -36,6 +37,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
+@Deprecated
 public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";

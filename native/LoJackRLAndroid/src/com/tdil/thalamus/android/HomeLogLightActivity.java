@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.home.LightLogListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -28,6 +29,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
+@Deprecated
 public class HomeLogLightActivity extends LoJackActivity {
 	/**
 	 * The default email to populate the email field with.

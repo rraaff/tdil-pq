@@ -8,6 +8,7 @@ import android.view.MenuItem;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.home.DemoActivityHome;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;

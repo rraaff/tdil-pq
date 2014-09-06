@@ -28,7 +28,9 @@ public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	public static final String URL_PREVENT = URL_WEBSITE + "goToPreventLoginAndroid.do?timezone=-180&USING_APK=true";
 	
 //	public static final String URL_DEMO_CAR = URL_WEBSITE + "goToPreventLoginAndroid.do?timezone=-180&USING_APK=true";
-	public static final String URL_DEMO_HOME = "http://www.google.com";
+	public static final String URL_HOME_NOT_CLIENT = "http://www.google.com";
+	public static final String URL_CARS_NOT_CLIENT = "http://www.google.com";
+	public static final String URL_PETS_NOT_CLIENT = "http://www.google.com";
 
 	public static int default_timeout = 10000;
 	
