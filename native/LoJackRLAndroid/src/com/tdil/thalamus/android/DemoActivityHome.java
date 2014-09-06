@@ -12,7 +12,7 @@ import com.tdil.lojack.rl.R;
 
 
 
-public class DemoActivity extends ActionBarActivity {
+public class DemoActivityHome extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

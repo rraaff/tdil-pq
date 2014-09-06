@@ -54,7 +54,7 @@ public class MenuLogic {
 			FooterLogic.handleParkingsAccess(activity);
 			return true;
 		case R.id.menu_totest:
-			Intent intentDemos = new Intent(activity, DemoActivity.class);
+			Intent intentDemos = new Intent(activity, DemoActivityHome.class);
 			activity.startActivity(intentDemos);
 			activity.finish();
 			return true;
