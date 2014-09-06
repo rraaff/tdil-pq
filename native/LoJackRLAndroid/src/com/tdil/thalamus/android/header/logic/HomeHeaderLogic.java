@@ -4,18 +4,15 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.view.View;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ActivityHomeAlarms;
+import com.tdil.thalamus.android.ActivityHomeCamera;
 import com.tdil.thalamus.android.ActivityHomeCameras;
 import com.tdil.thalamus.android.ActivityHomeLights;
-import com.tdil.thalamus.android.CameraListAdapter;
 import com.tdil.thalamus.android.HomeAlarmDashboard;
-import com.tdil.thalamus.android.HomeAlarmsActivity;
-import com.tdil.thalamus.android.HomeCameraActivity;
 import com.tdil.thalamus.android.HomeLightDashboard;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -138,9 +135,9 @@ public class HomeHeaderLogic {
 						CameraCollection.class);
 				ArrayList<Camera> cameras = new ArrayList<Camera>(col.getCameras());
 				if (col.getCameras().size() == 1) {
-					Intent intent = new Intent(activity.getBaseContext(), HomeCameraActivity.class);
-					intent.putExtra(HomeCameraActivity.CAMERA, col.getCameras().iterator().next());
-					intent.putExtra(HomeCameraActivity.CAMERAS_COUNT, col.getCameras().size());
+					Intent intent = new Intent(activity.getBaseContext(), ActivityHomeCamera.class);
+					intent.putExtra(ActivityHomeCamera.CAMERA, col.getCameras().iterator().next());
+					intent.putExtra(ActivityHomeCamera.CAMERAS_COUNT, col.getCameras().size());
 					activity.startActivity(intent);
 					activity.finish();
 				}  else {

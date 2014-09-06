@@ -8,15 +8,16 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.tdil.thalamus.android.ActivityHomeCamera;
 import com.tdil.thalamus.android.HomeCameraActivity;
 
 public class DownloadCameraImageTask extends AsyncTask<Void, Void, Bitmap> {
 	
-	private HomeCameraActivity activity;
+	private ActivityHomeCamera activity;
 	private String url;
     private ImageView bmImage;
     
-    public DownloadCameraImageTask(HomeCameraActivity activity, ImageView bmImage, String url) {
+    public DownloadCameraImageTask(ActivityHomeCamera activity, ImageView bmImage, String url) {
     	this.activity = activity;
     	this.url = url;
         this.bmImage = bmImage;

@@ -124,9 +124,9 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), HomeCameraActivity.class);
-			intent.putExtra(HomeCameraActivity.CAMERA, this.camera);
-			intent.putExtra(HomeCameraActivity.CAMERAS_COUNT, this.size);
+			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeCamera.class);
+			intent.putExtra(ActivityHomeCamera.CAMERA, this.camera);
+			intent.putExtra(ActivityHomeCamera.CAMERAS_COUNT, this.size);
 			activity.startActivity(intent);
 			activity.finish();
 		}

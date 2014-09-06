@@ -32,6 +32,7 @@ import com.tdil.thalamus.android.utils.MoveCameraUpTask;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
+@Deprecated
 public class HomeCameraActivity extends LoJackActivity {
 
 	public static final String TAB_CAMARAS = "CAMARAS";
@@ -95,7 +96,7 @@ public class HomeCameraActivity extends LoJackActivity {
 			camera = new TrendnetTVIP851(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
 		}
 
-		new DownloadCameraImageTask(this, (ImageView)this.findViewById(R.id.cameraView), RESTConstants.CAMERA_URL + "").execute();
+//		new DownloadCameraImageTask(this, (ImageView)this.findViewById(R.id.cameraView), RESTConstants.CAMERA_URL + "").execute();
 		
 		
 		findViewById(R.id.leftButton).setOnClickListener(

@@ -234,6 +234,13 @@
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityHomeCamera"
+            android:label="Camara"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
 
         <activity
             android:name="com.tdil.thalamus.android.DemoActivityCars"
