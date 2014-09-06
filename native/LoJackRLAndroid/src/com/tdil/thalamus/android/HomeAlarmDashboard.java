@@ -123,7 +123,7 @@ public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivit
 			});
 	    }
 		
-		FooterLogic.installFooterLogic(this);
+		TabLogic.installTabLogic(this);
 	}
 
 	public void init() {

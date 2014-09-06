@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/application_fullmenu"
+    android:id="@+id/application_home_submenu"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -20,7 +20,7 @@
 				style="@style/inlohome_tab_basic">
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/tabAlarmsUnselected"
                     style="@style/inlohome_button_basic"
                     android:text="@string/btn_tag_alarms" />
                 
@@ -35,7 +35,7 @@
 			    style="@style/inlohome_tab_basic" >
 
                 <TextView
-                    android:id="@+id/textView12"
+                    android:id="@+id/tabLightsUnselected"
                     style="@style/inlohome_button_basic"
                     android:text="@string/btn_tag_lights" />
                 
@@ -50,7 +50,7 @@
 				style="@style/inlohome_tab_basic">
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/tabCamerasUnselected"
                     style="@style/inlohome_button_basic"
                     android:text="@string/btn_tag_cameras" />
                 

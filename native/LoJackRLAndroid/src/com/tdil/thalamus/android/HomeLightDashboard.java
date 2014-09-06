@@ -125,7 +125,7 @@ public class HomeLightDashboard extends LoJackActivity implements ILightsActivit
 			});
 	    }
 		
-		FooterLogic.installFooterLogic(this);
+		TabLogic.installTabLogic(this);
 	}
 
 

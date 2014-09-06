@@ -144,7 +144,7 @@ public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivit
 			}
 		}
 		
-		FooterLogic.installFooterLogic(this);
+		TabLogic.installTabLogic(this);
 	}
 	
 	@Override

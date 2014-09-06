@@ -12,13 +12,14 @@ import com.tdil.lojack.rl.R;
 
 
 
-public class DemoActivityHome extends ActionBarActivity {
+public class DemoActivityHome extends LoJackWithProductMenuActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_activity_lohome_main);
-
+        TabLogic.installTabLogic(this);
+        
         if (savedInstanceState == null) {
             //getSupportFragmentManager().beginTransaction()
             //    .add(R.id.container, new PlaceholderFragment()).commit();

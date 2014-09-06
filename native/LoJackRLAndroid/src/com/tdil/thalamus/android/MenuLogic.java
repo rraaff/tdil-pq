@@ -42,16 +42,16 @@ public class MenuLogic {
 
 			return true;
 		case R.id.menu_action_home: 
-			FooterLogic.handleHomeAccess(activity, true);
+			TabLogic.handleHomeAccess(activity, true);
 			return true;
 		case R.id.menu_action_prevent:
-			FooterLogic.handlePreventAccess(activity);
+			TabLogic.handlePreventAccess(activity);
 			return true;
 		case R.id.menu_action_pets:
-			FooterLogic.handlePetsAccess(activity);
+			TabLogic.handlePetsAccess(activity);
 			return true;
 		case R.id.menu_action_parkings:
-			FooterLogic.handleParkingsAccess(activity);
+			TabLogic.handleParkingsAccess(activity);
 			return true;
 		case R.id.menu_totest:
 			Intent intentDemos = new Intent(activity, DemoActivityHome.class);

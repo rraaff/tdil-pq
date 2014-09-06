@@ -161,7 +161,7 @@ public class HomeCameraActivity extends LoJackActivity {
 			});
 	    }
 		
-		FooterLogic.installFooterLogic(this);
+		TabLogic.installTabLogic(this);
 	}
 
 	@Override

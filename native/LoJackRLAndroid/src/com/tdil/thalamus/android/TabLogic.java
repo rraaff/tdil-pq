@@ -20,10 +20,10 @@ import com.tdil.thalamus.android.utils.Messages;
 //import android.view.Menu;
 //import android.widget.TextView;
 
-public class FooterLogic  {
+public class TabLogic  {
 
 	
-	public static void installFooterLogic(final Activity activity) {
+	public static void installTabLogic(final Activity activity) {
 		installFooterLogic(activity, true);
 	}
 	
@@ -43,6 +43,17 @@ public class FooterLogic  {
 				});
 			}
 		*/
+//		View homeTab = activity.findViewById(R.id.tabHomeUnSelected);
+//		if (home!= null) {
+//			home.setOnClickListener(
+//				new View.OnClickListener() {
+//					@Override
+//					public void onClick(View view) {
+//						handleHomeAccess(activity, finishOnExit);
+//					}
+//				});
+//		}
+		
 		View home = activity.findViewById(R.id.btnFooterHome);
 		if (home!= null) {
 			home.setOnClickListener(
@@ -63,6 +74,41 @@ public class FooterLogic  {
 					}
 	
 				});
+		}
+		
+		View outer = (View)activity.findViewById(R.id.application_fullmenu);
+		if (outer != null) {
+			View tabPets = outer.findViewById(R.id.tabPetsUnselected);
+			if (tabPets != null) {
+				tabPets.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handlePetsAccess(activity);
+						}
+		
+					});
+			}
+			View tabPrevent = activity.findViewById(R.id.tabCarsUnselected);
+			if(tabPrevent != null) {
+				tabPrevent.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handlePreventAccess(activity);
+						}
+					});
+			}
+			View tabApps = activity.findViewById(R.id.tabAppsUnselected);
+			if (tabApps != null) {
+				tabApps.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handleParkingsAccess(activity); 
+						}
+					});
+			}
 		}
 		
 		View prevent = activity.findViewById(R.id.btnFooterPrevent);
@@ -86,6 +132,7 @@ public class FooterLogic  {
 					}
 				});
 		}
+		
 //		View tv = activity.findViewById(R.id.btnFooterTV);
 //		if (tv != null) {
 //			tv.setOnClickListener(

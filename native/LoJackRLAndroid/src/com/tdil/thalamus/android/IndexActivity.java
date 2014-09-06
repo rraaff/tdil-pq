@@ -112,19 +112,19 @@ public class IndexActivity extends LoJackActivity {
 		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FooterLogic.handlePreventAccess(IndexActivity.this);
+				TabLogic.handlePreventAccess(IndexActivity.this);
 			}
 		});
 		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FooterLogic.handlePetsAccess(IndexActivity.this);
+				TabLogic.handlePetsAccess(IndexActivity.this);
 			}
 		});
 		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FooterLogic.handleParkingsAccess(IndexActivity.this);
+				TabLogic.handleParkingsAccess(IndexActivity.this);
 			}
 		});
 //		findViewById(R.id.btnFooterTV).setOnClickListener(new OnClickListener() {
@@ -136,13 +136,13 @@ public class IndexActivity extends LoJackActivity {
 		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FooterLogic.handleHomeAccess(IndexActivity.this, false);
+				TabLogic.handleHomeAccess(IndexActivity.this, false);
 			}
 		});
 		findViewById(R.id.btnClubLJ).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FooterLogic.handleClubLoJackAccess(IndexActivity.this);
+				TabLogic.handleClubLoJackAccess(IndexActivity.this);
 			}
 		});
 		Button button = (Button)findViewById(R.id.vluCount);

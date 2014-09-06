@@ -12,7 +12,7 @@
         android:orientation="vertical" >
 
         <TableRow
-            android:id="@+id/tableRow1"
+            android:id="@+id/incl"
             style="@style/format_page_3rows1col_header" >
 
             <include layout="@layout/inlohome_application_fullmenu" />
