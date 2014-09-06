@@ -17,6 +17,7 @@
 
             <include layout="@layout/inlohome_application_fullmenu" />
         </TableRow>
+        <include layout="@layout/inlohome_application_submenu" />
 
         <TableRow
             android:id="@+id/tableRow2"
