@@ -8,10 +8,13 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.ActivityCarsNotClient;
+import com.tdil.thalamus.android.ActivityPetsNotClient;
 import com.tdil.thalamus.android.ClubLJActivity;
-import com.tdil.thalamus.android.HomeAlarmsActivity;
 import com.tdil.thalamus.android.ParkingsActivity;
 import com.tdil.thalamus.android.PreventActivity;
+import com.tdil.thalamus.android.home.ActivityHomeIndex;
+import com.tdil.thalamus.android.home.ActivityHomeNotClient;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -170,8 +173,8 @@ public class HeaderLogic  {
 		if (Login.getLoggedUser(activity).getPreventUser()) {
 			activity.startActivity(new Intent(activity, PreventActivity.class));
 		} else {
-			String videoId = Login.getLoggedUser(activity).getPreventVideo();
-			playVideo(activity, videoId);
+			Intent intent = new Intent(activity, ActivityCarsNotClient.class); 
+			activity.startActivity(intent); 
 		}
 	}
 
@@ -203,22 +206,22 @@ public class HeaderLogic  {
 			}, RESTConstants.LOGIN_PETS, new RestParams(), null).execute((Void) null);
 			
 		} else {
-			String videoId = Login.getLoggedUser(activity).getPetVideo();
-			playVideo(activity, videoId);
+			Intent intent = new Intent(activity, ActivityPetsNotClient.class); 
+			activity.startActivity(intent); 
 		}
 	}
 
 	public static void handleHomeAccess(final Activity activity,
 			final boolean finishOnExit) {
 		if (Login.getLoggedUser(activity).getHomeUser()) {
-			Intent intent = new Intent(activity, HomeAlarmsActivity.class); 
+			Intent intent = new Intent(activity, ActivityHomeIndex.class); 
 			activity.startActivity(intent); 
-			if (finishOnExit) {
-				activity.finish();
-			}
 		} else {
-			String videoId = Login.getLoggedUser(activity).getHomeVideo();
-			playVideo(activity, videoId);
+			Intent intent = new Intent(activity, ActivityHomeNotClient.class); 
+			activity.startActivity(intent); 
+		}
+		if (finishOnExit) {
+			activity.finish();
 		}
 	}
 

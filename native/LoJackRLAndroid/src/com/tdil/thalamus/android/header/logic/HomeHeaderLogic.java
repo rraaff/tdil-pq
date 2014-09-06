@@ -8,12 +8,12 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.ActivityHomeAlarms;
-import com.tdil.thalamus.android.ActivityHomeCamera;
-import com.tdil.thalamus.android.ActivityHomeCameras;
-import com.tdil.thalamus.android.ActivityHomeLights;
 import com.tdil.thalamus.android.HomeAlarmDashboard;
 import com.tdil.thalamus.android.HomeLightDashboard;
+import com.tdil.thalamus.android.home.ActivityHomeAlarms;
+import com.tdil.thalamus.android.home.ActivityHomeCamera;
+import com.tdil.thalamus.android.home.ActivityHomeCameras;
+import com.tdil.thalamus.android.home.ActivityHomeLights;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
