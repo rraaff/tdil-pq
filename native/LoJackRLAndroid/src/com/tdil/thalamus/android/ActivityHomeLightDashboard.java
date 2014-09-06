@@ -160,9 +160,9 @@ public class ActivityHomeLightDashboard extends LoJackWithProductMenuActivity im
 	}
     
 	public void viewLightLog(int mPosition) {
-		Intent intent = new Intent(getBaseContext(), HomeLogLightActivity.class);
-		intent.putExtra(HomeLogLightActivity.IDENTIDAD, light.getIdEntidad());
-		intent.putExtra(HomeLogLightActivity.IDLUZ, light.getIdLuz());
+		Intent intent = new Intent(getBaseContext(), ActivityHomeLightLog.class);
+		intent.putExtra(ActivityHomeLightLog.IDENTIDAD, light.getIdEntidad());
+		intent.putExtra(ActivityHomeLightLog.IDLUZ, light.getIdLuz());
 		startActivity(intent);
 	}
 	

@@ -143,8 +143,8 @@ public class ActivityHomeAlarmDashboard extends LoJackWithProductMenuActivity im
 	}
     
     public void viewAlarmLog(int mPosition) {
-		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
-		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());
+		Intent intent = new Intent(getBaseContext(), ActivityHomeAlarmLog.class);
+		intent.putExtra(ActivityHomeAlarmLog.IDENTIDAD, alarm.getIdEntidad());
 		startActivity(intent);
 	}
     

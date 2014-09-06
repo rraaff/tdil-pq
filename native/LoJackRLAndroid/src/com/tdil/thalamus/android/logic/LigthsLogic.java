@@ -7,8 +7,7 @@ import android.content.Intent;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.HomeLightsActivity;
-import com.tdil.thalamus.android.HomeLogLightActivity;
+import com.tdil.thalamus.android.ActivityHomeLightLog;
 import com.tdil.thalamus.android.ILightsActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -195,10 +194,10 @@ public class LigthsLogic {
 	
 	public static void viewLightLog(Activity activity, int mPosition) {
 		final ILightsActivity lightsActivity = (ILightsActivity)activity;
-		Intent intent = new Intent(activity.getBaseContext(), HomeLogLightActivity.class);
+		Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightLog.class);
 		Light alarm = lightsActivity.getLight(mPosition);
-		intent.putExtra(HomeLogLightActivity.IDENTIDAD, alarm.getIdEntidad());
-		intent.putExtra(HomeLogLightActivity.IDLUZ, alarm.getIdLuz());
+		intent.putExtra(ActivityHomeLightLog.IDENTIDAD, alarm.getIdEntidad());
+		intent.putExtra(ActivityHomeLightLog.IDLUZ, alarm.getIdLuz());
 		activity.startActivity(intent);
 	}
 }
