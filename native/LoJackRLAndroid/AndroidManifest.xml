@@ -196,6 +196,12 @@
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityHomeAlarmDashboard"
+            android:label="Estado de alarma"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
         
         <activity
             android:name="com.tdil.thalamus.android.ActivityHomeLights"

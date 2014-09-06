@@ -160,7 +160,7 @@ public class AlarmListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
+			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeAlarmDashboard.class);
 			intent.putExtra(HomeAlarmDashboard.ALARM, alarm);
 			activity.startActivity(intent);
 			activity.finish();
