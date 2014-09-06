@@ -184,7 +184,7 @@
         </activity>
 
         <activity
-            android:name="com.tdil.thalamus.android.DemoActivity"
+            android:name="com.tdil.thalamus.android.DemoActivityHome"
             android:label="CARS maqueta"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
