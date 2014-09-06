@@ -62,7 +62,7 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 	/********* Create a holder to contain inflated xml file elements ***********/
 	public static class CameraViewHolder {
 		public TextView cameraDescription;
-		public Button viewCamera;
+		public View viewCamera;
 	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
@@ -79,7 +79,7 @@ public class CameraListAdapter extends BaseAdapter implements OnClickListener {
 			/******** View Holder Object to contain tabitem.xml file elements ************/
 			holder = new CameraViewHolder();
 			holder.cameraDescription = (TextView) vi.findViewById(R.id.cameraDescription);
-			holder.viewCamera = (Button)vi.findViewById(R.id.viewCameraButton);
+			holder.viewCamera = (View)vi.findViewById(R.id.viewCameraButton);
 
 			/************ Set holder with LayoutInflater ************/
 			vi.setTag(holder);

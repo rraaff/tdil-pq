@@ -18,6 +18,7 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -125,7 +126,7 @@ public class HomeLightDashboard extends LoJackActivity implements ILightsActivit
 			});
 	    }
 		
-		TabLogic.installTabLogic(this);
+		HeaderLogic.installTabLogic(this);
 	}
 
 

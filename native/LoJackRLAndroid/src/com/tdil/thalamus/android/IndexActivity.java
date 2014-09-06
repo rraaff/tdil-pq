@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
@@ -112,19 +113,19 @@ public class IndexActivity extends LoJackActivity {
 		findViewById(R.id.btnFooterPrevent).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				TabLogic.handlePreventAccess(IndexActivity.this);
+				HeaderLogic.handlePreventAccess(IndexActivity.this);
 			}
 		});
 		findViewById(R.id.btnFooterPets).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				TabLogic.handlePetsAccess(IndexActivity.this);
+				HeaderLogic.handlePetsAccess(IndexActivity.this);
 			}
 		});
 		findViewById(R.id.btnFooterParkings).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				TabLogic.handleParkingsAccess(IndexActivity.this);
+				HeaderLogic.handleParkingsAccess(IndexActivity.this);
 			}
 		});
 //		findViewById(R.id.btnFooterTV).setOnClickListener(new OnClickListener() {
@@ -136,13 +137,13 @@ public class IndexActivity extends LoJackActivity {
 		findViewById(R.id.btnFooterHome).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				TabLogic.handleHomeAccess(IndexActivity.this, false);
+				HeaderLogic.handleHomeAccess(IndexActivity.this, false);
 			}
 		});
 		findViewById(R.id.btnClubLJ).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				TabLogic.handleClubLoJackAccess(IndexActivity.this);
+				HeaderLogic.handleClubLoJackAccess(IndexActivity.this);
 			}
 		});
 		Button button = (Button)findViewById(R.id.vluCount);

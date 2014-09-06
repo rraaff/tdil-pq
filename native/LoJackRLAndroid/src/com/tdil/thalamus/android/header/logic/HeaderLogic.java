@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.header.logic;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -8,6 +8,10 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.ClubLJActivity;
+import com.tdil.thalamus.android.HomeAlarmsActivity;
+import com.tdil.thalamus.android.ParkingsActivity;
+import com.tdil.thalamus.android.PreventActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -20,7 +24,7 @@ import com.tdil.thalamus.android.utils.Messages;
 //import android.view.Menu;
 //import android.widget.TextView;
 
-public class TabLogic  {
+public class HeaderLogic  {
 
 	
 	public static void installTabLogic(final Activity activity) {
@@ -76,40 +80,8 @@ public class TabLogic  {
 				});
 		}
 		
-		View outer = (View)activity.findViewById(R.id.application_fullmenu);
-		if (outer != null) {
-			View tabPets = outer.findViewById(R.id.tabPetsUnselected);
-			if (tabPets != null) {
-				tabPets.setOnClickListener(
-					new View.OnClickListener() {
-						@Override
-						public void onClick(View view) {
-							handlePetsAccess(activity);
-						}
-		
-					});
-			}
-			View tabPrevent = activity.findViewById(R.id.tabCarsUnselected);
-			if(tabPrevent != null) {
-				tabPrevent.setOnClickListener(
-					new View.OnClickListener() {
-						@Override
-						public void onClick(View view) {
-							handlePreventAccess(activity);
-						}
-					});
-			}
-			View tabApps = activity.findViewById(R.id.tabAppsUnselected);
-			if (tabApps != null) {
-				tabApps.setOnClickListener(
-					new View.OnClickListener() {
-						@Override
-						public void onClick(View view) {
-							handleParkingsAccess(activity); 
-						}
-					});
-			}
-		}
+		installTopMenuLogic(activity);
+		HomeHeaderLogic.installHomeMenuLogic(activity);
 		
 		View prevent = activity.findViewById(R.id.btnFooterPrevent);
 		if(prevent != null) {
@@ -144,8 +116,45 @@ public class TabLogic  {
 //				});
 //		}
 	}
-    		
 
+	private static void installTopMenuLogic(final Activity activity) {
+		/* logica del menu superior */
+		View outer = (View)activity.findViewById(R.id.application_fullmenu);
+		if (outer != null) {
+			View tabPets = outer.findViewById(R.id.tabPetsUnselected);
+			if (tabPets != null) {
+				tabPets.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handlePetsAccess(activity);
+						}
+		
+					});
+			}
+			View tabPrevent = activity.findViewById(R.id.tabCarsUnselected);
+			if(tabPrevent != null) {
+				tabPrevent.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handlePreventAccess(activity);
+						}
+					});
+			}
+			View tabApps = activity.findViewById(R.id.tabAppsUnselected);
+			if (tabApps != null) {
+				tabApps.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handleParkingsAccess(activity); 
+						}
+					});
+			}
+		}
+	}
+	
 	public static void playVideo(final Activity activity, String videoId) {
 		try{
 			 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:" + videoId));

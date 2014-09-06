@@ -19,6 +19,7 @@ import com.tdil.thalamus.android.camera.IPCamera;
 import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;
 import com.tdil.thalamus.android.camera.TrendnetTVIP851;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.utils.DownloadCameraImageTask;
@@ -161,7 +162,7 @@ public class HomeCameraActivity extends LoJackActivity {
 			});
 	    }
 		
-		TabLogic.installTabLogic(this);
+		HeaderLogic.installTabLogic(this);
 	}
 
 	@Override

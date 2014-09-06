@@ -20,6 +20,7 @@ import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.logic.AlarmsLogic;
 import com.tdil.thalamus.android.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -41,6 +42,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
+@Deprecated
 public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivity, IAlarmsActivity {
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -144,7 +146,7 @@ public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivit
 			}
 		}
 		
-		TabLogic.installTabLogic(this);
+		HeaderLogic.installTabLogic(this);
 	}
 	
 	@Override

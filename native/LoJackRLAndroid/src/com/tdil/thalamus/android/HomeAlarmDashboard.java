@@ -18,6 +18,7 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.logic.AlarmsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -123,7 +124,7 @@ public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivit
 			});
 	    }
 		
-		TabLogic.installTabLogic(this);
+		HeaderLogic.installTabLogic(this);
 	}
 
 	public void init() {

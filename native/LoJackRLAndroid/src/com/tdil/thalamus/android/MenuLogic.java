@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.MenuItem;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -42,16 +43,16 @@ public class MenuLogic {
 
 			return true;
 		case R.id.menu_action_home: 
-			TabLogic.handleHomeAccess(activity, true);
+			HeaderLogic.handleHomeAccess(activity, true);
 			return true;
 		case R.id.menu_action_prevent:
-			TabLogic.handlePreventAccess(activity);
+			HeaderLogic.handlePreventAccess(activity);
 			return true;
 		case R.id.menu_action_pets:
-			TabLogic.handlePetsAccess(activity);
+			HeaderLogic.handlePetsAccess(activity);
 			return true;
 		case R.id.menu_action_parkings:
-			TabLogic.handleParkingsAccess(activity);
+			HeaderLogic.handleParkingsAccess(activity);
 			return true;
 		case R.id.menu_totest:
 			Intent intentDemos = new Intent(activity, DemoActivityHome.class);

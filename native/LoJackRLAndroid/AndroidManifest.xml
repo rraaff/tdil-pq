@@ -189,6 +189,27 @@
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityHomeAlarms"
+            android:label="Listado de alarms"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityHomeLights"
+            android:label="Listado de luces"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.ActivityHomeCameras"
+            android:label="Listado de camaras"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
 
         <activity
             android:name="com.tdil.thalamus.android.DemoActivityCars"

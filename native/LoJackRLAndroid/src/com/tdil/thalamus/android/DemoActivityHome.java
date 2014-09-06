@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 
 
 
@@ -18,7 +19,7 @@ public class DemoActivityHome extends LoJackWithProductMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_activity_lohome_main);
-        TabLogic.installTabLogic(this);
+        HeaderLogic.installTabLogic(this);
         
         if (savedInstanceState == null) {
             //getSupportFragmentManager().beginTransaction()
