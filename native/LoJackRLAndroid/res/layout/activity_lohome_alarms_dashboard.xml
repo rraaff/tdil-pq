@@ -23,85 +23,77 @@
             android:id="@+id/tableRow2"
             style="@style/format_page_3rows1col_middle"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="0dip"
             android:layout_weight=".97" >
 
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+                
+				<LinearLayout
+					android:id="@+id/tab1"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="top"
+				    android:orientation="vertical" >
+				    
+				    <TableRow
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content" >
+				        
+				        <LinearLayout style="@style/title_dashboard_container" >
+				            
+				            <TextView
+				                android:id="@+id/lightDescription"
+				                style="@style/title_dashboard"
+				                android:text="@string/title_dashboard_alarms" />
+				            
+							<TextView
+								android:id="@+id/alarmStatus"
+				                style="@style/title_dashboard_state"
+								android:text="@string/status_unknown" />
+				            
+				        </LinearLayout>
 
+			        </TableRow>
 
-                            <LinearLayout  android:id="@+id/tab1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+				    <TableRow
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
 
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bar_bg" >
+						<LinearLayout
+						    style="@style/toggle_button_container"
+						    android:layout_height="wrap_content" >
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="6" >
-
-                            <TextView
-                                android:id="@+id/alarmDescription"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="12dp"
-                                android:layout_weight="4"
-                                android:text="@string/action_loading"
-                                android:textAllCaps="true"
-                                android:textColor="@color/lst_itm_title"
-                                android:textSize="16sp" />
+                            <!--  TextView android:id="@+id/alarmDescription"/ -->
 
                             <ToggleButton
                                 android:id="@+id/btnToggleAlarm"
-                                android:layout_width="0dp"
-                                android:layout_height="12sp"
-                                android:layout_marginRight="12dp"
-                                android:layout_marginTop="12dp"
-                                android:layout_weight="2"
-                                android:textOff="OFF"
-                                android:textOn="ON" />
-                        </LinearLayout>
-                    </TableRow>
+						        android:layout_width="match_parent"
+						        android:layout_height="48dp"
+						        android:layout_marginBottom="2dp"
+						        android:layout_marginTop="2dp"
+						        android:background="@color/bgBase"
+						        android:drawableRight="@drawable/btn_toggle_fake_switch"
+						        android:gravity="center_vertical|left"
+						        android:paddingLeft="10dp"
+						        android:textOff="Encender"
+						        android:textOn="Apagar"
+						        android:textSize="15sp" />
+					    
+						</LinearLayout>
+			
+				    </TableRow>
 
                     <TableRow
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/bgBase"
-                        android:paddingBottom="6dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:paddingTop="6dp" >
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/lst_itm_status"
-                            android:textColor="@color/lst_itm_normal"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/alarmStatus"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="4dp"
-                            android:text="@string/status_unknown"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/bgBase"
-                        android:paddingBottom="6dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:paddingTop="6dp" >
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="10dp" >
 
                         <TextView
                             android:id="@+id/loadingInfoText"
@@ -121,14 +113,14 @@
                             android:textSize="12sp" />
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/bgBase"
-                        android:paddingBottom="6dp"
-                        android:paddingLeft="12dp"
-                        android:paddingRight="12dp"
-                        android:paddingTop="6dp" >
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:paddingBottom="10dp"
+					    android:paddingLeft="20dp"
+					    android:paddingRight="20dp"
+					    android:paddingTop="0dp" >
 
                         <TextView
                             android:id="@+id/lastChangeStatus"
@@ -157,31 +149,38 @@
                             android:textSize="12sp" />
                     </TableRow>
 
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/bgBase"
-                        android:padding="12dp" >
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:background="@color/grayLightBase">
+					   
+					</TableRow>
+
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
 
                         <Button
                             android:id="@+id/goToAlarmViewLog"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
+					        android:layout_width="fill_parent"
+					        android:layout_height="48dp"
+					        android:background="@drawable/transparente"
+					        android:drawableBottom="@drawable/bg_item_inlist"
+					        android:drawableLeft="@drawable/icon_log_off"
+					        android:drawableRight="@drawable/icon_arrow_inlist"
+					        android:gravity="left|center_vertical"
+					        android:minHeight="48dp"
+					        android:paddingLeft="5dp"
+					        android:textSize="15sp"
                             android:text="@string/btn_view_log" />
                     </TableRow>
 
-                    <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_gravity="fill_vertical|fill_horizontal" >
-                    </RelativeLayout>
                 </LinearLayout>
-
-                    <RelativeLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:layout_gravity="fill_vertical|fill_horizontal" >
-                    </RelativeLayout>
+                
+			</ScrollView>
 
         </TableRow>
 

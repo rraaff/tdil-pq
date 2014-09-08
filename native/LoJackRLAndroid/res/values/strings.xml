@@ -42,7 +42,7 @@
     <string name="title_parkings">PARKING</string>
     <string name="title_prevent">CAR</string>
     
-    <string name="title_dashboard_alarms">ALARMAS</string>
+    <string name="title_dashboard_alarms">MANEJAR ALARMAS</string>
     <string name="title_dashboard_lights">MANEJAR LUZ</string>
     <string name="title_home">HOME</string>
     <string name="title_send_panic">ENVIAR PANICO</string>

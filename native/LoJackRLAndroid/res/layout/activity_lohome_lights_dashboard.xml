@@ -202,8 +202,8 @@
 					        android:gravity="left|center_vertical"
 					        android:minHeight="48dp"
 					        android:paddingLeft="5dp"
-					        android:text="@string/btn_view_log"
-					        android:textSize="15sp" />
+					        android:textSize="15sp"
+					        android:text="@string/btn_view_log" />
 
 					</TableRow>
 
