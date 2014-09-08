@@ -57,9 +57,12 @@
 
                     <CheckBox
                         android:id="@+id/rememberPasswordCheckbox"
+                        style="@style/checkbox_white_01"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:paddingLeft="0dp"
                         android:text="@string/crt_tag_rememberme"
-                        android:visibility="visible"
-                        style="@style/checkbox_white_01" />
+                        android:textAlignment="center"
+                        android:visibility="visible" />
 
                     <LinearLayout
                         style="@style/block_specialitems" >
