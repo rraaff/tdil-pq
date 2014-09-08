@@ -240,6 +240,7 @@
 	<style name="format_page_3rows1col_middle">
 		<item name="android:layout_width">match_parent</item>
      	<item name="android:layout_height">wrap_content</item>
+     	<item name="android:background">@color/grayLightBase</item>
      </style>	
 
 	<style name="format_page_3rows1col_footer">
@@ -368,7 +369,6 @@
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">36dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
-	    <item name="android:layout_marginTop">8dp</item>
 	    <item name="android:textColor">@color/black</item>
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:textAllCaps">true</item>
@@ -400,6 +400,43 @@
 	    <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">8dp</item>
 	    <item name="android:background">@drawable/bg_textfields_02</item>
+	    <item name="android:textSize">14sp</item>
+	    <item name="android:textColor">@color/black</item>
+	</style>
+	
+	<style name="title_dashboard_container">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">68dp</item>
+	    <item name="android:background">@drawable/bg_modaltitles</item>
+	    <item name="android:orientation">vertical</item>
+	</style>
+	
+	<style name="title_dashboard">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:layout_marginLeft">20dp</item>
+	    <item name="android:layout_marginRight">20dp</item>
+	    <item name="android:layout_marginTop">10dp</item>
+	    <item name="android:textColor">@color/black</item>
+	    <item name="android:textSize">20sp</item>
+	</style>
+	
+	<style name="title_dashboard_state">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:layout_marginBottom">10dp</item>
+	    <item name="android:layout_marginLeft">20dp</item>
+	    <item name="android:layout_marginRight">20dp</item>
+	</style>
+	
+	<style name="toggle_button_container">
+	    <item name="android:layout_width">match_parent</item>
+	    <item name="android:layout_height">36dp</item>
+	    <item name="android:layout_gravity">center_vertical</item>
+	    <item name="android:gravity">center_vertical</item>
+	    <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">8dp</item>
+	    <item name="android:background">@drawable/bg_textfields</item>
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:textColor">@color/black</item>
 	</style>

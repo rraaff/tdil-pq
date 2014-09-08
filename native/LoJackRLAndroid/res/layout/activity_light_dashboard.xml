@@ -79,24 +79,24 @@
 					        android:weightSum="6">
 				        
 					    	<!-- hide switch -->
+
 						    <ToggleButton
 						        android:id="@+id/switchActivate"
-								android:layout_width="0dp"
-								android:layout_height="12sp"
-								android:layout_weight="2"
-								android:layout_margin="12dp"
+						        android:layout_width="0dp"
+						        android:layout_height="wrap_content"
+						        android:layout_margin="12dp"
+						        android:layout_weight="1"
 						        android:textOff="OFF"
 						        android:textOn="ON" />
 						    
 						    <ToggleButton
 						        android:id="@+id/switchRandom"
-								android:layout_width="0dp"
-								android:layout_height="12sp"
-								android:layout_weight="4"
-								android:layout_margin="12dp"
+						        android:layout_width="0dp"
+						        android:layout_height="wrap_content"
+						        android:layout_margin="12dp"
+						        android:layout_weight="1"
 						        android:textOff="Ran OFF"
-						        android:textOn="Ran ON"/>
-							 
+						        android:textOn="Ran ON" />
 					    
 						</LinearLayout>
 			
