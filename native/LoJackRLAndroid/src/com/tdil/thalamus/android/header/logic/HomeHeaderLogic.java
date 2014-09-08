@@ -8,8 +8,8 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.HomeAlarmDashboard;
 import com.tdil.thalamus.android.HomeLightDashboard;
+import com.tdil.thalamus.android.home.ActivityHomeAlarmDashboard;
 import com.tdil.thalamus.android.home.ActivityHomeAlarms;
 import com.tdil.thalamus.android.home.ActivityHomeCamera;
 import com.tdil.thalamus.android.home.ActivityHomeCameras;
@@ -80,9 +80,9 @@ public class HomeHeaderLogic {
 						AlarmCollection.class);
 				ArrayList<Alarm> alarms = new ArrayList<Alarm>(col.getAlarms());
 				if (col.getAlarms().size() == 1) {
-					Intent intent = new Intent(activity.getBaseContext(), HomeAlarmDashboard.class);
-					intent.putExtra(HomeAlarmDashboard.ALARM, col.getAlarms().iterator().next());
-					intent.putExtra(HomeAlarmDashboard.HAS_MORE, "FALSE");
+					Intent intent = new Intent(activity.getBaseContext(), ActivityHomeAlarmDashboard.class);
+					intent.putExtra(ActivityHomeAlarmDashboard.ALARM, col.getAlarms().iterator().next());
+					intent.putExtra(ActivityHomeAlarmDashboard.HAS_MORE, "FALSE");
 					activity.startActivity(intent);
 					activity.finish();
 				}  else {

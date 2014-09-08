@@ -13,11 +13,21 @@
 
         <TableRow
             android:id="@+id/incl"
-            style="@style/format_page_3rows1col_header" >
+            style="@style/format_page_3rows1col_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-            <include layout="@layout/inlohome_application_fullmenu" />
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                layout="@layout/inlohome_application_fullmenu" />
+
         </TableRow>
-        <include layout="@layout/inlohome_application_submenu" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/inlohome_application_submenu" />
 
         <TableRow
             android:id="@+id/tableRow2"
@@ -42,17 +52,24 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content" >
 				        
-				        <LinearLayout style="@style/title_dashboard_container" >
+				        <LinearLayout
+				            style="@style/title_dashboard_container"
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content" >
 				            
 				            <TextView
 				                android:id="@+id/lightDescription"
 				                style="@style/title_dashboard"
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
 				                android:text="@string/title_dashboard_alarms" />
 				            
 							<TextView
-								android:id="@+id/alarmStatus"
-				                style="@style/title_dashboard_state"
-								android:text="@string/status_unknown" />
+							    android:id="@+id/alarmStatus"
+							    style="@style/title_dashboard_state"
+							    android:layout_width="match_parent"
+							    android:layout_height="wrap_content"
+							    android:text="@string/status_unknown" />
 				            
 				        </LinearLayout>
 
@@ -64,9 +81,13 @@
 
 						<LinearLayout
 						    style="@style/toggle_button_container"
-						    android:layout_height="wrap_content" >
+						    android:layout_height="wrap_content" 
+						    android:layout_width="fill_parent">
 
-                            <!--  TextView android:id="@+id/alarmDescription"/ -->
+                            <TextView
+                                android:id="@+id/alarmDescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                             <ToggleButton
                                 android:id="@+id/btnToggleAlarm"

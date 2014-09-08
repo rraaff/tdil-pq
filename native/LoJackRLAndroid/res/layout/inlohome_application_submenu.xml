@@ -17,7 +17,9 @@
 			android:orientation="horizontal" >
 
 			<LinearLayout
-				style="@style/inlohome_tab_basic">
+				style="@style/inlohome_tab_basic"
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent">
 
                 <TextView
                     android:id="@+id/tabAlarmsUnselected"
@@ -32,7 +34,8 @@
 			    style="@style/inlohome_tab_separator" />
 
 			<LinearLayout
-			    style="@style/inlohome_tab_basic" >
+			    style="@style/inlohome_tab_basic" android:layout_width="wrap_content"
+				android:layout_height="fill_parent">
 
                 <TextView
                     android:id="@+id/tabLightsUnselected"
@@ -47,7 +50,9 @@
 			    style="@style/inlohome_tab_separator" />
 
 			<LinearLayout
-				style="@style/inlohome_tab_basic">
+				style="@style/inlohome_tab_basic" 
+				android:layout_width="wrap_content"
+				android:layout_height="fill_parent">
 
                 <TextView
                     android:id="@+id/tabCamerasUnselected"
