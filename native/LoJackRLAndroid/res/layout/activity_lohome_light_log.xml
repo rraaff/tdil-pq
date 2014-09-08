@@ -26,12 +26,21 @@
             android:layout_height="fill_parent"
             android:layout_weight=".97" >
 
+            <!-- TODO: (Marcos) Quiero meter el título de esto acá y no me funciona.
+            
+            <TextView
+                android:id="@+id/lastChanges"
+                style="@style/modal_subtitleinform"
+                android:text="@string/lst_title_last_changes" />
+            
+             -->
+            
             <ListView
-            android:id="@+id/lightLogList"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@color/grayLightBase"
-            android:divider="@drawable/bg_item_inlist" >
+	            android:id="@+id/lightLogList"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:background="@color/grayLightBase"
+	            android:divider="@drawable/bg_item_inlist" >
         </ListView>
 
         </TableRow>

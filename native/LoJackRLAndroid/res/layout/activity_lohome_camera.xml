@@ -26,29 +26,12 @@
             android:layout_height="fill_parent"
             android:layout_weight=".97" >
 
-                <LinearLayout
-        android:id="@+id/tab3"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@drawable/main_square"
-        android:orientation="vertical" >
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="1"
-            android:background="@color/bgBase" >
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:gravity="center"
-                android:text="@string/cmnt_camera_tooltip"
-                android:textAlignment="center"
-                android:textSize="14sp" />
-        </RelativeLayout>
+            <LinearLayout
+		        android:id="@+id/tab3"
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent"
+		        android:background="@drawable/main_square"
+		        android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -62,6 +45,8 @@
 	            android:layout_gravity="top|center_horizontal"
 	            android:background="@color/bgCream"
 	            android:contentDescription="@string/desc_cam_image" />
+	        
+	        	<!-- TODO: (Marcos) Acá hay que bolar estos botones y hacer que sea por swipe -->
 	
 	        <LinearLayout
 	            style="@attr/tabLayout"

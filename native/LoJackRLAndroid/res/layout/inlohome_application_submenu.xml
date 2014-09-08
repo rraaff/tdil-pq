@@ -57,5 +57,9 @@
             </LinearLayout>
 		</LinearLayout>
     </TableRow>
+    
+    <!-- TODO: (Marcos) Faltaría poder cambiarle el color a la tipografía cuando está selected!
+    android:textColor="@color/grayLightTabActive"
+     -->
 
 </LinearLayout>
