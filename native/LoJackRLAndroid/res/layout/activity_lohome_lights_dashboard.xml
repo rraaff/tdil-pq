@@ -44,15 +44,12 @@
 
 				        <LinearLayout style="@style/title_dashboard_container" >
 
-				            <TextView
+				            <TextView style="@style/title_dashboard"
 				                android:id="@+id/lightDescription"
-				                style="@style/title_dashboard"
-				                android:text="@string/title_dashboard_lights"
-				                 />
+				                android:text="@string/title_dashboard_lights" />
 
-				            <TextView
+				            <TextView style="@style/title_dashboard_state"
 				                android:id="@+id/lightStatus"
-				                style="@style/title_dashboard_state"
 				                android:text="@string/status_unknown" />
 
 				        </LinearLayout>
@@ -63,9 +60,7 @@
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content">
 			
-						<LinearLayout
-						    style="@style/toggle_button_container"
-						    android:layout_height="wrap_content" >
+						<LinearLayout style="@style/toggle_button_container" >
 				        
 					    	<!-- hide switch -->
 
@@ -91,9 +86,7 @@
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content">
 
-						<LinearLayout
-						    style="@style/toggle_button_container"
-						    android:layout_height="wrap_content" >
+						<LinearLayout style="@style/toggle_button_container" >
 
 							<ToggleButton
 							    android:id="@+id/switchRandom"
@@ -113,68 +106,35 @@
 					    
 					</TableRow>
 			
-					<TableRow
-					    android:layout_width="fill_parent"
-					    android:layout_height="wrap_content"
-					    android:background="@color/bgBase"
-					    android:paddingBottom="10dp"
-					    android:paddingLeft="20dp"
-					    android:paddingRight="20dp"
-					    android:paddingTop="10dp" >
+					<TableRow style="@style/data_indashboard_container" >
 				
-					   <TextView
+					   <TextView style="@style/label_indash"
 							android:id="@+id/loadingInfoText"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/lst_itm_last_change"
-						    android:textColor="@color/lst_itm_normal"
-						    android:textSize="12sp" />
+							android:text="@string/lst_itm_last_change_fullword" />
 					
-					   <TextView
+					   <TextView style="@style/label_data_indash"
 							android:id="@+id/lastChangeDate"
-							android:layout_width="wrap_content"
-							android:layout_height="fill_parent"
-							android:paddingLeft="4dp"
-							android:text="2013-05-04 18:20"
-							android:textColor="@color/black"
-							android:textSize="12sp" />
+							android:text="2013-05-04 18:20" />
 			
 					</TableRow>
 			
 					<TableRow
-					    android:layout_width="fill_parent"
-					    android:layout_height="wrap_content"
-					    android:background="@color/bgBase"
-					    android:paddingBottom="10dp"
-					    android:paddingLeft="20dp"
-					    android:paddingRight="20dp"
-					    android:paddingTop="0dp" >
+					    style="@style/data_indashboard_container"
+					    android:paddingBottom="10dp" >
 			
-					    <TextView
+					    <TextView style="@style/label_data_indash"
 							android:id="@+id/lastChangeStatus"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/status_armed"
-							android:textColor="@color/black"
-							android:textSize="12sp"  />
+							android:text="@string/status_armed" />
 			
-					   <TextView
+					   <TextView style="@style/label_indash"
 							android:id="@+id/textView3"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
 							android:paddingLeft="4dp"
 							android:paddingRight="4dp"
-							android:text="@string/lst_itm_by"
-							android:textColor="@color/lst_itm_normal"
-							android:textSize="12sp" />
+							android:text="@string/lst_itm_by" />
 			
-					   <TextView
+					   <TextView style="@style/label_data_indash"
 							android:id="@+id/lastChangeUser"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:text="@string/status_unknown"
-							android:textColor="@color/black"
-							android:textSize="12sp" />
+							android:text="@string/status_unknown" />
 					</TableRow>
 
 					<TableRow
@@ -191,18 +151,8 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 			
-					    <Button
+					    <Button style="@style/ButtonLoginList"
 					        android:id="@+id/goToViewLightLog"
-					        android:layout_width="fill_parent"
-					        android:layout_height="48dp"
-					        android:background="@drawable/transparente"
-					        android:drawableBottom="@drawable/bg_item_inlist"
-					        android:drawableLeft="@drawable/icon_log_off"
-					        android:drawableRight="@drawable/icon_arrow_inlist"
-					        android:gravity="left|center_vertical"
-					        android:minHeight="48dp"
-					        android:paddingLeft="5dp"
-					        android:textSize="15sp"
 					        android:text="@string/btn_view_log" />
 
 					</TableRow>

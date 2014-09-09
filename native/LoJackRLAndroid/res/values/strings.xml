@@ -23,7 +23,9 @@
     
     
     <string name="lst_itm_status">Estado:</string>
-    <string name="lst_itm_last_change">Cambio:</string>
+    <string name="lst_itm_action">Acción:</string>
+    <string name="lst_itm_last_change">-</string>
+    <string name="lst_itm_last_change_fullword">Cambio:</string>
     <string name="lst_itm_by"> por </string>
     <string name="status_unarmed">Desarmada</string>
     <string name="status_armed">Armada</string>

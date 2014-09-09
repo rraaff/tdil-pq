@@ -1,113 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="fill_parent"
     android:stretchColumns="1" >
 
-    <TableRow
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_gravity="center_vertical|center_horizontal"
-	    android:layout_weight="1"
-	    android:background="@color/bgBase"
-	    android:clickable="true"
-	    android:gravity="center_vertical|center_horizontal"
-	    android:paddingLeft="20dp" >
+	<LinearLayout style="@style/row_twocols_container" >
 
-		<LinearLayout
-		    android:layout_width="0dp"
-		    android:layout_height="match_parent"
-		    android:layout_gravity="left|center_vertical"
-		    android:layout_weight="8"
-		    android:orientation="vertical" >
+		<LinearLayout style="@style/row_innercolumn_container" >
+		    
+		    <LinearLayout style="@style/row_innercontent" >
+		        
+		        <LinearLayout style="@style/gen_fil_and_wrap" >
 
-			<TableRow 
-			    android:layout_width="fill_parent"
-			    android:layout_height="wrap_content">
+					<TextView style="@style/item_title_01"
+					    android:id="@+id/alarmDescription"
+					    android:text="Alarma cochera" />
+					
+				</LinearLayout>
 
-				<TextView
-				    android:id="@+id/alarmDescription"
-				    android:layout_width="fill_parent"
-				    android:layout_height="wrap_content"
-				    android:layout_gravity="left|center_vertical"
-				    android:layout_marginBottom="3dp"
-				    android:layout_marginTop="10dp"
-				    android:layout_span="1"
-				    android:layout_weight="1"
-				    android:text="Alarma cochera"
-				    android:textAllCaps="true"
-				    android:textColor="@color/lst_itm_title"
-				    android:textSize="16sp" />
+				<LinearLayout style="@style/row_innerrow_data_container" >
 
-			</TableRow>
-
-			<LinearLayout
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:orientation="horizontal" >
-				
-				<TextView
-					android:id="@+id/alarmStatusLabel"
-					android:layout_width="40dp"
-				    android:layout_height="wrap_content"
-				    android:layout_marginBottom="10dp"
-				    android:layout_marginRight="3dp"
-				    android:text="@string/lst_itm_status"
-				    android:textColor="@color/lst_itm_normal"
-				    android:textSize="11sp" />
-				
-				<TextView
-				    android:id="@+id/alarmStatus"
-				    android:layout_width="fill_parent"
-				    android:layout_height="wrap_content"
-				    android:layout_marginBottom="10dp"
-				    android:layout_marginRight="5dp"
-				    android:text="Desarmada"
-				    android:textSize="11sp" />
-				
-				<TextView 
-				    android:id="@+id/alarmLastChangeDateLabel"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:layout_marginBottom="10dp"
-				    android:layout_marginRight="3dp"
-				    android:text="@string/lst_itm_last_change"
-					android:textColor="@color/lst_itm_normal"
-					android:textSize="11sp" />
-				
-				<TextView 
-				    android:id="@+id/alarmLastChangeDate"
-				    android:layout_width="fill_parent"
-				    android:layout_height="wrap_content"
-				    android:layout_marginBottom="10dp"
-				    android:text="2013-05-04 18:20"
-				    android:textColor="@color/lst_itm_unk"
-				    android:textSize="11sp" />
-
+					<TextView style="@style/innerrow_label"
+					    android:id="@+id/alarmStatusLabel"
+					    android:layout_marginLeft="20dp"
+					    android:text="@string/lst_itm_status" />
+					
+					<TextView style="@style/innerrow_labelfield"
+					    android:id="@+id/alarmStatus"
+					    android:text="Desarmada" />
+	
+					<TextView style="@style/innerrow_label"
+					    android:id="@+id/alarmLastChangeDateLabel"
+					    android:text="@string/lst_itm_last_change" />
+	
+					<TextView style="@style/innerrow_labelfield"
+					    android:id="@+id/alarmLastChangeDate"
+					    android:text="2013-05-04 18:20" />
+	
+				</LinearLayout>
 			</LinearLayout>
-
 		</LinearLayout>
 
 		<LinearLayout
-		    android:layout_width="0dp"
-		    android:layout_height="match_parent"
-		    android:layout_gravity="center_vertical|center_horizontal"
-		    android:layout_weight="1"
-		    android:gravity="center_vertical"
-		    android:orientation="vertical" >
+		    style="@style/row_innercolumn_containerImageSmall" >
 
-			<ImageButton
-			    android:id="@+id/goToAlarmView"
-			    android:layout_width="24dp"
-			    android:layout_height="24dp"
-			    android:layout_gravity="center_vertical|center_horizontal"
-			    android:background="@drawable/ic_item_inlist"
-			    android:contentDescription="@string/btn_tag_go"
-			    android:maxHeight="36dp"
-			    android:maxWidth="36dp" />
+			<ImageButton style="@style/icon_inrow_go"
+			    android:id="@+id/goToAlarmView" />
 
 		</LinearLayout>
 
-	</TableRow>
+	</LinearLayout>
 
 </TableLayout>
