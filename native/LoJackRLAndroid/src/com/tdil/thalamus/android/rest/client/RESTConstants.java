@@ -12,6 +12,8 @@ public interface RESTConstants {
 	public static final String P_DOCUMENT_NUMBER = "{documentNumber}";
 
 	public static final String P_DOCUMENT_TYPE = "{documentType}";
+	
+	public static final String P_POI_TYPES = "{types}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -54,10 +56,11 @@ public interface RESTConstants {
 	public static final String ACTIVATE_RANDOM_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/randomOn";
 	public static final String DEACTIVATE_RANDOM_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/randomOff";
 	
-	
 	public static final String LOG_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/log";
 	
 	public static final String CAMERAS = "/cameras/list";
 	
 	public static final String VLU_MESSAGES = "/cars/vluMessagesNoPrevent";
+	
+	public static final String POIS = "/pois/search/" + P_POI_TYPES;
 }

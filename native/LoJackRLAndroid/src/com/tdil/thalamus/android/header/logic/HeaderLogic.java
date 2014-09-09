@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ActivityCarsNotClient;
 import com.tdil.thalamus.android.ActivityPetsNotClient;
+import com.tdil.thalamus.android.ActivityPlaces;
 import com.tdil.thalamus.android.ClubLJActivity;
 import com.tdil.thalamus.android.ParkingsActivity;
 import com.tdil.thalamus.android.PreventActivity;
@@ -179,7 +180,7 @@ public class HeaderLogic  {
 	}
 
 	public static void handleParkingsAccess(final Activity activity) {
-		activity.startActivity(new Intent(activity, ParkingsActivity.class));
+		activity.startActivity(new Intent(activity, ActivityPlaces.class));
 	}
 
 	public static void handlePetsAccess(final Activity activity) {
