@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -18,6 +18,9 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.home.ILightsActivity;
 import com.tdil.thalamus.android.home.logic.LigthsLogic;

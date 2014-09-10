@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +20,9 @@ import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.home.AlarmListAdapter;
 import com.tdil.thalamus.android.home.CameraListAdapter;

@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,9 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.home.CameraListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;

@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.car.VLUMessagesActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.utils.Login;
 

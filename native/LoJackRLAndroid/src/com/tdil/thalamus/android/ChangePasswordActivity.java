@@ -23,6 +23,7 @@ import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
 import com.mobsandgeeks.saripaar.annotation.Password;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.deprecated.HomeActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;

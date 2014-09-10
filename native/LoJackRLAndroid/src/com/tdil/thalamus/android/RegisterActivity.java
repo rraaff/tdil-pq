@@ -9,7 +9,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -41,6 +40,7 @@ import com.mobsandgeeks.saripaar.annotation.Password;
 import com.mobsandgeeks.saripaar.annotation.Regex;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.deprecated.HomeActivity;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;

@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.places;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +38,11 @@ import com.tdil.thalamus.android.utils.Messages;
 public class ActivityPlaces extends ActionBarActivity {
 
 	private MapView mapView;
+	
+	private PoiCollection parkings = null;
+	private PoiCollection petrols = null;
+	private PoiCollection lojack = null;
+	
 	private List<Marker> currentParkings = new ArrayList<Marker>();
 	private List<Marker> currentPetrols = new ArrayList<Marker>();
 	private List<Marker> currentLojack = new ArrayList<Marker>();
@@ -59,8 +64,8 @@ public class ActivityPlaces extends ActionBarActivity {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
 			Gson gson = new Gson();
-			PoiCollection col = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
-			activity.updateParkingsMap(col);
+			this.activity.parkings = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
+			activity.updateParkingsMap(this.activity.parkings);
 		}
 		@Override
 		public void error(IRestClientTask task) {
@@ -76,8 +81,8 @@ public class ActivityPlaces extends ActionBarActivity {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
 			Gson gson = new Gson();
-			PoiCollection col = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
-			activity.updatePetrolsMap(col);
+			this.activity.petrols = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
+			activity.updatePetrolsMap(this.activity.petrols);
 		}
 		@Override
 		public void error(IRestClientTask task) {
@@ -93,8 +98,8 @@ public class ActivityPlaces extends ActionBarActivity {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
 			Gson gson = new Gson();
-			PoiCollection col = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
-			activity.updateLojackMap(col);
+			this.activity.lojack = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
+			activity.updateLojackMap(this.activity.lojack);
 		}
 		@Override
 		public void error(IRestClientTask task) {
@@ -141,7 +146,11 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.setVisible(false);
 			    	}
 				} else {
-					reloadPois(updateParkingsMapObserver, "1");
+					if (parkings == null) {
+						reloadPois(updateParkingsMapObserver, "1");
+					} else {
+						updateParkingsMap(parkings);
+					}
 				}
 				
 			}
@@ -156,7 +165,11 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.setVisible(false);
 			    	}
 				} else {
-					reloadPois(updatePetrolsMapObserver, "2");
+					if (petrols == null) {
+						reloadPois(updatePetrolsMapObserver, "2");
+					} else {
+						updatePetrolsMap(petrols);
+					}
 				}
 				
 			}
@@ -171,7 +184,11 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.setVisible(false);
 			    	}
 				} else {
-					reloadPois(updateLojackMapObserver, "3");
+					if (lojack == null) {
+						reloadPois(updateLojackMapObserver, "3");
+					} else {
+						updateLojackMap(lojack);
+					}
 				}
 				
 			}
@@ -209,21 +226,18 @@ public class ActivityPlaces extends ActionBarActivity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		mapView.onResume();
 	}
 	
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 		mapView.onDestroy();
 	}
 	
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		mapView.onPause();
 	}

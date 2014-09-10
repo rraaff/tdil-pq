@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import java.util.ArrayList;
 
@@ -14,57 +14,70 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
+import com.tdil.thalamus.android.home.LightLogListAdapter;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.VLUDataDTO;
-import com.tdil.thalamus.android.rest.model.VLUMessagesCollection;
+import com.tdil.thalamus.android.rest.model.ChangeLog;
+import com.tdil.thalamus.android.rest.model.LogCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class VLUMessagesActivity extends LoJackActivity {
+@Deprecated
+public class HomeLogLightActivity extends LoJackActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
+	private int identidad;
+	private int idluz;
+	private IRestClientTask mAuthTask = null;
 	ListView list;
-	VLULogListAdapter adapter;
-	public VLUMessagesActivity CustomListView = null;
-	public ArrayList<VLUDataDTO> CustomListViewValuesArr = new ArrayList<VLUDataDTO>();
+	LightLogListAdapter adapter;
+	public HomeLogLightActivity CustomListView = null;
+	public ArrayList<ChangeLog> CustomListViewValuesArr = new ArrayList<ChangeLog>();
+	public static final String IDENTIDAD = "IDENTIDAD";
+	public static final String IDLUZ = "IDLUZ";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
+		Bundle extras = getIntent().getExtras();
+		identidad = extras.getInt(IDENTIDAD);
+		idluz = extras.getInt(IDLUZ);
 
-		setContentView(R.layout.activity_vlu_messages);
+		setContentView(R.layout.activity_home_light_log);
 		customizeActionBar();
 
-		list = (ListView) findViewById(R.id.vluMessagesList);
+		list = (ListView) findViewById(R.id.lightLogList);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
-				VLUMessagesCollection col = gson.fromJson(task.getResult(),
-						VLUMessagesCollection.class);
-				CustomListViewValuesArr = new ArrayList<VLUDataDTO>(col.getVluData());
+				LogCollection col = gson.fromJson(task.getResult(),
+						LogCollection.class);
+				CustomListViewValuesArr = new ArrayList<ChangeLog>(col.getLogs());
 				Resources res = getResources();
-				adapter = new VLULogListAdapter(VLUMessagesActivity.this,
+				adapter = new LightLogListAdapter(HomeLogLightActivity.this,
 						CustomListViewValuesArr, res);
 				list.setAdapter(adapter);
 			}
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(VLUMessagesActivity.this);
+				Messages.connectionErrorMessage(HomeLogLightActivity.this);
 			}
-		}, RESTConstants.VLU_MESSAGES, new RestParams(), null).execute((Void) null);
+		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).execute((Void) null);
 
 	}
 

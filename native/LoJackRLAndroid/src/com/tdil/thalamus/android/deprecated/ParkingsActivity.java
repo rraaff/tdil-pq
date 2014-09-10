@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -16,12 +16,17 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.ApplicationConfig;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.utils.Login;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
+@Deprecated
 public class ParkingsActivity extends LoJackActivity {
 
 	// UI references.

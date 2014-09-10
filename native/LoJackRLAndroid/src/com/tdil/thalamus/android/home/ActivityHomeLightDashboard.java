@@ -12,9 +12,9 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.HomeLightsActivity;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.UnCaughtException;
+import com.tdil.thalamus.android.deprecated.HomeLightsActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.home.logic.LigthsLogic;

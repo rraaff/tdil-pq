@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.HomeLightDashboard;
+import com.tdil.thalamus.android.deprecated.HomeLightDashboard;
 import com.tdil.thalamus.android.home.ActivityHomeAlarmDashboard;
 import com.tdil.thalamus.android.home.ActivityHomeAlarms;
 import com.tdil.thalamus.android.home.ActivityHomeCamera;

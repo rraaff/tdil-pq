@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.car;
 
 import java.util.List;
 
@@ -21,6 +21,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.ApplicationConfig;
 import com.tdil.thalamus.android.home.DemoActivityHome.GeoWebChromeClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.utils.Login;

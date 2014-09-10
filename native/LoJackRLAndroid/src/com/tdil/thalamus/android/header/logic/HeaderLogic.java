@@ -8,14 +8,14 @@ import android.view.View;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.ActivityCarsNotClient;
-import com.tdil.thalamus.android.ActivityPetsNotClient;
-import com.tdil.thalamus.android.ActivityPlaces;
 import com.tdil.thalamus.android.ClubLJActivity;
-import com.tdil.thalamus.android.ParkingsActivity;
 import com.tdil.thalamus.android.PreventActivity;
+import com.tdil.thalamus.android.car.ActivityCarsNotClient;
+import com.tdil.thalamus.android.deprecated.ParkingsActivity;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
 import com.tdil.thalamus.android.home.ActivityHomeNotClient;
+import com.tdil.thalamus.android.pets.ActivityPetsNotClient;
+import com.tdil.thalamus.android.places.ActivityPlaces;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;

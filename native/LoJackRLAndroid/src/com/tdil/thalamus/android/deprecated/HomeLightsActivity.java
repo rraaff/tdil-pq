@@ -1,6 +1,7 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,15 +15,19 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.home.LightLogListAdapter;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
+import com.tdil.thalamus.android.home.ILightsActivity;
+import com.tdil.thalamus.android.home.LightListAdapter;
+import com.tdil.thalamus.android.home.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.ChangeLog;
-import com.tdil.thalamus.android.rest.model.LogCollection;
+import com.tdil.thalamus.android.rest.model.Light;
+import com.tdil.thalamus.android.rest.model.LightCollection;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
@@ -30,52 +35,50 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 @Deprecated
-public class HomeLogLightActivity extends LoJackActivity {
+public class HomeLightsActivity extends LoJackActivity implements ILightsActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
-	private int identidad;
-	private int idluz;
-	private IRestClientTask mAuthTask = null;
-	ListView list;
-	LightLogListAdapter adapter;
-	public HomeLogLightActivity CustomListView = null;
-	public ArrayList<ChangeLog> CustomListViewValuesArr = new ArrayList<ChangeLog>();
-	public static final String IDENTIDAD = "IDENTIDAD";
-	public static final String IDLUZ = "IDLUZ";
+
+	private ListView lightsList;
+	private LightListAdapter lightsListAdapter;
+	public ArrayList<Light> ligths = new ArrayList<Light>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		Bundle extras = getIntent().getExtras();
-		identidad = extras.getInt(IDENTIDAD);
-		idluz = extras.getInt(IDLUZ);
-
-		setContentView(R.layout.activity_home_light_log);
+		setContentView(R.layout.activity_home_lights);
 		customizeActionBar();
+		lightsList = (ListView) findViewById(R.id.lightsList);
+		loadLights();
+	}
 
-		list = (ListView) findViewById(R.id.lightLogList);
+	public void loadLights() {
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 			@Override
 			public void sucess(IRestClientTask task) {
 				Gson gson = new Gson();
 
-				LogCollection col = gson.fromJson(task.getResult(),
-						LogCollection.class);
-				CustomListViewValuesArr = new ArrayList<ChangeLog>(col.getLogs());
+				LightCollection col = gson.fromJson(task.getResult(),
+						LightCollection.class);
+				ligths = new ArrayList<Light>(col.getLights());
 				Resources res = getResources();
-				adapter = new LightLogListAdapter(HomeLogLightActivity.this,
-						CustomListViewValuesArr, res);
-				list.setAdapter(adapter);
+				lightsListAdapter = new LightListAdapter(HomeLightsActivity.this,
+						ligths, res);
+				lightsList.setAdapter(lightsListAdapter);
 			}
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(HomeLogLightActivity.this);
+				Messages.connectionErrorMessage(HomeLightsActivity.this);
 			}
-		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).execute((Void) null);
-
+		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+	}
+	
+	@Override
+	public void startLightsBackgroundJob() {
+		LigthsLogic.startLightsBackgroundJob(this);
 	}
 
 	@Override
@@ -89,6 +92,25 @@ public class HomeLogLightActivity extends LoJackActivity {
 		super.onCreateOptionsMenu(menu);
 		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
+	}
+
+	public void onItemClick(int mPosition) {
+		Light tempValues = (Light) ligths.get(mPosition);
+	}
+	
+	@Override
+	public void toggleLightActivation(int mPosition) {
+		LigthsLogic.toggleLightActivation(this, mPosition);
+	}
+	
+	@Override
+	public void toggleLightRandom(int mPosition) {
+		LigthsLogic.toggleLightRandom(this, mPosition);
+	}
+	
+	@Override
+	public void viewLightLog(int mPosition) {
+		LigthsLogic.viewLightLog(this, mPosition);
 	}
 
 	@Override
@@ -105,6 +127,19 @@ public class HomeLogLightActivity extends LoJackActivity {
 		// for very easy animations. If available, use these APIs to fade-in
 		// the progress spinner.
 
+	}
+
+	public List<Light> getLights() {
+		return ligths;
+	}
+	
+	@Override
+	public Light getLight(int i) {
+		return getLights().get(i);
+	}
+
+	public void setLigths(ArrayList<Light> ligths) {
+		this.ligths = ligths;
 	}
 
 }

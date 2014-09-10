@@ -1,4 +1,4 @@
-package com.tdil.thalamus.android;
+package com.tdil.thalamus.android.deprecated;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -15,6 +15,9 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.MenuLogic;
+import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.camera.IPCamera;
 import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;

@@ -61,7 +61,7 @@
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.HomeAlarmDashboard"
+            android:name="com.tdil.thalamus.android.deprecated.HomeAlarmDashboard"
             android:label="@string/title_dashboard_alarms"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait"
@@ -122,7 +122,7 @@
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.HomeAlarmsActivity"
+            android:name="com.tdil.thalamus.android.deprecated.HomeAlarmsActivity"
             android:label="@string/title_home"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
@@ -183,7 +183,7 @@
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.VLUMessagesActivity"
+            android:name="com.tdil.thalamus.android.car.VLUMessagesActivity"
             android:label="@string/title_vlu"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
@@ -263,7 +263,7 @@
         </activity>
         
         <activity
-            android:name="com.tdil.thalamus.android.ActivityPlaces"
+            android:name="com.tdil.thalamus.android.places.ActivityPlaces"
             android:label="Lugares"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
@@ -277,13 +277,13 @@
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityCarsNotClient"
+            android:name="com.tdil.thalamus.android.car.ActivityCarsNotClient"
             android:label="CARS no cliente"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name="com.tdil.thalamus.android.ActivityPetsNotClient"
+            android:name="com.tdil.thalamus.android.pets.ActivityPetsNotClient"
             android:label="Pets no cliente"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait">

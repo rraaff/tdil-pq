@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.HomeAlarmDashboard;
+import com.tdil.thalamus.android.deprecated.HomeAlarmDashboard;
 import com.tdil.thalamus.android.rest.model.Alarm;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
