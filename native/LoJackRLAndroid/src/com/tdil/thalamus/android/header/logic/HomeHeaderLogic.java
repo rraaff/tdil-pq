@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -14,6 +15,7 @@ import com.tdil.thalamus.android.home.ActivityHomeAlarms;
 import com.tdil.thalamus.android.home.ActivityHomeCamera;
 import com.tdil.thalamus.android.home.ActivityHomeCameras;
 import com.tdil.thalamus.android.home.ActivityHomeLights;
+import com.tdil.thalamus.android.home.HomeActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -29,12 +31,12 @@ import com.tdil.thalamus.android.utils.Messages;
 
 public class HomeHeaderLogic {
 
-	public static void installHomeMenuLogic(final Activity activity) {
+	public static void installHomeMenuLogic(final HomeActivity activity) {
 		View application_home_submenu = (View)activity.findViewById(R.id.application_home_submenu);
 		if (application_home_submenu != null) {
-			View tabAlarmsUnselected = activity.findViewById(R.id.tabAlarmsUnselected);
+			TextView tabAlarmsUnselected = (TextView)activity.findViewById(R.id.tabAlarmsUnselected);
 			if (tabAlarmsUnselected != null) {
-				if (!(activity instanceof ActivityHomeAlarms)) {
+				if (!activity.isAlarmsTab()) {
 					tabAlarmsUnselected.setOnClickListener(
 						new View.OnClickListener() {
 							@Override
@@ -42,11 +44,14 @@ public class HomeHeaderLogic {
 								loadAlarms(activity);
 							}
 						});
+				} else {
+					// color de texto seleccionado
+					tabAlarmsUnselected.setTextColor(activity.getResources().getColor(R.color.white));
 				}
 			}
-			View tabLightsUnselected = activity.findViewById(R.id.tabLightsUnselected);
+			TextView tabLightsUnselected = (TextView)activity.findViewById(R.id.tabLightsUnselected);
 			if (tabLightsUnselected != null) {
-				if (!(activity instanceof ActivityHomeLights)) {
+				if (!activity.isLightsTab()) {
 					tabLightsUnselected.setOnClickListener(
 						new View.OnClickListener() {
 							@Override
@@ -54,11 +59,14 @@ public class HomeHeaderLogic {
 								loadLights(activity);
 							}
 						});
+				} else {
+					// color de texto seleccionado
+					tabLightsUnselected.setTextColor(activity.getResources().getColor(R.color.white));
 				}
 			}
-			View tabCamerasUnselected = activity.findViewById(R.id.tabCamerasUnselected);
+			TextView tabCamerasUnselected = (TextView)activity.findViewById(R.id.tabCamerasUnselected);
 			if (tabCamerasUnselected != null) {
-				if (!(activity instanceof ActivityHomeCameras)) {
+				if (!activity.isCamerasTab()) {
 					tabCamerasUnselected.setOnClickListener(
 							new View.OnClickListener() {
 							@Override
@@ -66,6 +74,9 @@ public class HomeHeaderLogic {
 								loadCameras(activity);
 							}
 						});
+				} else {
+					// color de texto seleccionado
+					tabCamerasUnselected.setTextColor(activity.getResources().getColor(R.color.white));
 				}
 			}
 		}

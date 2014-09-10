@@ -25,17 +25,18 @@ import com.tdil.thalamus.android.ApplicationConfig;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.PreventActivity.GeoWebChromeClient;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.utils.Login;
 
-public class ActivityHomeIndex extends LoJackWithProductMenuActivity {
+public class ActivityHomeIndex extends HomeActivity {
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_index);
         HeaderLogic.installTabLogic(this);
-        
+        HomeHeaderLogic.installHomeMenuLogic(this);
 
     }
 
@@ -50,5 +51,16 @@ public class ActivityHomeIndex extends LoJackWithProductMenuActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+	@Override
+	public boolean isAlarmsTab() {
+		return false;
+	}
+	@Override
+	public boolean isCamerasTab() {
+		return false;
+	}
+	@Override
+	public boolean isLightsTab() {
+		return false;
+	}
 }

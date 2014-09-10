@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.home.logic.AlarmsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -34,7 +35,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * @author mgodoy
  *
  */
-public class ActivityHomeAlarmDashboard extends LoJackWithProductMenuActivity implements IAlarmsActivity {
+public class ActivityHomeAlarmDashboard extends HomeActivity implements IAlarmsActivity {
 
 	private Alarm alarm;
 	private boolean hasMore;
@@ -53,6 +54,7 @@ public class ActivityHomeAlarmDashboard extends LoJackWithProductMenuActivity im
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_alarms_dashboard);
         HeaderLogic.installTabLogic(this);
+        HomeHeaderLogic.installHomeMenuLogic(this);
         Resources res = getResources();
         Bundle extras = getIntent().getExtras();
        
@@ -218,5 +220,18 @@ public class ActivityHomeAlarmDashboard extends LoJackWithProductMenuActivity im
 				Messages.connectionErrorMessage(ActivityHomeAlarmDashboard.this);
 			}
 		}, RESTConstants.ALARM_STATUS, new RestParams(), null).execute();
+	}
+	
+	@Override
+	public boolean isAlarmsTab() {
+		return true;
+	}
+	@Override
+	public boolean isCamerasTab() {
+		return false;
+	}
+	@Override
+	public boolean isLightsTab() {
+		return false;
 	}
 }

@@ -13,6 +13,7 @@ import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;
 import com.tdil.thalamus.android.camera.TrendnetTVIP851;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.Camera;
 import com.tdil.thalamus.android.utils.DownloadCameraImageTask;
@@ -27,7 +28,7 @@ import com.tdil.thalamus.android.utils.MoveCameraUpTask;
  * @author mgodoy
  *
  */
-public class ActivityHomeCamera extends LoJackWithProductMenuActivity {
+public class ActivityHomeCamera extends HomeActivity {
 
 	public static final String CAMERAS = "CAMERAS";
 	public static final String CAMERA = "CAMERA";
@@ -42,6 +43,7 @@ public class ActivityHomeCamera extends LoJackWithProductMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_camera);
         HeaderLogic.installTabLogic(this);
+        HomeHeaderLogic.installHomeMenuLogic(this);
         Resources res = getResources();
         Bundle extras = getIntent().getExtras();
         Camera tmpCamera = (Camera)extras.getSerializable(CAMERA);
@@ -116,5 +118,16 @@ public class ActivityHomeCamera extends LoJackWithProductMenuActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+	@Override
+	public boolean isAlarmsTab() {
+		return false;
+	}
+	@Override
+	public boolean isCamerasTab() {
+		return true;
+	}
+	@Override
+	public boolean isLightsTab() {
+		return false;
+	}
 }

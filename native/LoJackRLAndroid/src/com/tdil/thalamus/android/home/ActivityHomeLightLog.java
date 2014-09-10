@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -28,7 +29,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * @author mgodoy
  *
  */
-public class ActivityHomeLightLog extends LoJackWithProductMenuActivity {
+public class ActivityHomeLightLog extends HomeActivity {
 
 	private int identidad;
 	private int idluz;
@@ -40,6 +41,7 @@ public class ActivityHomeLightLog extends LoJackWithProductMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_light_log);
         HeaderLogic.installTabLogic(this);
+        HomeHeaderLogic.installHomeMenuLogic(this);
 		Bundle extras = getIntent().getExtras();
 		identidad = extras.getInt(IDENTIDAD);
 		idluz = extras.getInt(IDLUZ);
@@ -76,5 +78,16 @@ public class ActivityHomeLightLog extends LoJackWithProductMenuActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+	@Override
+	public boolean isAlarmsTab() {
+		return false;
+	}
+	@Override
+	public boolean isCamerasTab() {
+		return false;
+	}
+	@Override
+	public boolean isLightsTab() {
+		return true;
+	}
 }

@@ -85,7 +85,6 @@ public class HeaderLogic  {
 		}
 		
 		installTopMenuLogic(activity);
-		HomeHeaderLogic.installHomeMenuLogic(activity);
 		
 		View prevent = activity.findViewById(R.id.btnFooterPrevent);
 		if(prevent != null) {

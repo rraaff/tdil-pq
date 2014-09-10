@@ -16,6 +16,7 @@ import com.tdil.thalamus.android.HomeLightsActivity;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.home.logic.LigthsLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -35,12 +36,11 @@ import com.tdil.thalamus.android.utils.Messages;
  * @author mgodoy
  *
  */
-public class ActivityHomeLightDashboard extends LoJackWithProductMenuActivity implements ILightsActivity {
+public class ActivityHomeLightDashboard extends HomeActivity implements ILightsActivity {
 
 	private Light light;
 	private boolean hasMore;
 	private boolean ignore = true;
-	private HomeLightsActivity previous;
 	
 	public static final String LIGHT = "LIGHT";
 	public static final String HAS_MORE = "HAS_MORE";
@@ -56,6 +56,7 @@ public class ActivityHomeLightDashboard extends LoJackWithProductMenuActivity im
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_lights_dashboard);
         HeaderLogic.installTabLogic(this);
+        HomeHeaderLogic.installHomeMenuLogic(this);
         Bundle extras = getIntent().getExtras();
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		
@@ -270,5 +271,16 @@ public class ActivityHomeLightDashboard extends LoJackWithProductMenuActivity im
 			activity.viewLightLog(0);
 		}
 	}
-
+	@Override
+	public boolean isAlarmsTab() {
+		return false;
+	}
+	@Override
+	public boolean isCamerasTab() {
+		return false;
+	}
+	@Override
+	public boolean isLightsTab() {
+		return true;
+	}
 }

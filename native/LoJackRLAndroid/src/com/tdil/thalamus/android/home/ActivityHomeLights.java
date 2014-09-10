@@ -10,6 +10,7 @@ import android.widget.ListView;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.Light;
 
@@ -19,7 +20,7 @@ import com.tdil.thalamus.android.rest.model.Light;
  * @author mgodoy
  *
  */
-public class ActivityHomeLights extends LoJackWithProductMenuActivity {
+public class ActivityHomeLights extends HomeActivity {
 
 	public static final String LIGHTS = "LIGHTS";
 	
@@ -32,6 +33,7 @@ public class ActivityHomeLights extends LoJackWithProductMenuActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_lights);
         HeaderLogic.installTabLogic(this);
+        HomeHeaderLogic.installHomeMenuLogic(this);
         Resources res = getResources();
         Bundle extras = getIntent().getExtras();
         lights = (ArrayList<Light>)extras.getSerializable(LIGHTS);
@@ -52,5 +54,16 @@ public class ActivityHomeLights extends LoJackWithProductMenuActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+	@Override
+	public boolean isAlarmsTab() {
+		return false;
+	}
+	@Override
+	public boolean isCamerasTab() {
+		return false;
+	}
+	@Override
+	public boolean isLightsTab() {
+		return true;
+	}
 }
