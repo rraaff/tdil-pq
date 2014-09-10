@@ -38,17 +38,21 @@ import com.tdil.thalamus.android.utils.Messages;
 public class ActivityPlaces extends ActionBarActivity {
 
 	private MapView mapView;
-	private List<Marker> currentMarkers = new ArrayList<Marker>();
+	private List<Marker> currentParkings = new ArrayList<Marker>();
+	private List<Marker> currentPetrols = new ArrayList<Marker>();
+	private List<Marker> currentLojack = new ArrayList<Marker>();
 	
 	private boolean placesParkings = false;
 	private boolean placesPetrols = false;
 	private boolean placesLojack = false;
 
-	private UpdateMapObserver observer = new UpdateMapObserver(this);
+	private UpdateParkingsMapObserver updateParkingsMapObserver = new UpdateParkingsMapObserver(this);
+	private UpdatePetrolsMapObserver updatePetrolsMapObserver= new UpdatePetrolsMapObserver(this);
+	private UpdateLojackMapObserver updateLojackMapObserver = new UpdateLojackMapObserver(this);
 	
-	static final class UpdateMapObserver implements IRestClientObserver {
+	static final class UpdateParkingsMapObserver implements IRestClientObserver {
 		private ActivityPlaces activity;
-		public UpdateMapObserver(ActivityPlaces activity) {
+		public UpdateParkingsMapObserver(ActivityPlaces activity) {
 			super();
 			this.activity = activity;
 		}
@@ -56,7 +60,41 @@ public class ActivityPlaces extends ActionBarActivity {
 		public void sucess(IRestClientTask restClientTask) {
 			Gson gson = new Gson();
 			PoiCollection col = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
-			activity.updateMap(col);
+			activity.updateParkingsMap(col);
+		}
+		@Override
+		public void error(IRestClientTask task) {
+			Messages.connectionErrorMessage(activity);
+		}
+	}
+	static final class UpdatePetrolsMapObserver implements IRestClientObserver {
+		private ActivityPlaces activity;
+		public UpdatePetrolsMapObserver(ActivityPlaces activity) {
+			super();
+			this.activity = activity;
+		}
+		@Override
+		public void sucess(IRestClientTask restClientTask) {
+			Gson gson = new Gson();
+			PoiCollection col = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
+			activity.updatePetrolsMap(col);
+		}
+		@Override
+		public void error(IRestClientTask task) {
+			Messages.connectionErrorMessage(activity);
+		}
+	}
+	static final class UpdateLojackMapObserver implements IRestClientObserver {
+		private ActivityPlaces activity;
+		public UpdateLojackMapObserver(ActivityPlaces activity) {
+			super();
+			this.activity = activity;
+		}
+		@Override
+		public void sucess(IRestClientTask restClientTask) {
+			Gson gson = new Gson();
+			PoiCollection col = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
+			activity.updateLojackMap(col);
 		}
 		@Override
 		public void error(IRestClientTask task) {
@@ -88,7 +126,7 @@ public class ActivityPlaces extends ActionBarActivity {
 			public void onClick(View v) {
 				mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(-34.6093546,-58.51752859999999))
-		        .title("Hello world"));
+		        .title("Mi ubicacion"));
 				
 			}
 		});
@@ -97,7 +135,14 @@ public class ActivityPlaces extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				placesParkings = !placesParkings;
-				reloadPois();
+				if (!placesParkings) {
+					for (Marker m : currentParkings) {
+			    		m.remove();
+			    		m.setVisible(false);
+			    	}
+				} else {
+					reloadPois(updateParkingsMapObserver, "1");
+				}
 				
 			}
 		}); 
@@ -105,7 +150,14 @@ public class ActivityPlaces extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				placesPetrols = !placesPetrols;
-				reloadPois();
+				if (!placesPetrols) {
+					for (Marker m : currentPetrols) {
+			    		m.remove();
+			    		m.setVisible(false);
+			    	}
+				} else {
+					reloadPois(updatePetrolsMapObserver, "2");
+				}
 				
 			}
 		});
@@ -113,48 +165,47 @@ public class ActivityPlaces extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				placesLojack = !placesLojack;
-				reloadPois();
+				if (!placesLojack) {
+					for (Marker m : currentLojack) {
+			    		m.remove();
+			    		m.setVisible(false);
+			    	}
+				} else {
+					reloadPois(updateLojackMapObserver, "3");
+				}
 				
 			}
 		});
     }
 
-    protected void reloadPois() {
-    	for (Marker m : currentMarkers) {
-    		m.remove();
-    		m.setVisible(false);
-    	}
-    	currentMarkers = new ArrayList<Marker>();
-    	if (!placesParkings && !placesPetrols && !placesLojack) {
-    		return;
-    	}
-    	new RESTClientTask(this, HttpMethod.GET, observer, RESTConstants.POIS, new RestParams(RESTConstants.P_POI_TYPES, getPoisTypes()),null).execute((Void) null);
+    protected void reloadPois(IRestClientObserver observer, String type) {
+    	new RESTClientTask(this, HttpMethod.GET, observer, RESTConstants.POIS, new RestParams(RESTConstants.P_POI_TYPES, type),null).execute((Void) null);
 	}
     
-    private void updateMap(PoiCollection col) {
-    	System.out.println(col.getList().size());
-		 System.out.println(col);
+    private void updateParkingsMap(PoiCollection col) {
 		 for (PointOfInterestBean poi : col.getList()) {
 			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
-		        .title("Hello world"));
-			 currentMarkers.add(m);
+		        .title(poi.getDesc()));
+			 currentParkings.add(m);
 		 }
     }
-
-	private String getPoisTypes() {
-		StringBuilder sb = new StringBuilder();
-		if (placesParkings) {
-			sb.append("1,");
-		}
-		if (placesPetrols) {
-			sb.append("2,");
-		}
-		if (placesLojack) {
-			sb.append("3,");
-		}
-		return sb.toString();
-	}
+    private void updatePetrolsMap(PoiCollection col) {
+		 for (PointOfInterestBean poi : col.getList()) {
+			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
+		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
+		        .title(poi.getDesc()));
+			 currentPetrols.add(m);
+		 }
+   }
+   private void updateLojackMap(PoiCollection col) {
+		 for (PointOfInterestBean poi : col.getList()) {
+			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
+		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
+		        .title(poi.getDesc()));
+			 currentLojack.add(m);
+		 }
+  }
 
 	@Override
 	protected void onResume() {
