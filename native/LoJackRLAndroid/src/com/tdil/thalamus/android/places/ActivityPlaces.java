@@ -145,6 +145,7 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.remove();
 			    		m.setVisible(false);
 			    	}
+					currentParkings.clear();
 				} else {
 					if (parkings == null) {
 						reloadPois(updateParkingsMapObserver, "1");
@@ -164,6 +165,7 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.remove();
 			    		m.setVisible(false);
 			    	}
+					currentPetrols.clear();
 				} else {
 					if (petrols == null) {
 						reloadPois(updatePetrolsMapObserver, "2");
@@ -183,6 +185,7 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.remove();
 			    		m.setVisible(false);
 			    	}
+					currentLojack.clear();
 				} else {
 					if (lojack == null) {
 						reloadPois(updateLojackMapObserver, "3");

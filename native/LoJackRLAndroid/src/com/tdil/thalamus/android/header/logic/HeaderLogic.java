@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ClubLJActivity;
 import com.tdil.thalamus.android.PreventActivity;
+import com.tdil.thalamus.android.car.ActivityCars;
 import com.tdil.thalamus.android.car.ActivityCarsNotClient;
 import com.tdil.thalamus.android.deprecated.ParkingsActivity;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
@@ -171,7 +172,7 @@ public class HeaderLogic  {
 
 	public static void handlePreventAccess(final Activity activity) {
 		if (Login.getLoggedUser(activity).getPreventUser()) {
-			activity.startActivity(new Intent(activity, PreventActivity.class));
+			activity.startActivity(new Intent(activity, ActivityCars.class));
 		} else {
 			Intent intent = new Intent(activity, ActivityCarsNotClient.class); 
 			activity.startActivity(intent); 
