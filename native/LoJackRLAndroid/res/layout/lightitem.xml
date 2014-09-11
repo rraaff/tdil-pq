@@ -20,8 +20,9 @@
 
 				<LinearLayout style="@style/row_innerrow_data_container" >
 	
-					<TextView style="@style/innerrow_label"
+					<TextView
 					    android:id="@+id/lightStatusLabel"
+					    style="@style/innerrow_label"
 					    android:layout_marginLeft="20dp"
 					    android:text="@string/lst_itm_status" />
 					
