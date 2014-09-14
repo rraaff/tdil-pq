@@ -4,19 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -30,18 +25,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.UpdateActivity;
-import com.tdil.thalamus.android.gui.BeanMappingFunction;
-import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
-import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.AddressTypeBean;
 import com.tdil.thalamus.android.rest.model.AddressTypeBeanCollection;
-import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitBean;
+import com.tdil.thalamus.android.rest.model.prevent.SecureZoneBean;
+import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
 import com.tdil.thalamus.android.rest.model.prevent.VehicleBean;
 import com.tdil.thalamus.android.rest.model.prevent.VehicleCollection;
@@ -74,7 +67,17 @@ public class ActivityCars extends ActionBarActivity {
 			Gson gson = new Gson();
 			// validar la respuesta
 			SpeedLimitCollection speed = gson.fromJson(restClientTask.getResult(), SpeedLimitCollection.class);
-			activity.openChangeSpeedDialog(speed);
+			CarsDialogs.openChangeSpeedDialog(speed, ActivityCars.this);
+		}
+	};
+	
+	private LocarRestClientObserver getZoneObserver = new LocarRestClientObserver(this) {
+		@Override
+		public void sucess(IRestClientTask restClientTask) {
+			Gson gson = new Gson();
+			// validar la respuesta
+			SecureZoneCollection speed = gson.fromJson(restClientTask.getResult(), SecureZoneCollection.class);
+			CarsDialogs.openChangeZoneDialog(speed, ActivityCars.this);
 		}
 	};
 	
@@ -124,10 +127,22 @@ public class ActivityCars extends ActionBarActivity {
         ((View)findViewById(R.id.carSpeedButton)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				option = VehicleOption.SPEED;
 				if (vehicles == null) {
 					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
 				} else {
-					option = VehicleOption.SPEED;
+					selectVehicleAndContinue();
+				}
+			}
+		});
+        
+        ((View)findViewById(R.id.carZoneButton)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				option = VehicleOption.ZONE;
+				if (vehicles == null) {
+					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+				} else {
 					selectVehicleAndContinue();
 				}
 			}
@@ -195,78 +210,12 @@ public class ActivityCars extends ActionBarActivity {
 			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getSpeedsObserver, RESTConstants.GET_VEHICLE_SPEED_LIMITS, new RestParams(
 					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
 		}
-	}
-
-	protected void openChangeSpeedDialog(SpeedLimitCollection speed) {
-		final Dialog dialog = new Dialog(ActivityCars.this);
-		dialog.setContentView(R.layout.vehicle_change_speed_dialog);
-		dialog.setTitle("Cambio de velocidad");
-
-		// set the custom dialog components - text, image and button
-		TextView text = (TextView) dialog.findViewById(R.id.vehicleSpeedDomainTextView);
-		text.setText(selectedVehicle.getDescription());
-
-		final Spinner speedSpinner = (Spinner)dialog.findViewById(R.id.changeSpeedSpinner);
-		
-		BeanMappingListAdapter<SpeedLimitBean> adapter = new BeanMappingListAdapter<SpeedLimitBean>(
-			this,
-			android.R.layout.simple_spinner_item,
-			new ArrayList<SpeedLimitBean>(speed.getList()),
-			new BeanMappingFunction<SpeedLimitBean>() {
-				public String key(SpeedLimitBean t) {
-					return String.valueOf(t.getDescription());
-				};
-
-				@Override
-				public String value(SpeedLimitBean t) {
-					return t.getDescription();
-				}
-			});
-		speedSpinner.setAdapter(adapter);
-		int position = 0;
-		for (SpeedLimitBean bean : speed.getList()) {
-			if (bean.isActive()) {
-				speedSpinner.setSelection(position);
-			}
-			position++;
+		if (option == VehicleOption.ZONE) {
+			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getZoneObserver, RESTConstants.GET_VEHICLE_SECURE_ZONES, new RestParams(
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
 		}
-				
-		Button dialogCancelButton = (Button) dialog.findViewById(R.id.vehicleChangeSpeedButtonCancel);
-		dialogCancelButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				dialog.dismiss();
-			}
-		});
-		
-		Button dialogOkButton = (Button) dialog.findViewById(R.id.vehicleChangeSpeedButtonOK);
-		dialogOkButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				String selectSpeedId = ((SpeedLimitBean)speedSpinner.getSelectedItem()).getId();
-				new RESTClientTask(ActivityCars.this, HttpMethod.POST, getPostSpeedObserver(dialog), RESTConstants.POST_VEHICLE_SPEED_LIMITS, new RestParams(
-						RESTConstants.P_VEHICLE, selectedVehicle.getId())
-						.put(RESTConstants.P_SPEED_LIMIT_ID, selectSpeedId),null).execute((Void) null);
-			}
-		});
-		dialog.show();
 	}
-	
-	public IRestClientObserver getPostSpeedObserver(final Dialog dialog) {
-		return new LocarRestClientObserver(this) {
-			@Override
-			public void sucess(IRestClientTask restClientTask) {
-				// TODO validar la respuesta
-				dialog.dismiss();
-				Context context = getApplicationContext();
-				CharSequence text = "Se ha modificado la velocidad";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
-			}
-		};
-	}
-	
+
 	public void centerMap(List<LatLng> copiedPoints) {
         double minLat = Integer.MAX_VALUE;
         double maxLat = Integer.MIN_VALUE;
