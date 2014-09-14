@@ -10,8 +10,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -165,10 +167,28 @@ public class ActivityCars extends ActionBarActivity {
 			selectedVehicle = vehicles.getList().iterator().next();
 			vehicleSelectedAndContinue();
 		} else {
-//			openVehicleSelectionAndContinue();
+			openVehicleSelectionAndContinue();
 		}
 		
 	}
+
+	private void openVehicleSelectionAndContinue() {
+		final Dialog dialog = new Dialog(ActivityCars.this);
+		dialog.setContentView(R.layout.selection_vehicle_dialog);
+		dialog.setTitle("Seleccione un vehiculo");
+		LinearLayout vehiclesLayout= (LinearLayout)dialog.findViewById(R.id.selectVehicleButtonsContainer);
+		for (VehicleBean vehicle : vehicles.getList()) {
+			Button vehicleButton = new Button(this);
+		    vehicleButton.setText(vehicle.getDescription());
+		    vehicleButton.setLayoutParams(new ViewGroup.LayoutParams(
+		        ViewGroup.LayoutParams.WRAP_CONTENT,
+		            ViewGroup.LayoutParams.WRAP_CONTENT));
+		    vehicleButton.setOnClickListener(new VehicleButtonOnClickListener(vehicle, this, dialog));
+		    vehiclesLayout.addView(vehicleButton);       
+		}
+		dialog.show();
+	}
+
 
 	private void vehicleSelectedAndContinue() {
 		if (option == VehicleOption.SPEED) {
@@ -316,4 +336,34 @@ public class ActivityCars extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    static class VehicleButtonOnClickListener implements View.OnClickListener {
+    	
+    	private VehicleBean vehicle;
+    	private ActivityCars activityCars;
+    	private Dialog dialog;
+    	
+    	public VehicleButtonOnClickListener(VehicleBean vehicle,
+				ActivityCars activityCars, Dialog dialog) {
+			super();
+			this.vehicle = vehicle;
+			this.activityCars = activityCars;
+			this.dialog = dialog;
+		}
+
+		@Override
+    	public void onClick(View v) {
+			this.dialog.dismiss();
+    		this.activityCars.setSelectedVehicle(this.vehicle);
+    		this.activityCars.vehicleSelectedAndContinue();
+    	}
+    }
+
+	public VehicleBean getSelectedVehicle() {
+		return selectedVehicle;
+	}
+
+
+	public void setSelectedVehicle(VehicleBean selectedVehicle) {
+		this.selectedVehicle = selectedVehicle;
+	}
 }
