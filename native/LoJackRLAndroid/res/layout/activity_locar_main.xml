@@ -65,12 +65,12 @@
                         android:src="@drawable/ic_cars_position_off" />
 
                     <ImageButton
-                        android:id="@+id/carSpeedButton2"
+                        android:id="@+id/carSpeedButton"
                         style="@style/btn_cars"
                         android:src="@drawable/ic_cars_velocidades_off" />
                     
                     <ImageButton
-                        android:id="@+id/carZoneButton3"
+                        android:id="@+id/carZoneButton"
                         style="@style/btn_cars"
                         android:src="@drawable/ic_cars_zone_off" />
                     

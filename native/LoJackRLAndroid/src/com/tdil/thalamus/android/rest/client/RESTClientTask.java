@@ -38,6 +38,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	private HttpMethod method;
 	private WeakReference<Context> contextRef;
 	private WeakReference<IRestClientObserver> observerRef;
+	private Context contextStrong;
+	private IRestClientObserver observerStrong;
+	
 	private WeakReference<ProgressDialog> progressDialogRef;
 	private InputStream inputStream = null;
 	private String result = "";
@@ -65,8 +68,10 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
 		this.contextRef = new WeakReference<Context>(context);
+		this.contextStrong = context;
 		this.method = method;
 		this.observerRef = new WeakReference<IRestClientObserver>(observer);
+		this.observerStrong = observer;
 		this.url = url;
 		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
