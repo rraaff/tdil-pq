@@ -171,6 +171,18 @@ public class ActivityCars extends ActionBarActivity {
 			}
 		});
         
+        ((View)findViewById(R.id.carPathButton)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				option = VehicleOption.PATH;
+				if (vehicles == null) {
+					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+				} else {
+					selectVehicleAndContinue();
+				}
+			}
+		});
+        
         
 //        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
 //			@Override
@@ -241,6 +253,11 @@ public class ActivityCars extends ActionBarActivity {
 			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getPhonesObserver, RESTConstants.GET_VEHICLE_PHONES, new RestParams(
 					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
 		}
+		
+		if (option == VehicleOption.PATH) {
+			CarsDialogs.openSelectHistoricPathDialog(this);
+		}
+		
 	}
 
 	public void centerMap(List<LatLng> copiedPoints) {

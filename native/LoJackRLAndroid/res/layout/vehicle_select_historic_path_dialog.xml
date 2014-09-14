@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/vehiclePathDomainTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFF" />
+
+    <RadioGroup android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        
+        <RadioButton android:id="@+id/pathLastHourRadioButton"
+            android:text="ULTIMA HORA"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        
+        <RadioButton android:id="@+id/pathTodayRadioButton"
+            android:text="HOY"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        
+        <RadioButton android:id="@+id/pathYesterdayRadioButton"
+            android:text="AYER"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        
+        <RadioButton android:id="@+id/pathLastWeekRadioButton"
+            android:text="ULTIMA SEMANA"
+            android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </RadioGroup>
+    
+    <Button
+        android:id="@+id/vehiclePathButtonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel" />
+
+    <Button
+        android:id="@+id/vehiclePathButtonOK"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Ok " />
+    
+    </LinearLayout>
+
+</RelativeLayout>

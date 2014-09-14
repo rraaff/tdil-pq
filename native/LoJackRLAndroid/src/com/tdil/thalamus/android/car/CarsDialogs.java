@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -195,6 +196,36 @@ public class CarsDialogs {
 				String update = gson.toJson(phoneNumbersBean);
 				new RESTClientTask(activityCars, HttpMethod.POST, getPostNumbersObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_PHONES, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId()),update).execute((Void) null);
+			}
+		});
+		dialog.show();
+	}
+	
+	protected static void openSelectHistoricPathDialog(final ActivityCars activityCars) {
+		final Dialog dialog = new Dialog(activityCars);
+		dialog.setContentView(R.layout.vehicle_select_historic_path_dialog);
+		dialog.setTitle("Elija una opcion");
+	
+		// set the custom dialog components - text, image and button
+		TextView text = (TextView) dialog.findViewById(R.id.vehiclePathDomainTextView);
+		text.setText(activityCars.getSelectedVehicle().getDescription());
+		
+		RadioButton lastHour = (RadioButton)dialog.findViewById(R.id.pathLastHourRadioButton);
+		lastHour.setChecked(true);
+		
+		Button dialogCancelButton = (Button) dialog.findViewById(R.id.vehiclePathButtonCancel);
+		dialogCancelButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		
+		Button dialogOkButton = (Button) dialog.findViewById(R.id.vehiclePathButtonOK);
+		dialogOkButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
 			}
 		});
 		dialog.show();
