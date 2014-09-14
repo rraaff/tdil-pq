@@ -33,6 +33,7 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.AddressTypeBean;
 import com.tdil.thalamus.android.rest.model.AddressTypeBeanCollection;
+import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneBean;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
@@ -78,6 +79,16 @@ public class ActivityCars extends ActionBarActivity {
 			// validar la respuesta
 			SecureZoneCollection speed = gson.fromJson(restClientTask.getResult(), SecureZoneCollection.class);
 			CarsDialogs.openChangeZoneDialog(speed, ActivityCars.this);
+		}
+	};
+	
+	private LocarRestClientObserver getPhonesObserver = new LocarRestClientObserver(this) {
+		@Override
+		public void sucess(IRestClientTask restClientTask) {
+			Gson gson = new Gson();
+			// validar la respuesta
+			PhoneNumbersBean speed = gson.fromJson(restClientTask.getResult(), PhoneNumbersBean.class);
+			CarsDialogs.openChangePhoneNumbersDialog(speed, ActivityCars.this);
 		}
 	};
 	
@@ -140,6 +151,18 @@ public class ActivityCars extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				option = VehicleOption.ZONE;
+				if (vehicles == null) {
+					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+				} else {
+					selectVehicleAndContinue();
+				}
+			}
+		});
+        
+        ((View)findViewById(R.id.carPhoneButton)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				option = VehicleOption.PHONE_NUMBERS;
 				if (vehicles == null) {
 					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
 				} else {
@@ -212,6 +235,10 @@ public class ActivityCars extends ActionBarActivity {
 		}
 		if (option == VehicleOption.ZONE) {
 			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getZoneObserver, RESTConstants.GET_VEHICLE_SECURE_ZONES, new RestParams(
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
+		}
+		if (option == VehicleOption.PHONE_NUMBERS) {
+			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getPhonesObserver, RESTConstants.GET_VEHICLE_PHONES, new RestParams(
 					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
 		}
 	}
