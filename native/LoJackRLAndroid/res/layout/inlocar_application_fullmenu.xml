@@ -39,7 +39,7 @@
                 android:gravity="center_vertical|center_horizontal" >
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/tabHomeUnselected"
                     style="@style/appmenu_button_basic"
                     android:text="@string/btn_tag_appmenu_home" />
             </LinearLayout>
@@ -49,7 +49,7 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tabCarsSelected"
                     style="@style/appmenu_button_selected"
                     android:text="@string/btn_tag_appmenu_cars" />
             </LinearLayout>
@@ -59,7 +59,7 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/tabPetsUnselected"
                     style="@style/appmenu_button_basic"
                     android:text="@string/btn_tag_appmenu_pets" />
             </LinearLayout>
@@ -69,7 +69,7 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/tabAppsUnselected"
                     style="@style/appmenu_button_basic"
                     android:text="@string/btn_tag_appmenu_apps" />
             </LinearLayout>

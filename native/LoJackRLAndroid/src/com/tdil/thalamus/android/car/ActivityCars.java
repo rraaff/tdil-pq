@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,6 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.UpdateActivity;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -112,7 +114,7 @@ public class ActivityCars extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_main);
-        
+        HeaderLogic.installTabLogic(this);
         mapView = (MapView) this.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
 
@@ -236,6 +238,13 @@ public class ActivityCars extends ActionBarActivity {
 		    vehicleButton.setOnClickListener(new VehicleButtonOnClickListener(vehicle, this, dialog));
 		    vehiclesLayout.addView(vehicleButton);       
 		}
+		Button dialogCancelButton = (Button) dialog.findViewById(R.id.selectVehicleCancel);
+		dialogCancelButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
 		dialog.show();
 	}
 

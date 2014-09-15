@@ -125,6 +125,17 @@ public class HeaderLogic  {
 		/* logica del menu superior */
 		View outer = (View)activity.findViewById(R.id.application_fullmenu);
 		if (outer != null) {
+			View tabHome = outer.findViewById(R.id.tabHomeUnselected);
+			if (tabHome != null) {
+				tabHome.setOnClickListener(
+					new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							handleHomeAccess(activity, true);
+						}
+					});
+			}
+			
 			View tabPets = outer.findViewById(R.id.tabPetsUnselected);
 			if (tabPets != null) {
 				tabPets.setOnClickListener(
