@@ -1,9 +1,14 @@
 package com.tdil.thalamus.android.car;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,11 +18,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.drive.internal.al;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
+import com.tdil.thalamus.android.home.ActivityHomeAlarmDashboard;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -26,11 +31,11 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
+import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneBean;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitBean;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
-import com.tdil.thalamus.android.rest.model.prevent.VehicleCollection;
 
 public class CarsDialogs {
 
@@ -210,8 +215,12 @@ public class CarsDialogs {
 		TextView text = (TextView) dialog.findViewById(R.id.vehiclePathDomainTextView);
 		text.setText(activityCars.getSelectedVehicle().getDescription());
 		
-		RadioButton lastHour = (RadioButton)dialog.findViewById(R.id.pathLastHourRadioButton);
+		final RadioButton lastHour = (RadioButton)dialog.findViewById(R.id.pathLastHourRadioButton);
 		lastHour.setChecked(true);
+		
+		final RadioButton today = (RadioButton)dialog.findViewById(R.id.pathTodayRadioButton);
+		final RadioButton yesterday = (RadioButton)dialog.findViewById(R.id.pathYesterdayRadioButton);
+		final RadioButton lastWeek = (RadioButton)dialog.findViewById(R.id.pathLastWeekRadioButton);
 		
 		Button dialogCancelButton = (Button) dialog.findViewById(R.id.vehiclePathButtonCancel);
 		dialogCancelButton.setOnClickListener(new OnClickListener() {
@@ -225,7 +234,45 @@ public class CarsDialogs {
 		dialogOkButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				DateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+				Date from = null;
+				Date to = null;
+				if (lastHour.isChecked()) {
+					Calendar cal = Calendar.getInstance();
+					to = cal.getTime();
+					cal.add(Calendar.HOUR, -1);
+					from = cal.getTime();
+				}
+				if (today.isChecked()) {
+					Calendar cal = Calendar.getInstance();
+					to = cal.getTime();
+					cal.set(Calendar.HOUR, 0);
+					cal.set(Calendar.MINUTE, 0);
+					cal.set(Calendar.SECOND, 0);
+					from = cal.getTime();
+				}
+				if (yesterday.isChecked()) {
+					Calendar cal = Calendar.getInstance();
+					cal.set(Calendar.HOUR, 0);
+					cal.set(Calendar.MINUTE, 0);
+					cal.set(Calendar.SECOND, 0);
+					to = cal.getTime();
+					cal.add(Calendar.DATE, - 1);
+					from = cal.getTime();
+				}
+				if (lastWeek.isChecked()) {
+					Calendar cal = Calendar.getInstance();
+					to = cal.getTime();
+					cal.add(Calendar.DATE, - 7);
+					from = cal.getTime();
+				}
+				String dateFrom = dateFormat.format(from);
+				String dateTo = dateFormat.format(to);
 				
+				new RESTClientTask(activityCars, HttpMethod.GET, getPathObserver(dialog, activityCars), RESTConstants.GET_VEHICLE_PATH, new RestParams(
+						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
+						.put(RESTConstants.P_DATE_START, dateFrom)
+						.put(RESTConstants.P_DATE_END, dateTo),null).execute((Void) null);
 			}
 		});
 		dialog.show();
@@ -274,6 +321,26 @@ public class CarsDialogs {
 				int duration = Toast.LENGTH_SHORT;
 				Toast toast = Toast.makeText(context, text, duration);
 				toast.show();
+			}
+		};
+	}
+	
+	public static IRestClientObserver getPathObserver(final Dialog dialog, final ActivityCars activityCars) {
+		return new LocarRestClientObserver(activityCars) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				Gson gson = new Gson();
+				// validar la respuesta
+				PositionHistoryCollection pos = gson.fromJson(restClientTask.getResult(), PositionHistoryCollection.class);
+				Intent intent = new Intent(activity.getBaseContext(), ActivityCarsPathHistory.class);
+				intent.putExtra(ActivityCarsPathHistory.Position_History_Collection, pos);
+				activity.startActivity(intent);
+				dialog.dismiss();
+				/*Context context = activityCars.getApplicationContext();
+				CharSequence text = "Se han modificado los telefonos";
+				int duration = Toast.LENGTH_SHORT;
+				Toast toast = Toast.makeText(context, text, duration);
+				toast.show();*/
 			}
 		};
 	}

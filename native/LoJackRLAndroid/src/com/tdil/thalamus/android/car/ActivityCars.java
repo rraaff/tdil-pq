@@ -5,13 +5,11 @@ import java.util.List;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -25,7 +23,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.UpdateActivity;
+import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -33,10 +31,7 @@ import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.AddressTypeBean;
-import com.tdil.thalamus.android.rest.model.AddressTypeBeanCollection;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
-import com.tdil.thalamus.android.rest.model.prevent.SecureZoneBean;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
 import com.tdil.thalamus.android.rest.model.prevent.VehicleBean;
@@ -44,7 +39,7 @@ import com.tdil.thalamus.android.rest.model.prevent.VehicleCollection;
 
 
 
-public class ActivityCars extends ActionBarActivity {
+public class ActivityCars extends LoJackWithProductMenuActivity {
 
 	private MapView mapView;
 	
