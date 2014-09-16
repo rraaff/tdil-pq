@@ -18,6 +18,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -216,13 +218,54 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	BitmapDescriptor n = BitmapDescriptorFactory.fromResource(R.drawable.icon_n);
+    	BitmapDescriptor ne = BitmapDescriptorFactory.fromResource(R.drawable.icon_ne);
+    	BitmapDescriptor e = BitmapDescriptorFactory.fromResource(R.drawable.icon_e);
+    	BitmapDescriptor se = BitmapDescriptorFactory.fromResource(R.drawable.icon_se);
+    	BitmapDescriptor s = BitmapDescriptorFactory.fromResource(R.drawable.icon_s);
+    	BitmapDescriptor so = BitmapDescriptorFactory.fromResource(R.drawable.icon_so);
+    	BitmapDescriptor o = BitmapDescriptorFactory.fromResource(R.drawable.icon_o);
+    	BitmapDescriptor no = BitmapDescriptorFactory.fromResource(R.drawable.icon_no);
+    	
     	if (requestCode == REQUEST_PATH && resultCode == RESULT_OK && data != null) {
     		PositionHistoryCollection pos = (PositionHistoryCollection)data.getSerializableExtra(REQUEST_PATH_PARAM);
     		for (PositionHistoryBean bean : pos.getList()) {
     			LatLng latLng = new LatLng(Double.parseDouble(bean.getLatitude()),Double.parseDouble(bean.getLongitude()));
-    			Marker m = mapView.getMap().addMarker(new MarkerOptions()
-    		        .position(latLng)
-    		        .title(bean.getStreet() + " " + bean.getNumber()));
+    			MarkerOptions marker = new MarkerOptions().position(latLng)
+    					.title(bean.getStreet() + " " + bean.getNumber());
+    			if (bean.getDirection().equals("N")) {
+    				marker.icon(n);
+    			} 
+    			if (bean.getDirection().equals("NE")) {
+    				marker.icon(ne);
+    			} 
+    			if (bean.getDirection().equals("E")) {
+    				marker.icon(e);
+    			} 
+    			if (bean.getDirection().equals("SE")) {
+    				marker.icon(se);
+    			} 
+    			if (bean.getDirection().equals("S")) {
+    				marker.icon(s);
+    			} 
+    			if (bean.getDirection().equals("SO")) {
+    				marker.icon(so);
+    			} 
+    			if (bean.getDirection().equals("O")) {
+    				marker.icon(o);
+    			} 
+    			if (bean.getDirection().equals("NO")) {
+    				marker.icon(no);
+    			} 
+				// adding marker
+    			marker.anchor(0.5f, 0.5f);
+				mapView.getMap().addMarker(marker);
+    		}
+    		if (pos.getList().size() > 0) {
+    			PositionHistoryBean bean = pos.getList().iterator().next();
+    			LatLng latLng = new LatLng(Double.parseDouble(bean.getLatitude()),Double.parseDouble(bean.getLongitude()));
+    			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
+    			mapView.getMap().animateCamera(cameraUpdate);
     		}
     	}
     }
