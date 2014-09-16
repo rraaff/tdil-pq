@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,6 +33,8 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
+import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryBean;
+import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
 import com.tdil.thalamus.android.rest.model.prevent.VehicleBean;
@@ -48,6 +51,9 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	
 	private VehicleBean selectedVehicle = null;
 	private VehicleOption option;
+	
+	public static final int REQUEST_PATH = 0;
+	public static final String REQUEST_PATH_PARAM = "REQUEST_PATH_PARAM";
 	
 	private LocarRestClientObserver positionsObserver = new LocarRestClientObserver(this) {
 		@Override
@@ -207,7 +213,19 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 //        });
 
     }
-    
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    	if (requestCode == REQUEST_PATH && resultCode == RESULT_OK && data != null) {
+    		PositionHistoryCollection pos = (PositionHistoryCollection)data.getSerializableExtra(REQUEST_PATH_PARAM);
+    		for (PositionHistoryBean bean : pos.getList()) {
+    			LatLng latLng = new LatLng(Double.parseDouble(bean.getLatitude()),Double.parseDouble(bean.getLongitude()));
+    			Marker m = mapView.getMap().addMarker(new MarkerOptions()
+    		        .position(latLng)
+    		        .title(bean.getStreet() + " " + bean.getNumber()));
+    		}
+    	}
+    }
 
 	protected void selectVehicleAndContinue() {
 		if (vehicles.getList().size() == 1) {

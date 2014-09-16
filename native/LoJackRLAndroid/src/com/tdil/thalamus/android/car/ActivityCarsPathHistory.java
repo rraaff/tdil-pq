@@ -2,14 +2,19 @@ package com.tdil.thalamus.android.car;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryBean;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryCollection;
 
@@ -38,6 +43,18 @@ public class ActivityCarsPathHistory extends LoJackWithProductMenuActivity {
 		PathListAdapter adapter = new PathListAdapter(this,
 				CustomListViewValuesArr, res);
 		list.setAdapter(adapter);
+		
+		((View)findViewById(R.id.viewPathInMapButton)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent output = new Intent();
+//				output.putExtra(ActivityCars.REQUEST_PATH, 0);
+				output.putExtra(ActivityCars.REQUEST_PATH_PARAM, positionHistoryCollection);
+				setResult(RESULT_OK, output);
+				finish();
+			}
+		});
+		
     }
     
     @Override

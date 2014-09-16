@@ -334,7 +334,7 @@ public class CarsDialogs {
 				PositionHistoryCollection pos = gson.fromJson(restClientTask.getResult(), PositionHistoryCollection.class);
 				Intent intent = new Intent(activity.getBaseContext(), ActivityCarsPathHistory.class);
 				intent.putExtra(ActivityCarsPathHistory.Position_History_Collection, pos);
-				activity.startActivity(intent);
+				activity.startActivityForResult(intent, ActivityCars.REQUEST_PATH);
 				dialog.dismiss();
 				/*Context context = activityCars.getApplicationContext();
 				CharSequence text = "Se han modificado los telefonos";
