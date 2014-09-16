@@ -1,0 +1,292 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ServicesDashboardActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:orientation="vertical" >
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	            
+	            <TableRow
+	                android:id="@+id/signatureBar"
+	                android:layout_width="wrap_content"
+	                android:layout_height="140dp"
+	                android:background="@drawable/ac_secondary_bar" >
+	
+	                <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="140dp"
+	                    android:layout_gravity="center_vertical|center_horizontal"
+	                    android:layout_weight="1" >
+	
+	                    <ImageView
+	                        android:id="@+id/gr_iso"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="left|center_vertical"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/iso"
+	                        android:visibility="invisible" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_signature"
+	                        android:layout_width="0dp"
+	                        android:layout_height="wrap_content"
+	                        android:layout_gravity="center_horizontal|center_vertical"
+	                        android:layout_marginLeft="60dp"
+	                        android:layout_marginRight="60dp"
+	                        android:layout_weight="1"
+	                        android:src="@drawable/signature" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_userIcon"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="center_vertical|right"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/icon_user"
+	                        android:visibility="invisible" />
+	
+	                </LinearLayout>
+	
+	            </TableRow>
+	        
+	        </LinearLayout>
+	        	
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:orientation="vertical" >
+
+			    <ScrollView
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent" >
+
+				    <LinearLayout
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="fill_horizontal"
+				        android:layout_marginLeft="25dp"
+				        android:layout_marginRight="25dp"
+				        android:layout_marginTop="0dp"
+				        android:gravity="fill_horizontal"
+				        android:orientation="vertical" >
+
+				        <LinearLayout
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_marginTop="22dp"
+				            android:orientation="vertical" >
+
+				            <LinearLayout
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginLeft="10dp"
+				                android:layout_marginRight="10dp" >
+
+				                <ImageView
+				                    android:id="@+id/imageView2"
+				                    android:layout_width="wrap_content"
+				                    android:layout_height="wrap_content"
+				                    android:src="@drawable/icon_my_services_dashboard" />
+
+				                <TextView
+				                    android:id="@+id/textView1"
+				                    style="@style/ServiceDashboardTitles"
+				                    android:text="@string/btn_my_services"
+				                    android:textSize="22sp" />
+
+				            </LinearLayout>
+
+				            <LinearLayout
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginBottom="10dp"
+				                android:layout_marginLeft="70dp"
+				                android:layout_marginRight="20dp"
+				                android:layout_marginTop="10dp"
+				                android:orientation="vertical" >
+
+				                <TextView
+				                    android:id="@+id/textView2"
+				                    android:layout_width="wrap_content"
+				                    android:layout_height="wrap_content"
+				                    android:layout_marginBottom="10dp"
+				                    android:text="En esta sección podés registrar los services que hayas realizado a tus vehículos. Te recomendamos mantener actualizada esta lista."
+				                    android:textColor="@color/bgBaseGray"
+				                    android:textSize="16sp" />
+
+				                <Button
+				                    android:id="@+id/myServicesButton"
+				                    style="@style/ButtonLink"
+				                    android:onClick="@string/dologin"
+				                    android:text="@string/btn_tag_login"
+				                    android:textSize="16sp" />
+
+				            </LinearLayout>
+
+				            <ImageView
+				                android:id="@+id/imageView4"
+				                android:layout_width="wrap_content"
+				                android:layout_height="wrap_content"
+				                android:src="@drawable/divider_horizontal" />
+
+				        </LinearLayout>
+
+				        <LinearLayout
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_marginTop="22dp"
+				            android:orientation="vertical" >
+
+				            <LinearLayout
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginLeft="10dp"
+				                android:layout_marginRight="10dp" >
+
+				                <ImageView
+				                    android:id="@+id/imageView3"
+				                    android:layout_width="wrap_content"
+				                    android:layout_height="wrap_content"
+				                    android:src="@drawable/icon_official_services_dashboard" />
+
+				                <TextView
+				                    android:id="@+id/textView1"
+				                    style="@style/ServiceDashboardTitles"
+				                    android:text="@string/btn_official_services"
+				                    android:textSize="22sp" />
+
+				            </LinearLayout>
+
+				            <LinearLayout
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginBottom="10dp"
+				                android:layout_marginLeft="70dp"
+				                android:layout_marginRight="20dp"
+				                android:layout_marginTop="10dp"
+				                android:orientation="vertical" >
+
+				                <TextView
+				                    android:id="@+id/textView2"
+				                    android:layout_width="wrap_content"
+				                    android:layout_height="wrap_content"
+				                    android:layout_marginBottom="10dp"
+				                    android:text="Accedé a una lista completa de la información de services para cada uno de tus vehículos."
+				                    android:textColor="@color/bgBaseGray"
+				                    android:textSize="16sp" />
+
+				                <Button
+				                    android:id="@+id/officialServicesButton"
+				                    style="@style/ButtonLink"
+				                    android:onClick="@string/dologin"
+				                    android:text="@string/btn_tag_login"
+				                    android:textSize="16sp" />
+
+				            </LinearLayout>
+
+				            <ImageView
+				                android:id="@+id/imageView4"
+				                android:layout_width="wrap_content"
+				                android:layout_height="wrap_content"
+				                android:src="@drawable/divider_horizontal" />
+
+				        </LinearLayout>
+				        
+				        <LinearLayout
+				            android:layout_width="match_parent"
+				            android:layout_height="wrap_content"
+				            android:layout_marginTop="22dp"
+				            android:orientation="vertical" >
+
+				            <LinearLayout
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginLeft="10dp"
+				                android:layout_marginRight="10dp" >
+
+				                <ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:src="@drawable/icon_services_locations_dashboard" />
+
+				                <TextView
+				                    android:id="@+id/textView1"
+				                    style="@style/ServiceDashboardTitles"
+				                    android:text="@string/btn_services_locations"
+				                    android:textSize="22sp" />
+
+				            </LinearLayout>
+
+				            <LinearLayout
+				                android:layout_width="match_parent"
+				                android:layout_height="wrap_content"
+				                android:layout_marginBottom="10dp"
+				                android:layout_marginLeft="70dp"
+				                android:layout_marginRight="20dp"
+				                android:layout_marginTop="10dp"
+				                android:orientation="vertical" >
+
+				                <TextView
+				                    android:id="@+id/textView2"
+				                    android:layout_width="wrap_content"
+				                    android:layout_height="wrap_content"
+				                    android:layout_marginBottom="10dp"
+				                    android:text="Seleccioná la agencia o service autorizado dónde deseas realizar el próximo service para tu vehículo. El sistema le avisará al centro elegido que lo has elegido para llevar a cabo la revisión períodica de tu vehículo."
+				                    android:textColor="@color/bgBaseGray"
+				                    android:textSize="16sp" />
+
+				                <Button
+				                    android:id="@+id/searchDealersButton"
+				                    style="@style/ButtonLink"
+				                    android:onClick="@string/dologin"
+				                    android:text="@string/btn_tag_login"
+				                    android:textSize="16sp" />
+
+				            </LinearLayout>
+
+				            <ImageView
+				                android:id="@+id/imageView4"
+				                android:layout_width="wrap_content"
+				                android:layout_height="wrap_content"
+				                android:src="@drawable/divider_horizontal" />
+
+				        </LinearLayout>
+				        
+				        <Button
+				            android:id="@+id/myVehiclesButton"
+				            android:onClick="@string/dologin"
+				            android:text="@string/btn_my_vehicles"
+				            style="@style/ButtonListItems" 
+				            android:visibility="gone"/>
+
+				    </LinearLayout>
+				    
+				</ScrollView>
+
+			</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="120dp"
+	            android:orientation="vertical" >
+
+				<include layout="@layout/footer" />
+
+			</LinearLayout>
+
+		</LinearLayout>
+    </LinearLayout>
+</merge>

@@ -1,0 +1,216 @@
+<merge xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".LoginActivity" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_ondas"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="50dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/main_logo"
+                style="@style/mainLogoAtLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/main_logo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/bgBase"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/loadingInfoText"
+                style="@style/MainTitles"
+                android:layout_width="fill_parent"
+                android:layout_gravity="top|fill_horizontal"
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="25dp"
+                android:textSize="36sp"
+                android:gravity="center_horizontal|top"
+                android:text="@string/menu_main_title" />
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/grayTabBase"
+                android:padding="15dp" >
+
+                <!--TableRow
+                    android:id="@+id/tableIDType"
+                    style="fieldsetLike"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/labelIDType"
+                        style="@style/Label"
+                        android:text="@string/lbl_docType"
+                        android:textSize="24sp" />
+
+                    <Spinner
+                        android:id="@+id/documentType"
+						style="@style/textFieldsOneLarge" />
+                </TableRow -->
+
+                <TableRow
+                    android:id="@+id/tableIDNumber"
+                    style="fieldsetLike">
+
+                    <TextView
+                        android:id="@+id/labelIdNumber"
+                        style="@style/Label"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/lbl_idNumber"
+                        android:textSize="24sp" />
+
+                    <EditText
+                        android:id="@+id/documentNumber"
+                        style="@style/textFieldsOne"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/lbl_idNumberSample"
+                        android:inputType="number"
+                        android:textSize="24sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tablePassword"
+                    style="fieldsetLike"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/labelPassword"
+                        style="@style/Label"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/lbl_password"
+                        android:textSize="24sp" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="@style/textFieldsOne"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/hnt_doc_password"
+                        android:inputType="textPassword"
+                        android:textSize="24sp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRememberMe"
+                    style="@style/fieldsetLike"
+                    android:layout_marginTop="10dp" >
+
+                    <CheckBox
+                        android:id="@+id/rememberPasswordCheckbox"
+                        style="@style/Label"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:maxLines="1"
+                        android:paddingRight="30dp"
+                        android:text="@string/crt_tag_rememberme"
+                        android:textAlignment="center"
+                        android:textColor="@color/labels"
+                        android:textSize="24sp"
+                        android:visibility="visible" />
+
+                </TableRow>
+                
+				<TextView
+				    android:id="@+id/appVersion"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:gravity="center_horizontal"
+				    android:text="TextView"
+				    android:textAlignment="center"
+				    android:textColor="@color/bgBaseGray"
+				    android:textSize="10sp" />
+
+            </TableLayout>
+
+            <TableRow
+                android:id="@+id/buttonWrapper"
+                style="@style/buttonWrapper"
+                android:layout_gravity="center_horizontal|bottom" >
+
+                <Button
+                    android:id="@+id/requestResetPassword"
+                    style="@style/ButtonBackward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingTop="10dp"
+                    android:textSize="18sp"
+                    android:text="@string/btn_tag_forgotpass"/>
+
+                <Button
+                    android:id="@+id/loginButtons"
+                    style="@style/ButtonForward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingTop="10dp"
+                    android:textSize="18sp"
+                    
+                    android:onClick="@string/dologin"
+                    android:text="@string/btn_tag_login" />
+
+            </TableRow>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/placahome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/action_loading"
+                android:gravity="bottom|center_horizontal"
+                android:src="@drawable/app_logo" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</merge>

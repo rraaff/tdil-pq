@@ -1,0 +1,140 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".RequestResetPasswordActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/bg_ondas"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/main_logo"
+                style="@style/mainLogoAtLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/main_logo" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            style="@style/LoginScreen"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp" >
+
+            <TextView
+                android:id="@+id/loadingInfoText"
+                style="@style/MainTitles"
+                android:padding="25dp"
+                android:text="@string/title_request_reset"
+                android:textSize="36sp" />
+            
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/grayTabBase"
+                android:padding="25dp" >
+
+	            <TableRow
+	                android:id="@+id/tableIDNumber"
+	                style="@style/fieldsetLike"
+	                android:layout_marginBottom="0dp" >
+                    
+                    <TextView
+                        android:id="@+id/labelIdNumber"
+                        style="@style/Label"
+                        android:text="@string/lbl_idNumber"
+                        android:textSize="24sp" />
+                    
+		            <EditText
+		                android:id="@+id/documentNumber"
+		                style="@style/textFieldsOne"
+		                android:hint="@string/lbl_idNumberSample"
+		                android:inputType="number"
+		                android:textSize="24sp" >
+
+		                <requestFocus />
+		            </EditText>
+
+		        </TableRow>
+
+            </TableLayout>
+
+            <TableRow
+                android:id="@+id/buttonWrapper"
+                style="@style/buttonWrapper" >
+
+	            <Button
+	                android:id="@+id/resetPasswordBack"
+	                style="@style/ButtonBackward"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lines="1"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingTop="10dp"
+                    android:textSize="18sp"
+	                android:onClick="@string/dologin"
+	                android:text="@string/btn_tag_reset_password_back" />
+	            
+	            <Button
+	                android:id="@+id/resetPasswordButton"
+	                style="@style/ButtonForward"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="25dp"
+	                android:layout_weight="1"
+	                android:lines="1"
+	                android:onClick="@string/dologin"
+	                android:paddingBottom="10dp"
+	                android:paddingLeft="0dp"
+	                android:paddingRight="0dp"
+	                android:paddingTop="10dp"
+	                android:text="@string/btn_tag_reset_password"
+	                android:textSize="18sp" />
+
+            </TableRow>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/placahome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginRight="150dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/action_loading"
+                android:gravity="bottom|center_horizontal"
+                android:src="@drawable/app_logo" />
+
+        </LinearLayout>
+
+	</LinearLayout>
+
+</merge>

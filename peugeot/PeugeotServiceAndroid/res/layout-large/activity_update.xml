@@ -1,0 +1,334 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".UpdateActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:orientation="vertical" >
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="140dp"
+	            android:orientation="vertical" >
+	            
+	            <TableRow
+	                android:id="@+id/signatureBar"
+	                android:layout_width="wrap_content"
+	                android:layout_height="150dp"
+	                android:background="@drawable/ac_secondary_bar" >
+	
+	                <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="150dp"
+	                    android:layout_gravity="center_vertical|center_horizontal"
+	                    android:layout_weight="1" >
+	
+	                    <ImageView
+	                        android:id="@+id/gr_iso"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="left|center_vertical"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/iso"
+	                        android:visibility="invisible" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_signature"
+	                        android:layout_width="0dp"
+	                        android:layout_height="wrap_content"
+	                        android:layout_gravity="center_horizontal|center_vertical"
+	                        android:layout_marginLeft="60dp"
+	                        android:layout_marginRight="60dp"
+	                        android:layout_weight="1"
+	                        android:src="@drawable/signature" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_userIcon"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="center_vertical|right"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/icon_user"
+	                        android:visibility="invisible" />
+	
+	                </LinearLayout>
+	
+	            </TableRow>
+			</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:background="@color/bgBaseGray"
+	            android:orientation="vertical" >
+
+	            <ScrollView
+	                android:id="@+id/scrollView1"
+	                android:layout_width="match_parent"
+	                android:layout_height="fill_parent" >
+
+	                <LinearLayout
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content"
+	                    android:orientation="vertical" >
+
+	                    <TextView
+	                        android:id="@+id/loadingInfoText"
+	                        style="@style/FormTitles"
+	                        android:layout_width="fill_parent"
+	                        android:layout_height="wrap_content"
+	                        android:paddingTop="50dp"
+	                        android:text="@string/title_activity_update"
+	                        android:textColor="@color/bgBase"
+	                        android:textSize="36sp" />
+
+	                    <LinearLayout
+	                        android:layout_width="match_parent"
+	                        android:layout_height="wrap_content"
+	                        android:orientation="vertical"
+	                        android:paddingLeft="50dp"
+	                        android:paddingRight="50dp" >
+
+	                        <Spinner
+	                            android:id="@+id/documentType"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="fill_parent"
+	                            android:layout_height="wrap_content"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp"
+	                            android:background="@color/bgFormFieldsLight"
+	                            android:padding="10dp"
+	                            android:textSize="24sp" />
+
+	                        <EditText
+	                            android:id="@+id/documentNumber"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="fill_parent"
+	                            android:layout_height="wrap_content"
+	                            android:clickable="false"
+	                            android:enabled="false"
+	                            android:hint="@string/hnt_doc_number"
+	                            android:inputType="number"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" >
+
+	                            <requestFocus />
+	                        </EditText>
+
+	                        <EditText
+	                            android:id="@+id/firstName"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_firstname"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/lastName"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_apellido"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <RadioGroup
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:orientation="vertical" >
+
+	                            <RadioButton
+	                                android:id="@+id/chkMale"
+	                                android:layout_width="wrap_content"
+	                                android:layout_height="wrap_content"
+	                                android:text="@string/btn_male"
+	                                android:textColor="@color/bgBase"
+	                                android:padding="10dp"
+	                            	android:textSize="24sp"
+	                            	android:layout_marginBottom="10dp"
+	                            	android:layout_marginTop="10dp" />
+
+	                            <RadioButton
+	                                android:id="@+id/chkFemale"
+	                                android:layout_width="wrap_content"
+	                                android:layout_height="wrap_content"
+	                                android:text="@string/btn_female"
+	                                android:textColor="@color/bgBase"
+	                                android:padding="10dp"
+	                            	android:textSize="24sp"
+	                            	android:layout_marginBottom="10dp"
+	                            	android:layout_marginTop="10dp" />
+	                        </RadioGroup>
+
+	                        <EditText
+	                            android:id="@+id/email"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:clickable="false"
+	                            android:enabled="false"
+	                            android:hint="@string/hnt_email"
+	                            android:inputType="textEmailAddress"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <TextView
+	                            android:id="@+id/birthDate"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="fill_parent"
+	                            android:layout_height="wrap_content"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/areaCode"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_area_code"
+	                            android:inputType="number"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/mobile"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_mobile"
+	                            android:inputType="number"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <Spinner
+	                            android:id="@+id/state"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:background="@color/bgFormFieldsLight"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/city"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_city"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/street1"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_calle1"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/street2"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_calle2"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <Spinner
+	                            android:id="@+id/addressType"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:background="@color/bgFormFieldsLight"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <EditText
+	                            android:id="@+id/postalCode"
+	                            style="@style/FormsElements_editText"
+	                            android:layout_width="match_parent"
+	                            android:layout_height="wrap_content"
+	                            android:hint="@string/hnt_postal_code"
+	                            android:padding="10dp"
+	                            android:textSize="24sp"
+	                            android:layout_marginBottom="10dp"
+	                            android:layout_marginTop="10dp" />
+
+	                        <CheckBox
+	                            android:id="@+id/optIn"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                            android:layout_marginBottom="3dp"
+	                            android:layout_marginTop="3dp"
+	                            android:text="@string/btn_optIn"
+	                            android:textColor="@color/bgBase"
+	                            android:padding="10dp"
+	                            android:textSize="24sp" />
+
+	                        <Button
+	                            android:id="@+id/updateButton"
+	                            style="@style/ButtonDarkForward"
+	                            android:layout_width="fill_parent"
+	                            android:layout_height="wrap_content"
+	                            android:layout_marginBottom="160dp"
+	                            android:layout_marginLeft="0dp"
+	                            android:layout_marginTop="30dp"
+	                            android:onClick="@string/dologin"
+	                            android:padding="10dp"
+	                            android:text="@string/btn_tag_modify"
+	                            android:textSize="24sp" />
+
+	                    </LinearLayout>
+	                </LinearLayout>
+	            </ScrollView>
+	        </LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="140dp"
+	            android:orientation="vertical" >
+
+	            <include layout="@layout/footer" />
+	        </LinearLayout>
+
+		</LinearLayout>
+
+	</LinearLayout>
+</merge>

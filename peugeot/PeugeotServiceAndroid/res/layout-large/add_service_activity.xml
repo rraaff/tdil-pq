@@ -1,0 +1,206 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".AddServiceActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal" >
+
+	    <LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:orientation="vertical" >
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" >
+	            
+	            <TableRow
+	                android:id="@+id/signatureBar"
+	                android:layout_width="wrap_content"
+	                android:layout_height="140dp"
+	                android:background="@drawable/ac_secondary_bar" >
+	
+	                <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="140dp"
+	                    android:layout_gravity="center_vertical|center_horizontal"
+	                    android:layout_weight="1" >
+	
+	                    <ImageView
+	                        android:id="@+id/gr_iso"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="left|center_vertical"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/iso"
+	                        android:visibility="invisible" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_signature"
+	                        android:layout_width="0dp"
+	                        android:layout_height="wrap_content"
+	                        android:layout_gravity="center_horizontal|center_vertical"
+	                        android:layout_marginLeft="60dp"
+	                        android:layout_marginRight="60dp"
+	                        android:layout_weight="1"
+	                        android:src="@drawable/signature" />
+	
+	                    <ImageView
+	                        android:id="@+id/gr_userIcon"
+	                        android:layout_width="48dp"
+	                        android:layout_height="48dp"
+	                        android:layout_gravity="center_vertical|right"
+	                        android:layout_margin="10dp"
+	                        android:src="@drawable/icon_user"
+	                        android:visibility="invisible" />
+	
+	                </LinearLayout>
+	
+	            </TableRow>
+			</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_weight="1"
+	            android:background="@color/bgBaseGray"
+	            android:orientation="vertical" >
+				
+				<TextView
+				    android:id="@+id/loadingInfoText"
+				    style="@style/FormTitles"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:paddingTop="50dp"
+				    android:text="@string/title_activity_add_service_info"
+				    android:textSize="36sp" />
+		        
+		        <ScrollView
+		            android:id="@+id/scrollView1"
+		            android:layout_width="match_parent"
+		            android:layout_height="fill_parent" >
+		
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:orientation="vertical"
+		                android:padding="20dp" >
+		
+		                <LinearLayout
+		                    android:layout_width="fill_parent"
+		                    android:layout_height="wrap_content"
+		                    android:orientation="vertical" >
+
+		                    <TextView
+		                        android:id="@+id/textView1"
+		                        android:layout_width="fill_parent"
+		                        android:layout_height="wrap_content"
+		                        android:layout_gravity="left|center_vertical"
+		                        android:text="@string/lbl_services_select_services"
+		                        android:textColor="@color/bgBase"
+		                        android:textSize="18sp" />
+		                    
+		                    <Spinner
+		                        android:id="@+id/kmRangeSpinner"
+		                        style="@style/FormsElements_editText"
+		                        android:layout_width="fill_parent"
+		                        android:layout_height="wrap_content"
+		                        android:background="@color/bgFormFieldsLight"
+		                        android:padding="10dp"
+		                        android:textSize="18sp" />
+
+						</LinearLayout>
+
+		                <LinearLayout
+		                    android:layout_width="match_parent"
+		                    android:layout_height="wrap_content"
+		                    android:orientation="vertical" >
+		
+		                    <TextView
+		                        android:id="@+id/textView2"
+		                        android:layout_width="fill_parent"
+		                        android:layout_height="wrap_content"
+		                        android:layout_gravity="left|center_vertical"
+		                        android:layout_marginRight="0dp"
+		                        android:layout_marginTop="15dp"
+		                        android:text="@string/lbl_services_service_date"
+		                        android:textColor="@color/bgBase"
+		                        android:textSize="18sp" />
+		
+		                    <TextView
+		                        android:id="@+id/serviceDate"
+		                        style="@style/FormsElements_editText"
+		                        android:layout_width="fill_parent"
+		                        android:layout_height="wrap_content"
+		                        android:layout_gravity="right|center_vertical"
+		                        android:padding="10dp"
+		                        android:textSize="18sp" />
+		
+		                </LinearLayout>
+
+		                <LinearLayout
+		                    android:layout_width="match_parent"
+		                    android:layout_height="wrap_content"
+		                    android:orientation="vertical" >
+		
+		                    <TextView
+		                        android:id="@+id/textView3"
+		                        android:layout_width="370dp"
+		                        android:layout_height="wrap_content"
+		                        android:layout_gravity="left|center_vertical"
+		                        android:layout_marginRight="15dp"
+		                        android:paddingTop="15dp"
+		                        android:text="@string/lbl_services_service_km_done"
+		                        android:textColor="@color/bgBase"
+		                        android:textSize="18sp" />
+
+			                <EditText
+			                    android:id="@+id/serviceKmEditText"
+			                    style="@style/FormsElements_editText"
+			                    android:layout_width="match_parent"
+			                    android:layout_height="wrap_content"
+			                    android:hint="@string/hnt_service_km"
+			                    android:inputType="number"
+			                    android:padding="10dp"
+			                    android:textSize="18sp" />
+
+			            </LinearLayout>
+
+						<Button
+						    android:id="@+id/addServiceButton"
+						    style="@style/ButtonDarkForward"
+						    android:layout_width="fill_parent"
+						    android:layout_height="wrap_content"
+						    android:layout_marginLeft="0dp"
+						    android:layout_marginRight="0dp"
+						    android:layout_marginTop="25dp"
+						    android:onClick="@string/dologin"
+						    android:paddingBottom="10dp"
+						    android:paddingLeft="0dp"
+						    android:paddingRight="0dp"
+						    android:paddingTop="10dp"
+						    android:text="@string/btn_tag_add_service"
+						    android:textSize="25sp" />
+
+		            </LinearLayout>
+		        </ScrollView>
+			</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="120dp"
+	            android:orientation="vertical" >
+
+				<include layout="@layout/footer" />
+
+			</LinearLayout>
+
+		</LinearLayout>
+    </LinearLayout>
+</merge>
