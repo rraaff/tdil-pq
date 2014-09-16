@@ -41,7 +41,7 @@
     <string name="title_activity_search_dealers_large">Selecciona la concesionaria autorizada donde deseas realizar el próximo service</string>
     <string name="title_activity_search_dealers_bajada">Elegí la provicia, luego la ciudad, presioná el botón buscar. una vez cargados los resultados seleccioná haciendo clic en la lista el Concesionario Autorizado en el que deseas realizar el service de tu vehículo.</string>
     <string name="title_activity_add_service">Registrar service</string>
-    <string name="title_activity_add_service_info">Registrar información de un service</string>
+    <string name="title_activity_add_service_info">Registrar un service</string>
     
     <string name="title_parkings">POI</string>
     <string name="title_prevent">Car Security</string>
@@ -130,7 +130,7 @@
     <string name="btn_optIn">Acepto recibir contactos de Peugeot Car Safe y sus compañías asociadas</string>
     
     <string name="btn_dismiss_advices">No recordar</string>
-    <string name="btn_snooze_advices">Mas tarde</string>
+    <string name="btn_snooze_advices">Más tarde</string>
     
     <string name="random_on">RAN ON</string>
     <string name="random_off">RAN OFF</string>
