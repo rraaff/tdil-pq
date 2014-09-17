@@ -26,10 +26,10 @@ import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
-import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneBean;
@@ -86,9 +86,9 @@ public class CarsDialogs {
 			@Override
 			public void onClick(View v) {
 				String selectSpeedId = ((SpeedLimitBean)speedSpinner.getSelectedItem()).getId();
-				new RESTClientTask(activityCars, HttpMethod.POST, getPostSpeedObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_SPEED_LIMITS, new RestParams(
+				new RESTClientTaskOpt<RESTResponse>(activityCars, HttpMethod.POST, getPostSpeedObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_SPEED_LIMITS, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
-						.put(RESTConstants.P_SPEED_LIMIT_ID, selectSpeedId),null).execute((Void) null);
+						.put(RESTConstants.P_SPEED_LIMIT_ID, selectSpeedId),null, RESTResponse.class).execute((Void) null);
 			}
 		});
 		dialog.show();
@@ -142,9 +142,9 @@ public class CarsDialogs {
 			@Override
 			public void onClick(View v) {
 				String selectSpeedId = ((SecureZoneBean)speedSpinner.getSelectedItem()).getId();
-				new RESTClientTask(activityCars, HttpMethod.POST, getPostZoneObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_SECURE_ZONE, new RestParams(
+				new RESTClientTaskOpt<RESTResponse>(activityCars, HttpMethod.POST, getPostZoneObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_SECURE_ZONE, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
-						.put(RESTConstants.P_SECURE_ZONE_ID, selectSpeedId),null).execute((Void) null);
+						.put(RESTConstants.P_SECURE_ZONE_ID, selectSpeedId),null,RESTResponse.class).execute((Void) null);
 			}
 		});
 		dialog.show();
@@ -199,8 +199,8 @@ public class CarsDialogs {
 				phoneNumbersBean.setCrash(code2.getText().toString() + "-" + number2.getText().toString());
 				Gson gson = new Gson();
 				String update = gson.toJson(phoneNumbersBean);
-				new RESTClientTask(activityCars, HttpMethod.POST, getPostNumbersObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_PHONES, new RestParams(
-						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId()),update).execute((Void) null);
+				new RESTClientTaskOpt<RESTResponse>(activityCars, HttpMethod.POST, getPostNumbersObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_PHONES, new RestParams(
+						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId()),update,RESTResponse.class).execute((Void) null);
 			}
 		});
 		dialog.show();
@@ -283,13 +283,17 @@ public class CarsDialogs {
 		return new LocarRestClientObserver(activityCars) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
-				// TODO validar la respuesta
-				dialog.dismiss();
-				Context context = activityCars.getApplicationContext();
-				CharSequence text = "Se ha modificado la velocidad";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+				if (response.getOk()) {
+					dialog.dismiss();
+					Context context = activityCars.getApplicationContext();
+					CharSequence text = "Se ha modificado la velocidad";
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				} else {
+					this.error(restClientTask);
+				}
 			}
 		};
 	}
@@ -299,13 +303,17 @@ public class CarsDialogs {
 		return new LocarRestClientObserver(activityCars) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
-				// TODO validar la respuesta
-				dialog.dismiss();
-				Context context = activityCars.getApplicationContext();
-				CharSequence text = "Se ha modificado la zona segura";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+				if (response.getOk()) {
+					dialog.dismiss();
+					Context context = activityCars.getApplicationContext();
+					CharSequence text = "Se ha modificado la zona segura";
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				} else {
+					this.error(restClientTask);
+				}
 			}
 		};
 	}
@@ -314,13 +322,17 @@ public class CarsDialogs {
 		return new LocarRestClientObserver(activityCars) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
-				// TODO validar la respuesta
-				dialog.dismiss();
-				Context context = activityCars.getApplicationContext();
-				CharSequence text = "Se han modificado los telefonos";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+				if (response.getOk()) {
+					dialog.dismiss();
+					Context context = activityCars.getApplicationContext();
+					CharSequence text = "Se han modificado los telefonos";
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				} else {
+					this.error(restClientTask);
+				}
 			}
 		};
 	}
@@ -329,17 +341,11 @@ public class CarsDialogs {
 		return new LocarRestClientObserver(activityCars) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
-				// validar la respuesta
 				PositionHistoryCollection pos = ((RESTClientTaskOpt<PositionHistoryCollection>)restClientTask).getCastedResult();
 				Intent intent = new Intent(activity.getBaseContext(), ActivityCarsPathHistory.class);
 				intent.putExtra(ActivityCarsPathHistory.Position_History_Collection, pos);
 				activity.startActivityForResult(intent, ActivityCars.REQUEST_PATH);
 				dialog.dismiss();
-				/*Context context = activityCars.getApplicationContext();
-				CharSequence text = "Se han modificado los telefonos";
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text, duration);
-				toast.show();*/
 			}
 		};
 	}
