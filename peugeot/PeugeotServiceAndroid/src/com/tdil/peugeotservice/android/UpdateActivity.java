@@ -171,7 +171,7 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
 		}, RESTConstants.DOCUMENT_TYPES, null, null).executeSerial((Void) null);
 
@@ -203,7 +203,7 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
 		}, RESTConstants.STATES, null, null).executeSerial((Void) null);
 
@@ -235,7 +235,7 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
 		}, RESTConstants.ADDRESS_TYPES, null, null).executeSerial((Void) null);
 
@@ -252,7 +252,7 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
 		}, RESTConstants.GET_USER, null, null).executeSerial((Void) null);
 
@@ -332,7 +332,7 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 			}
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
 		}, RESTConstants.SAVE_USER, new RestParams(), json).executeSerial((Void) null);
 	}
@@ -538,7 +538,7 @@ public class UpdateActivity extends PeugeotActivity implements IRestClientObserv
 
 	@Override
 	public void error(IRestClientTask task) {
-		Messages.connectionErrorMessage(UpdateActivity.this);
+		Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 		this.mAuthTask = null;
 	}
 

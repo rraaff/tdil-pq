@@ -379,7 +379,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateEmergencyConfigActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateEmergencyConfigActivity.this);
 			}
 		}, RESTConstants.GET_CONTACT_DATA_V1, new RestParams(), null).executeSerial((Void) null);
 		

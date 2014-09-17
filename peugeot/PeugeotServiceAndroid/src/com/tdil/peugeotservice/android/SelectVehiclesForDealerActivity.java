@@ -122,7 +122,7 @@ public class SelectVehiclesForDealerActivity extends PeugeotActivity implements 
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(SelectVehiclesForDealerActivity.this);
+				Messages.connectionErrorMessageAndFinish(SelectVehiclesForDealerActivity.this);
 			}
 		}, RESTConstants.ADVICE_CONFIGURATION, new RestParams(), null).executeSerial((Void) null);
 		
