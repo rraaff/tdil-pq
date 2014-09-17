@@ -35,22 +35,22 @@ import com.tdil.thalamus.android.utils.Login;
 
 public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask {
 
-	private HttpMethod method;
-	private WeakReference<Context> contextRef;
-	private WeakReference<IRestClientObserver> observerRef;
-	private Context contextStrong;
-	private IRestClientObserver observerStrong;
+	protected HttpMethod method;
+	protected WeakReference<Context> contextRef;
+	protected WeakReference<IRestClientObserver> observerRef;
+	protected Context contextStrong;
+	protected IRestClientObserver observerStrong;
 	
-	private WeakReference<ProgressDialog> progressDialogRef;
-	private InputStream inputStream = null;
-	private String result = "";
-	private int statusCode;
-	private String url;
-	private String urlToExecute;
-	private Map<String, String> urlParams;
-	private String body;
+	protected WeakReference<ProgressDialog> progressDialogRef;
+	protected InputStream inputStream = null;
+	protected String result = "";
+	protected int statusCode;
+	protected String url;
+	protected String urlToExecute;
+	protected Map<String, String> urlParams;
+	protected String body;
 	
-	private boolean incomplete = false;
+	protected boolean incomplete = false;
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	

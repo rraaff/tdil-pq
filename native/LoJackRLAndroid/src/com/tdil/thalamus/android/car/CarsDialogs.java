@@ -22,13 +22,13 @@ import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
-import com.tdil.thalamus.android.home.ActivityHomeAlarmDashboard;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryCollection;
@@ -269,10 +269,10 @@ public class CarsDialogs {
 				String dateFrom = dateFormat.format(from);
 				String dateTo = dateFormat.format(to);
 				
-				new RESTClientTask(activityCars, HttpMethod.GET, getPathObserver(dialog, activityCars), RESTConstants.GET_VEHICLE_PATH, new RestParams(
+				new RESTClientTaskOpt<PositionHistoryCollection>(activityCars, HttpMethod.GET, getPathObserver(dialog, activityCars), RESTConstants.GET_VEHICLE_PATH, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
 						.put(RESTConstants.P_DATE_START, dateFrom)
-						.put(RESTConstants.P_DATE_END, dateTo),null).execute((Void) null);
+						.put(RESTConstants.P_DATE_END, dateTo),null, PositionHistoryCollection.class).execute((Void) null);
 			}
 		});
 		dialog.show();
@@ -329,9 +329,8 @@ public class CarsDialogs {
 		return new LocarRestClientObserver(activityCars) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
-				Gson gson = new Gson();
 				// validar la respuesta
-				PositionHistoryCollection pos = gson.fromJson(restClientTask.getResult(), PositionHistoryCollection.class);
+				PositionHistoryCollection pos = ((RESTClientTaskOpt<PositionHistoryCollection>)restClientTask).getCastedResult();
 				Intent intent = new Intent(activity.getBaseContext(), ActivityCarsPathHistory.class);
 				intent.putExtra(ActivityCarsPathHistory.Position_History_Collection, pos);
 				activity.startActivityForResult(intent, ActivityCars.REQUEST_PATH);

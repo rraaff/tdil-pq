@@ -1,5 +1,7 @@
 package com.tdil.thalamus.android.rest.client;
 
+import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
+
 public interface IRestClientTask {
 
 	public abstract String getResult();

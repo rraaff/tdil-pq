@@ -24,15 +24,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryBean;
@@ -60,9 +59,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	private LocarRestClientObserver positionsObserver = new LocarRestClientObserver(this) {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
-			Gson gson = new Gson();
 			// validar la respuesta
-			vehicles = gson.fromJson(restClientTask.getResult(), VehicleCollection.class);
+			vehicles = ((RESTClientTaskOpt<VehicleCollection>)restClientTask).getCastedResult();
 			activity.updatePositionsLocations(vehicles);
 		}
 	};
@@ -70,9 +68,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	private LocarRestClientObserver getSpeedsObserver = new LocarRestClientObserver(this) {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
-			Gson gson = new Gson();
 			// validar la respuesta
-			SpeedLimitCollection speed = gson.fromJson(restClientTask.getResult(), SpeedLimitCollection.class);
+			SpeedLimitCollection speed = ((RESTClientTaskOpt<SpeedLimitCollection>)restClientTask).getCastedResult();
 			CarsDialogs.openChangeSpeedDialog(speed, ActivityCars.this);
 		}
 	};
@@ -80,9 +77,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	private LocarRestClientObserver getZoneObserver = new LocarRestClientObserver(this) {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
-			Gson gson = new Gson();
 			// validar la respuesta
-			SecureZoneCollection speed = gson.fromJson(restClientTask.getResult(), SecureZoneCollection.class);
+			SecureZoneCollection speed = ((RESTClientTaskOpt<SecureZoneCollection>)restClientTask).getCastedResult();
 			CarsDialogs.openChangeZoneDialog(speed, ActivityCars.this);
 		}
 	};
@@ -90,9 +86,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	private LocarRestClientObserver getPhonesObserver = new LocarRestClientObserver(this) {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
-			Gson gson = new Gson();
 			// validar la respuesta
-			PhoneNumbersBean speed = gson.fromJson(restClientTask.getResult(), PhoneNumbersBean.class);
+			PhoneNumbersBean speed = ((RESTClientTaskOpt<PhoneNumbersBean>)restClientTask).getCastedResult();
 			CarsDialogs.openChangePhoneNumbersDialog(speed, ActivityCars.this);
 		}
 	};
@@ -104,9 +99,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
-			Gson gson = new Gson();
 			// validar la respuesta
-			vehicles = gson.fromJson(restClientTask.getResult(), VehicleCollection.class);
+			vehicles = ((RESTClientTaskOpt<VehicleCollection>)restClientTask).getCastedResult();
 			selectVehicleAndContinue();
 		}
 	};
@@ -136,7 +130,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new RESTClientTask(ActivityCars.this, HttpMethod.GET, positionsObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+				new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
 			}
 		});
         
@@ -145,7 +139,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 			public void onClick(View v) {
 				option = VehicleOption.SPEED;
 				if (vehicles == null) {
-					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
 				} else {
 					selectVehicleAndContinue();
 				}
@@ -157,7 +151,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 			public void onClick(View v) {
 				option = VehicleOption.ZONE;
 				if (vehicles == null) {
-					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null, VehicleCollection.class).execute((Void) null);
 				} else {
 					selectVehicleAndContinue();
 				}
@@ -169,7 +163,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 			public void onClick(View v) {
 				option = VehicleOption.PHONE_NUMBERS;
 				if (vehicles == null) {
-					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
 				} else {
 					selectVehicleAndContinue();
 				}
@@ -181,7 +175,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 			public void onClick(View v) {
 				option = VehicleOption.PATH;
 				if (vehicles == null) {
-					new RESTClientTask(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null).execute((Void) null);
+					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
 				} else {
 					selectVehicleAndContinue();
 				}
@@ -232,7 +226,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
     		for (PositionHistoryBean bean : pos.getList()) {
     			LatLng latLng = new LatLng(Double.parseDouble(bean.getLatitude()),Double.parseDouble(bean.getLongitude()));
     			MarkerOptions marker = new MarkerOptions().position(latLng)
-    					.title(bean.getStreet() + " " + bean.getNumber());
+    					.title(bean.getStreet() + " " + bean.getNumber() + "\n" + bean.getSpeed() + "km/h " + bean.getDirection());
     			if (bean.getDirection().equals("N")) {
     				marker.icon(n);
     			} 
@@ -307,16 +301,16 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 
 	private void vehicleSelectedAndContinue() {
 		if (option == VehicleOption.SPEED) {
-			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getSpeedsObserver, RESTConstants.GET_VEHICLE_SPEED_LIMITS, new RestParams(
-					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
+			new RESTClientTaskOpt<SpeedLimitCollection>(ActivityCars.this, HttpMethod.GET, getSpeedsObserver, RESTConstants.GET_VEHICLE_SPEED_LIMITS, new RestParams(
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null, SpeedLimitCollection.class).execute((Void) null);
 		}
 		if (option == VehicleOption.ZONE) {
-			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getZoneObserver, RESTConstants.GET_VEHICLE_SECURE_ZONES, new RestParams(
-					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
+			new RESTClientTaskOpt<SecureZoneCollection>(ActivityCars.this, HttpMethod.GET, getZoneObserver, RESTConstants.GET_VEHICLE_SECURE_ZONES, new RestParams(
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null,SecureZoneCollection.class).execute((Void) null);
 		}
 		if (option == VehicleOption.PHONE_NUMBERS) {
-			new RESTClientTask(ActivityCars.this, HttpMethod.GET, getPhonesObserver, RESTConstants.GET_VEHICLE_PHONES, new RestParams(
-					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null).execute((Void) null);
+			new RESTClientTaskOpt<PhoneNumbersBean>(ActivityCars.this, HttpMethod.GET, getPhonesObserver, RESTConstants.GET_VEHICLE_PHONES, new RestParams(
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null, PhoneNumbersBean.class).execute((Void) null);
 		}
 		
 		if (option == VehicleOption.PATH) {
