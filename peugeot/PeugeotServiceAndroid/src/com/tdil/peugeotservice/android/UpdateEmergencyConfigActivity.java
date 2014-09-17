@@ -292,8 +292,7 @@ public class UpdateEmergencyConfigActivity extends PeugeotActivity implements Va
 					TextView myEditText = new TextView(UpdateEmergencyConfigActivity.this); // Pass it an Activity or Context
 					myEditText.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)); // Pass two args; must be LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, or an integer pixel value.
 					myEditText.setText(vpb.getDomain());
-					// TODO ver pablo el color
-					myEditText.setTextColor(Color.rgb(227,27,35));
+					myEditText.setTextColor(Color.rgb(255,76,47));
 					setTypeface(UpdateEmergencyConfigActivity.this, myEditText);
 					allPhonesContainer.addView(myEditText);
 					

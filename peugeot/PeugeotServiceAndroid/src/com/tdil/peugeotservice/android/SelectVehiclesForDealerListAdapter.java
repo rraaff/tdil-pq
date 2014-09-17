@@ -113,9 +113,9 @@ public class SelectVehiclesForDealerListAdapter extends BaseAdapter implements O
 			holder.actualKm.setText(iterAlarm.getKm()); // TODO formatear con ,
 			holder.needsService.setText(iterAlarm.getNeedsService() ? "SI" : "NO");
 			if (iterAlarm.getNeedsService()) {
-				holder.needsService.setTextColor(Color.rgb(227,27,35));
+				holder.needsService.setTextColor(Color.rgb(255,76,47));
 			} else {
-				holder.needsService.setTextColor(Color.rgb(35,102,0));
+				holder.needsService.setTextColor(Color.rgb(255,255,255));
 			}
 			holder.lastServiceDate.setText(iterAlarm.getLastservicedate()); // TODO que esto vaya como String
 			holder.lastServiceKm.setText(iterAlarm.getLastservicekm()); // TODO formatear con ,
