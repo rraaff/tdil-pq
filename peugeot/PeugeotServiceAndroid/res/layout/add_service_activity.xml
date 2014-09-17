@@ -8,178 +8,185 @@
         android:id="@+id/loginObjects"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal" >
+        android:background="@color/bgBaseGray"
+        android:orientation="vertical" >
 
-	    <LinearLayout
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:orientation="vertical" >
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8" >
 
-	        <LinearLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="81dp"
-	            android:orientation="vertical" >
-	            
-				<TableRow
-				    android:id="@+id/signatureBar"
-				    android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_weight="3"
-					android:background="@drawable/ac_secondary_bar">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
 
-	                <LinearLayout
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="81dp"
-	                    android:layout_gravity="center_vertical|center_horizontal"
-	                    android:layout_weight="1" >
-	
-	                    <ImageView
-	                        android:id="@+id/gr_iso"
-	                        android:layout_width="48dp"
-	                        android:layout_height="48dp"
-	                        android:layout_gravity="left|center_vertical"
-	                        android:layout_margin="10dp"
-	                        android:src="@drawable/iso"
-	                        android:visibility="invisible" />
-	
-	                    <ImageView
-	                        android:id="@+id/gr_signature"
-	                        android:layout_width="0dp"
-	                        android:layout_height="wrap_content"
-	                        android:layout_gravity="center_horizontal|center_vertical"
-	                        android:layout_marginLeft="20dp"
-	                        android:layout_marginRight="20dp"
-	                        android:layout_weight="1"
-	                        android:src="@drawable/signature" />
-	
-	                    <ImageView
-	                        android:id="@+id/gr_userIcon"
-	                        android:layout_width="48dp"
-	                        android:layout_height="48dp"
-	                        android:layout_gravity="center_vertical|right"
-	                        android:layout_margin="10dp"
-	                        android:src="@drawable/icon_user"
-	                        android:visibility="invisible" />
-	                </LinearLayout>
-	            </TableRow>
-			</LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:orientation="vertical" >
 
-	        <LinearLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="fill_parent"
-	            android:layout_weight="1"
-	            android:background="@color/bgBaseGray"
-	            android:orientation="vertical" >
-				
-				<TextView
-					android:id="@+id/loadingInfoText"
-					android:layout_width="fill_parent"
-					android:layout_height="wrap_content"
-					android:text="@string/title_activity_add_service_info"
-					style="@style/FormTitles"  />
-		        
-		        <ScrollView
-		            android:id="@+id/scrollView1"
-		            android:layout_width="match_parent"
-		            android:layout_height="fill_parent" >
-		
-		            <LinearLayout
-		                android:layout_width="match_parent"
-		                android:layout_height="match_parent"
-		                android:orientation="vertical"
-		                android:padding="20dp" >
+                    <TableRow
+                        android:id="@+id/signatureBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="@drawable/ac_secondary_bar" >
 
-		                <LinearLayout
-		                    android:layout_width="match_parent"
-		                    android:layout_height="wrap_content" >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="81dp"
+                            android:layout_gravity="center_vertical|center_horizontal"
+                            android:layout_weight="1" >
 
-		                    <TextView
-		                        android:id="@+id/textView1"
-		                        android:layout_width="133dp"
-		                        android:layout_height="wrap_content"
-		                        android:layout_gravity="left|center_vertical"
-		                        android:layout_marginRight="15dp"
-		                        android:text="@string/lbl_services_select_services"
-		                        android:textColor="@color/bgBase"
-		                        android:textSize="16sp" />
-		                    
-		                    <Spinner
-			                    android:id="@+id/kmRangeSpinner"
-			                    style="@style/FormsElements_editText"
-			                    android:layout_width="fill_parent"
-			                    android:layout_height="wrap_content"
-			                    android:background="@color/bgFormFieldsLight" />
-						</LinearLayout>
+                            <ImageView
+                                android:id="@+id/gr_iso"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="left|center_vertical"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/iso"
+                                android:visibility="invisible" />
 
-		                <LinearLayout
-		                    android:layout_width="match_parent"
-		                    android:layout_height="wrap_content" >
-		
-		                    <TextView
-		                        android:id="@+id/textView2"
-		                        android:layout_width="133dp"
-		                        android:layout_height="wrap_content"
-		                        android:layout_gravity="left|center_vertical"
-		                        android:layout_marginRight="15dp"
-		                        android:text="@string/lbl_services_service_date"
-		                        android:textColor="@color/bgBase"
-		                        android:textSize="16sp" />
-		
-		                    <TextView
-		                        android:id="@+id/serviceDate"
-		                        android:layout_width="fill_parent"
-		                        android:layout_height="wrap_content"
-		                        android:layout_gravity="right|center_vertical"
-		                        style="@style/FormsElements_editText" />
-		
-		                </LinearLayout>
+                            <ImageView
+                                android:id="@+id/gr_signature"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginRight="20dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/signature" />
 
-		                <LinearLayout
-		                    android:layout_width="match_parent"
-		                    android:layout_height="wrap_content" >
-		
-		                    <TextView
-		                        android:id="@+id/textView3"
-		                        android:layout_width="133dp"
-		                        android:layout_height="wrap_content"
-		                        android:layout_gravity="left|center_vertical"
-		                        android:layout_marginRight="15dp"
-		                        android:text="@string/lbl_services_service_km_done"
-		                        android:textColor="@color/bgBase"
-		                        android:textSize="16sp" />
+                            <ImageView
+                                android:id="@+id/gr_userIcon"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center_vertical|right"
+                                android:layout_margin="10dp"
+                                android:src="@drawable/icon_user"
+                                android:visibility="invisible" />
+                        </LinearLayout>
+                    </TableRow>
+                </LinearLayout>
 
-			                <EditText
-			                    android:id="@+id/serviceKmEditText"
-			                    android:layout_width="match_parent"
-			                    android:layout_height="wrap_content"
-			                    android:hint="@string/hnt_service_km"
-			                    android:inputType="number"
-			                    style="@style/FormsElements_editText" />
-			            </LinearLayout>
-		
-			            <Button
-			                android:id="@+id/addServiceButton"
-			                style="@style/ButtonDarkForward"
-			                android:layout_width="fill_parent"
-			                android:layout_marginLeft="0dp"
-			                android:layout_marginRight="0dp"
-			                android:layout_marginTop="25dp"
-			                android:onClick="@string/dologin"
-			                android:text="@string/btn_tag_add_service" />
-		
-		            </LinearLayout>
-		        </ScrollView>
-			</LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@color/bgBaseGray"
+                    android:orientation="vertical" >
 
-	        <LinearLayout
-	            android:layout_width="match_parent"
-	            android:layout_height="90dp"
-	            android:orientation="vertical" >
+                    <TextView
+                        android:id="@+id/loadingInfoText"
+                        style="@style/FormTitles"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title_activity_add_service_info" />
 
-				<include layout="@layout/footer" />
+                    <ScrollView
+                        android:id="@+id/scrollView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="fill_parent" >
 
-			</LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="20dp" >
 
-		</LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <TextView
+                                    android:id="@+id/textView1"
+                                    android:layout_width="133dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center_vertical"
+                                    android:layout_marginRight="15dp"
+                                    android:text="@string/lbl_services_select_services"
+                                    android:textColor="@color/bgBase"
+                                    android:textSize="16sp" />
+
+                                <Spinner
+                                    android:id="@+id/kmRangeSpinner"
+                                    style="@style/FormsElements_editText"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@color/bgFormFieldsLight" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <TextView
+                                    android:id="@+id/textView2"
+                                    android:layout_width="133dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center_vertical"
+                                    android:layout_marginRight="15dp"
+                                    android:text="@string/lbl_services_service_date"
+                                    android:textColor="@color/bgBase"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/serviceDate"
+                                    style="@style/FormsElements_editText"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="right|center_vertical" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="133dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="left|center_vertical"
+                                    android:layout_marginRight="15dp"
+                                    android:text="@string/lbl_services_service_km_done"
+                                    android:textColor="@color/bgBase"
+                                    android:textSize="16sp" />
+
+                                <EditText
+                                    android:id="@+id/serviceKmEditText"
+                                    style="@style/FormsElements_editText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="@string/hnt_service_km"
+                                    android:inputType="number" />
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/addServiceButton"
+                                style="@style/ButtonDarkForward"
+                                android:layout_width="fill_parent"
+                                android:layout_marginLeft="0dp"
+                                android:layout_marginRight="0dp"
+                                android:layout_marginTop="25dp"
+                                android:onClick="@string/dologin"
+                                android:text="@string/btn_tag_add_service" />
+                        </LinearLayout>
+                    </ScrollView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_weight=".2"
+            android:orientation="vertical" >
+
+            <include layout="@layout/footer" />
+        </LinearLayout>
     </LinearLayout>
 </merge>
