@@ -1,5 +1,7 @@
 package com.tdil.thalamus.android.car;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -8,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,6 +86,8 @@ public class PathListAdapter extends BaseAdapter implements OnClickListener {
 		View vi = convertView;
 		PathItemHolder holder;
 
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddhhmmss");
+		SimpleDateFormat dfView = new SimpleDateFormat("dd/MM/yyyy hh:mm");
 		if (convertView == null) {
 
 			/********** Inflate tabitem.xml file for each row ( Defined below ) ************/
@@ -111,12 +116,16 @@ public class PathListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.pathItemDescription.setText(iterLight.getStreet() + " " + iterLight.getNumber());
 			holder.pathItemSpeed.setText(iterLight.getSpeed());
-			holder.pathItemSpeed.setText(iterLight.getFecha());
+			try {
+				holder.pathItemDate.setText(dfView.format(df.parse(iterLight.getFecha())));
+			} catch (ParseException e) {
+				holder.pathItemDate.setText("-");
+			}
 
 			GoPathDetail goLightDashBoard = new GoPathDetail(iterLight);
 			holder.pathItemDescription.setOnClickListener(goLightDashBoard);
 			holder.pathItemSpeed.setOnClickListener(goLightDashBoard);
-			holder.pathItemSpeed.setOnClickListener(goLightDashBoard);
+			holder.pathItemDate.setOnClickListener(goLightDashBoard);
 
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
 			vi.setOnClickListener(new OnItemClickListener(position));
@@ -157,10 +166,9 @@ public class PathListAdapter extends BaseAdapter implements OnClickListener {
 
 		@Override
 		public void onClick(View arg0) {
-//			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightDashboard.class);
-//			intent.putExtra(ActivityHomeLightDashboard.LIGHT, alarm);
-//			activity.startActivity(intent);
-//			activity.finish();
+			Intent intent = new Intent(activity.getBaseContext(), ActivityCarsPathHistoryDetail.class);
+			intent.putExtra(ActivityCarsPathHistoryDetail.PositionHistoryBean, alarm);
+			activity.startActivity(intent);
 		}
 	}
 }
