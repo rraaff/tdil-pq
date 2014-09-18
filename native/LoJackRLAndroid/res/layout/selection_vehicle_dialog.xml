@@ -2,25 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
+
  
 	<LinearLayout style="@style/modal_container">
+    	<TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Titulo Custom" />
     
 		<LinearLayout
 			android:id="@+id/selectVehicleButtonsContainer"
 			style="@style/form_layout" 
 			android:orientation="vertical">
-			
-            <Button style="@style/btn_inlist_witharrow"
-                android:id="@+id/button12"
-                android:text="AAA 222" />
-            
-            <Button style="@style/btn_inlist_witharrow"
-                android:id="@+id/button13"
-                android:text="BBB 333" />
-            
-            <Button style="@style/btn_inlist_witharrow"
-                android:id="@+id/button14"
-                android:text="CCC 444" />
 
 		</LinearLayout>
 

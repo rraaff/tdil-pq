@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -30,8 +32,8 @@ import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
-import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryBean;
@@ -276,15 +278,25 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 
 	private void openVehicleSelectionAndContinue() {
 		final Dialog dialog = new Dialog(ActivityCars.this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.selection_vehicle_dialog);
-		dialog.setTitle("Seleccione un vehiculo");
+//		dialog.setTitle("Seleccione un vehiculo");
 		LinearLayout vehiclesLayout= (LinearLayout)dialog.findViewById(R.id.selectVehicleButtonsContainer);
 		for (VehicleBean vehicle : vehicles.getList()) {
-			Button vehicleButton = new Button(this);
-		    vehicleButton.setText(vehicle.getDescription());
-		    vehicleButton.setLayoutParams(new ViewGroup.LayoutParams(
-		        ViewGroup.LayoutParams.WRAP_CONTENT,
-		            ViewGroup.LayoutParams.WRAP_CONTENT));
+			final LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.vehicle_button, null);
+			Button vehicleButton = (Button)layout.findViewById(R.id.vehicleButton);
+			
+//			Button vehicleButton = new Button(this);
+//		    vehicleButton.setText(vehicle.getDescription().toUpperCase());
+//		    vehicleButton.setLayoutParams(new ViewGroup.LayoutParams(
+//		        ViewGroup.LayoutParams.MATCH_PARENT,
+//		            ViewGroup.LayoutParams.WRAP_CONTENT));
+//		    vehicleButton.setBackground(background)
+		    //<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
+		    //<item name="android:textSize">14sp</item>
+//		    vehicleButton.setTextAlignment(textAlignment)
+		    
 		 // TODO: (Marcos)
 		 // Este es el estilo vehicleButton.setStyle("@style/ButtonLoginList");
 		 /*
@@ -301,8 +313,9 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		 	    <item name="android:textAlignment">textStart</item>
 		  * 
 		  * */		    
+			vehicleButton.setText(vehicle.getDescription());
 		    vehicleButton.setOnClickListener(new VehicleButtonOnClickListener(vehicle, this, dialog));
-		    vehiclesLayout.addView(vehicleButton);       
+		    vehiclesLayout.addView(layout);       
 		}
 		Button dialogCancelButton = (Button) dialog.findViewById(R.id.selectVehicleCancel);
 		dialogCancelButton.setOnClickListener(new OnClickListener() {
