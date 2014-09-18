@@ -31,6 +31,10 @@
     <string name="status_armed">Armada</string>
     <string name="status_unknown">Desconocido</string>
     <string name="lst_itm_5"></string>
+    
+    <string name="lbl_plate">Dominio:</string>
+    <string name="lbl_speed">Vel:</string>
+    <string name="lbl_speed_unit">Km/h</string>
 
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
@@ -93,6 +97,8 @@
     <string name="btn_view_log">Ver log completo</string>
     <string name="btn_tag_go">Ir</string>
     
+    <string name="btn_tag_gotomap">Ver en mapa</string>
+    
     <string name="action_home">Home</string>
     
     <string name="btn_home">  </string>
@@ -130,6 +136,7 @@
     <string name="tog_btn_default">ON/OFF</string>
     
     <string name="btn_lbl_back">Volver</string>
+    <string name="btn_lbl_save">Grabar</string>
     
     
     <!-- Hints -->

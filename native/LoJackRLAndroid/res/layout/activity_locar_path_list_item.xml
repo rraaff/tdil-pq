@@ -20,13 +20,30 @@
 
 				<LinearLayout style="@style/row_innerrow_data_container" >
 
-					<TextView style="@style/innerrow_labelfield"
-					    android:id="@+id/pathItemSpeed"
-					    android:text="Desarmada" />
-	
-					<TextView style="@style/innerrow_labelfield"
+					<TextView
 					    android:id="@+id/pathItemDate"
+					    style="@style/innerrow_labelfield"
+					    android:paddingLeft="20dp"
+					    android:textColor="@color/black"
 					    android:text="2013-05-04 18:20" />
+
+					<TextView
+					    android:id="@+id/textView1"
+					    style="@style/innerrow_labelfield"
+					    android:paddingLeft="20dp"
+					    android:text="@string/lbl_speed" />
+
+					<TextView
+					    android:id="@+id/pathItemSpeed"
+					    style="@style/innerrow_labelfield"
+					    android:textColor="@color/black"
+					    android:text="0" />
+
+					<TextView
+					    android:id="@+id/textView2"
+					    style="@style/innerrow_labelfield"
+					    android:paddingLeft="5dp"
+					    android:text="@string/lbl_speed_unit" />
 	
 				</LinearLayout>
 			</LinearLayout>

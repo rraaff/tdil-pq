@@ -31,127 +31,106 @@
                 android:orientation="vertical" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistoryDateTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="fecha" />
 
                     <TextView
                         android:id="@+id/positionHistoryDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistoryStreetTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="street" />
 
                     <TextView
                         android:id="@+id/positionHistoryStreet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>
                 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistoryNumberTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="number" />
 
                     <TextView
                         android:id="@+id/positionHistoryNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>
                 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistorySpeedTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="speed" />
 
                     <TextView
                         android:id="@+id/positionHistorySpeed"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>
                 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistoryDirectionTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="direction" />
 
                     <TextView
                         android:id="@+id/positionHistoryDirection"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>
                 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistoryLongitudeTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="longitude" />
 
                     <TextView
                         android:id="@+id/positionHistoryLongitude"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>
                 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" >
+                    style="@style/btn_inlist_witharrow" >
 
                     <TextView
                         android:id="@+id/positionHistoryLatitudeTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_data_indatalist"
                         android:text="latitude" />
 
                     <TextView
                         android:id="@+id/positionHistoryLatitude"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/label_datastring_indatalist"
                         android:text="TextView" />
 
                 </LinearLayout>

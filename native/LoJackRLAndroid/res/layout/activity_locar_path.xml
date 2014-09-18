@@ -31,12 +31,21 @@
                     android:layout_height="fill_parent" >
                 </ListView>
         </TableRow>
-				<Button
-                   android:id="@+id/viewPathInMapButton"
-                   style="@style/btn_inlist_witharrow"
-                   android:focusable="false"
-                   android:text="Ver en mapa"
-                   android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:padding="5dp" >
+
+            <Button
+                android:id="@+id/viewPathInMapButton"
+                style="@style/btn_forward"
+                android:focusable="false"
+                android:text="@string/btn_tag_gotomap"
+                android:visibility="visible" />
+
+        </LinearLayout>
 
         <TableRow
             android:id="@+id/tableRow3"
