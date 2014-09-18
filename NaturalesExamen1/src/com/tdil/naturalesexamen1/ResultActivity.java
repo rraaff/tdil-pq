@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,11 @@ public class ResultActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result);
 
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
+		actionBar.setDisplayShowCustomEnabled(true);
+		actionBar.setDisplayShowTitleEnabled(false);
+		
 		Bundle extras = getIntent().getExtras();
 		Questionnaire questionnaire = (Questionnaire) extras.getSerializable(QuestionActivity.QUESTIONNAIRE);
 		

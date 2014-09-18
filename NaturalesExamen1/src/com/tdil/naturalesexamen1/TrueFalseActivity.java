@@ -2,6 +2,7 @@ package com.tdil.naturalesexamen1;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,9 +20,12 @@ public class TrueFalseActivity extends QuestionActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.truefalsequestion);
+		
+		
 		Bundle extras = getIntent().getExtras();
 		questionnaire = (Questionnaire) extras.getSerializable(QUESTIONNAIRE);
 		question = (TrueFalseQuestion)questionnaire.getQuestion();
+		customizeActionBar();
 		((TextView)findViewById(R.id.questionText)).setText(question.getQuestionText());
 		
 		findViewById(R.id.trueButton).setOnClickListener(
