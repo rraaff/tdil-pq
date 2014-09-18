@@ -285,6 +285,22 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		    vehicleButton.setLayoutParams(new ViewGroup.LayoutParams(
 		        ViewGroup.LayoutParams.WRAP_CONTENT,
 		            ViewGroup.LayoutParams.WRAP_CONTENT));
+		 // TODO: (Marcos)
+		 // Este es el estilo vehicleButton.setStyle("@style/ButtonLoginList");
+		 /*
+		  * y estas son las propiedades
+		 	    <item name="android:layout_width">match_parent</item>
+		 	    <item name="android:layout_height">36dp</item>
+		 	    <item name="android:gravity">left|center_vertical</item>
+		         <item name="android:paddingLeft">10dp</item>
+		 	    <item name="android:background">@drawable/bg_textfields_02</item>
+		 	    <item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
+		 	    <item name="android:textSize">14sp</item>
+		 	    <item name="android:textColor">@color/black</item>
+		 	    <item name="android:textAllCaps">true</item>
+		 	    <item name="android:textAlignment">textStart</item>
+		  * 
+		  * */		    
 		    vehicleButton.setOnClickListener(new VehicleButtonOnClickListener(vehicle, this, dialog));
 		    vehiclesLayout.addView(vehicleButton);       
 		}
