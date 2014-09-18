@@ -681,4 +681,5 @@
 		<item name="android:paddingLeft">5dp</item>
 		<item name="android:textSize">15sp</item>
 	</style>
+
 </resources>

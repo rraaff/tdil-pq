@@ -129,6 +129,8 @@
     
     <string name="tog_btn_default">ON/OFF</string>
     
+    <string name="btn_lbl_back">Volver</string>
+    
     
     <!-- Hints -->
     <string name="hnt_doc_number">NÚMERO DE DOCUMENTO</string>
