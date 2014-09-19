@@ -7,7 +7,6 @@ import java.net.URLConnection;
 
 import org.apache.http.util.ByteArrayBuffer;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -75,12 +74,18 @@ public class CheckForUpdateActivity extends LoJackActivity {
                     mHandler.post(showUpdate);
                 } else {
                 	// activate activity
-                	AppStart appStart = checkAppStart();
-//                	if (appStart == AppStart.FIRST_TIME)
-                	Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
-                	intent.putExtra(LoginActivity.FROM_LAUNCH, LoginActivity.FROM_LAUNCH);
-                	startActivity(intent);
-                	finish();
+                	StartHistory appStart = checkAppStart();
+                	if (!appStart.isClient()) {
+                		Intent intent = new Intent(CheckForUpdateActivity.this, FirstAccessActivity.class);
+	                	startActivity(intent);
+	                	finish();
+                	} else {
+	                	// activate activity
+	                	Intent intent = new Intent(CheckForUpdateActivity.this, LoginActivity.class);
+	                	intent.putExtra(LoginActivity.FROM_LAUNCH, LoginActivity.FROM_LAUNCH);
+	                	startActivity(intent);
+	                	finish();
+                	}
                 }
             } catch (Exception e) {
             	e.printStackTrace();
@@ -129,6 +134,33 @@ public class CheckForUpdateActivity extends LoJackActivity {
            }
     }; 
     
+    public class StartHistory {
+    	
+    	private AppStart appStart;
+    	private boolean client;
+    	
+		public StartHistory(AppStart appStart, boolean client) {
+			super();
+			this.appStart = appStart;
+			this.client = client;
+		}
+		
+		public AppStart getAppStart() {
+			return appStart;
+		}
+		public void setAppStart(AppStart appStart) {
+			this.appStart = appStart;
+		}
+		public boolean isClient() {
+			return client;
+		}
+		public void setClient(boolean client) {
+			this.client = client;
+		}
+    	
+    	
+    }
+    
     /**
      * Distinguishes different kinds of app starts: <li>
      * <ul>
@@ -153,7 +185,8 @@ public class CheckForUpdateActivity extends LoJackActivity {
      * start of the app.
      */
     private static final String LAST_APP_VERSION = "last_app_version";
-
+    public static final String IS_CLIENT = "is_client";
+    
     /**
      * Caches the result of {@link #checkAppStart()}. To allow idempotent method
      * calls.
@@ -165,7 +198,8 @@ public class CheckForUpdateActivity extends LoJackActivity {
      * 
      * @return the type of app start
      */
-    public AppStart checkAppStart() {
+    public StartHistory checkAppStart() {
+    	boolean client = false;
         if (appStart == null) {
             try {
             	final String PREFS_NAME = "RLPrefsFile";
@@ -176,6 +210,7 @@ public class CheckForUpdateActivity extends LoJackActivity {
                         LAST_APP_VERSION, -1);
                 // String versionName = pInfo.versionName;
                 appStart = checkAppStart(currentVersionCode, lastVersionCode);
+                client = settings.getBoolean(IS_CLIENT, false);
                 // Update version in preferences
                 settings.edit()
                         .putInt(LAST_APP_VERSION, currentVersionCode).commit();
@@ -184,7 +219,7 @@ public class CheckForUpdateActivity extends LoJackActivity {
             	appStart = AppStart.NORMAL;
             }
         }
-        return appStart;
+        return new StartHistory(appStart, client);
     }
 
     public AppStart checkAppStart(int currentVersionCode, int lastVersionCode) {

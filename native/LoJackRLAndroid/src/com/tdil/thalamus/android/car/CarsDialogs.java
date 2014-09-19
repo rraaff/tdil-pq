@@ -10,6 +10,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +42,7 @@ public class CarsDialogs {
 
 	protected static void openChangeSpeedDialog(SpeedLimitCollection speed, final ActivityCars activityCars) {
 		final Dialog dialog = new Dialog(activityCars);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.vehicle_change_speed_dialog);
 		dialog.setTitle("Cambio de velocidad");
 	
@@ -97,6 +99,7 @@ public class CarsDialogs {
 	
 	protected static void openChangeZoneDialog(SecureZoneCollection zones, final ActivityCars activityCars) {
 		final Dialog dialog = new Dialog(activityCars);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.vehicle_change_zone_dialog);
 		dialog.setTitle("Cambio de zona segura");
 	
@@ -152,6 +155,7 @@ public class CarsDialogs {
 	
 	protected static void openChangePhoneNumbersDialog(PhoneNumbersBean phones, final ActivityCars activityCars) {
 		final Dialog dialog = new Dialog(activityCars);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.vehicle_change_phones_dialog);
 		dialog.setTitle("Cambio de telefonos");
 	
@@ -208,6 +212,7 @@ public class CarsDialogs {
 	
 	protected static void openSelectHistoricPathDialog(final ActivityCars activityCars) {
 		final Dialog dialog = new Dialog(activityCars);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.vehicle_select_historic_path_dialog);
 		dialog.setTitle("Elija una opcion");
 	

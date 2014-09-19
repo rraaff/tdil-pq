@@ -1,0 +1,82 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ServicesDashboardActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+        
+        <ImageView
+            android:id="@+id/main_logo"
+            style="@style/mainLogoAtLogin"
+            android:layout_margin="30dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/badge_ok" />
+
+        <LinearLayout
+            style="@style/LoginScreen" >
+            
+            <TextView
+                android:id="@+id/loadingInfoText"
+                style="@style/MainTitles"
+                android:text="@string/title_activity_first_access" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cmnt_text_first_access"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <TableRow
+                android:id="@+id/buttonWrapper"
+                style="@style/buttonWrapper"
+                android:layout_height="match_parent" >
+
+                <Button
+                    android:id="@+id/notClientButton"
+                    style="@style/ButtonBackward"
+                    android:layout_weight="1"
+                    android:onClick="@string/dologin"
+                    android:text="@string/btn_not_client" />
+
+                <Button
+                    android:id="@+id/alreadyClientButton"
+                    style="@style/ButtonForward"
+                    android:layout_weight="0"
+                    android:onClick="@string/dologin"
+                    android:text="@string/btn_already_client" />
+
+            </TableRow>
+
+		</LinearLayout>
+
+	    <ImageView
+	        android:id="@+id/placahome"
+	        android:layout_width="wrap_content"
+	        android:layout_height="80dp"
+	        android:layout_gravity="bottom|center_horizontal"
+	        android:layout_margin="30dp"
+	        android:layout_weight="1"
+	        android:adjustViewBounds="true"
+	        android:contentDescription="@string/action_loading"
+	        android:gravity="bottom|center_horizontal"
+	        android:maxWidth="240dp"
+	        android:src="@drawable/badge_ok" />
+
+    </LinearLayout>
+</merge>

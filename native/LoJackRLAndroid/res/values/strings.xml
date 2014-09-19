@@ -174,4 +174,11 @@
     
     <!-- Rare -->
     <string name="inlohome_tab_divider">|</string>
+    
+    
+    <string name="title_activity_first_access">PRIMER ACCESO</string>
+    <string name="cmnt_text_first_access">Si has descargado recientemente la aplicación y no tenes cuenta, presioná «NO TENGO». Y si ya has creado tu cuenta ingrese ahora haciendo tap en el botón «TENGO CUENTA».</string>
+    <string name="btn_already_client">TENGO CUENTA</string>
+    <string name="btn_not_client">NO TENGO</string>
+    
 </resources>

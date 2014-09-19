@@ -9,16 +9,16 @@ public class ApplicationConfig {
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PREPRO
-	public static final String APP_DOMAIN = "www.lojack-app.com.ar:82";
-	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
+//	public static final String APP_DOMAIN = "www.lojack-app.com.ar:82";
+//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PABLO
 //	public static final String APP_DOMAIN = "192.168.252.106:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 
 //MARCOS
-//	public static final String APP_DOMAIN = "192.168.0.134:8180";
-//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
+	public static final String APP_DOMAIN = "192.168.0.134:8180";
+	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
@@ -32,6 +32,8 @@ public class ApplicationConfig {
 	public static final String URL_CARS_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/locar_notclient.jsp";
 	public static final String URL_PETS_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/lopet_notclient.jsp";
 //	public static final String URL_CLUB_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/loclub_notclient.jsp";
+	
+	public static final String URL_NOT_CLIENT = URL_WEBSITE + "lopet_notclient.jsp";
 
 	public static int default_timeout = 10000;
 	

@@ -17,7 +17,7 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="false"/>
 	
      <uses-sdk
-        android:minSdkVersion="10"/>
+        android:minSdkVersion="7"/>
     
     <application
         android:allowBackup="true"
@@ -38,6 +38,22 @@
 
         <activity
             android:name="com.tdil.thalamus.android.LoginActivity"
+            android:label="@string/title_activity_login_for_action_bar"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.FirstAccessActivity"
+            android:label="@string/title_activity_login_for_action_bar"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.thalamus.android.NotClientActivity"
             android:label="@string/title_activity_login_for_action_bar"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait"
