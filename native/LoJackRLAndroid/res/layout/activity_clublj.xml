@@ -3,31 +3,21 @@
     android:layout_height="fill_parent"
     tools:context=".ClubLJActivity" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Login progress -->
-
-
-    <!-- Login form -->
-
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@color/bgBase"
-        android:gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/main_square"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="1"
-            android:orientation="vertical" >
+            android:layout_weight=".8" >
 
             <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="50dp"
-                android:gravity="top|center_horizontal" >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
 
                 <ImageView
                     android:id="@+id/imageView1"
@@ -35,58 +25,88 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/tarjeta_club_lojack_nueva" />
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="fill_parent"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="false"
-                    android:layout_alignParentLeft="false"
-                    android:layout_alignParentTop="false"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="150dp"
-                    android:text="Usuario (DNI):"
-                    android:textColor="@color/bgBase"
-                    android:visibility="invisible" />
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingTop="90dp" >
 
-                <TextView
-                    android:id="@+id/userDNITextView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBaseline="@+id/textView1"
-                    android:layout_alignBottom="@+id/textView1"
-                    android:layout_centerHorizontal="false"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:text="TextView"
-                    android:textColor="@color/bgBase" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical" >
 
-                <TextView
-                    android:id="@+id/clubLJNameTextView"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/textView1"
-                    android:layout_alignRight="@+id/textView1"
-                    android:layout_below="@+id/userDNITextView"
-                    android:text="TextView"
-                    android:textColor="@color/bgBase" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="5dp"
+                                android:text="DNI "
+                                android:textColor="@color/bgBase"
+                                android:textSize="30sp"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/userDNITextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="11111111"
+                                android:textColor="@color/bgBase"
+                                android:textSize="30sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/clubLJNameTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView"
+                            android:textColor="@color/bgBase"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+                </LinearLayout>
 
             </RelativeLayout>
 
-        </LinearLayout>
+        </TableRow>
 
-        <Button
-            android:id="@+id/viewClubLJBenefits"
-            android:layout_width="wrap_content"
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="50dp"
-            android:text="@string/btn_club_benefits"
-            android:textColor="@color/bgBase" />
+            android:layout_weight=".2"
+            android:gravity="center_vertical|center_horizontal" >
 
+            <Button
+                android:id="@+id/viewClubLJBenefits"
+                style="@style/btn_forward"
+                android:text="@string/btn_club_benefits" />
+
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forhome" />
+        </TableRow>
     </LinearLayout>
-
 </merge>
