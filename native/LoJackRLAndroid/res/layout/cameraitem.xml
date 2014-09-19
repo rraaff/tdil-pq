@@ -12,8 +12,11 @@
 
                 <LinearLayout style="@style/gen_fil_and_wrap" >
 
-                    <TextView style="@style/item_title_01"
+                    <TextView
                         android:id="@+id/cameraDescription"
+                        style="@style/item_title_01"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
                         android:text="Cámara cochera" />
 
                 </LinearLayout>

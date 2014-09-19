@@ -58,8 +58,7 @@
                     <CheckBox
                         android:id="@+id/rememberPasswordCheckbox"
                         style="@style/checkbox_white_01"
-                        android:gravity="center_vertical|center_horizontal"
-                        android:paddingLeft="0dp"
+                        android:paddingLeft="30dp"
                         android:text="@string/crt_tag_rememberme"
                         android:textAlignment="center"
                         android:visibility="visible" />
@@ -73,14 +72,6 @@
                             android:focusable="false"
                             android:text="@string/btn_tag_forgotpass"
                             android:visibility="visible" />
-                        
-                        <Button
-                            android:id="@+id/gotoMoreInfo"
-                            style="@style/btn_inlist_witharrow"
-                            android:focusable="false"
-                            android:text="@string/btn_tag_moreinfo"
-                            android:visibility="visible" />
-                        <!-- TODO: (Marcos) Agregar layout con webview para consumir una página de contenidos estáticos de la webapp /static/about_wv.jsp -->
 
                     </LinearLayout>
 

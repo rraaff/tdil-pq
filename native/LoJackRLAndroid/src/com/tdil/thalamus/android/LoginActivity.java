@@ -268,7 +268,7 @@ public class LoginActivity extends LoJackActivity implements IRestClientObserver
 						startActivity(intent);
 					}
 				});
-		 */
+		 
 		findViewById(R.id.gotoMoreInfo).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
@@ -277,7 +277,7 @@ public class LoginActivity extends LoJackActivity implements IRestClientObserver
 								RegisterActivity.class);
 						startActivity(intent);
 					}
-				});
+				});*/
 		docNumberEdittext = (EditText) findViewById(R.id.documentNumber);
 		docNumberEdittext.setText(mDocNumber);
 		passwordEditText = (EditText) findViewById(R.id.password);

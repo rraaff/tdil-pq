@@ -1,57 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:stretchColumns="2" >
 
-  <TableRow android:layout_width="fill_parent" >
+	<TableRow
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="fill_horizontal"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:paddingTop="0dip" >
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@color/bgBase"
+		    android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/vluDomain"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="100"
-            android:gravity="center_horizontal"
-            android:text="CZP-075"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="15sp" />
+			<TextView
+			    android:id="@+id/vluMessage"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="10dp"
+			    android:layout_marginRight="10dp"
+			    android:layout_marginTop="10dp"
+			    android:text="REQUIERE MANTENIMIENTO"
+			    android:textColor="@color/state_wrong"
+			    android:textSize="15sp" />
 
-        <ImageView
-            android:id="@+id/vluAlertImage"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="fitCenter"
-            android:visibility="invisible" />
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/vluMessage"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="12dp"
-            android:layout_weight="40"
-            android:text="Su rastreador requiere mantenimiento"
-            android:textColor="@color/lst_itm_title"
-            android:textSize="12sp" />
+			    <TextView
+			        android:id="@+id/textView1"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:text="EL EQUIPO INSTALADO EN EL VEHÍCULO" 
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp"
+		            android:paddingTop="5dp"
+		            android:paddingBottom="10dp"
+		            android:textColor="@color/bgBaseGray"
+		            android:textSize="12sp" />
 
-	  </LinearLayout>
+			    <TextView
+			        android:id="@+id/vluDomain"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="center_horizontal"
+			        android:text="CZP-075"
+			        android:textColor="@color/black"
+			        android:textSize="12sp" />
 
- </TableRow>
+			    <!-- TODO: (Marcos) Quitar este icono que me ocupa lugar y no se usa -->
+				<ImageView
+				    android:id="@+id/vluAlertImage"
+				    android:layout_width="1dp"
+				    android:layout_height="1dp"
+				    android:scaleType="fitCenter"
+				    android:visibility="invisible" />
+			</LinearLayout>
+			
+
+		</LinearLayout>
+	
+	</TableRow>
  	
      
 </TableLayout>

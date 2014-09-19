@@ -12,7 +12,7 @@
 	<color name="grayLightTabUnactive">#999999</color>
 	<color name="grayLightTabActive">#FFFFFF</color>
 	
-	<color name="bgCream">#F0ECE6</color>
+	<color name="bgCream">#F3F2E3</color>
 	<color name="bgBase">#FFFFFF</color>
 	
 	<color name="orangeTitles">#F05524</color>
@@ -47,7 +47,9 @@
 	
 	<color name="ActionBarBG">#373641</color>
 	
-	<!-- Item list -->
-	
 	<color name="new_wheel_link">#00d8ff</color>
+	
+	<color name="state_ok">#00C651</color>
+	<color name="state_wrong">#EB1C24</color>
+	<color name="state_unknowed">#4D4D4D</color>
 </resources>
