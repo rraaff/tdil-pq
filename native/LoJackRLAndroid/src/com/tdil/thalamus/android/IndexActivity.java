@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.car.ActivityCarsPathHistory;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.utils.Login;
@@ -148,22 +149,24 @@ public class IndexActivity extends LoJackActivity {
 			}
 		});
 		Button button = (Button)findViewById(R.id.vluCount);
-		if (Login.getLoggedUser(this).getVluMessages() > 0) {
-			button.setText(String.valueOf(Login.getLoggedUser(this).getVluMessages()));
-			button.setOnClickListener(new ViewVLUMessagesListener(this));
+		int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
+		if (vluMessagesCount > 0) {
+			button.setText(String.valueOf(vluMessagesCount));
+			button.setOnClickListener(new ViewVLUMessagesListener(this, vluMessagesCount));
 		} else {
 			if (Login.getLoggedUser(this).getVluClient()) {
 				button.setBackgroundResource(R.drawable.badge_ok);
-				button.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						Context context = getApplicationContext();
-						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
-						int duration = Toast.LENGTH_SHORT;
-						Toast toast = Toast.makeText(context, text, duration);
-						toast.show();
-					}
-				});
+//				button.setOnClickListener(new OnClickListener() {
+//					@Override
+//					public void onClick(View v) {
+//						Context context = getApplicationContext();
+//						CharSequence text = "TU EQUIPO LOJACK FUNCIONA CORRECTAMENTE";
+//						int duration = Toast.LENGTH_SHORT;
+//						Toast toast = Toast.makeText(context, text, duration);
+//						toast.show();
+//					}
+//				});
+				button.setOnClickListener(new ViewVLUMessagesListener(this, vluMessagesCount));
 			} else {
 				button.setVisibility(View.GONE);
 			}
@@ -176,17 +179,20 @@ public class IndexActivity extends LoJackActivity {
 
 //		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	
-	private class ViewVLUMessagesListener implements OnClickListener {
+	private static class ViewVLUMessagesListener implements OnClickListener {
 		private IndexActivity activity;
+		private int vluMessagesCount;
 		
-		ViewVLUMessagesListener(IndexActivity activity) {
+		ViewVLUMessagesListener(IndexActivity activity, int vluMessagesCount) {
 			this.activity = activity;
+			this.vluMessagesCount = vluMessagesCount;
 		}
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(getBaseContext(), VLUMessagesActivity.class);
-			startActivity(intent);
+			Intent intent = new Intent(activity.getBaseContext(), VLUMessagesActivity.class);
+			intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_COUNT, vluMessagesCount);
+			activity.startActivity(intent);
 		}
 	}
 	
