@@ -179,11 +179,11 @@ public class IndexActivity extends LoJackActivity {
 
 //		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	
-	private static class ViewVLUMessagesListener implements OnClickListener {
-		private IndexActivity activity;
+	public static class ViewVLUMessagesListener implements OnClickListener {
+		private LoJackActivity activity;
 		private int vluMessagesCount;
 		
-		ViewVLUMessagesListener(IndexActivity activity, int vluMessagesCount) {
+		ViewVLUMessagesListener(LoJackActivity activity, int vluMessagesCount) {
 			this.activity = activity;
 			this.vluMessagesCount = vluMessagesCount;
 		}

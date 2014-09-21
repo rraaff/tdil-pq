@@ -12,6 +12,7 @@ import com.tdil.thalamus.android.ClubLJActivity;
 import com.tdil.thalamus.android.PreventActivity;
 import com.tdil.thalamus.android.car.ActivityCars;
 import com.tdil.thalamus.android.car.ActivityCarsNotClient;
+import com.tdil.thalamus.android.car.VLUMessagesActivity;
 import com.tdil.thalamus.android.deprecated.ParkingsActivity;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
 import com.tdil.thalamus.android.home.ActivityHomeNotClient;
@@ -185,8 +186,14 @@ public class HeaderLogic  {
 		if (Login.getLoggedUser(activity).getPreventUser()) {
 			activity.startActivity(new Intent(activity, ActivityCars.class));
 		} else {
-			Intent intent = new Intent(activity, ActivityCarsNotClient.class); 
-			activity.startActivity(intent); 
+			if (Login.getLoggedUser(activity).getVluClient()) {
+				Intent intent = new Intent(activity.getBaseContext(), VLUMessagesActivity.class);
+				intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_COUNT, Login.getLoggedUser(activity).getVluMessages());
+				activity.startActivity(intent);
+			} else {
+				Intent intent = new Intent(activity, ActivityCarsNotClient.class); 
+				activity.startActivity(intent); 
+			}
 		}
 	}
 
