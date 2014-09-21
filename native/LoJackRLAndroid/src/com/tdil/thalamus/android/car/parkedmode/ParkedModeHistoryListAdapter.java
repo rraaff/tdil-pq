@@ -3,6 +3,7 @@ package com.tdil.thalamus.android.car.parkedmode;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -68,9 +69,9 @@ public class ParkedModeHistoryListAdapter extends AbstractListAdapter<ParkedMode
 
 		@Override
 		public void onClick(View arg0) {
-//			Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicleHome.class);
-//			intent.putExtra(ActivityParkedModeVehicleHome.VEHICLE, parkedModeStatus);
-//			activity.startActivity(intent);
+			Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeMapView.class);
+			intent.putExtra(ActivityParkedModeMapView.POSITION, parkedModeStatus);
+			activity.startActivity(intent);
 		}
 	}
 }
