@@ -9,11 +9,11 @@ import android.view.View;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ClubLJActivity;
-import com.tdil.thalamus.android.PreventActivity;
+import com.tdil.thalamus.android.LoJackActivity;
 import com.tdil.thalamus.android.car.ActivityCars;
 import com.tdil.thalamus.android.car.ActivityCarsNotClient;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
-import com.tdil.thalamus.android.deprecated.ParkingsActivity;
+import com.tdil.thalamus.android.car.parkedmode.ParkedModeRestFacade;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
 import com.tdil.thalamus.android.home.ActivityHomeNotClient;
 import com.tdil.thalamus.android.pets.ActivityPetsNotClient;
@@ -243,6 +243,10 @@ public class HeaderLogic  {
 			activity.finish();
 		}
 	}
+	
+	public static void handleParkedModeAccess(final LoJackActivity activity) {
+		ParkedModeRestFacade.startParkedModeStatusActivity(activity);
+	}
 
 	public static void handleTvAccess(final Activity activity) {
         Intent ljtvintent = new Intent(Intent.ACTION_VIEW, Uri.parse(Login.getLoggedUser(activity).getGenericLinkDestination()));
@@ -252,6 +256,8 @@ public class HeaderLogic  {
 	public static void handleClubLoJackAccess(final Activity activity) {
 		activity.startActivity(new Intent(activity, ClubLJActivity.class));
 	}
+	
+	
 }
 
 

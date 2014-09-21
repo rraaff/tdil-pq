@@ -148,6 +148,14 @@ public class IndexActivity extends LoJackActivity {
 				HeaderLogic.handleClubLoJackAccess(IndexActivity.this);
 			}
 		});
+		
+		findViewById(R.id.btnFooterEstacioname).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				HeaderLogic.handleParkedModeAccess(IndexActivity.this);
+			}
+		});
+		
 		Button button = (Button)findViewById(R.id.vluCount);
 		int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
 		if (vluMessagesCount > 0) {

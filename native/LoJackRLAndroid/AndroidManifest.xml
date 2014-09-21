@@ -307,6 +307,14 @@
 	        android:screenOrientation="portrait">
         </activity>
         
+        <!-- PARKED MODE -->
+        <activity
+            android:name="com.tdil.thalamus.android.car.parkedmode.ActivityParkedModeVehicles"
+            android:label="Cars"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
         <!-- NOT CLIENT -->
         <activity
      		android:name="com.tdil.thalamus.android.home.ActivityHomeNotClient"
