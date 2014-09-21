@@ -8,6 +8,9 @@ import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeConfiguration;
+import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatus;
 import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatusCollection;
 
 public class ParkedModeRestFacade {
@@ -15,6 +18,33 @@ public class ParkedModeRestFacade {
 	public static void startParkedModeStatusActivity(LoJackActivity activity) {
 		new RESTClientTaskOpt<ParkedModeStatusCollection>(activity, HttpMethod.GET, getParkedModeObserver(activity), RESTConstants.GET_PM_VEHICLES, null,null, 
 				ParkedModeStatusCollection.class).execute((Void) null);
+	}
+	
+	public static void goParkedModeConfigActivity(LoJackActivity activity, ParkedModeStatus parkedModeStatus) {
+		new RESTClientTaskOpt<ParkedModeConfiguration>(activity, HttpMethod.GET, getGoParkedModeConfigObserver(activity), RESTConstants.GET_PM_VEHICLE_CONF, 
+				new RestParams(
+						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()),null, 
+				ParkedModeConfiguration.class).execute((Void) null);
+	}
+	
+	public static void goParkedModeHistoryActivity(LoJackActivity activity, ParkedModeStatus parkedModeStatus) {
+//		new RESTClientTaskOpt<ParkedModeConfiguration>(activity, HttpMethod.GET, getGoParkedModeConfigObserver(activity), RESTConstants.GET_PM_VEHICLE_CONF, 
+//				new RestParams(
+//						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()),null, 
+//				ParkedModeConfiguration.class).execute((Void) null);
+	}
+	
+	public static IRestClientObserver getGoParkedModeConfigObserver(LoJackActivity activity) {
+		return new ParkedModeRestClientObserver(activity) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				ParkedModeConfiguration pos = ((RESTClientTaskOpt<ParkedModeConfiguration>)restClientTask).getCastedResult();
+				Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicleDetail.class);
+				intent.putExtra(ActivityParkedModeVehicleDetail.CONFIG, pos);
+				activity.startActivity(intent);
+				activity.finish();
+			}
+		};
 	}
 
 	public static IRestClientObserver getParkedModeObserver(LoJackActivity activity) {

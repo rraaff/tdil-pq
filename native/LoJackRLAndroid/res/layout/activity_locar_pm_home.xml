@@ -78,12 +78,11 @@
                 <LinearLayout
                     style="@style/btn_inlist_witharrow" >
 
-                    <TextView
-                        android:id="@+id/pmVehicleGoConfig"
+                    <Button android:id="@+id/pmVehicleGoConfig"
                         style="@style/label_data_indatalist"
                         android:text="Configurar" />
 
-                    <TextView
+                    <Button
                         android:id="@+id/pmVehicleGoHistory"
                         style="@style/label_datastring_indatalist"
                         android:text="Historico" />

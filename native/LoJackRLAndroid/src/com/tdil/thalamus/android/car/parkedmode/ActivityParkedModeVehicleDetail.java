@@ -3,12 +3,14 @@ package com.tdil.thalamus.android.car.parkedmode;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeConfiguration;
 import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatus;
 
 
@@ -17,23 +19,23 @@ import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatus;
  * @author mgodoy
  *
  */
-public class ActivityParkedModeVehicleHome extends LoJackWithProductMenuActivity {
+public class ActivityParkedModeVehicleDetail extends LoJackWithProductMenuActivity {
 
-	public static final String VEHICLE = "VEHICLE";
-	private ParkedModeStatus parkedModeStatus;
+	public static final String CONFIG = "CONFIG";
+	private ParkedModeConfiguration parkedModeConfiguration;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_locar_pm_home);
+        setContentView(R.layout.activity_locar_pm_detail);
         HeaderLogic.installTabLogic(this);
 		Bundle extras = getIntent().getExtras();
-		parkedModeStatus = (ParkedModeStatus)extras.getSerializable(VEHICLE);
+		parkedModeConfiguration = (ParkedModeConfiguration)extras.getSerializable(CONFIG);
 		
-		((TextView)findViewById(R.id.pmDetailDomainTextView)).setText(parkedModeStatus.getDomain());
+		((TextView)findViewById(R.id.pmDetailDomainTextView)).setText(parkedModeConfiguration.getDomain());
 		TextView status = (TextView)findViewById(R.id.pmDetailStatusTextView);
 		ToggleButton statusSwitch = (ToggleButton)findViewById(R.id.pmStatusSwitch);
-		if ("ON".equals(parkedModeStatus.getStatus())) {
+		if ("ON".equals(parkedModeConfiguration.getStatus())) {
 			status.setText("ACTIVADO");
 			status.setTextColor(getResources().getColor(R.color.lst_itm_on));
 			statusSwitch.setChecked(true);
@@ -43,21 +45,18 @@ public class ActivityParkedModeVehicleHome extends LoJackWithProductMenuActivity
 			statusSwitch.setChecked(false);
 		}
 		
-		((View)findViewById(R.id.pmVehicleGoConfig)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				ParkedModeRestFacade.goParkedModeConfigActivity(ActivityParkedModeVehicleHome.this, parkedModeStatus);
-			}
-		});
+		((TextView)findViewById(R.id.pmStatusPhoneTextView)).setText(parkedModeConfiguration.getPhone());
+		RadioButton always = ((RadioButton)findViewById(R.id.pmStatusAlwaysRadioButton));
+		RadioButton withoutContact = ((RadioButton)findViewById(R.id.pmStatusWithoutContactRadioButton));
+		if (parkedModeConfiguration.isAlways()) {
+			always.setChecked(true);
+			withoutContact.setChecked(false);
+		} else {
+			always.setChecked(false);
+			withoutContact.setChecked(true);
+		}
 		
-		((View)findViewById(R.id.pmVehicleGoHistory)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				ParkedModeRestFacade.goParkedModeHistoryActivity(ActivityParkedModeVehicleHome.this, parkedModeStatus);
-			}
-		});
-		
-		((View)findViewById(R.id.pmVehicleHomeBack)).setOnClickListener(new View.OnClickListener() {
+		((View)findViewById(R.id.pmVehicleDetailBack)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				finish();
