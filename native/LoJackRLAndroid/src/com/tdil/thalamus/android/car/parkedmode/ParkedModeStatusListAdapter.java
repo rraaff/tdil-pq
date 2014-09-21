@@ -64,8 +64,8 @@ public class ParkedModeStatusListAdapter extends AbstractListAdapter<ParkedModeS
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), ActivityCarsPathHistoryDetail.class);
-			intent.putExtra(ActivityCarsPathHistoryDetail.PositionHistoryBean, parkedModeStatus);
+			Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicleHome.class);
+			intent.putExtra(ActivityParkedModeVehicleHome.VEHICLE, parkedModeStatus);
 			activity.startActivity(intent);
 		}
 	}
