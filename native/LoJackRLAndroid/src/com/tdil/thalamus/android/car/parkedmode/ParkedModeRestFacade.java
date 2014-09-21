@@ -10,6 +10,7 @@ import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeConfiguration;
+import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeHistoryLogBeanCollection;
 import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatus;
 import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatusCollection;
 
@@ -21,17 +22,21 @@ public class ParkedModeRestFacade {
 	}
 	
 	public static void goParkedModeConfigActivity(LoJackActivity activity, ParkedModeStatus parkedModeStatus) {
-		new RESTClientTaskOpt<ParkedModeConfiguration>(activity, HttpMethod.GET, getGoParkedModeConfigObserver(activity), RESTConstants.GET_PM_VEHICLE_CONF, 
+		new RESTClientTaskOpt<ParkedModeConfiguration>(activity, HttpMethod.GET, getGoParkedModeConfigObserver(activity), 
+				RESTConstants.GET_PM_VEHICLE_CONF, 
 				new RestParams(
 						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()),null, 
 				ParkedModeConfiguration.class).execute((Void) null);
 	}
 	
 	public static void goParkedModeHistoryActivity(LoJackActivity activity, ParkedModeStatus parkedModeStatus) {
-//		new RESTClientTaskOpt<ParkedModeConfiguration>(activity, HttpMethod.GET, getGoParkedModeConfigObserver(activity), RESTConstants.GET_PM_VEHICLE_CONF, 
-//				new RestParams(
-//						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()),null, 
-//				ParkedModeConfiguration.class).execute((Void) null);
+		new RESTClientTaskOpt<ParkedModeHistoryLogBeanCollection>(activity, HttpMethod.GET, getParkedModeHistoryObserver(activity), 
+				RESTConstants.GET_PM_VEHICLE_LOG, 
+				new RestParams(
+						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()).
+						put(RESTConstants.P_PM_RECORDS, "15"),
+				null, 
+				ParkedModeHistoryLogBeanCollection.class).execute((Void) null);
 	}
 	
 	public static IRestClientObserver getGoParkedModeConfigObserver(LoJackActivity activity) {
@@ -54,6 +59,18 @@ public class ParkedModeRestFacade {
 				ParkedModeStatusCollection pos = ((RESTClientTaskOpt<ParkedModeStatusCollection>)restClientTask).getCastedResult();
 				Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicles.class);
 				intent.putExtra(ActivityParkedModeVehicles.VEHICLES_LIST, pos);
+				activity.startActivity(intent);
+			}
+		};
+	}
+	
+	public static IRestClientObserver getParkedModeHistoryObserver(LoJackActivity activity) {
+		return new ParkedModeRestClientObserver(activity) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				ParkedModeHistoryLogBeanCollection pos = ((RESTClientTaskOpt<ParkedModeHistoryLogBeanCollection>)restClientTask).getCastedResult();
+				Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicleHistory.class);
+				intent.putExtra(ActivityParkedModeVehicleHistory.HISTORY_LIST, pos);
 				activity.startActivity(intent);
 			}
 		};

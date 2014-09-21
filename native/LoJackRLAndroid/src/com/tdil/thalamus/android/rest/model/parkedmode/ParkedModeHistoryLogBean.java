@@ -2,7 +2,7 @@ package com.tdil.thalamus.android.rest.model.parkedmode;
 
 import java.io.Serializable;
 
-public class HistoryLogBean implements Serializable {
+public class ParkedModeHistoryLogBean implements Serializable {
 
 	private static final long serialVersionUID = 4830779533951262329L;
 
@@ -12,7 +12,7 @@ public class HistoryLogBean implements Serializable {
 	private String longitud;
 	private String latitud;
 	
-	public HistoryLogBean() {
+	public ParkedModeHistoryLogBean() {
 	}
 	
 	
