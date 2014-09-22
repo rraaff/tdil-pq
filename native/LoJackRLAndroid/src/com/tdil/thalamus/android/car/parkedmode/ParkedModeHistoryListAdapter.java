@@ -35,7 +35,7 @@ public class ParkedModeHistoryListAdapter extends AbstractListAdapter<ParkedMode
 			holder.pmHistoryViewInMap.setVisibility(View.GONE);
 		}
 		if (3 == iter.getIdaccion()) {
-			holder.pmHistoryActionTextView.setText("MOVIMIENTO IDDEBIDO");
+			holder.pmHistoryActionTextView.setText("MOVIMIENTO INDEBIDO");
 			holder.pmHistoryActionTextView.setTextColor(activity.getResources().getColor(R.color.lst_itm_off));
 			holder.pmHistoryViewInMap.setVisibility(View.VISIBLE);
 			holder.pmHistoryViewInMap.setOnClickListener(new GoToMap(activity, iter));

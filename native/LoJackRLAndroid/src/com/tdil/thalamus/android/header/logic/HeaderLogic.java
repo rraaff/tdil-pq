@@ -13,6 +13,7 @@ import com.tdil.thalamus.android.LoJackActivity;
 import com.tdil.thalamus.android.car.ActivityCars;
 import com.tdil.thalamus.android.car.ActivityCarsNotClient;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
+import com.tdil.thalamus.android.car.parkedmode.ActivityParkedModeNotClient;
 import com.tdil.thalamus.android.car.parkedmode.ParkedModeRestFacade;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
 import com.tdil.thalamus.android.home.ActivityHomeNotClient;
@@ -245,7 +246,12 @@ public class HeaderLogic  {
 	}
 	
 	public static void handleParkedModeAccess(final LoJackActivity activity) {
-		ParkedModeRestFacade.startParkedModeStatusActivity(activity);
+		if (Login.getLoggedUser(activity).getPmUser()) {
+			ParkedModeRestFacade.startParkedModeStatusActivity(activity);
+		} else {
+			Intent intent = new Intent(activity, ActivityParkedModeNotClient.class); 
+			activity.startActivity(intent); 
+		}
 	}
 
 	public static void handleTvAccess(final Activity activity) {

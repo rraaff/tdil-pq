@@ -31,6 +31,7 @@ public class ApplicationConfig {
 	public static final String URL_HOME_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/lohome_notclient.jsp";
 	public static final String URL_CARS_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/locar_notclient.jsp";
 	public static final String URL_PETS_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/lopet_notclient.jsp";
+	public static final String URL_PARKED_MODE_NOT_CLIENT = "http://localhost:8180/LoJackWeb/lopet_notclient.jsp";
 //	public static final String URL_CLUB_NOT_CLIENT =	"http://localhost:8180/LoJackWeb/loclub_notclient.jsp";
 	
 	public static final String URL_NOT_CLIENT = URL_WEBSITE + "loapp_notclient.jsp";

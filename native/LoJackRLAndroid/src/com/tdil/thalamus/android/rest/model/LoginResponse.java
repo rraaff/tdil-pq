@@ -34,6 +34,8 @@ public class LoginResponse {
 	
 	private String genericLinkDestination;
 	
+	private boolean pmUser;
+	
 	public String getGenericLinkDestination() {
 		return genericLinkDestination;
 	}
@@ -208,6 +210,14 @@ public class LoginResponse {
 
 	public void setClubLoJackUrlDestination(String urlDestination) {
 		this.clubLoJackUrlDestination = urlDestination;
+	}
+
+	public boolean getPmUser() {
+		return pmUser;
+	}
+
+	public void setPmUser(boolean pmUser) {
+		this.pmUser = pmUser;
 	}
 
 }
