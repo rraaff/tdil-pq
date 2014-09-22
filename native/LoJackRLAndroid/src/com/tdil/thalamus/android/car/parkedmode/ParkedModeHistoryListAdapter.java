@@ -31,7 +31,7 @@ public class ParkedModeHistoryListAdapter extends AbstractListAdapter<ParkedMode
 			holder.pmHistoryViewInMap.setVisibility(View.GONE);
 		}
 		if (2 == iter.getIdaccion()) {
-			holder.pmHistoryActionTextView.setText("DEACTIVACION");
+			holder.pmHistoryActionTextView.setText("DESACTIVACION");
 			holder.pmHistoryViewInMap.setVisibility(View.GONE);
 		}
 		if (3 == iter.getIdaccion()) {
