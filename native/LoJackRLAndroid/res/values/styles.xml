@@ -363,10 +363,22 @@
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
 	
+	<style name="modal_maintitle_fordialogs">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+	    <item name="android:layout_marginBottom">8dp</item>
+	    <item name="android:textColor">@color/orangeTitles</item>
+	    <item name="android:textSize">16sp</item>
+	    <item name="android:textAllCaps">true</item>
+	    <item name="android:background">@drawable/bg_modaltitles</item>
+	</style>
+	
 	<style name="modal_subtitleinform">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">36dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_marginTop">5dp</item>
 	    <item name="android:textColor">@color/black</item>
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:textAllCaps">true</item>
@@ -607,6 +619,16 @@
 	    <item name="android:maxHeight">36dp</item>
 	    <item name="android:maxWidth">36dp</item>
 	</style>
+	
+	<style name="icon_inrow_gomap">
+	    <item name="android:layout_width">24dp</item>
+	    <item name="android:layout_height">24dp</item>
+	    <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+	    <item name="android:background">@drawable/ic_itemgomap_inlist</item>
+	    <item name="android:contentDescription">@string/btn_tag_go</item>
+	    <item name="android:maxHeight">36dp</item>
+	    <item name="android:maxWidth">36dp</item>
+	</style>
 
 	<style name="icon_inrow_avatar">
 	    <item name="android:layout_width">48dp</item>
@@ -751,4 +773,43 @@
 		<item name="android:textSize">15sp</item>
 	</style>
 
+	<style name="ButtonAgendainList">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">48dp</item>
+		<item name="android:background">@drawable/transparente</item>
+		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
+		<item name="android:drawableLeft">@drawable/icon_agenda_off</item>
+		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
+		<item name="android:gravity">left|center_vertical</item>
+		<item name="android:minHeight">48dp</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:textSize">15sp</item>
+	</style>
+	
+	<style name="ButtonAgendaGrayinList">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">48dp</item>
+		<item name="android:background">@drawable/transparente</item>
+		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
+		<item name="android:drawableLeft">@drawable/icon_agenda_gray</item>
+		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
+		<item name="android:gravity">left|center_vertical</item>
+		<item name="android:minHeight">48dp</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:textSize">15sp</item>
+	</style>
+	
+	<style name="ButtonNewAgenda">
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">48dp</item>
+		<item name="android:background">@drawable/transparente</item>
+		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
+		<item name="android:drawableLeft">@drawable/icon_plus_gray</item>
+		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
+		<item name="android:gravity">left|center_vertical</item>
+		<item name="android:minHeight">48dp</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:textSize">15sp</item>
+	</style>
+	
 </resources>

@@ -9,6 +9,7 @@
         android:id="@+id/lohome_format"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:background="@color/grayLightBase"
         android:orientation="vertical" >
 
         <TableRow
@@ -52,14 +53,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:layout_marginTop="5dp"
+            android:background="@color/bgBase"
+            android:gravity="left"
             android:padding="5dp" >
 
             <Button
                 android:id="@+id/pmPositionDetailBack"
-                style="@style/btn_forward"
+                style="@style/btn_backwards"
                 android:focusable="false"
-                android:text="VOLVER"
+                android:text="@string/btn_lbl_back"
                 android:visibility="visible" />
 
         </LinearLayout>

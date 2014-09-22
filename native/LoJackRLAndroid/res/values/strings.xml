@@ -18,8 +18,16 @@
     <string name="lst_title_last_changes">Últimos cambios</string>
     <string name="lst_title_last_news">Últimas novedades</string>
     <string name="lst_title_alarms_list">Listado de alarmas</string>
+    <string name="lst_title_alarms_agendas_list">Agendas de alarma</string>
+    <string name="lst_title_agenda_editor">Editar/crear agenda</string>
     <string name="lst_title_lights_list">Listado de luces</string>
     <string name="lst_title_cameras_list">Listado de camaras</string>
+    <string name="lst_title_parkmode_vehicle_list">Listado de vehículos</string>
+    <string name="lst_title_parkmode_dashboard">Modo Estacionado: Dashboard</string>
+    <string name="lst_title_parkmode_config">Modo Estacionado: Configurar</string>
+    <string name="lst_title_parkmode_history">Modo Estacionado: Historial</string>
+    <string name="lst_title_history_list">Historial de recorridos</string>
+    <string name="lst_title_history_point">Detalle</string>
     
     <string name="lst_title_vlu">ESTADO DE TUS EQUIPOS</string>
     
@@ -37,6 +45,9 @@
     <string name="lbl_plate">Dominio:</string>
     <string name="lbl_speed">Vel:</string>
     <string name="lbl_speed_unit">Km/h</string>
+    
+    <string name="lbl_always">Siempre</string>
+    <string name="lbl_nocontact">Sin Contacto</string>
 
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
@@ -50,6 +61,12 @@
     <string name="title_parkings">PARKING</string>
     <string name="title_prevent">CAR</string>
     
+    <string name="title_select_vehicle">Seleccionar vehículo</string>
+    <string name="title_max_speed">Velocidad Máxima</string>
+    <string name="title_select_zone">Determinar zona</string>
+    <string name="title_sms_phones">Teléfonos de seguridad</string>
+    <string name="title_choose_date">Determinar fecha</string>
+    
     <string name="title_dashboard_alarms">MANEJAR ALARMAS</string>
     <string name="title_dashboard_lights">MANEJAR LUZ</string>
     <string name="title_home">HOME</string>
@@ -60,7 +77,8 @@
     <string name="title_vlu">VLU</string>
     <string name="subtitle_sex">SEXO</string>
     <string name="subtitle_address">DIRECCIÓN</string>
-    
+    <string name="subtitle_pm_config_alarmsgen">GENERACIÓN DE ALARMAS</string>
+    <string name="subtitle_agendas_repetitions">REPETICIONES</string>
     
     
     <!-- comments -->
@@ -93,10 +111,15 @@
     <string name="btn_tag_moreinfo">MÁS INFO SOBRE LOAPP 2.0</string>
     <string name="btn_tag_reset_password">ENVIAR</string>
     <string name="btn_tag_reset_password_back">VOLVER</string>
+    <string name="btn_tag_config">Configurar</string>
+    <string name="btn_tag_history">Historial</string>
     
+
     <string name="btn_SendPanic">   </string>
     <string name="btn_tag_see_log">Ver log</string>
     <string name="btn_view_log">Ver log completo</string>
+    <string name="btn_agendas_list">Agendas de encendido</string>
+    <string name="btn_new_agenda">Crear agenda</string>
     <string name="btn_tag_go">Ir</string>
     
     <string name="btn_tag_gotomap">Ver en mapa</string>
@@ -160,9 +183,19 @@
     <string name="hnt_actual_password">CLAVE ACTUAL</string>
     <string name="hnt_new_password">NUEVA CLAVE</string>
     <string name="hnt_retype_new_password">REINGRESE CLAVE</string>
+    
+    
+    <string name="hnt_agenda_name">Nombre de la agenda</string>
    
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">RECORDARME</string>
+    <string name="crt_tag_monday">Lunes</string>
+    <string name="crt_tag_tuesday">Martes</string>
+    <string name="crt_tag_wednesday">Miércoles</string>
+    <string name="crt_tag_thursday">Jueves</string>
+    <string name="crt_tag_friday">Viernes</string>
+    <string name="crt_tag_saturday">Sábado</string>
+    <string name="crt_tag_sunday">Domingo</string>
     
     <!-- TEASERS -->
     <string name="inlohome_notclient_teaser">Lo/Home es un sistema integrado de seguridad, control y monitoreo que te permite saber todo lo que pasa en tu casa con solo mirar tu celular. En nuestro sistema exclusivo, la comunicación es permanente, incluso si se corta la luz o las líneas telefónicas.</string>

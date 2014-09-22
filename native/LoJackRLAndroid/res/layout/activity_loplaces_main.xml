@@ -25,26 +25,27 @@
             android:layout_height="fill_parent"
             android:layout_weight=".97" >
 
-            <RelativeLayout
+            <!-- RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="bottom" >
+                
+                android:gravity="bottom" -->
 
-                 <RelativeLayout
-        android:id="@+id/content"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@id/footer"
-        android:gravity="center" >
+				<RelativeLayout
+					android:id="@+id/content"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					
+					android:gravity="center" >
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapview"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" />
+	                <com.google.android.gms.maps.MapView
+	                    android:id="@+id/mapview"
+	                    android:layout_width="fill_parent"
+	                    android:layout_height="fill_parent" />
 
                 </RelativeLayout>
 
-            </RelativeLayout>
+            <!-- /RelativeLayout  android:layout_above="@id/footer" -->
 
         </TableRow>
 
@@ -54,14 +55,6 @@
             android:layout_height="wrap_content"
             android:background="@drawable/toplayer85"
             android:gravity="center_horizontal" >
-
-            <ImageButton
-                android:id="@+id/placesLocateButton"
-                style="@style/btn_cars"
-                android:layout_height="48dp"
-                android:contentDescription="@string/action_home"
-                android:padding="10dp"
-                android:src="@drawable/ic_cars_position_off" />
 
             <ImageButton
                 android:id="@+id/placesParkingsButton"
@@ -78,13 +71,21 @@
                 style="@style/btn_cars"
                 android:src="@drawable/ic_places_lojack" />
 
+            <ImageButton
+                android:id="@+id/placesLocateButton"
+                style="@style/btn_cars"
+                android:layout_height="48dp"
+                android:contentDescription="@string/action_home"
+                android:padding="10dp"
+                android:src="@drawable/ic_cars_position_off" />
+
         </TableRow>
 
         <TableRow
             android:id="@+id/tableRow3"
             style="@style/format_page_3rows1col_footer" >
 
-            <include layout="@layout/footer_forcar" />
+            <include layout="@layout/footer" />
         </TableRow>
     </LinearLayout>
 </merge>

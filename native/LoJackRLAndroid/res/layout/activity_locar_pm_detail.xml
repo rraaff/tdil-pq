@@ -9,6 +9,7 @@
         android:id="@+id/lohome_format"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:background="@color/grayLightBase"
         android:orientation="vertical" >
 
         <TableRow
@@ -18,6 +19,19 @@
             <include layout="@layout/inlocar_application_fullmenu" />
         </TableRow>
 
+		<TableRow
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+		
+			<TextView
+				android:id="@+id/parkModeDashboardTitle"
+				style="@style/modal_subtitleinform"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:text="@string/lst_title_parkmode_config" />
+		
+		</TableRow>
+
         <TableRow
             android:id="@+id/tableRow2"
             style="@style/format_page_3rows1col_middle"
@@ -25,103 +39,142 @@
             android:layout_height="fill_parent"
             android:layout_weight=".97" >
 
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/scrollView1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content" >
 
                 <LinearLayout
-                    style="@style/btn_inlist_witharrow" >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
 
-                    <TextView
-                        android:id="@+id/pmDetailDomainTextView"
-                        style="@style/label_datastring_indatalist"
-                        android:text="KBY852" />
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout style="@style/title_dashboard_container" >
+
+                            <TextView
+                                android:id="@+id/pmDetailDomainTextView"
+                                style="@style/title_dashboard"
+                                android:text="KBY852" />
+
+                            <TextView
+                                android:id="@+id/pmDetailStatusTextView"
+                                style="@style/title_dashboard_state"
+                                android:text="@string/status_unknown" />
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout style="@style/toggle_button_container" >
+
+                            <ToggleButton
+                                android:id="@+id/pmStatusSwitch"
+                                android:layout_width="match_parent"
+                                android:layout_height="48dp"
+                                android:layout_marginBottom="2dp"
+                                android:layout_marginTop="2dp"
+                                android:background="@color/bgBase"
+                                android:drawableRight="@drawable/btn_toggle_fake_switch"
+                                android:gravity="center_vertical|left"
+                                android:paddingLeft="10dp"
+                                android:textOff="Activar"
+                                android:textOn="Desactivar"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <LinearLayout style="@style/btn_inlist_witharrow" >
+
+                            <TextView
+                                android:id="@+id/positionHistorySpeedTextView"
+                                style="@style/label_data_indatalist"
+                                android:text="Telefono 1 para SMS" />
+
+                            <TextView
+                                android:id="@+id/pmStatusPhoneTextView"
+                                style="@style/label_datastring_indatalist"
+                                android:text="TextView" />
+                        </LinearLayout>
+                    </TableRow>
+
+	                <TextView
+	                    style="@style/modal_subtitleinform"
+	                    android:text="@string/subtitle_pm_config_alarmsgen" />
+                    
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+                        
+	                    <RadioGroup
+						    android:layout_width="match_parent"
+						    android:layout_height="wrap_content">
+
+	                        <RadioButton
+	                            android:id="@+id/pmStatusAlwaysRadioButton"
+	                            style="@style/radiobutton_inlist" 
+	                            android:text="@string/lbl_always" />
+
+	                        <RadioButton
+	                            android:id="@+id/pmStatusWithoutContactRadioButton"
+	                            style="@style/radiobutton_inlist" 
+	                            android:text="@string/lbl_nocontact" />
+	                        
+						</RadioGroup>
+
+                    </TableRow>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/btn_inlist_witharrow" >
-
-                    <TextView
-                        android:id="@+id/pmDetailStatusTextView"
-                        style="@style/label_data_indatalist"
-                        android:text="ACTIVADO" />
-
-                </LinearLayout>
-                
-                <LinearLayout
-                    style="@style/btn_inlist_witharrow" >
-
-                    <LinearLayout style="@style/toggle_button_container" >
-				        
-				    	<!-- hide switch -->
-
-					    <ToggleButton
-					        android:id="@+id/pmStatusSwitch"
-					        android:layout_width="match_parent"
-					        android:layout_height="48dp"
-					        android:layout_marginBottom="2dp"
-					        android:layout_marginTop="2dp"
-					        android:background="@color/bgBase"
-					        android:drawableRight="@drawable/btn_toggle_fake_switch"
-					        android:gravity="center_vertical|left"
-					        android:paddingLeft="10dp"
-					        android:textOff="Activar"
-					        android:textOn="Desactivar"
-					        android:textSize="15sp" />
-				    
-					</LinearLayout>
-
-                </LinearLayout>
-                
-                <LinearLayout
-                    style="@style/btn_inlist_witharrow" >
-
-                    <TextView
-                        android:id="@+id/positionHistorySpeedTextView"
-                        style="@style/label_data_indatalist"
-                        android:text="Telefono 1 para SMS" />
-
-                    <TextView
-                        android:id="@+id/pmStatusPhoneTextView"
-                        style="@style/label_datastring_indatalist"
-                        android:text="TextView" />
-
-                </LinearLayout>
-                
-                <LinearLayout
-                    style="@style/btn_inlist_witharrow" >
-
-                    <RadioButton android:id="@+id/pmStatusAlwaysRadioButton" style="@style/label_data_indatalist" android:text="Siempre"/>
-                    <RadioButton android:id="@+id/pmStatusWithoutContactRadioButton" style="@style/label_data_indatalist" android:text="Sin Contacto"/>
-
-                </LinearLayout>
-                
-               
-                
-            </LinearLayout>
+            </ScrollView>
 
         </TableRow>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/bgBase"
             android:gravity="right"
             android:padding="5dp" >
 
-            <Button
-                android:id="@+id/pmVehicleDetailBack"
-                style="@style/btn_forward"
-                android:focusable="false"
-                android:text="VOLVER"
-                android:visibility="visible" />
-            <Button
-                android:id="@+id/pmVehicleDetailSave"
-                style="@style/btn_forward"
-                android:focusable="false"
-                android:text="Guardar"
-                android:visibility="visible" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <Button
+                    android:id="@+id/pmVehicleDetailBack"
+                    style="@style/btn_backwards"
+                    android:focusable="false"
+                    android:text="@string/btn_lbl_back"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right" >
+
+                <Button
+                    android:id="@+id/pmVehicleDetailSave"
+                    style="@style/btn_forward"
+                    android:focusable="false"
+                    android:text="@string/btn_lbl_save"
+                    android:visibility="visible" />
+
+            </LinearLayout>
 
         </LinearLayout>
         

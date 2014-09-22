@@ -24,7 +24,10 @@
 					<TextView
 					    android:id="@+id/pmHistoryDateTextView"
 					    style="@style/innerrow_labelfield"
-					    android:text="2014-05-04 23:50" />
+					    android:paddingBottom="10dp"
+					    android:paddingLeft="20dp"
+					    android:text="2014-05-04 23:50"
+					    android:textSize="12sp" />
 	
 				</LinearLayout>
 			</LinearLayout>
@@ -35,7 +38,7 @@
 
 			<ImageButton
 			    android:id="@+id/pmHistoryViewInMap"
-			    style="@style/icon_inrow_go" />
+			    style="@style/icon_inrow_gomap" />
 
 		</LinearLayout>
 

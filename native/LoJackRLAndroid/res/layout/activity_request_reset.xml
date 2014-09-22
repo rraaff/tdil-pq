@@ -11,13 +11,13 @@
         <TableRow
             android:id="@+id/tableRow1"
             style="@style/table_portalogo"
-            android:layout_marginBottom="15dp" >
+            android:layout_marginBottom="30dp" >
 
             <ImageView
                 android:id="@+id/ImageView01"
                 style="@style/logo_on_top"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
+                android:layout_width="100dp"
+                android:layout_height="60dp"
                 android:contentDescription="@string/action_loading" />
 
         </TableRow>
@@ -58,7 +58,7 @@
 		                android:layout_marginBottom="5dp"
 		                android:layout_marginLeft="5dp"
 		                android:layout_marginRight="5dp"
-		                android:layout_marginTop="150dp"
+		                android:layout_marginTop="10dp"
 		                android:orientation="horizontal" >
 		                
 
@@ -107,7 +107,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical" >
 
                 <TextView

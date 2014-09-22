@@ -4,34 +4,22 @@
     android:layout_height="fill_parent" >
 
     <LinearLayout
-		android:orientation="vertical"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grayLightBase"
+        android:orientation="vertical" >
 		
 		<LinearLayout
 		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="center_vertical|center_horizontal"
-		    android:background="@color/bgBase"
 		    android:gravity="center_vertical|center_horizontal"
 		    android:orientation="vertical" >
 
 			<TextView
 			    android:id="@+id/textView1"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:paddingBottom="15dp"
-			    android:paddingTop="15dp"
-			    android:text="Velocidad Máxima"
-			    android:textAllCaps="true"
-			    android:textColor="@color/black"
-			    android:textSize="16sp" />
-
-			<ImageView
-			    android:id="@+id/imageView2"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:src="@drawable/undertitle" />
+			    style="@style/modal_maintitle_fordialogs"
+			    android:text="@string/title_max_speed" />
 
 		</LinearLayout>
 

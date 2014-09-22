@@ -47,7 +47,7 @@
 				    android:layout_height="wrap_content"
 				    android:layout_gravity="top"
 				    android:orientation="vertical" >
-				    
+
 				    <TableRow
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content" >
@@ -139,6 +139,123 @@
                             android:text="@string/btn_view_log" />
 
                     </TableRow>
+
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+
+                        <Button style="@style/ButtonAgendainList"
+                            android:id="@+id/goToAlarmViewLog"
+                            android:text="@string/btn_agendas_list" />
+
+                    </TableRow>
+<!-- TODO: (Marcos) ACA EMPIEZA EL LISTADO DE AGENDAS  -->
+					<TableRow
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
+					
+						<TextView
+							android:id="@+id/titleAlarmAgendasList"
+							style="@style/modal_subtitleinform"
+							android:layout_width="match_parent"
+							android:layout_weight="1"
+							android:text="@string/lst_title_alarms_agendas_list" />
+					
+					</TableRow>
+					
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+
+                        <Button style="@style/ButtonNewAgenda"
+                            android:id="@+id/goToNewAgenda"
+                            android:text="@string/btn_new_agenda" />
+
+                    </TableRow>
+                    
+					<!-- acá loopea los items de agendas existentes -->
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+
+                        <Button style="@style/ButtonAgendaGrayinList"
+                            android:id="@+id/goToAlarmViewLog"
+                            android:text="Los JUEVES a la noche" />
+
+                    </TableRow>
+                    <!-- Fin loop de agendas existentes-->
+
+<!-- FIN DEL LISTADO DE AGENDAS -->
+<!-- TODO: (Marcos) ACA EMPIEZA EL EDITOR DE AGENDAS -->
+					<TableRow
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
+					
+						<TextView
+							android:id="@+id/titleAgendasEditor"
+							style="@style/modal_subtitleinform"
+							android:layout_width="match_parent"
+							android:layout_weight="1"
+							android:text="@string/lst_title_agenda_editor" />
+					
+					</TableRow>
+
+	                <EditText
+	                    android:id="@+id/agendaName"
+	                    style="@style/text_inputs_white_01"
+	                    android:hint="@string/hnt_agenda_name" />
+
+	                <!-- Fecha desde/hasta -->
+	                <!-- Horario desde/hasta -->
+	                
+	                <TextView
+	                    style="@style/modal_subtitleinform"
+	                    android:text="@string/subtitle_agendas_repetitions" />
+
+                    <CheckBox
+                        android:id="@+id/agendaRepMonday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_monday" />
+                    
+                    <CheckBox
+                        android:id="@+id/agendaRepTuesday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_tuesday" />
+                    
+                    <CheckBox
+                        android:id="@+id/agendaRepWednesday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_wednesday" />
+                    
+                    <CheckBox
+                        android:id="@+id/agendaRepThursday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_thursday" />
+                    
+                    <CheckBox
+                        android:id="@+id/agendaRepFriday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_friday" />
+                    
+                    <CheckBox
+                        android:id="@+id/agendaRepSaturday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_saturday" />
+                    
+                    <CheckBox
+                        android:id="@+id/agendaRepSunday"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_sunday" />
+<!-- FIN EDITOR DE AGENDAS -->
 
                 </LinearLayout>
                 

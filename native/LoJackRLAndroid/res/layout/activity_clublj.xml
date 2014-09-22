@@ -6,7 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_square"
+        android:background="@color/bgBase"
         android:orientation="vertical" >
 
         <TableRow
@@ -106,7 +106,7 @@
             android:id="@+id/tableRow3"
             style="@style/format_page_3rows1col_footer" >
 
-            <include layout="@layout/footer_forhome" />
+            <include layout="@layout/footer" />
         </TableRow>
     </LinearLayout>
 </merge>
