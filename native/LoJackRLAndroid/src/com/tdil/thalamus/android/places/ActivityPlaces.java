@@ -7,20 +7,19 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.gui.BeanMappingFunction;
-import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -28,8 +27,6 @@ import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
-import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.poi.PoiCollection;
 import com.tdil.thalamus.android.rest.model.poi.PointOfInterestBean;
 import com.tdil.thalamus.android.utils.Messages;
@@ -138,7 +135,8 @@ public class ActivityPlaces extends ActionBarActivity {
 			}
 		});
         
-        ((View)findViewById(R.id.placesParkingsButton)).setOnClickListener(new View.OnClickListener() {
+        final ImageButton placesParkingsButton = (ImageButton)findViewById(R.id.placesParkingsButton);
+		placesParkingsButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				placesParkings = !placesParkings;
@@ -148,17 +146,20 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.setVisible(false);
 			    	}
 					currentParkings.clear();
+					placesParkingsButton.setBackgroundResource(R.drawable.ic_places_parkings_off);
 				} else {
 					if (parkings == null) {
 						reloadPois(updateParkingsMapObserver, "1");
 					} else {
 						updateParkingsMap(parkings);
 					}
+					placesParkingsButton.setBackgroundResource(R.drawable.ic_places_parkings_active);
 				}
 				
 			}
 		}); 
-        ((View)findViewById(R.id.placesPetrolButton)).setOnClickListener(new View.OnClickListener() {
+		final ImageButton placesPetrolButton = (ImageButton)findViewById(R.id.placesPetrolButton);
+		placesPetrolButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				placesPetrols = !placesPetrols;
@@ -168,17 +169,20 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.setVisible(false);
 			    	}
 					currentPetrols.clear();
+					placesPetrolButton.setBackgroundResource(R.drawable.ic_places_gasstations_off);
 				} else {
 					if (petrols == null) {
 						reloadPois(updatePetrolsMapObserver, "2");
 					} else {
 						updatePetrolsMap(petrols);
 					}
+					placesPetrolButton.setBackgroundResource(R.drawable.ic_places_gasstations_active);
 				}
 				
 			}
 		});
-        ((View)findViewById(R.id.placesLojackButton)).setOnClickListener(new View.OnClickListener() {
+		final ImageButton placesLojackButton = (ImageButton)findViewById(R.id.placesLojackButton);
+		placesLojackButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				placesLojack = !placesLojack;
@@ -188,12 +192,14 @@ public class ActivityPlaces extends ActionBarActivity {
 			    		m.setVisible(false);
 			    	}
 					currentLojack.clear();
+					placesLojackButton.setBackgroundResource(R.drawable.ic_places_lojack_off);
 				} else {
 					if (lojack == null) {
 						reloadPois(updateLojackMapObserver, "3");
 					} else {
 						updateLojackMap(lojack);
 					}
+					placesLojackButton.setBackgroundResource(R.drawable.ic_places_lojack_active);
 				}
 				
 			}
@@ -208,7 +214,8 @@ public class ActivityPlaces extends ActionBarActivity {
 		 for (PointOfInterestBean poi : col.getList()) {
 			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
-		        .title(poi.getDesc()));
+		        .title(poi.getDesc())
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 			 currentParkings.add(m);
 		 }
     }
@@ -216,7 +223,8 @@ public class ActivityPlaces extends ActionBarActivity {
 		 for (PointOfInterestBean poi : col.getList()) {
 			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
-		        .title(poi.getDesc()));
+		        .title(poi.getDesc())
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 			 currentPetrols.add(m);
 		 }
    }
@@ -224,7 +232,8 @@ public class ActivityPlaces extends ActionBarActivity {
 		 for (PointOfInterestBean poi : col.getList()) {
 			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
-		        .title(poi.getDesc()));
+		        .title(poi.getDesc())
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 			 currentLojack.add(m);
 		 }
   }
