@@ -3,15 +3,17 @@ package com.tdil.thalamus.android.home;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.camera.IPCamera;
 import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;
 import com.tdil.thalamus.android.camera.TrendnetTVIP851;
+import com.tdil.thalamus.android.gui.OnSwipeTouchListener;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
@@ -62,8 +64,24 @@ public class ActivityHomeCamera extends HomeActivity {
 
 		new DownloadCameraImageTask(this, (ImageView)this.findViewById(R.id.cameraView), RESTConstants.CAMERA_URL + "").execute();
 		
+		ImageView cameraImageView = (ImageView)this.findViewById(R.id.cameraView);
+		cameraImageView.setOnTouchListener(new OnSwipeTouchListener(this) {
+		    public void onSwipeTop() {
+		    	new MoveCameraUpTask(camera).execute();
+		    }
+		    public void onSwipeRight() {
+		    	new MoveCameraRightTask(camera).execute();
+		    }
+		    public void onSwipeLeft() {
+		    	new MoveCameraLeftTask(camera).execute();
+		    }
+		    public void onSwipeBottom() {
+		    	new MoveCameraDownTask(camera).execute();
+		    }
+
+		});
 		
-		findViewById(R.id.leftButton).setOnClickListener(
+		/*findViewById(R.id.leftButton).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
 					public void onClick(View view) {
@@ -96,6 +114,7 @@ public class ActivityHomeCamera extends HomeActivity {
 //						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "right").execute();
 					}
 				});
+				*/
     }
     
  
