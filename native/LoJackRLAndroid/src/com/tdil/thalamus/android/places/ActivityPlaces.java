@@ -116,7 +116,7 @@ public class ActivityPlaces extends ActionBarActivity {
 
         // Gets to GoogleMap from the MapView and does initialization stuff
         GoogleMap map = mapView.getMap();
-        //map.getUiSettings().setMyLocationButtonEnabled(false);
+        map.getUiSettings().setMyLocationButtonEnabled(false);
         map.setMyLocationEnabled(true);
 
         // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
@@ -130,6 +130,7 @@ public class ActivityPlaces extends ActionBarActivity {
 			public void onClick(View v) {
 				mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(-34.6093546,-58.51752859999999))
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET))
 		        .title("Mi ubicacion"));
 				
 			}
@@ -215,7 +216,7 @@ public class ActivityPlaces extends ActionBarActivity {
 			 Marker m = mapView.getMap().addMarker(new MarkerOptions()
 		        .position(new LatLng(Double.parseDouble(poi.getLat()),Double.parseDouble(poi.getLon())))
 		        .title(poi.getDesc())
-		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+		        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 			 currentParkings.add(m);
 		 }
     }
