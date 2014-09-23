@@ -34,7 +34,7 @@
     
     <string name="lst_itm_status">Estado:</string>
     <string name="lst_itm_action">Acción:</string>
-    <string name="lst_itm_last_change">-</string>
+    <string name="lst_itm_last_change">Fecha y Hora</string>
     <string name="lst_itm_last_change_fullword">Cambio:</string>
     <string name="lst_itm_by"> por </string>
     <string name="status_unarmed">Desarmada</string>
@@ -162,6 +162,8 @@
     
     <string name="btn_lbl_back">Volver</string>
     <string name="btn_lbl_save">Grabar</string>
+    <string name="btn_lbl_next">Siguiente</string>
+    
     
     
     <!-- Hints -->
