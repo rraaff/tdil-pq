@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.IndexActivity;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
@@ -126,8 +127,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
            MapsInitializer.initialize(this);
 
         // Updates the location and zoom of the MapView
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);
-        map.animateCamera(cameraUpdate);
+//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);
+//        map.animateCamera(cameraUpdate);
        
         ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -181,6 +182,13 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 				} else {
 					selectVehicleAndContinue();
 				}
+			}
+		});
+        
+        ((View)findViewById(R.id.carParkedModeButton)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				HeaderLogic.handleParkedModeAccess(ActivityCars.this);
 			}
 		});
         
