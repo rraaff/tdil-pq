@@ -12,33 +12,48 @@
 
                 <LinearLayout style="@style/gen_fil_and_wrap" >
 
-                    <TextView style="@style/item_title_01"
+                    <TextView
                         android:id="@+id/logAlarmUser"
+                        style="@style/item_title_01"
+                        android:paddingBottom="2dp"
                         android:text="Alarma cochera" />
 
                 </LinearLayout>
 
                 <LinearLayout style="@style/row_innerrow_data_container" >
 
-                    <TextView style="@style/innerrow_label"
+                    <TextView
                         android:id="@+id/TextView02"
+                        style="@style/innerrow_label"
+                        android:layout_marginBottom="0dp"
+                        android:paddingBottom="3dp"
                         android:paddingLeft="20dp"
                         android:text="@string/lst_itm_action" />
 
                     <TextView
                         android:id="@+id/logAlarmStatus"
                         style="@style/innerrow_labelfield"
+                        android:paddingBottom="3dp"
                         android:text="Desarmada" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/row_innerrow_data_container" >
 
                     <TextView
                         android:id="@+id/TextView03"
                         style="@style/innerrow_label"
+                        android:layout_marginBottom="0dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="20dp"
                         android:text="@string/lst_itm_last_change" />
 
                     <TextView
                         android:id="@+id/logAlarmDate"
                         style="@style/innerrow_labelfield"
+                        android:paddingBottom="10dp"
                         android:text="2013-05-04 18:20" />
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

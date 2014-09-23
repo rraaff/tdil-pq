@@ -46,8 +46,8 @@
 	            android:background="@color/bgCream"
 	            android:contentDescription="@string/desc_cam_image" />
 	        
-	        	<!-- TODO: (Marcos) Acá hay que bolar estos botones y hacer que sea por swipe -->
-	
+
+<!-- 
 	        <LinearLayout
 	            style="@attr/tabLayout"
 	            android:layout_width="fill_parent"
@@ -154,6 +154,7 @@
 	            </TableLayout>
 	
 	        </LinearLayout>
+	        -->
             
         </RelativeLayout>
 

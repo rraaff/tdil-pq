@@ -59,25 +59,23 @@
             <ImageButton
                 android:id="@+id/placesParkingsButton"
                 style="@style/btn_cars"
-                android:src="@drawable/ic_places_parkings" />
+                android:background="@drawable/ic_places_parkings" />
 
             <ImageButton
                 android:id="@+id/placesPetrolButton"
                 style="@style/btn_cars"
-                android:src="@drawable/ic_places_gasstations" />
+                android:background="@drawable/ic_places_gasstations" />
 
             <ImageButton
                 android:id="@+id/placesLojackButton"
                 style="@style/btn_cars"
-                android:src="@drawable/ic_places_lojack" />
+                android:background="@drawable/ic_places_lojack" />
 
             <ImageButton
                 android:id="@+id/placesLocateButton"
                 style="@style/btn_cars"
-                android:layout_height="48dp"
                 android:contentDescription="@string/action_home"
-                android:padding="10dp"
-                android:src="@drawable/ic_cars_position_off" />
+                android:background="@drawable/ic_cars_position_off" />
 
         </TableRow>
 

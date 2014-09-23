@@ -57,37 +57,35 @@
             android:gravity="center_horizontal" >
 
             <ImageButton
-                        android:id="@+id/carPositionsButton"
-                        style="@style/btn_cars"
-                        android:layout_height="48dp"
-                        android:contentDescription="@string/action_home"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_cars_position_off" />
+                android:id="@+id/carPositionsButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_position_off"
+                android:contentDescription="@string/action_home" />
 
                     <ImageButton
                         android:id="@+id/carSpeedButton"
                         style="@style/btn_cars"
-                        android:src="@drawable/ic_cars_velocidades_off" />
+                        android:background="@drawable/ic_cars_velocidades_off" />
                     
                     <ImageButton
                         android:id="@+id/carZoneButton"
                         style="@style/btn_cars"
-                        android:src="@drawable/ic_cars_zone_off" />
+                        android:background="@drawable/ic_cars_zone_off" />
                     
                     <ImageButton
                         android:id="@+id/carPhoneButton"
                         style="@style/btn_cars"
-                        android:src="@drawable/ic_cars_telefonos_off" />
+                        android:background="@drawable/ic_cars_telefonos_off" />
                     
                     <ImageButton
                         android:id="@+id/carPathButton"
                         style="@style/btn_cars"
-                        android:src="@drawable/ic_cars_recorridos_off" />
+                        android:background="@drawable/ic_cars_recorridos_off" />
                     
                     <ImageButton
                         android:id="@+id/carParkedModeButton"
                         style="@style/btn_cars"
-                        android:src="@drawable/ic_cars_estacioname_off" />
+                        android:background="@drawable/ic_cars_estacioname_off" />
         </TableRow>
 
         <TableRow

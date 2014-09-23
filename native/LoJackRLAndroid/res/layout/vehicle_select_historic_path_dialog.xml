@@ -127,7 +127,7 @@
 				        android:id="@+id/vehiclePathButtonOK"
 				        style="@style/btn_forward"
 				        android:layout_gravity="right|center_horizontal"
-				        android:text="@string/btn_lbl_save" />
+				        android:text="@string/btn_lbl_next" />
 
 				</LinearLayout>
 
