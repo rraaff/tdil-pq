@@ -38,6 +38,28 @@ public class ActivityHomeIndex extends HomeActivity {
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
 
+        View v = findViewById(R.id.goAlarmsImageView);
+        v.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								HomeHeaderLogic.loadAlarms(ActivityHomeIndex.this);
+							}
+						});
+						
+		v = findViewById(R.id.goLightsImageView);
+        v.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								HomeHeaderLogic.loadLights(ActivityHomeIndex.this);
+							}
+						});
+		v = findViewById(R.id.goCamerasImageView);
+        v.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								HomeHeaderLogic.loadCameras(ActivityHomeIndex.this);
+							}
+						});
     }
 
     @Override
