@@ -20,6 +20,9 @@ public interface RESTConstants {
 	public static final String P_SPEED_LIMIT_ID = "{speedLimitId}";
 	public static final String P_DATE_START = "{dateStart}";
 	public static final String P_DATE_END = "{dateEnd}";
+	
+	public static final String P_NOTIFICATION_ID = "{notificationId}";
+	
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -94,4 +97,8 @@ public interface RESTConstants {
 	public static String P_PM_RECORDS = "{records}";
 	public static final String GET_PM_VEHICLE_LOG = "/parkedmode/history/" + P_VEHICLE + "/" + P_PM_RECORDS;
 	
+	/** Notifications */
+	public static final String GET_NOTIFICATIONS = "/notifications/list";
+	public static final String POST_DISMISS_NOTIFICATION = "/notifications/dismiss/" + P_NOTIFICATION_ID;
+	public static final String POST_DISMISS_ALL_NOTIFICATIONs = "/notifications/dismissAll";
 }

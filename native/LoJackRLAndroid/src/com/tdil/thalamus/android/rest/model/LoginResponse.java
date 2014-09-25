@@ -36,6 +36,11 @@ public class LoginResponse {
 	
 	private boolean pmUser;
 	
+	// Notificaciones
+	private int messagesCount;
+	// LOW 0 /MEDIUM 1/HIGHT 2
+	private int messagesPriority;
+	
 	public String getGenericLinkDestination() {
 		return genericLinkDestination;
 	}
@@ -218,6 +223,22 @@ public class LoginResponse {
 
 	public void setPmUser(boolean pmUser) {
 		this.pmUser = pmUser;
+	}
+
+	public int getMessagesCount() {
+		return messagesCount;
+	}
+
+	public void setMessagesCount(int messagesCount) {
+		this.messagesCount = messagesCount;
+	}
+
+	public int getMessagesPriority() {
+		return messagesPriority;
+	}
+
+	public void setMessagesPriority(int messagesPriority) {
+		this.messagesPriority = messagesPriority;
 	}
 
 }
