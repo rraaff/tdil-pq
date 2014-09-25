@@ -13,6 +13,30 @@
         android:paddingBottom="8dp"
         android:paddingTop="8dp" >
 
+        
+        <ImageButton
+                android:id="@+id/actionBarBackImage"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_parkings_active" />
+        
+        <ImageButton
+                android:id="@+id/actionBarIconImage"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_parkings_active" />
+        
+        <ImageButton
+                android:id="@+id/actionBarMessagesImage"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_parkings_active" />
+        <TextView
+            android:id="@+id/actionBarMessagesountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/app_name"
+            android:textColor="@color/actionBarYellow"
+            android:textSize="14sp" />
+        
         <TextView
             android:id="@+id/actionBarTitle"
             android:layout_width="wrap_content"
@@ -21,6 +45,11 @@
             android:text="@string/app_name"
             android:textColor="@color/actionBarYellow"
             android:textSize="14sp" />
+        
+        <ImageButton
+                android:id="@+id/actionBarMenuImage"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_parkings_active" />
 
     </LinearLayout>
 
