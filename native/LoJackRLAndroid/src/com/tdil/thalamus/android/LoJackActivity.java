@@ -2,7 +2,9 @@ package com.tdil.thalamus.android;
 
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.utils.Login;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -40,6 +42,7 @@ public class LoJackActivity extends ActionBarActivity {
 	//		this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 			LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View v = inflator.inflate(R.layout.actionbar, null);
+			updateMessages(v);
 			setTypeface(this, v.findViewById(R.id.actionBarTitle)); 
 			this.getSupportActionBar().setCustomView(v);
 			/** START ALERTA */
@@ -60,6 +63,8 @@ public class LoJackActivity extends ActionBarActivity {
 //		this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 		LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View v = inflator.inflate(R.layout.actionbar, null);
+		updateMessages(v);
+		
 		TextView titleTextView = (TextView)v.findViewById(R.id.actionBarTitle);
 		titleTextView.setText(title);
 		setTypeface(this, titleTextView); 
@@ -69,6 +74,34 @@ public class LoJackActivity extends ActionBarActivity {
 		/** END ALERTA */
 //		getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM); 
 //		getSupportActionBar().setCustomView(R.layout.actionbar);
+	}
+
+	protected void updateMessages(View v) {
+		TextView messagesCountTextView = (TextView)v.findViewById(R.id.messagesCountTextView);
+		if (!Login.getLoggedUser(this).getLogged()) {
+			messagesCountTextView.setVisibility(View.GONE);
+			return;
+		}
+		int messageCount = Login.getLoggedUser(this).getMessagesCount();
+		int messagePriority = Login.getLoggedUser(this).getMessagesPriority();
+		if (messageCount == 0) {
+			messagesCountTextView.setVisibility(View.GONE);
+		} else {
+			if (messageCount == 1) {
+				messagesCountTextView.setText("1 mensaje");
+			} else {
+				messagesCountTextView.setText(messageCount + " mensajes");
+			}
+			if (messagePriority == 0) {
+				messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarGreen));
+			} else {
+				if (messagePriority == 1) {
+					messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarYellow));
+				} else {
+					messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarRed));
+				}
+			}
+		}
 	}
 	
 	
@@ -123,5 +156,9 @@ public class LoJackActivity extends ActionBarActivity {
         }
         return boldFont;
     }
+
+	public int getActionBarIconImageResource() {
+		return R.drawable.ic_launcher;
+	}
 
 }

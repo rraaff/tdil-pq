@@ -22,6 +22,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ import android.widget.Toast;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.car.ActivityCarsPathHistory;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
+import com.tdil.thalamus.android.header.logic.ActionBarLogic;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.utils.Login;
 
@@ -51,9 +54,15 @@ public class IndexActivity extends LoJackActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 0);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
 		customizeActionBar(Login.getLoggedUser(this).getName(), true);
+		
+//		customizeActionBar(Login.getLoggedUser(this).getName(), true);
+		
+		//ActionBarLogic.installActionBarLogic(this, false);
 
 //		BitmapFactory.Options options = new BitmapFactory.Options();
 //		options.inSampleSize = 4;
