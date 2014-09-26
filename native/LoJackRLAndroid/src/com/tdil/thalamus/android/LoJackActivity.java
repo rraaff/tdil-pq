@@ -100,9 +100,9 @@ public class LoJackActivity extends ActionBarActivity {
 			messagesCountTextView.setVisibility(View.GONE);
 		} else {
 			if (messageCount == 1) {
-				messagesCountTextView.setText("1 mensaje");
+				messagesCountTextView.setText("1");
 			} else {
-				messagesCountTextView.setText(messageCount + " mensajes");
+				messagesCountTextView.setText(messageCount + "");
 			}
 			if (messagePriority == 0) {
 				messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarGreen));
@@ -138,9 +138,9 @@ public class LoJackActivity extends ActionBarActivity {
 			messagesCountTextView.setVisibility(View.GONE);
 		} else {
 			if (messageCount == 1) {
-				messagesCountTextView.setText("1 mensaje");
+				messagesCountTextView.setText("1");
 			} else {
-				messagesCountTextView.setText(messageCount + " mensajes");
+				messagesCountTextView.setText(messageCount + "");
 			}
 			if (messagePriority == 0) {
 				messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarGreen));
