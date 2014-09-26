@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/format_page_3rows1col_header" >
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+    
+            <LinearLayout
+                android:id="@+id/vluMessagesListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+		
+		        <TextView
+		            android:id="@+id/lastChanges"
+		            style="@style/modal_subtitleinform"
+		            android:text="@string/lst_title_notifications"/>
+		
+		        <ListView
+		            android:id="@+id/notificationsListView"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:background="@color/grayLightBase"
+		            android:divider="@drawable/bg_item_inlist" >
+
+		        </ListView>
+
+		    </LinearLayout>
+
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forcar" />
+        </TableRow>
+    </LinearLayout>
+</merge>

@@ -52,6 +52,10 @@ public abstract class AbstractListAdapter<T,U> extends BaseAdapter implements On
 	public long getItemId(int position) {
 		return position;
 	}
+	
+	public void remove(Object o) {
+		this.data.remove(o);
+	}
 
 	/*********** Depends upon data size called for each row , Create each ListView row ***********/
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -94,6 +98,14 @@ public abstract class AbstractListAdapter<T,U> extends BaseAdapter implements On
 	@Override
 	public void onClick(View v) {
 		Log.v("CustomAdapter", "=====Row button clicked");
+	}
+
+	public ArrayList<T> getData() {
+		return data;
+	}
+
+	public void setData(ArrayList<T> data) {
+		this.data = data;
 	}
 
 	

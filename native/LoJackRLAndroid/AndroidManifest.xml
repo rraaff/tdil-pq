@@ -240,6 +240,13 @@
         </activity>
         
         <activity
+            android:name="com.tdil.thalamus.android.NotificationsActivity"
+            android:label="Mensajes"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
             android:name="com.tdil.thalamus.android.home.ActivityHomeLights"
             android:label="Listado de luces"
 	        android:configChanges="orientation"
