@@ -7,7 +7,7 @@
     <string name="dologin">dologin</string>
     <string name="user_name">{ Usuario }</string>
     
-    <string name="empty_text_view">  </string>
+    <string name="empty_text_view"> </string>
     
     <!-- Descriptions -->
     <string name="desc_cam_image">Imagen de la Cámara</string>
@@ -166,8 +166,8 @@
     <string name="btn_lbl_next">Siguiente</string>
     
     
-    <string name="message">mensaje</string>
-    <string name="messages">mensajes</string>
+    <string name="message"> </string>
+    <string name="messages"> </string>
     
     
     <!-- Hints -->

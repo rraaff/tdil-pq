@@ -18,7 +18,7 @@
 	<color name="orangeTitles">#F05524</color>
 	<color name="orangeDark">#BC2800</color>
 	
-	<color name="actionBarGreen">#32CD32</color>
+	<color name="actionBarGreen">#000000</color>
 	<color name="actionBarYellow">#FFF100</color>
 	<color name="actionBarRed">#FF0000</color>
 	
