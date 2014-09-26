@@ -26,7 +26,7 @@
         android:theme="@style/AppTheme">
         
         <meta-data android:name="com.google.android.gms.version"
-      android:value="@integer/google_play_services_version" />
+			android:value="@integer/google_play_services_version" />
 
         <activity
             android:name="com.tdil.thalamus.android.RequestResetPasswordActivity"
@@ -62,7 +62,7 @@
         
         <activity
             android:name="com.tdil.thalamus.android.IndexActivity"
-            android:label="@string/user_name"
+            android:label="@string/empty_text_view"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
@@ -70,7 +70,7 @@
         
         <activity
             android:name="com.tdil.thalamus.android.ClubLJActivity"
-            android:label="@string/user_name"
+            android:label="@string/empty_text_view"
 	        android:configChanges="orientation"
 	        android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
