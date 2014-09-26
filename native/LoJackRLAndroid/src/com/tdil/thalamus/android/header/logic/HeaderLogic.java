@@ -246,12 +246,12 @@ public class HeaderLogic  {
 	}
 	
 	public static void handleParkedModeAccess(final LoJackActivity activity) {
-		if (Login.getLoggedUser(activity).getPmUser()) {
+//		if (Login.getLoggedUser(activity).getPmUser()) {
 			ParkedModeRestFacade.startParkedModeStatusActivity(activity);
-		} else {
-			Intent intent = new Intent(activity, ActivityParkedModeNotClient.class); 
-			activity.startActivity(intent); 
-		}
+//		} else {
+//			Intent intent = new Intent(activity, ActivityParkedModeNotClient.class); 
+//			activity.startActivity(intent); 
+//		}
 	}
 
 	public static void handleTvAccess(final Activity activity) {
