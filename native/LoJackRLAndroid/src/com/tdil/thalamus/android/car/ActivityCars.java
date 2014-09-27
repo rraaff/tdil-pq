@@ -27,7 +27,6 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.IndexActivity;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
@@ -51,15 +50,15 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	private MapView mapView;
 	
 	private List<Marker> vehiclesMarkers = new ArrayList<Marker>();
-	private VehicleCollection vehicles = null;
+	VehicleCollection vehicles = null;
 	
 	private VehicleBean selectedVehicle = null;
-	private VehicleOption option;
+	VehicleOption option;
 	
 	public static final int REQUEST_PATH = 0;
 	public static final String REQUEST_PATH_PARAM = "REQUEST_PATH_PARAM";
 	
-	private LocarRestClientObserver positionsObserver = new LocarRestClientObserver(this) {
+	LocarRestClientObserver positionsObserver = new LocarRestClientObserver(this) {
 		@Override
 		public void sucess(IRestClientTask restClientTask) {
 			// validar la respuesta
@@ -108,7 +107,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		}
 	};
 	
-	private SelectVehicleAndContinueObserver selectVehicleSpeedObserver = new SelectVehicleAndContinueObserver(this);
+	SelectVehicleAndContinueObserver selectVehicleSpeedObserver = new SelectVehicleAndContinueObserver(this);
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,67 +129,12 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);
 //        map.animateCamera(cameraUpdate);
        
-        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
-			}
-		});
-        
-        ((View)findViewById(R.id.carSpeedButton)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				option = VehicleOption.SPEED;
-				if (vehicles == null) {
-					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
-				} else {
-					selectVehicleAndContinue();
-				}
-			}
-		});
-        
-        ((View)findViewById(R.id.carZoneButton)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				option = VehicleOption.ZONE;
-				if (vehicles == null) {
-					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null, VehicleCollection.class).execute((Void) null);
-				} else {
-					selectVehicleAndContinue();
-				}
-			}
-		});
-        
-        ((View)findViewById(R.id.carPhoneButton)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				option = VehicleOption.PHONE_NUMBERS;
-				if (vehicles == null) {
-					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
-				} else {
-					selectVehicleAndContinue();
-				}
-			}
-		});
-        
-        ((View)findViewById(R.id.carPathButton)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				option = VehicleOption.PATH;
-				if (vehicles == null) {
-					new RESTClientTaskOpt<VehicleCollection>(ActivityCars.this, HttpMethod.GET, selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
-				} else {
-					selectVehicleAndContinue();
-				}
-			}
-		});
-        
-        ((View)findViewById(R.id.carParkedModeButton)).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				HeaderLogic.handleParkedModeAccess(ActivityCars.this);
-			}
-		});
+        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new CarsPositionsOnClick(this));
+        ((View)findViewById(R.id.carSpeedButton)).setOnClickListener(new CarsSpeedOnClick(this));
+        ((View)findViewById(R.id.carZoneButton)).setOnClickListener(new CarsZoneOnClick(this));
+        ((View)findViewById(R.id.carPhoneButton)).setOnClickListener(new CarsPhoneOnClick(this));
+        ((View)findViewById(R.id.carPathButton)).setOnClickListener(new CarsPathOnClick(this));
+        ((View)findViewById(R.id.carParkedModeButton)).setOnClickListener(new CarsParkedModeOnClick(this));
         
         
 //        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {

@@ -42,6 +42,49 @@
                     android:id="@+id/mapview"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" />
+                
+                 <com.tdil.thalamus.android.menu.cars.CarsViewGroup android:id="@+id/carsMenu"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerVertical="true"
+		            android:layout_centerHorizontal="true">
+		            
+                    <ImageButton
+                        android:id="@+id/carMenuButton"
+                        style="@style/btn_cars"
+                        android:background="@drawable/state_01" />
+                     
+                     <ImageButton
+		                android:id="@+id/carPositionsButtonMenu"
+		                style="@style/btn_cars"
+		                android:background="@drawable/ic_cars_position_off"
+		                android:contentDescription="@string/action_home" />
+                     
+		            <ImageButton
+                        android:id="@+id/carSpeedButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_velocidades_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carZoneButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_zone_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carPhoneButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_telefonos_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carPathButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_recorridos_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carParkedModeButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_estacioname_off" />
+		          </com.tdil.thalamus.android.menu.cars.CarsViewGroup>
 
                 </RelativeLayout>
 
@@ -62,30 +105,30 @@
                 android:background="@drawable/ic_cars_position_off"
                 android:contentDescription="@string/action_home" />
 
-                    <ImageButton
-                        android:id="@+id/carSpeedButton"
-                        style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_velocidades_off" />
-                    
-                    <ImageButton
-                        android:id="@+id/carZoneButton"
-                        style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_zone_off" />
-                    
-                    <ImageButton
-                        android:id="@+id/carPhoneButton"
-                        style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_telefonos_off" />
-                    
-                    <ImageButton
-                        android:id="@+id/carPathButton"
-                        style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_recorridos_off" />
-                    
-                    <ImageButton
-                        android:id="@+id/carParkedModeButton"
-                        style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_estacioname_off" />
+            <ImageButton
+                android:id="@+id/carSpeedButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_velocidades_off" />
+            
+            <ImageButton
+                android:id="@+id/carZoneButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_zone_off" />
+            
+            <ImageButton
+                android:id="@+id/carPhoneButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_telefonos_off" />
+            
+            <ImageButton
+                android:id="@+id/carPathButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_recorridos_off" />
+            
+            <ImageButton
+                android:id="@+id/carParkedModeButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_estacioname_off" />
         </TableRow>
 
         <TableRow
