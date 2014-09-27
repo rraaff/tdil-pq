@@ -112,7 +112,6 @@ public class CarsViewGroup extends ViewGroup {
 		View carParkedModeButtonMenu = getChildAt(6); // historic
 		carParkedModeButtonMenu.layout(leftSeptimoBoton, topSeptimoBoton, leftSeptimoBoton + widthAndHeightBoton, topSeptimoBoton + widthAndHeightBoton);
 
-		// TODO
 		if (menuListener == null) {
 			menuListener = new ToggleCarsMenuOnClick(true, menuImage, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
 					carPhoneButtonMenu, carPathButtonMenu, carParkedModeButtonMenu);
