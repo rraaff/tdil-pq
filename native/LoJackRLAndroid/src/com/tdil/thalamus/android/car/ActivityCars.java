@@ -42,6 +42,7 @@ import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
 import com.tdil.thalamus.android.rest.model.prevent.VehicleBean;
 import com.tdil.thalamus.android.rest.model.prevent.VehicleCollection;
+import com.tdil.thalamus.android.utils.Login;
 
 
 
@@ -123,7 +124,21 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         map.setMyLocationEnabled(true);
 
         // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
-           MapsInitializer.initialize(this);
+        MapsInitializer.initialize(this);
+        
+        int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
+        View view = findViewById(R.id.vluMessagesAlertRow);
+        if (vluMessagesCount == 0) {
+        	view.setVisibility(View.GONE);
+        } else {
+        	View vluMessagesAlert = findViewById(R.id.vluMessagesAlertTextView);
+        	vluMessagesAlert.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View arg0) {
+					CarsDialogs.goToVLUMessages(ActivityCars.this);
+				}
+			});
+        }
 
         // Updates the location and zoom of the MapView
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);

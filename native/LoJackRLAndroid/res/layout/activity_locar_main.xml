@@ -131,6 +131,15 @@
                 style="@style/btn_cars"
                 android:background="@drawable/ic_cars_estacioname_off" />
         </TableRow -->
+        
+        <TableRow
+            android:id="@+id/vluMessagesAlertRow"
+            style="@style/format_page_3rows1col_footer" >
+			<TextView
+	                android:id="@+id/vluMessagesAlertTextView"
+	                style="@style/modal_maintitle"
+	                android:text="@string/vlu_message_alert" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/tableRow3"
