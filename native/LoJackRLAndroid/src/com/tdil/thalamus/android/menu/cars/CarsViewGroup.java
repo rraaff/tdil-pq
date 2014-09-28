@@ -148,14 +148,14 @@ TOP: 50%
 		if (menuListener == null) {
 			if (this.activity instanceof ActivityCars) {
 				ActivityCars activityCars = (ActivityCars)this.activity;
-				menuListener = new ToggleCarsMenuOnClick(true, menuImage, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
+				menuListener = new ToggleCarsMenuOnClick(true, this, menuImage, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
 						carPhoneButtonMenu, carPathButtonMenu, carParkedModeButtonMenu);
-				carPositionsButtonMenu.setOnClickListener(new CarsPositionsOnClick(activityCars));
-				carSpeedButtonMenu.setOnClickListener(new CarsSpeedOnClick(activityCars));
-				carZoneButtonMenu.setOnClickListener(new CarsZoneOnClick(activityCars));
-				carPhoneButtonMenu.setOnClickListener(new CarsPhoneOnClick(activityCars));
-				carPathButtonMenu.setOnClickListener(new CarsPathOnClick(activityCars));
-				carParkedModeButtonMenu.setOnClickListener(new CarsParkedModeOnClick(activityCars));
+				carPositionsButtonMenu.setOnClickListener(new CarsPositionsOnClick(activityCars, menuListener));
+				carSpeedButtonMenu.setOnClickListener(new CarsSpeedOnClick(activityCars, menuListener));
+				carZoneButtonMenu.setOnClickListener(new CarsZoneOnClick(activityCars, menuListener));
+				carPhoneButtonMenu.setOnClickListener(new CarsPhoneOnClick(activityCars, menuListener));
+				carPathButtonMenu.setOnClickListener(new CarsPathOnClick(activityCars, menuListener));
+				carParkedModeButtonMenu.setOnClickListener(new CarsParkedModeOnClick(activityCars, menuListener));
 				menuImage.setOnClickListener(menuListener);
 			}
 		}

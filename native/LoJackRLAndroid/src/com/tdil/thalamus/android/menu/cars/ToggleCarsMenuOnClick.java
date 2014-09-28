@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class ToggleCarsMenuOnClick implements OnClickListener {
 
 	private boolean open;
+	private CarsViewGroup carsMenu;
 	private ImageView menuImage;
 	private List<View> menuItems = new ArrayList<View>();
 	
@@ -23,8 +24,9 @@ public class ToggleCarsMenuOnClick implements OnClickListener {
 //		this.menuItems = menuItems;
 //	}
 	
-	public ToggleCarsMenuOnClick(boolean open, ImageView menuImage, View ...menuItems) {
+	public ToggleCarsMenuOnClick(boolean open, CarsViewGroup carsMenu, ImageView menuImage, View ...menuItems) {
 		super();
+		this.carsMenu = carsMenu;
 		this.open = open;
 		this.menuImage = menuImage;
 		for (int i = 0; i < menuItems.length; i++) {
@@ -34,20 +36,25 @@ public class ToggleCarsMenuOnClick implements OnClickListener {
 
 	@Override
 	public void onClick(View arg0) {
+		toggle();
+	}
+
+	public void toggle() {
 		if (open) {
 			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_off);
 			for (View v : this.menuItems) {
 				v.setVisibility(View.GONE);
 			}
+			this.carsMenu.setBackgroundResource(0);
 			open = false;
 		} else {
 			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_on);
 			for (View v : this.menuItems) {
 				v.setVisibility(View.VISIBLE);
 			}
+			this.carsMenu.setBackgroundResource(R.drawable.ic_cars_whm_menu_connector);
 			open = true;
 		}
-		
 	}
 
 	public boolean isOpen() {
