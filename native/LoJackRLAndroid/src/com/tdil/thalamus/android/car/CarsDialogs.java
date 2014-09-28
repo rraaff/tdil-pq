@@ -10,8 +10,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackRestClientObserver;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
@@ -31,12 +33,14 @@ import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.RESTResponse;
+import com.tdil.thalamus.android.rest.model.VLUMessagesCollection;
 import com.tdil.thalamus.android.rest.model.prevent.PhoneNumbersBean;
 import com.tdil.thalamus.android.rest.model.prevent.PositionHistoryCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneBean;
 import com.tdil.thalamus.android.rest.model.prevent.SecureZoneCollection;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitBean;
 import com.tdil.thalamus.android.rest.model.prevent.SpeedLimitCollection;
+import com.tdil.thalamus.android.utils.Login;
 
 public class CarsDialogs {
 
@@ -355,4 +359,31 @@ public class CarsDialogs {
 		};
 	}
 
+	public static void goToVLUMessages(final LoJackActivity context) {
+		int vluMessagesCount = Login.getLoggedUser(context).getVluMessages();
+		if (vluMessagesCount == 0) {
+			startVLUMessagesActivity(context, null);
+		} else {
+			new RESTClientTaskOpt<VLUMessagesCollection>(context, HttpMethod.GET, getPostMessagesVLUObserver(context), 
+				RESTConstants.VLU_MESSAGES, new RestParams(), null, VLUMessagesCollection.class).execute((Void) null);
+		}
+	}
+	
+	public static IRestClientObserver getPostMessagesVLUObserver(final LoJackActivity activity) {
+		return new LoJackRestClientObserver(activity) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				VLUMessagesCollection pos = ((RESTClientTaskOpt<VLUMessagesCollection>)restClientTask).getCastedResult();
+				startVLUMessagesActivity(activity, pos);
+			}
+		};
+	}
+	
+	public static void startVLUMessagesActivity(final LoJackActivity activity, VLUMessagesCollection messages) {
+		int vluMessagesCount = Login.getLoggedUser(activity).getVluMessages();
+		Intent intent = new Intent(activity.getBaseContext(), VLUMessagesActivity.class);
+		intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_COUNT, vluMessagesCount);
+		intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_LIST, messages);
+		activity.startActivity(intent);
+	}
 }

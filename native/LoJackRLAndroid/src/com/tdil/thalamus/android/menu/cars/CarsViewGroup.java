@@ -20,23 +20,24 @@ import com.tdil.thalamus.android.car.CarsZoneOnClick;
 
 public class CarsViewGroup extends ViewGroup {
 	
-	private ActivityCars activity;
+	private Context activity;
 	private int width;
 	private ToggleCarsMenuOnClick menuListener;
 
+	
 	public CarsViewGroup(Context context) {
 		super(context);
-		activity = (ActivityCars)context;
+		activity = context;
 	}
 
 	public CarsViewGroup(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		activity = (ActivityCars)context;
+		activity = context;
 	}
 
 	public CarsViewGroup(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		activity = (ActivityCars)context;
+		activity = context;
 	}
 	
 	@Override public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -145,15 +146,18 @@ TOP: 50%
 		carParkedModeButtonMenu.layout(leftSeptimoBoton, topSeptimoBoton, leftSeptimoBoton + widthAndHeightBoton, topSeptimoBoton + widthAndHeightBoton);
 
 		if (menuListener == null) {
-			menuListener = new ToggleCarsMenuOnClick(true, menuImage, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
-					carPhoneButtonMenu, carPathButtonMenu, carParkedModeButtonMenu);
-			carPositionsButtonMenu.setOnClickListener(new CarsPositionsOnClick(this.activity));
-			carSpeedButtonMenu.setOnClickListener(new CarsSpeedOnClick(this.activity));
-			carZoneButtonMenu.setOnClickListener(new CarsZoneOnClick(this.activity));
-			carPhoneButtonMenu.setOnClickListener(new CarsPhoneOnClick(this.activity));
-			carPathButtonMenu.setOnClickListener(new CarsPathOnClick(this.activity));
-			carParkedModeButtonMenu.setOnClickListener(new CarsParkedModeOnClick(this.activity));
-			menuImage.setOnClickListener(menuListener);
+			if (this.activity instanceof ActivityCars) {
+				ActivityCars activityCars = (ActivityCars)this.activity;
+				menuListener = new ToggleCarsMenuOnClick(true, menuImage, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
+						carPhoneButtonMenu, carPathButtonMenu, carParkedModeButtonMenu);
+				carPositionsButtonMenu.setOnClickListener(new CarsPositionsOnClick(activityCars));
+				carSpeedButtonMenu.setOnClickListener(new CarsSpeedOnClick(activityCars));
+				carZoneButtonMenu.setOnClickListener(new CarsZoneOnClick(activityCars));
+				carPhoneButtonMenu.setOnClickListener(new CarsPhoneOnClick(activityCars));
+				carPathButtonMenu.setOnClickListener(new CarsPathOnClick(activityCars));
+				carParkedModeButtonMenu.setOnClickListener(new CarsParkedModeOnClick(activityCars));
+				menuImage.setOnClickListener(menuListener);
+			}
 		}
 	}
 

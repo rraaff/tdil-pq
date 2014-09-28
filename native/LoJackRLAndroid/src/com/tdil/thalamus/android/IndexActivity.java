@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.car.ActivityCarsPathHistory;
+import com.tdil.thalamus.android.car.CarsDialogs;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
 import com.tdil.thalamus.android.header.logic.ActionBarLogic;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
@@ -207,9 +208,7 @@ public class IndexActivity extends LoJackActivity {
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), VLUMessagesActivity.class);
-			intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_COUNT, vluMessagesCount);
-			activity.startActivity(intent);
+			CarsDialogs.goToVLUMessages(activity);
 		}
 	}
 	

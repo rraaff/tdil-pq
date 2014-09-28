@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
@@ -41,6 +42,9 @@ public class VLUMessagesActivity extends LoJackActivity {
 	public static final String VLU_MESSAGES_COUNT = "VLU_MESSAGES_COUNT";
 	private int vluMessagesCount = 0;
 	
+	public static final String VLU_MESSAGES_LIST = "VLU_MESSAGES_LIST";
+	private VLUMessagesCollection vluMessages;
+	
 	ListView list;
 	VLULogListAdapter adapter;
 	public VLUMessagesActivity CustomListView = null;
@@ -61,66 +65,92 @@ public class VLUMessagesActivity extends LoJackActivity {
 		final LinearLayout empty = (LinearLayout) findViewById(R.id.vluMessagesListEmptyContainer);
 		final LinearLayout listContainer = (LinearLayout) findViewById(R.id.vluMessagesListContainer);
 		
+		list = (ListView) findViewById(R.id.vluMessagesList);
+		final TextView vluMessagesListLoading = (TextView)findViewById(R.id.vluMessagesListLoading);
 		if (vluMessagesCount > 0) {
-			final Handler handler = new Handler(); 
-	        Timer t = new Timer(); 
-	        t.schedule(new TimerTask() { 
-	                public void run() { 
-	                    handler.post(new Runnable() { 
-		                    public void run() { 
-	
-		                    	VLUMessagesActivity.this.runOnUiThread(new Runnable() {
-		                    	    public void run() {
-		                    	    	loading.setVisibility(View.GONE);
-		                    	    	listContainer.setVisibility(View.VISIBLE);
-		                    	    }
-		                    	});
-				             }
-			            }); 
-	                } 
-			}, 2000); 
-			list = (ListView) findViewById(R.id.vluMessagesList);
-			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
-				@Override
-				public void sucess(IRestClientTask task) {
-					Gson gson = new Gson();
-					
-					VLUMessagesCollection col = gson.fromJson(task.getResult(),
-							VLUMessagesCollection.class);
-					CustomListViewValuesArr = new ArrayList<VLUDataDTO>(col.getVluData());
-					Resources res = getResources();
-					adapter = new VLULogListAdapter(VLUMessagesActivity.this,
-							CustomListViewValuesArr, res);
-					list.setAdapter(adapter);
+			vluMessages = (VLUMessagesCollection)extras.get(VLU_MESSAGES_LIST);
+			CustomListViewValuesArr = new ArrayList<VLUDataDTO>(vluMessages.getVluData());
+			Resources res = getResources();
+			adapter = new VLULogListAdapter(VLUMessagesActivity.this,
+					CustomListViewValuesArr, res);
+			list.setAdapter(adapter);
+		}
+		new Thread() {
+			
+			public void run() {
+				for (int i = 10; i <= 100; i+= 10) {
+					VLUMessagesActivity.this.runOnUiThread(new UpdateProgressBarRunnable(vluMessagesListLoading, i));
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-				
-				@Override
-				public void error(IRestClientTask task) {
-					Messages.connectionErrorMessage(VLUMessagesActivity.this);
-				}
-			}, RESTConstants.VLU_MESSAGES, new RestParams(), null).execute((Void) null);
-		} else {
-			final Handler handler = new Handler(); 
-	        Timer t = new Timer(); 
-	        t.schedule(new TimerTask() { 
-	                public void run() { 
-	                    handler.post(new Runnable() { 
-		                    public void run() { 
+				VLUMessagesActivity.this.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						loading.setVisibility(View.GONE);
+						if (VLUMessagesActivity.this.vluMessagesCount > 0) {
+							listContainer.setVisibility(View.VISIBLE);
+						} else {
+							empty.setVisibility(View.VISIBLE);
+						}
+					}
+				});
+			}
+			
+		}.start();
+	}
 	
-		                    	VLUMessagesActivity.this.runOnUiThread(new Runnable() {
-		                    	    public void run() {
-		                    	    	loading.setVisibility(View.GONE);
-		                    	    	empty.setVisibility(View.VISIBLE);
-		                    	    }
-		                    	});
-				             }
-			            }); 
-	                } 
-			}, 2000); 
+	static final class UpdateProgressBarRunnable implements Runnable{
+		private TextView vluMessagesListLoading;
+		private int progress;
+		
+		public UpdateProgressBarRunnable(TextView vluMessagesListLoading, int progress) {
+			super();
+			this.vluMessagesListLoading = vluMessagesListLoading;
+			this.progress = progress;
 		}
 
-		
-
+		@Override
+		public void run() {
+			switch (progress) {
+			case 10:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_010_per);
+				break;
+			case 20:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_020_per);
+				break;
+			case 30:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_030_per);
+				break;
+			case 40:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_040_per);
+				break;
+			case 50:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_050_per);
+				break;
+			case 60:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_060_per);
+				break;
+			case 70:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_070_per);
+				break;
+			case 80:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_080_per);
+				break;
+			case 90:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_090_per);
+				break;
+			case 100:
+				vluMessagesListLoading.setBackgroundResource(R.drawable.fake_vlu_progressbar_100_per);
+				break;
+			default:
+				break;
+			}
+			
+		}
 	}
 
 	@Override

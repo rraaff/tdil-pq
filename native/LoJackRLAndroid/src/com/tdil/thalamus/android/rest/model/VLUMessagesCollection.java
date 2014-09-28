@@ -1,9 +1,14 @@
 package com.tdil.thalamus.android.rest.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-public class VLUMessagesCollection {
+public class VLUMessagesCollection implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1917940917655340346L;
 	private Collection<VLUDataDTO> vluData;
 	
 	public VLUMessagesCollection() {

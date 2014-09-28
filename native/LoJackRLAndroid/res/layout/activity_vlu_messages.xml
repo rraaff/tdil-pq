@@ -51,7 +51,7 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="60dp"
 		            android:layout_marginTop="20dp"
-		            android:background="@drawable/fake_vlu_progressbar"
+		            android:background="@drawable/fake_vlu_progressbar_000_per"
 		            android:gravity="center_horizontal|center_vertical"
 		            android:paddingBottom="45dp"
 		            android:text="@string/lst_title_last_news"
