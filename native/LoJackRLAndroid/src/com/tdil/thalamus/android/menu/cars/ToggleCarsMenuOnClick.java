@@ -35,13 +35,13 @@ public class ToggleCarsMenuOnClick implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		if (open) {
-			this.menuImage.setBackgroundResource(R.drawable.state_02);
+			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_off);
 			for (View v : this.menuItems) {
 				v.setVisibility(View.GONE);
 			}
 			open = false;
 		} else {
-			this.menuImage.setBackgroundResource(R.drawable.state_01);
+			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_on);
 			for (View v : this.menuItems) {
 				v.setVisibility(View.VISIBLE);
 			}

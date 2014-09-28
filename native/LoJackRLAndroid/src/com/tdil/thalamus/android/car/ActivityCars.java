@@ -128,7 +128,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         // Updates the location and zoom of the MapView
 //        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);
 //        map.animateCamera(cameraUpdate);
-       
+ /*      
         ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new CarsPositionsOnClick(this));
         ((View)findViewById(R.id.carSpeedButton)).setOnClickListener(new CarsSpeedOnClick(this));
         ((View)findViewById(R.id.carZoneButton)).setOnClickListener(new CarsZoneOnClick(this));
@@ -136,7 +136,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         ((View)findViewById(R.id.carPathButton)).setOnClickListener(new CarsPathOnClick(this));
         ((View)findViewById(R.id.carParkedModeButton)).setOnClickListener(new CarsParkedModeOnClick(this));
         
-        
+*/        
 //        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
 //			@Override
 //			public void onClick(View v) {

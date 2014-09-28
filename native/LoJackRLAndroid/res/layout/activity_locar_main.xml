@@ -47,43 +47,44 @@
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
 		            android:layout_centerVertical="true"
-		            android:layout_centerHorizontal="true">
+		            android:layout_centerHorizontal="true"
+		            android:background="@drawable/ic_cars_whm_menu_connector" >
 		            
                     <ImageButton
                         android:id="@+id/carMenuButton"
                         style="@style/btn_cars"
-                        android:background="@drawable/state_01" />
+                        android:background="@drawable/ic_cars_whm_menu_on" />
                      
                      <ImageButton
 		                android:id="@+id/carPositionsButtonMenu"
 		                style="@style/btn_cars"
-		                android:background="@drawable/ic_cars_position_off"
+		                android:background="@drawable/ic_cars_whm_position_off"
 		                android:contentDescription="@string/action_home" />
                      
 		            <ImageButton
                         android:id="@+id/carSpeedButtonMenu"
                         style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_velocidades_off" />
+                        android:background="@drawable/ic_cars_whm_velocidades_off" />
                     
                     <ImageButton
                         android:id="@+id/carZoneButtonMenu"
                         style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_zone_off" />
+                        android:background="@drawable/ic_cars_whm_zone_off" />
                     
                     <ImageButton
                         android:id="@+id/carPhoneButtonMenu"
                         style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_telefonos_off" />
+                        android:background="@drawable/ic_cars_whm_telefonos_off" />
                     
                     <ImageButton
                         android:id="@+id/carPathButtonMenu"
                         style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_recorridos_off" />
+                        android:background="@drawable/ic_cars_whm_recorridos_off" />
                     
                     <ImageButton
                         android:id="@+id/carParkedModeButtonMenu"
                         style="@style/btn_cars"
-                        android:background="@drawable/ic_cars_estacioname_off" />
+                        android:background="@drawable/ic_cars_whm_estacioname_off" />
 		          </com.tdil.thalamus.android.menu.cars.CarsViewGroup>
 
                 </RelativeLayout>
@@ -92,7 +93,7 @@
 
         </TableRow>
 
-        <TableRow
+        <!-- TableRow
             android:id="@+id/tableRow4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -129,7 +130,7 @@
                 android:id="@+id/carParkedModeButton"
                 style="@style/btn_cars"
                 android:background="@drawable/ic_cars_estacioname_off" />
-        </TableRow>
+        </TableRow -->
 
         <TableRow
             android:id="@+id/tableRow3"
