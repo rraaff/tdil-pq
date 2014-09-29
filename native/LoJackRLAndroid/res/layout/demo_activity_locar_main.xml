@@ -37,7 +37,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/default_image_descriptor"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/demo_map" />
+                    android:src="@drawable/transparente" />
 
                 <TableRow
                     android:id="@+id/tableRow4"

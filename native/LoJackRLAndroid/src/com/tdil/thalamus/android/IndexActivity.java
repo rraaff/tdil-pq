@@ -165,7 +165,7 @@ public class IndexActivity extends LoJackActivity {
 				HeaderLogic.handleParkedModeAccess(IndexActivity.this);
 			}
 		});
-		
+/*
 		Button button = (Button)findViewById(R.id.vluCount);
 		int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
 		if (vluMessagesCount > 0) {
@@ -188,12 +188,8 @@ public class IndexActivity extends LoJackActivity {
 			} else {
 				button.setVisibility(View.GONE);
 			}
-		}
+		}*/
 	}
-		
-		
-		
-		
 
 //		findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
 	
@@ -211,7 +207,7 @@ public class IndexActivity extends LoJackActivity {
 			CarsDialogs.goToVLUMessages(activity);
 		}
 	}
-	
+
 //	@Override
 //	protected void onStart() {
 //		// TODO Auto-generated method stub

@@ -93,7 +93,7 @@
                 android:text="@string/btn_prevent"
                 android:textColor="@color/new_wheel_link" />
             
-            <Button
+            <!-- Button
                 android:id="@+id/vluCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 android:layout_marginRight="45dp"
                 android:background="@drawable/badge_alert"
                 android:textColor="@color/color_transparent"
-                android:textSize="12sp" />
+                android:textSize="12sp" /-->
             
         </com.tdil.thalamus.android.menu.SquareViewGroup>
 

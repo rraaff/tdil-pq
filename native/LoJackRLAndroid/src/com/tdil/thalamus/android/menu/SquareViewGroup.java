@@ -89,7 +89,7 @@ public class SquareViewGroup extends ViewGroup {
 		leftSextoBoton = leftSextoBoton - (widthAndHeightBoton / 2);
 		v = getChildAt(5); // historic
 		v.layout(leftSextoBoton, topSextoBoton, leftSextoBoton + widthAndHeightBoton, topSextoBoton + widthAndHeightBoton);
-		
+	/*	
 		// Posicion VLU BADGE
 		int widthAndHeightBadge = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(6.50)).divide(BigDecimal.valueOf(100)).intValue();
 		int topSeptimoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(50.00)).divide(BigDecimal.valueOf(100)).intValue();
@@ -98,7 +98,7 @@ public class SquareViewGroup extends ViewGroup {
 		leftSeptimoBoton = leftSeptimoBoton - (widthAndHeightBadge / 2);
 		v = getChildAt(6); // historic
 		v.layout(leftSeptimoBoton, topSeptimoBoton, leftSeptimoBoton + widthAndHeightBadge, topSeptimoBoton + widthAndHeightBadge);
-
+*/
 	}
 
 }

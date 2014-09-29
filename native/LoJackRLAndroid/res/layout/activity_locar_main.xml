@@ -87,6 +87,22 @@
                         android:background="@drawable/ic_cars_whm_estacioname_off" />
 		          </com.tdil.thalamus.android.menu.cars.CarsViewGroup>
 
+                 <TableRow
+                     android:id="@+id/vluMessagesAlertRow"
+                     android:layout_width="wrap_content"
+                     android:layout_height="36dp"
+                     android:layout_alignParentBottom="true"
+                     android:layout_centerHorizontal="true"
+                     android:background="@drawable/toplayer80_white" >
+
+                     <TextView
+                         android:id="@+id/vluMessagesAlertTextView"
+                         style="@style/btn_inlist_witharrow"
+                         android:text="@string/vlu_message_alert"
+                         android:textSize="13sp" />
+
+                 </TableRow>
+
                 </RelativeLayout>
 
             </RelativeLayout>
@@ -131,15 +147,6 @@
                 style="@style/btn_cars"
                 android:background="@drawable/ic_cars_estacioname_off" />
         </TableRow -->
-        
-        <TableRow
-            android:id="@+id/vluMessagesAlertRow"
-            style="@style/format_page_3rows1col_footer" >
-			<TextView
-	                android:id="@+id/vluMessagesAlertTextView"
-	                style="@style/modal_maintitle"
-	                android:text="@string/vlu_message_alert" />
-        </TableRow>
 
         <TableRow
             android:id="@+id/tableRow3"
