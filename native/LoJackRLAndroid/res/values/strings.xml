@@ -81,6 +81,9 @@
     <string name="subtitle_pm_config_alarmsgen">GENERACIÓN DE ALARMAS</string>
     <string name="subtitle_agendas_repetitions">REPETICIONES</string>
     
+    <string name="title_alert_center">SERVICIOS DE ASISTENCIA</string>
+    
+    
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>

@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.deprecated.HomeLightDashboard;
 import com.tdil.thalamus.android.home.ActivityHomeAlarmDashboard;
 import com.tdil.thalamus.android.home.ActivityHomeAlarms;
 import com.tdil.thalamus.android.home.ActivityHomeCamera;
 import com.tdil.thalamus.android.home.ActivityHomeCameras;
+import com.tdil.thalamus.android.home.ActivityHomeLightDashboard;
 import com.tdil.thalamus.android.home.ActivityHomeLights;
 import com.tdil.thalamus.android.home.HomeActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -119,8 +119,8 @@ public class HomeHeaderLogic {
 						LightCollection.class);
 				ArrayList<Light> ligths = new ArrayList<Light>(col.getLights());
 				if (col.getLights().size() == 1) {
-					Intent intent = new Intent(activity.getBaseContext(), HomeLightDashboard.class);
-					intent.putExtra(HomeLightDashboard.LIGHT, col.getLights().iterator().next());
+					Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightDashboard.class);
+					intent.putExtra(ActivityHomeLightDashboard.LIGHT, ligths.iterator().next());
 					activity.startActivity(intent);
 					activity.finish();
 				}  else {

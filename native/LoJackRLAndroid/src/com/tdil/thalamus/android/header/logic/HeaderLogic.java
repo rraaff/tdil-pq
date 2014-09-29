@@ -1,19 +1,29 @@
 package com.tdil.thalamus.android.header.logic;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.ActivityRestClientObserver;
 import com.tdil.thalamus.android.ClubLJActivity;
+import com.tdil.thalamus.android.HomeAlarmsSendPanicActivity;
 import com.tdil.thalamus.android.LoJackActivity;
 import com.tdil.thalamus.android.car.ActivityCars;
 import com.tdil.thalamus.android.car.ActivityCarsNotClient;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
-import com.tdil.thalamus.android.car.parkedmode.ActivityParkedModeNotClient;
 import com.tdil.thalamus.android.car.parkedmode.ParkedModeRestFacade;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
 import com.tdil.thalamus.android.home.ActivityHomeNotClient;
@@ -23,8 +33,12 @@ import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.Alarm;
+import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.rest.model.URLResponse;
 import com.tdil.thalamus.android.utils.Login;
 import com.tdil.thalamus.android.utils.Messages;
@@ -111,6 +125,18 @@ public class HeaderLogic  {
 				});
 		}
 		
+		View openAlertCenter = activity.findViewById(R.id.openSendAlertView);
+		if (openAlertCenter != null) {
+			openAlertCenter.setOnClickListener(
+				new View.OnClickListener() {
+					@Override
+					public void onClick(View view) {
+						new RESTClientTaskOpt<AlarmCollection>(activity, HttpMethod.GET, getOpenSendAlertDialog(activity), 
+								RESTConstants.ALARMS, null,null,AlarmCollection.class).execute((Void) null);
+					}
+				});
+		}
+		
 //		View tv = activity.findViewById(R.id.btnFooterTV);
 //		if (tv != null) {
 //			tv.setOnClickListener(
@@ -123,6 +149,81 @@ public class HeaderLogic  {
 //		}
 	}
 
+	public static IRestClientObserver getOpenSendAlertDialog(final Activity activity) {
+		return new ActivityRestClientObserver(activity) { 
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				AlarmCollection pos = ((RESTClientTaskOpt<AlarmCollection>)restClientTask).getCastedResult();
+				openSendAlertDialog(activity, pos);
+			}
+		};
+	}
+	
+	public static IRestClientObserver getPostSendAlertDialog(final Activity activity, final Dialog dialog) {
+		return new ActivityRestClientObserver(activity) { 
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+				if (response.getOk()) {
+					new AlertDialog.Builder(activity)
+		               .setIcon(R.drawable.ic_launcher)
+		               .setTitle("Alarms")
+		               .setMessage("Se ha enviado la señal de panico")
+		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		                       public void onClick(DialogInterface dialog, int whichButton) {
+		                    	   dialog.dismiss();
+		                       }
+		               }).show();
+				} else {
+					error(restClientTask);
+				}
+			}
+		};
+	}
+	
+	private static void openSendAlertDialog(final Activity activity, AlarmCollection pos) {
+		final Dialog dialog = new Dialog(activity);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.alert_center_dialog);
+//		dialog.setTitle("Seleccione un vehiculo");
+		LinearLayout vehiclesLayout= (LinearLayout)dialog.findViewById(R.id.alertCenterButtonsContainer);
+		for (Alarm alarm : pos.getAlarms()) {
+			final LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.vehicle_button, null);
+			Button vehicleButton = (Button)layout.findViewById(R.id.vehicleButton);
+			vehicleButton.setText(alarm.getDescription());
+		    vehicleButton.setOnClickListener(new SendPanicSignalListener(alarm, activity, dialog));
+		    vehiclesLayout.addView(layout);       
+		}
+		Button dialogCancelButton = (Button) dialog.findViewById(R.id.alertCenterCancel);
+		dialogCancelButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		dialog.show();
+	}
+	
+	/********* Called when Item click in ListView ************/
+	private static class SendPanicSignalListener implements OnClickListener {
+		private Alarm alarm;
+		private Activity activity;
+		private Dialog dialog;
+		
+		SendPanicSignalListener(Alarm alarm, Activity activity, Dialog dialog) {
+			this.alarm = alarm;
+			this.activity = activity;
+			this.dialog = dialog;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.GET, getPostSendAlertDialog(activity, dialog), 
+					RESTConstants.SEND_PANIC_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())),null,RESTResponse.class).execute((Void) null);
+		}
+	}
+	
 	private static void installTopMenuLogic(final Activity activity) {
 		/* logica del menu superior */
 		View outer = (View)activity.findViewById(R.id.application_fullmenu);
