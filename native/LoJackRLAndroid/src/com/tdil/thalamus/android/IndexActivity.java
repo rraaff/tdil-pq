@@ -446,7 +446,7 @@ public class IndexActivity extends LoJackActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_without_apps, menu);
+		getMenuInflater().inflate(R.menu.activity_login, menu);
 		return true;
 	}
 

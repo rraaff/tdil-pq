@@ -8,17 +8,27 @@
     <item android:id="@+id/menu_action_prevent"
           android:icon="@drawable/icon_main_cars"
           android:showAsAction="always"
-          android:title="@string/action_home"/>
+          android:title="@string/action_prevent"/>
     
     <item android:id="@+id/menu_action_pets"
           android:icon="@drawable/icon_main_pets"
           android:showAsAction="always"
-          android:title="@string/action_home"/>
+          android:title="@string/action_pets"/>
 
     <item android:id="@+id/menu_action_parkings"
           android:icon="@drawable/icon_main_parkings"
           android:showAsAction="always"
-          android:title="@string/action_home"/>
+          android:title="@string/action_parkings"/>
+    
+    <item android:id="@+id/menu_action_parked_mode"
+          android:icon="@drawable/icon_main_parkings"
+          android:showAsAction="always"
+          android:title="@string/action_parked_mode"/>
+    
+    <item android:id="@+id/menu_action_club_lj"
+          android:icon="@drawable/icon_main_parkings"
+          android:showAsAction="always"
+          android:title="@string/action_club_lj"/>
 
     <!-- item
 	    android:id="@+id/secondaryMenu"

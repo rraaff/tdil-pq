@@ -129,6 +129,11 @@
     <string name="btn_tag_gotomap">Ver en mapa</string>
     
     <string name="action_home">Home</string>
+    <string name="action_prevent">Cars</string>
+    <string name="action_pets">Pets</string>
+    <string name="action_parkings">Lugares</string>
+    <string name="action_parked_mode">Modo Estacionado</string>
+    <string name="action_club_lj">Club LoJack</string>
     
     <string name="btn_home">  </string>
     <string name="btn_prevent">  </string>

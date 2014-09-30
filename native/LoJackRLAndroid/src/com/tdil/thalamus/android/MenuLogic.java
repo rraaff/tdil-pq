@@ -52,6 +52,12 @@ public class MenuLogic {
 		case R.id.menu_action_pets:
 			HeaderLogic.handlePetsAccess(activity);
 			return true;
+		case R.id.menu_action_parked_mode:
+			HeaderLogic.handleParkedModeAccess(activity);
+			return true;
+		case R.id.menu_action_club_lj:
+			HeaderLogic.handleClubLoJackAccess(activity);
+			return true;
 		case R.id.menu_action_parkings:
 			HeaderLogic.handleParkingsAccess(activity);
 			return true;

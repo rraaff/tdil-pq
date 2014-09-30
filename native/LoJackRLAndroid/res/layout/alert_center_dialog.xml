@@ -26,6 +26,20 @@
 		    android:id="@+id/alertCenterButtonsContainer"
 		    style="@style/form_layout"
 		    android:orientation="vertical" >
+			
+		    <Button 
+		        android:id="@+id/alertCenterCallButton"
+		        android:layout_width="match_parent"
+			    android:layout_height="36dp"
+			    android:gravity="left|center_vertical"
+			    android:paddingLeft="10dp"
+			    android:background="@drawable/bg_textfields_02"
+			    android:drawableRight="@drawable/icon_arrow_inlist"
+			    android:textSize="14sp"
+			    android:textColor="@color/black"
+			    android:text="0800-333-0911"
+			    android:textAllCaps="true"
+			    android:textAlignment="textStart"/>
 
 		</LinearLayout>
 

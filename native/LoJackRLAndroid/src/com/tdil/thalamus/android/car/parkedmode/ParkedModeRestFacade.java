@@ -1,7 +1,9 @@
 package com.tdil.thalamus.android.car.parkedmode;
 
+import android.app.Activity;
 import android.content.Intent;
 
+import com.tdil.thalamus.android.ActivityRestClientObserver;
 import com.tdil.thalamus.android.LoJackActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -16,7 +18,7 @@ import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeStatusCollectio
 
 public class ParkedModeRestFacade {
 	
-	public static void startParkedModeStatusActivity(LoJackActivity activity) {
+	public static void startParkedModeStatusActivity(Activity activity) {
 		new RESTClientTaskOpt<ParkedModeStatusCollection>(activity, HttpMethod.GET, getParkedModeObserver(activity), RESTConstants.GET_PM_VEHICLES, null,null, 
 				ParkedModeStatusCollection.class).execute((Void) null);
 	}
@@ -53,8 +55,8 @@ public class ParkedModeRestFacade {
 		};
 	}
 
-	public static IRestClientObserver getParkedModeObserver(LoJackActivity activity) {
-		return new ParkedModeRestClientObserver(activity) {
+	public static IRestClientObserver getParkedModeObserver(Activity activity) {
+		return new ActivityRestClientObserver(activity) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
 				ParkedModeStatusCollection pos = ((RESTClientTaskOpt<ParkedModeStatusCollection>)restClientTask).getCastedResult();

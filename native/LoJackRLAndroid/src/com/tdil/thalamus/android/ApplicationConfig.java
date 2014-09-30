@@ -35,6 +35,8 @@ public class ApplicationConfig {
 //	public static final String URL_CLUB_NOT_CLIENT =		"http://localhost:8180/LoJackWeb/loclub_notclient.jsp";
 	
 	public static final String URL_NOT_CLIENT = URL_WEBSITE + "loapp_notclient.jsp";
+	
+	public static final String ALERT_CENTER_PHONE = "08003330911";
 
 	public static int default_timeout = 10000;
 	

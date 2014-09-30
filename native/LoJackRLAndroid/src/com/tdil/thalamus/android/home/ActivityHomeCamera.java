@@ -2,6 +2,7 @@ package com.tdil.thalamus.android.home;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.camera.IPCamera;
 import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;
@@ -126,17 +128,18 @@ public class ActivityHomeCamera extends HomeActivity {
 		this.camera = camera;
 	}
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.activity_login, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return MenuLogic.handleOnOptionsItemSelected(this, item);
+	}
+	
 	@Override
 	public boolean isAlarmsTab() {
 		return false;
