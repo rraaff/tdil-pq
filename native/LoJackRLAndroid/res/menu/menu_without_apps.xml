@@ -1,34 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- item android:id="@+id/secondaryMenu"
-	    android:icon="@drawable/ic_navigation_options"
-	    android:showAsAction="always"
-	    android:title="@string/menu_secondary_title">
-    	<menu-->
-			<item
-				android:id="@+id/menu_totest"
-				android:showAsAction="always|withText"
-				android:title="Not-client LoHome" />
+	<item
+		android:id="@+id/menu_totest"
+		android:showAsAction="always|withText"
+		android:title="Not-client LoHome" />
 
-			<item
-				android:id="@+id/menu_totestCar"
-				android:showAsAction="always|withText"
-				android:title="Maqueta CARS" />
+	<item
+		android:id="@+id/menu_totestCar"
+		android:showAsAction="always|withText"
+		android:title="Maqueta CARS" />
 
-		    <item
-		          android:id="@+id/menu_update"
-		          android:showAsAction="always|withText"
-		          android:title="@string/menu_update"/>
-		    <item
-		          android:id="@+id/menu_change_password"
-		          android:showAsAction="always|withText"
-		          android:title="@string/menu_change_password"/>
-		    
-		    <item
-		          android:id="@+id/menu_logout"
-		          android:showAsAction="always|withText"
-		          android:title="@string/menu_logout"/>
-		<!-- /menu>
-	</item-->
+    <item
+          android:id="@+id/menu_update"
+          android:showAsAction="always|withText"
+          android:title="@string/menu_update"/>
+    <item
+          android:id="@+id/menu_change_password"
+          android:showAsAction="always|withText"
+          android:title="@string/menu_change_password"/>
+    
+    <item
+          android:id="@+id/menu_logout"
+          android:showAsAction="always|withText"
+          android:title="@string/menu_logout"/>
 </menu>
