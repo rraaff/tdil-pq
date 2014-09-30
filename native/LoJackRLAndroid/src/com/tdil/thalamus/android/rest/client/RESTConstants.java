@@ -22,7 +22,7 @@ public interface RESTConstants {
 	public static final String P_DATE_END = "{dateEnd}";
 	
 	public static final String P_NOTIFICATION_ID = "{notificationId}";
-	
+	public static final String P_DOMAIN = "{domain}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -87,14 +87,14 @@ public interface RESTConstants {
 	public static final String GET_VEHICLE_PATH = "/prevent/" + P_VEHICLE + "/path/" + P_DATE_START + "/" + P_DATE_END;
 	
 	/** Parked Mode */
+	public static String P_PM_PHONE = "{phoneNumber}";
+	public static String P_PM_TYPE = "{type}";
+	public static String P_PM_RECORDS = "{records}";
 	public static final String GET_PM_VEHICLES = "/parkedmode/vehicles";
 	public static final String POST_ACTIVATE_PM = "/parkedmode/activateParkedMode/" + P_VEHICLE;
 	public static final String POST_DEACTIVATE_PM = "/parkedmode/deactivateParkedMode/" + P_VEHICLE;
-	public static final String GET_PM_VEHICLE_CONF = "/parkedmode/getConfiguration/" + P_VEHICLE;
-	public static String P_PM_PHONE = "{phoneNumber}";
-	public static String P_PM_TYPE = "{type}";
+	public static final String GET_PM_VEHICLE_CONF = "/parkedmode/getConfiguration/" + P_VEHICLE + "/" + P_DOMAIN;
 	public static final String POST_PM_VEHICLE_CONF = "/parkedmode/setConfiguration/" + P_VEHICLE + "/" + P_PM_PHONE + "/" + P_PM_TYPE;
-	public static String P_PM_RECORDS = "{records}";
 	public static final String GET_PM_VEHICLE_LOG = "/parkedmode/history/" + P_VEHICLE + "/" + P_PM_RECORDS;
 	
 	/** Notifications */

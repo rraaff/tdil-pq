@@ -25,7 +25,8 @@ public class ParkedModeRestFacade {
 		new RESTClientTaskOpt<ParkedModeConfiguration>(activity, HttpMethod.GET, getGoParkedModeConfigObserver(activity), 
 				RESTConstants.GET_PM_VEHICLE_CONF, 
 				new RestParams(
-						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()),null, 
+						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID())
+						.put(RESTConstants.P_DOMAIN, parkedModeStatus.getDomain()),null, 
 				ParkedModeConfiguration.class).execute((Void) null);
 	}
 	
