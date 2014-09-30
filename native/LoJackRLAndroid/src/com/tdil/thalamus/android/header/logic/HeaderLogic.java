@@ -114,6 +114,54 @@ public class HeaderLogic {
 				}
 			});
 		}
+		
+		View openAssistCenterButton = activity.findViewById(R.id.openAssistCenterButton);
+		if (openAssistCenterButton != null) {
+			openAssistCenterButton.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					final Dialog dialog = new Dialog(activity);
+					dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+					dialog.setContentView(R.layout.assist_center_dialog);
+					// dialog.setTitle("Seleccione un vehiculo");
+					View homeAssistCallButton = dialog.findViewById(R.id.homeAssistCallButton);
+					homeAssistCallButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							try {
+								String uri = "tel:" + ApplicationConfig.HOME_ASSIST_CENTER_PHONE;
+								Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+								activity.startActivity(callIntent);
+							} catch (Exception e) {
+								Toast.makeText(activity, "Ha ocurrido un error realizando la llamada...", Toast.LENGTH_LONG).show();
+							}
+						}
+					});
+					View carAssistCallButton = dialog.findViewById(R.id.carAssistCallButton);
+					carAssistCallButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							try {
+								String uri = "tel:" + ApplicationConfig.CAR_ASSIST_CENTER_PHONE;
+								Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+								activity.startActivity(callIntent);
+							} catch (Exception e) {
+								Toast.makeText(activity, "Ha ocurrido un error realizando la llamada...", Toast.LENGTH_LONG).show();
+							}
+						}
+					});
+					
+					Button dialogCancelButton = (Button) dialog.findViewById(R.id.assistCenterCancel);
+					dialogCancelButton.setOnClickListener(new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							dialog.dismiss();
+						}
+					});
+					dialog.show();
+				}
+			});
+		}
 
 		View openAlertCenter = activity.findViewById(R.id.openSendAlertView);
 		if (openAlertCenter != null) {

@@ -37,6 +37,8 @@ public class ApplicationConfig {
 	public static final String URL_NOT_CLIENT = URL_WEBSITE + "loapp_notclient.jsp";
 	
 	public static final String ALERT_CENTER_PHONE = "08003330911";
+	public static final String HOME_ASSIST_CENTER_PHONE = "08003330911";
+	public static final String CAR_ASSIST_CENTER_PHONE = "08003330911";
 
 	public static int default_timeout = 10000;
 	

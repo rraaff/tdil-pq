@@ -22,7 +22,7 @@
 		    android:gravity="left|center_vertical" >
 
 			<Button
-			    android:id="@+id/openGuardPhoneCallButton"
+			    android:id="@+id/openAssistCenterButton"
 			    android:layout_width="40dp"
 			    android:layout_height="52dp"
 			    android:background="@drawable/bg_escolta_icon"
