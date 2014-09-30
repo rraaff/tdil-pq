@@ -45,7 +45,8 @@
 		        <TextView
 		            android:id="@+id/lastChanges"
 		            style="@style/modal_subtitleinform"
-		            android:text="@string/lst_title_notifications"/>
+		            android:layout_marginTop="0dp"
+		            android:text="@string/lst_title_notifications" />
 		
 		        <ListView
 		            android:id="@+id/notificationsListView"
