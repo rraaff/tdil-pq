@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceActivity.Header;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
+import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -54,7 +56,7 @@ public class VLUMessagesActivity extends LoJackActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-
+		HeaderLogic.installTabLogic(this);
 		setContentView(R.layout.activity_vlu_messages);
 		customizeActionBar();
 		
