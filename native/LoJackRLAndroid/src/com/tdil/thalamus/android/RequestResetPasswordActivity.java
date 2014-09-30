@@ -115,6 +115,11 @@ public class RequestResetPasswordActivity extends LoJackActivity implements IRes
 					}
 				});
 	}
+	
+	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
+	}
 
 	public void resetPassword() {
 		if (mAuthTask != null) {

@@ -54,7 +54,16 @@ public class LoJackActivity extends ActionBarActivity {
 	//		this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 			LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			actionBarLayout = inflator.inflate(R.layout.actionbar, null);
-			updateMessages(actionBarLayout, this);
+			if (mustUpdateMessages()) {
+				updateMessages(actionBarLayout, this);
+			} else {
+				if (actionBarLayout != null) {
+					View findViewById = (View)actionBarLayout.findViewById(R.id.messagesCountTextView);
+					if (findViewById != null) {
+						findViewById.setVisibility(View.GONE);
+					}
+				}
+			}
 			setTypeface(this, actionBarLayout.findViewById(R.id.actionBarTitle)); 
 			this.getSupportActionBar().setCustomView(actionBarLayout);
 			/** START ALERTA */
@@ -75,7 +84,16 @@ public class LoJackActivity extends ActionBarActivity {
 //		this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 		LayoutInflater inflator = (LayoutInflater) this .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		actionBarLayout = inflator.inflate(R.layout.actionbar, null);
-		updateMessages(actionBarLayout, this);
+		if (mustUpdateMessages()) {
+			updateMessages(actionBarLayout, this);
+		} else {
+			if (actionBarLayout != null) {
+				View findViewById = (View)actionBarLayout.findViewById(R.id.messagesCountTextView);
+				if (findViewById != null) {
+					findViewById.setVisibility(View.GONE);
+				}
+			}
+		}
 		
 		TextView titleTextView = (TextView)actionBarLayout.findViewById(R.id.actionBarTitle);
 		titleTextView.setText(title);
@@ -187,7 +205,20 @@ public class LoJackActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		updateMessagesOnBack(actionBarLayout);
+		if (mustUpdateMessages()) {
+			updateMessagesOnBack(actionBarLayout);
+		} else {
+			if (actionBarLayout != null) {
+				View findViewById = (View)actionBarLayout.findViewById(R.id.messagesCountTextView);
+				if (findViewById != null) {
+					findViewById.setVisibility(View.GONE);
+				}
+			}
+		}
+	}
+	
+	protected boolean mustUpdateMessages() {
+		return true;
 	}
 	
 	@Override

@@ -310,6 +310,11 @@ public class LoginActivity extends LoJackActivity implements IRestClientObserver
 		}
 		return mDocNumber2.trim().length() == 0;
 	}
+	
+	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
+	}
 
 	@Override
 	public void preValidation() {

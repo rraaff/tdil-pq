@@ -260,6 +260,11 @@ public class RegisterActivity extends LoJackActivity implements IRestClientObser
 					}
 				});
 	}
+	
+	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
+	}
 
     @Override
     public void preValidation() {

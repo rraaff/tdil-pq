@@ -38,6 +38,11 @@ public class NotClientActivity extends LoJackActivity {
 			super.onBackPressed();
 		}
 	}
+	
+	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
+	}
 
 	// To handle "Back" key press event for WebView to go back to previous
 	// screen.

@@ -81,7 +81,12 @@ public class FirstAccessActivity extends LoJackActivity {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
 	}
-
+	
+	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
+	}
+	
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub

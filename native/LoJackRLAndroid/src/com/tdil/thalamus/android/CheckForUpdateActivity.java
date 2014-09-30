@@ -41,6 +41,11 @@ public class CheckForUpdateActivity extends LoJackActivity {
 	}
 	
 	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
+	}
+	
+	@Override
     public void onConfigurationChanged(Configuration newConfig) {
     	// TODO Auto-generated method stub
     	super.onConfigurationChanged(newConfig);
