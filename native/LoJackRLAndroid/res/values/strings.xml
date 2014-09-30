@@ -16,7 +16,7 @@
     
     <!-- List Items strings -->
     <string name="lst_title_last_changes">Últimos cambios</string>
-    <string name="lst_title_last_news">Últimas novedades</string>
+    <string name="lst_title_last_news">Recibiendo información</string>
     <string name="lst_title_notifications">Mensajes</string>
     <string name="lst_title_alarms_list">Listado de alarmas</string>
     <string name="lst_title_alarms_agendas_list">Agendas de alarma</string>
@@ -81,7 +81,7 @@
     <string name="subtitle_pm_config_alarmsgen">GENERACIÓN DE ALARMAS</string>
     <string name="subtitle_agendas_repetitions">REPETICIONES</string>
     
-    <string name="title_alert_center">SERVICIOS DE ASISTENCIA</string>
+    <string name="title_alert_center">SERVICIOS DE EMERGENCIAS</string>
     <string name="title_assist_center">SERVICIOS DE ASISTENCIA</string>
     
     
@@ -129,12 +129,12 @@
     
     <string name="btn_tag_gotomap">Ver en mapa</string>
     
-    <string name="action_home">Home</string>
-    <string name="action_prevent">Cars</string>
-    <string name="action_pets">Pets</string>
-    <string name="action_parkings">Lugares</string>
-    <string name="action_parked_mode">Modo Estacionado</string>
-    <string name="action_club_lj">Club LoJack</string>
+    <string name="action_home">CASA</string>
+    <string name="action_prevent">AUTO</string>
+    <string name="action_pets">MASCOTA</string>
+    <string name="action_parkings">LUGARES</string>
+    <string name="action_parked_mode">ESTACIONAME</string>
+    <string name="action_club_lj">CLUB LOJACK</string>
     
     <string name="btn_home">  </string>
     <string name="btn_prevent">  </string>
