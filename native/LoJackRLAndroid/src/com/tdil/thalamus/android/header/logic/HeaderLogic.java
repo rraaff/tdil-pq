@@ -53,26 +53,6 @@ public class HeaderLogic {
 
 	public static void installFooterLogic(final Activity activity, final boolean finishOnExit) {
 
-		/*
-		 * View sendPanic = activity.findViewById(R.id.goToSendPanicActivity);
-		 * if (sendPanic != null) { sendPanic.setOnClickListener( new
-		 * View.OnClickListener() {
-		 * 
-		 * @Override public void onClick(View view) { Intent intent = new
-		 * Intent(activity, HomeAlarmsSendPanicActivity.class);
-		 * activity.startActivity(intent); //finish(); } }); }
-		 */
-		// View homeTab = activity.findViewById(R.id.tabHomeUnSelected);
-		// if (home!= null) {
-		// home.setOnClickListener(
-		// new View.OnClickListener() {
-		// @Override
-		// public void onClick(View view) {
-		// handleHomeAccess(activity, finishOnExit);
-		// }
-		// });
-		// }
-
 		View home = activity.findViewById(R.id.btnFooterHome);
 		if (home != null) {
 			home.setOnClickListener(new View.OnClickListener() {
@@ -174,16 +154,6 @@ public class HeaderLogic {
 			});
 		}
 
-		// View tv = activity.findViewById(R.id.btnFooterTV);
-		// if (tv != null) {
-		// tv.setOnClickListener(
-		// new View.OnClickListener() {
-		// @Override
-		// public void onClick(View view) {
-		// handleTvAccess(activity);
-		// }
-		// });
-		// }
 	}
 
 	public static IRestClientObserver getOpenSendAlertDialog(final Activity activity) {

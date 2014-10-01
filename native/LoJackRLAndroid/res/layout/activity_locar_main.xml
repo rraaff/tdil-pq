@@ -85,6 +85,12 @@
                         android:id="@+id/carParkedModeButtonMenu"
                         style="@style/btn_cars"
                         android:background="@drawable/ic_cars_whm_estacioname_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carMenuOpenButton"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_menu_off" 
+                        android:visibility="gone"/>
 		          </com.tdil.thalamus.android.menu.cars.CarsViewGroup>
 
                  <TableRow

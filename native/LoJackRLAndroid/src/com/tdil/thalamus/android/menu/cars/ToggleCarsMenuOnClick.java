@@ -14,6 +14,7 @@ public class ToggleCarsMenuOnClick implements OnClickListener {
 	private boolean open;
 	private CarsViewGroup carsMenu;
 	private ImageView menuImage;
+	private View menuOpen;
 	private List<View> menuItems = new ArrayList<View>();
 	
 //	public ToggleCarsMenuOnClick(boolean open, ImageView menuImage, View carPositionsButtonMenu, View carSpeedButtonMenu, View carZoneButtonMenu, 
@@ -24,11 +25,12 @@ public class ToggleCarsMenuOnClick implements OnClickListener {
 //		this.menuItems = menuItems;
 //	}
 	
-	public ToggleCarsMenuOnClick(boolean open, CarsViewGroup carsMenu, ImageView menuImage, View ...menuItems) {
+	public ToggleCarsMenuOnClick(boolean open, CarsViewGroup carsMenu, ImageView menuImage, View menuOpen, View ...menuItems) {
 		super();
 		this.carsMenu = carsMenu;
 		this.open = open;
 		this.menuImage = menuImage;
+		this.menuOpen = menuOpen;
 		for (int i = 0; i < menuItems.length; i++) {
 			this.menuItems.add(menuItems[i]);
 		}
@@ -41,14 +43,18 @@ public class ToggleCarsMenuOnClick implements OnClickListener {
 
 	public void toggle() {
 		if (open) {
-			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_off);
+			this.menuImage.setVisibility(View.GONE);
+			this.menuOpen.setVisibility(View.VISIBLE);
+//			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_off);
 			for (View v : this.menuItems) {
 				v.setVisibility(View.GONE);
 			}
 			this.carsMenu.setBackgroundResource(0);
 			open = false;
 		} else {
-			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_on);
+			this.menuImage.setVisibility(View.VISIBLE);
+			this.menuOpen.setVisibility(View.GONE);
+//			this.menuImage.setBackgroundResource(R.drawable.ic_cars_whm_menu_on);
 			for (View v : this.menuItems) {
 				v.setVisibility(View.VISIBLE);
 			}

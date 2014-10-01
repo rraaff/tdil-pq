@@ -145,10 +145,17 @@ TOP: 50%
 		View carParkedModeButtonMenu = getChildAt(6); // 
 		carParkedModeButtonMenu.layout(leftSeptimoBoton, topSeptimoBoton, leftSeptimoBoton + widthAndHeightBoton, topSeptimoBoton + widthAndHeightBoton);
 
+		// Posicion v6 (ESTACIONAME)
+		int topOctavoBoton = width - widthAndHeightBoton - (widthAndHeightBoton/2);
+		int leftOctavoBoton = 0;
+				
+		ImageView carMenuOpenButton = (ImageView)getChildAt(7); // 
+		carMenuOpenButton.layout(leftOctavoBoton, topOctavoBoton, leftOctavoBoton + widthAndHeightBoton, topOctavoBoton + widthAndHeightBoton);
+		
 		if (menuListener == null) {
 			if (this.activity instanceof ActivityCars) {
 				ActivityCars activityCars = (ActivityCars)this.activity;
-				menuListener = new ToggleCarsMenuOnClick(true, this, menuImage, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
+				menuListener = new ToggleCarsMenuOnClick(true, this, menuImage, carMenuOpenButton, carPositionsButtonMenu, carSpeedButtonMenu, carZoneButtonMenu, 
 						carPhoneButtonMenu, carPathButtonMenu, carParkedModeButtonMenu);
 				carPositionsButtonMenu.setOnClickListener(new CarsPositionsOnClick(activityCars, menuListener));
 				carSpeedButtonMenu.setOnClickListener(new CarsSpeedOnClick(activityCars, menuListener));
@@ -157,6 +164,7 @@ TOP: 50%
 				carPathButtonMenu.setOnClickListener(new CarsPathOnClick(activityCars, menuListener));
 				carParkedModeButtonMenu.setOnClickListener(new CarsParkedModeOnClick(activityCars, menuListener));
 				menuImage.setOnClickListener(menuListener);
+				carMenuOpenButton.setOnClickListener(menuListener);
 			}
 		}
 	}
