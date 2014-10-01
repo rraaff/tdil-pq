@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -251,6 +252,19 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		final Dialog dialog = new Dialog(ActivityCars.this);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.selection_vehicle_dialog);
+		TextView selectVehicleForActionTextView = (TextView)dialog.findViewById(R.id.selectVehicleForActionTextView);
+		if (option == VehicleOption.SPEED) {
+			selectVehicleForActionTextView.setText(R.string.selectVehicleForSpeed);
+		}
+		if (option == VehicleOption.ZONE) {
+			selectVehicleForActionTextView.setText(R.string.selectVehicleForZone);
+		}
+		if (option == VehicleOption.PHONE_NUMBERS) {
+			selectVehicleForActionTextView.setText(R.string.selectVehicleForPhoneNumbers);
+		}
+		if (option == VehicleOption.PATH) {
+			selectVehicleForActionTextView.setText(R.string.selectVehicleForPath);
+		}
 //		dialog.setTitle("Seleccione un vehiculo");
 		LinearLayout vehiclesLayout= (LinearLayout)dialog.findViewById(R.id.selectVehicleButtonsContainer);
 		for (VehicleBean vehicle : vehicles.getList()) {
