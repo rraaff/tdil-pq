@@ -128,6 +128,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
         MapsInitializer.initialize(this);
         
+        new RESTClientTaskOpt<VehicleCollection>(this, HttpMethod.GET, this.positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
+        
         int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
         View view = findViewById(R.id.vluMessagesAlertRow);
         if (vluMessagesCount == 0) {
@@ -348,7 +350,8 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 			 vehiclesMarkers.add(m);
 		}
 		if (vehicles.getList().size() == 1) {
-			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(points.get(0), 16);
+			LatLng latLng = new LatLng(points.get(0).latitude - 0.00089832, points.get(0).longitude);
+			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
 			mapView.getMap().animateCamera(cameraUpdate);
 		} else {
 			centerMap(points);
