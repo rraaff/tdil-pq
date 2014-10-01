@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="0dp"
+            android:layout_weight=".2"
             android:padding="0dp" >
 
             <LinearLayout
@@ -34,81 +35,91 @@
 
             </LinearLayout>
         </TableRow>
-        
-        <com.tdil.thalamus.android.menu.SquareViewGroup
-            android:id="@+id/rdGrid"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_gravity="top"
-            android:background="@drawable/bg_wheel2_off"
-            android:baselineAligned="false"
-            android:gravity="center"
-            android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/btnFooterParkings"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_places_r2"
-                android:text="@string/btn_parkings"
-                android:visibility="visible" />
-
-            <Button
-                android:id="@+id/btnFooterPrevent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_cars_r2"
-                android:text="@string/btn_prevent"
-                android:textColor="@color/new_wheel_link" />
+        <TableRow
+            android:id="@+id/tableRowRueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_weight=".8"
+            android:padding="0dp" >
             
-            <Button
-                android:id="@+id/btnFooterHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_home_r2"
-                android:text="@string/btn_prevent"
-                android:textColor="@color/new_wheel_link" />
-
-            <Button
-                android:id="@+id/btnFooterPets"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_pets_r2"
-                android:text="@string/btn_prevent"
-                android:textColor="@color/new_wheel_link" />
-            
-            <Button
-                android:id="@+id/btnFooterEstacioname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_modoe_r2"
-                android:text="@string/btn_prevent"
-                android:textColor="@color/new_wheel_link" />
-            
-            <Button
-                android:id="@+id/btnClubLJ"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_club_r2"
-                android:text="@string/btn_prevent"
-                android:textColor="@color/new_wheel_link" />
-            
-            <!-- Button
-                android:id="@+id/vluCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="45dp"
-                android:background="@drawable/badge_alert"
-                android:textColor="@color/color_transparent"
-                android:textSize="12sp" /-->
-            
-        </com.tdil.thalamus.android.menu.SquareViewGroup>
+	        <com.tdil.thalamus.android.menu.SquareViewGroup
+	            android:id="@+id/rdGrid"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:layout_gravity="top"
+	            android:background="@drawable/bg_wheel2_off"
+	            android:baselineAligned="false"
+	            android:gravity="center"
+	            android:orientation="horizontal" >
+	
+	            <Button
+	                android:id="@+id/btnFooterParkings"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ic_places_r2"
+	                android:text="@string/btn_parkings"
+	                android:visibility="visible" />
+	
+	            <Button
+	                android:id="@+id/btnFooterPrevent"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ic_cars_r2"
+	                android:text="@string/btn_prevent"
+	                android:textColor="@color/new_wheel_link" />
+	            
+	            <Button
+	                android:id="@+id/btnFooterHome"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ic_home_r2"
+	                android:text="@string/btn_prevent"
+	                android:textColor="@color/new_wheel_link" />
+	
+	            <Button
+	                android:id="@+id/btnFooterPets"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ic_pets_r2"
+	                android:text="@string/btn_prevent"
+	                android:textColor="@color/new_wheel_link" />
+	            
+	            <Button
+	                android:id="@+id/btnFooterEstacioname"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ic_modoe_r2"
+	                android:text="@string/btn_prevent"
+	                android:textColor="@color/new_wheel_link" />
+	            
+	            <Button
+	                android:id="@+id/btnClubLJ"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ic_club_r2"
+	                android:text="@string/btn_prevent"
+	                android:textColor="@color/new_wheel_link" />
+	            
+	            <!-- Button
+	                android:id="@+id/vluCount"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_centerVertical="true"
+	                android:layout_marginRight="45dp"
+	                android:background="@drawable/badge_alert"
+	                android:textColor="@color/color_transparent"
+	                android:textSize="12sp" /-->
+	            
+	        </com.tdil.thalamus.android.menu.SquareViewGroup>
+	    </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight=".2"
             android:padding="0dp" >
 
             <LinearLayout
@@ -126,28 +137,10 @@
 
         <TableRow
             android:id="@+id/tableRow3"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:layout_margin="0dp"
-            android:padding="0dp" >
-            
-			<LinearLayout
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:background="@drawable/bg_footer"
-			    android:gravity="center_vertical|center_horizontal"
-			    android:orientation="horizontal" >
-		
-				<ImageView
-				    android:id="@+id/imageView1"
-				    android:layout_width="wrap_content"
-				    android:layout_height="wrap_content"
-				    android:layout_gravity="center_vertical"
-				    android:src="@drawable/logo_loapp_forfooter" />
-			    
-			</LinearLayout>
-        </TableRow>
+            style="@style/format_page_3rows1col_footer" >
 
+            <include layout="@layout/footer" />
+        </TableRow>
     </LinearLayout>
 
 
