@@ -64,7 +64,7 @@ public class VLULogListAdapter extends BaseAdapter implements OnClickListener {
 		public TextView dni;
 		public TextView domain;
 		public TextView message;
-		public ImageView alert;
+//		public ImageView alert;
 
 	}
 
@@ -84,7 +84,7 @@ public class VLULogListAdapter extends BaseAdapter implements OnClickListener {
 //			holder.dni = (TextView) vi.findViewById(R.id.vluDni);
 			holder.domain = (TextView) vi.findViewById(R.id.vluDomain);
 			holder.message = (TextView) vi.findViewById(R.id.vluMessage);
-			holder.alert = (ImageView) vi.findViewById(R.id.vluAlertImage);
+//			holder.alert = (ImageView) vi.findViewById(R.id.vluAlertImage);
 
 			/************ Set holder with LayoutInflater ************/
 			vi.setTag(holder);
@@ -102,9 +102,9 @@ public class VLULogListAdapter extends BaseAdapter implements OnClickListener {
 //			holder.dni.setText(iter.getDni());
 			holder.domain.setText(iter.getDomain());
 			holder.message.setText(iter.getMessage());
-			if (iter.getMessage() != null && iter.getMessage().length() > 0) {
-				holder.alert.setImageResource(R.drawable.android_button_plus);
-			}
+//			if (iter.getMessage() != null && iter.getMessage().length() > 0) {
+//				holder.alert.setImageResource(R.drawable.android_button_plus);
+//			}
 //			holder.alert.setImageDrawable(drawable);
 			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
 

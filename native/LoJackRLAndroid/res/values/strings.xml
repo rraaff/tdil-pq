@@ -32,6 +32,7 @@
     
     <string name="lst_title_vlu">ESTADO DE TUS EQUIPOS</string>
     <string name="vlu_message_alert">Tu equipo LoJack requiere mantenimiento</string>
+    <string name="vlu_message_ok">Tu equipo LoJack funciona perfectamente</string>
     
     <string name="lst_itm_status">Estado:</string>
     <string name="lst_itm_action">Acción:</string>

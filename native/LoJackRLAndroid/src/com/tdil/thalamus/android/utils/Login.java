@@ -12,6 +12,7 @@ public class Login {
 	 public static final String USER = "user";
 	
 	private static LoginResponse loggedUser;
+	public static boolean vluDismissed;
 
 	public static LoginResponse getLoggedUser(Context context) {
 		if (loggedUser == null) {

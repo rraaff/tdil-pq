@@ -133,9 +133,23 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         
         int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
         View view = findViewById(R.id.vluMessagesAlertRow);
+        final View vluMessagesOkRow = findViewById(R.id.vluMessagesOkRow);
         if (vluMessagesCount == 0) {
         	view.setVisibility(View.GONE);
+        	if (Login.vluDismissed) {
+        		vluMessagesOkRow.setVisibility(View.GONE);
+        	} else {
+        		vluMessagesOkRow.setVisibility(View.VISIBLE);
+        		vluMessagesOkRow.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						vluMessagesOkRow.setVisibility(View.GONE);
+						Login.vluDismissed = true;
+					}
+				});
+        	}
         } else {
+        	vluMessagesOkRow.setVisibility(View.GONE);
         	View vluMessagesAlert = findViewById(R.id.vluMessagesAlertTextView);
         	vluMessagesAlert.setOnClickListener(new View.OnClickListener() {
 				@Override

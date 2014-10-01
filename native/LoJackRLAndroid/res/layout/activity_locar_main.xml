@@ -108,6 +108,22 @@
                          android:textSize="13sp" />
 
                  </TableRow>
+                 
+                 <TableRow
+                     android:id="@+id/vluMessagesOkRow"
+                     android:layout_width="wrap_content"
+                     android:layout_height="36dp"
+                     android:layout_alignParentBottom="true"
+                     android:layout_centerHorizontal="true"
+                     android:background="@drawable/toplayer80_white" >
+
+                     <TextView
+                         android:id="@+id/vluMessagesOkTextView"
+                         style="@style/btn_inlist_witharrow"
+                         android:text="@string/vlu_message_ok"
+                         android:textSize="13sp" />
+
+                 </TableRow>
 
                 </RelativeLayout>
 
