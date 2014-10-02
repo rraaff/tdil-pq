@@ -65,10 +65,10 @@
     
     <string name="title_select_vehicle">Seleccionar vehículo</string>
     
-    <string name="selectVehicleForSpeed">Para velocidad</string>
-    <string name="selectVehicleForZone">Para zona</string>
-    <string name="selectVehicleForPhoneNumbers">Para telefonos</string>
-    <string name="selectVehicleForPath">Para recorrido</string>
+    <string name="selectVehicleForSpeed">Velocidad Máxima</string>
+    <string name="selectVehicleForZone">Determinar zona</string>
+    <string name="selectVehicleForPhoneNumbers">Teléfonos de seguridad</string>
+    <string name="selectVehicleForPath">Recorridos históricos</string>
     
     
     <string name="title_max_speed">Velocidad Máxima</string>

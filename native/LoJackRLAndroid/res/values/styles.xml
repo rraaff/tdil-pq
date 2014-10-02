@@ -373,7 +373,16 @@
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
-	
+
+	<style name="modal_subtitle_fordialogs">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">36dp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+	    <item name="android:textColor">@color/black</item>
+	    <item name="android:textSize">14sp</item>
+	    <item name="android:background">@drawable/bg_modaltitles</item>
+	</style>
+		
 	<style name="modal_subtitleinform">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">36dp</item>
@@ -424,17 +433,18 @@
 	
 	<style name="title_dashboard_container">
 	    <item name="android:layout_width">fill_parent</item>
-	    <item name="android:layout_height">62dp</item>
+	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	    <item name="android:orientation">vertical</item>
+	    <item name="android:paddingBottom">10dp</item>
+		<item name="android:paddingLeft">20dp</item>
+		<item name="android:paddingRight">20dp</item>
+		<item name="android:paddingTop">10dp</item>
 	</style>
 	
 	<style name="title_dashboard">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>
-	    <item name="android:layout_marginLeft">20dp</item>
-	    <item name="android:layout_marginRight">20dp</item>
-	    <item name="android:layout_marginTop">10dp</item>
 	    <item name="android:textColor">@color/black</item>
 	    <item name="android:textSize">20sp</item>
 	</style>
@@ -442,9 +452,6 @@
 	<style name="title_dashboard_state">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>
-	    <item name="android:layout_marginBottom">10dp</item>
-	    <item name="android:layout_marginLeft">20dp</item>
-	    <item name="android:layout_marginRight">20dp</item>
 	</style>
 	
 	<style name="toggle_button_container">

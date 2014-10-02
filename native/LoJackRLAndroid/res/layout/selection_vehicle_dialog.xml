@@ -16,14 +16,16 @@
 		    android:orientation="vertical" >
 
 			<TextView
-			    android:id="@+id/textView1"
-			    style="@style/modal_maintitle_fordialogs"
-			    android:text="@string/title_select_vehicle" />
-			
-			<TextView
 			    android:id="@+id/selectVehicleForActionTextView"
 			    style="@style/modal_maintitle_fordialogs"
 			    android:text="@string/title_select_vehicle" />
+		    
+			<TextView
+			    android:id="@+id/textView1"
+			    style="@style/modal_subtitle_fordialogs"
+			    android:text="@string/title_select_vehicle" />
+			
+
 
 		</LinearLayout>
     

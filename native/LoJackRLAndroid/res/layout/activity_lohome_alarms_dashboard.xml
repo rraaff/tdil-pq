@@ -52,14 +52,17 @@
 				        android:layout_width="fill_parent"
 				        android:layout_height="wrap_content" >
 				        
-				        <LinearLayout style="@style/title_dashboard_container" >
+				        <LinearLayout
+				            style="@style/title_dashboard_container" >
 				            
-				            <TextView style="@style/title_dashboard"
+				            <TextView
 				                android:id="@+id/alarmDescription"
-				                android:text="@string/title_dashboard_alarms"  />
+				                style="@style/title_dashboard"
+				                android:text="@string/title_dashboard_alarms" />
 				            
-							<TextView style="@style/title_dashboard_state"
+							<TextView
 							    android:id="@+id/alarmStatus"
+							    style="@style/title_dashboard_state"
 							    android:text="@string/status_unknown" />
 
 				        </LinearLayout>
