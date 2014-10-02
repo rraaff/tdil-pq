@@ -5,12 +5,12 @@
 
 	<TableRow
 	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content" >
+	    android:layout_height="wrap_content"
+	    android:background="@color/bgBase" >
 
 		<LinearLayout
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"
-		    android:background="@color/bgBase"
 		    android:orientation="vertical" >
 
 			<TextView

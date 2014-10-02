@@ -31,8 +31,8 @@
     <string name="lst_title_history_point">Detalle</string>
     
     <string name="lst_title_vlu">ESTADO DE TUS EQUIPOS</string>
-    <string name="vlu_message_alert">Tu equipo LoJack requiere mantenimiento</string>
-    <string name="vlu_message_ok">Tu equipo LoJack funciona perfectamente</string>
+    <string name="vlu_message_alert">Revisá tu equipo LOJACK</string>
+    <string name="vlu_message_ok">Tu equipo funciona correctamente</string>
     
     <string name="lst_itm_status">Estado:</string>
     <string name="lst_itm_action">Acción:</string>
@@ -181,7 +181,7 @@
     <string name="btn_lbl_back">Volver</string>
     <string name="btn_lbl_save">Grabar</string>
     <string name="btn_lbl_next">Siguiente</string>
-    
+    <string name="btn_lbl_carrecoverycenter">Central de Recupero Vehicular</string>
     
     <string name="message"> </string>
     <string name="messages"> </string>
