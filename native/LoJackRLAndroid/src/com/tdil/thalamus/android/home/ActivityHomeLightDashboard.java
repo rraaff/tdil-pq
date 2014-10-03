@@ -60,7 +60,6 @@ public class ActivityHomeLightDashboard extends HomeActivity implements ILightsA
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
         Bundle extras = getIntent().getExtras();
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		
 		ToggleButton activateDeactivate = (ToggleButton)findViewById(R.id.switchActivate);
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
