@@ -26,7 +26,6 @@ public class FirstAccessActivity extends LoJackActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_first_access);
 		setTypeface(this, R.id.alreadyClientButton);
 		setTypeface(this, R.id.notClientButton);

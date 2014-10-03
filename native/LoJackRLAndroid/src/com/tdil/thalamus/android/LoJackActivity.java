@@ -1,7 +1,6 @@
 package com.tdil.thalamus.android;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -17,15 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.car.ActivityCars;
-import com.tdil.thalamus.android.car.ActivityCarsPathHistory;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.NotificationBeanCollection;
-import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.utils.Login;
 
 public class LoJackActivity extends ActionBarActivity {
@@ -37,6 +33,7 @@ public class LoJackActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 	}
 	
 	protected void customizeActionBar() {

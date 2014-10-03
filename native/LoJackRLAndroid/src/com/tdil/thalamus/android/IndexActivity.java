@@ -57,7 +57,6 @@ public class IndexActivity extends LoJackActivity {
 		super.onCreate(savedInstanceState);
 		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		//this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 0);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_index);
 		customizeActionBar(Login.getLoggedUser(this).getName(), true);
 		

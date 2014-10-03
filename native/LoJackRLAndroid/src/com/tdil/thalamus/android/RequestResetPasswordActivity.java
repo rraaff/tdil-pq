@@ -54,7 +54,6 @@ public class RequestResetPasswordActivity extends LoJackActivity implements IRes
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_request_reset);
 		customizeActionBar();
 		

@@ -73,8 +73,6 @@ public class ChangePasswordActivity extends LoJackActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		
 		validator = new Validator(this);
 		validator.setValidationListener(this);
 

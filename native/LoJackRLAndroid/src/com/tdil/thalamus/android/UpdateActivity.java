@@ -91,7 +91,6 @@ public class UpdateActivity extends LoJackActivity implements IRestClientObserve
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		validator = new Validator(this);
 	    validator.setValidationListener(this);
 		

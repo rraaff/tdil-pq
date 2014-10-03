@@ -29,7 +29,6 @@ public class ClubLJActivity extends LoJackActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_clublj);
 		customizeActionBar(Login.getLoggedUser(this).getName(), true);
 		

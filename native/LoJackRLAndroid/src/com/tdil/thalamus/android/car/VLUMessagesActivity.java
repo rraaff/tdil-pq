@@ -55,7 +55,6 @@ public class VLUMessagesActivity extends LoJackActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		HeaderLogic.installTabLogic(this);
 		setContentView(R.layout.activity_vlu_messages);
 		customizeActionBar();

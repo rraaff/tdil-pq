@@ -27,7 +27,6 @@ public class CheckForUpdateActivity extends LoJackActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 		setContentView(R.layout.activity_check_for_update);
 		mHandler = new Handler();
 		checkUpdate.start();
