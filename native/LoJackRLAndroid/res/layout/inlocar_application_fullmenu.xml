@@ -14,7 +14,7 @@
         android:background="@drawable/bg_logoredbar"
         android:orientation="horizontal" >
 
-        <ImageView
+        <com.tdil.thalamus.android.header.GoIndexImageView
             android:id="@+id/imageView1"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
