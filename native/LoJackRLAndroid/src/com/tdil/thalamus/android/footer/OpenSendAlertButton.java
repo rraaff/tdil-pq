@@ -25,7 +25,9 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.RESTResponse;
+import com.tdil.thalamus.android.utils.Login;
 
 public class OpenSendAlertButton extends Button {
 
@@ -75,28 +77,44 @@ public class OpenSendAlertButton extends Button {
 		final Dialog dialog = new Dialog(activity);
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.setContentView(R.layout.alert_center_dialog);
+		
+		LoginResponse loggedUser = Login.getLoggedUser(activity);
+		boolean centralRecupero = loggedUser.getPreventUser() || loggedUser.getVluClient();
+		boolean homeUser = loggedUser.getHomeUser();
+		
 		View call = dialog.findViewById(R.id.alertCenterCallButton);
-		call.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				try {
-					String uri = "tel:" + ApplicationConfig.ALERT_CENTER_PHONE;
-					Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
-					activity.startActivity(callIntent);
-				} catch (Exception e) {
-					Toast.makeText(activity, "Ha ocurrido un error realizando la llamada...", Toast.LENGTH_LONG).show();
+		if (!centralRecupero) {
+			call.setVisibility(View.GONE);
+		} else {
+			call.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					try {
+						String uri = "tel:" + ApplicationConfig.ALERT_CENTER_PHONE;
+						Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+						activity.startActivity(callIntent);
+					} catch (Exception e) {
+						Toast.makeText(activity, "Ha ocurrido un error realizando la llamada...", Toast.LENGTH_LONG).show();
+					}
 				}
-			}
-		});
+			});
+		}
 		LinearLayout vehiclesLayout = (LinearLayout) dialog.findViewById(R.id.alertCenterButtonsContainer);
-		for (Alarm alarm : pos.getAlarms()) {
-			final LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.vehicle_button, null);
-			Button vehicleButton = (Button) layout.findViewById(R.id.vehicleButton);
-			vehicleButton.setText(alarm.getDescription());
-			vehicleButton.setOnClickListener(new SendPanicSignalListener(alarm, activity, dialog));
-			vehiclesLayout.addView(layout);
+		if (!homeUser) {
+			vehiclesLayout.setVisibility(View.GONE);
+		} else {
+			for (Alarm alarm : pos.getAlarms()) {
+				final LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.vehicle_button, null);
+				Button vehicleButton = (Button) layout.findViewById(R.id.vehicleButton);
+				vehicleButton.setText(alarm.getDescription());
+				vehicleButton.setOnClickListener(new SendPanicSignalListener(alarm, activity, dialog));
+				vehiclesLayout.addView(layout);
+			}
+		}
+		if (!homeUser && !centralRecupero) {
+			LinearLayout notEmergency = (LinearLayout) dialog.findViewById(R.id.notEmergencyContainer);
+			notEmergency.setVisibility(View.VISIBLE);
 		}
 		Button dialogCancelButton = (Button) dialog.findViewById(R.id.alertCenterCancel);
 		dialogCancelButton.setOnClickListener(new OnClickListener() {

@@ -5,6 +5,7 @@
 
 	<LinearLayout
 	    style="@style/modal_container"
+	    android:layout_width="wrap_content"
 	    android:layout_margin="0dp"
 	    android:background="@color/grayLightBase" >
 
@@ -39,6 +40,25 @@
 			    android:textColor="@color/black"
 			    android:text="@string/btn_lbl_carrecoverycenter"
 			    android:textAllCaps="true"
+			    android:textAlignment="textStart"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:id="@+id/notEmergencyContainer"
+		    style="@style/form_layout"
+		    android:orientation="vertical"
+		    android:visibility="gone">
+			
+		    <TextView 
+		        android:layout_width="match_parent"
+			    android:layout_height="50dp"
+			    android:gravity="left|center_vertical"
+			    android:paddingLeft="10dp"
+			    android:textSize="14sp"
+			    android:textColor="@color/black"
+		        android:text="No posees servicios de emergencias"
+		        android:textAllCaps="true"
 			    android:textAlignment="textStart"/>
 
 		</LinearLayout>
