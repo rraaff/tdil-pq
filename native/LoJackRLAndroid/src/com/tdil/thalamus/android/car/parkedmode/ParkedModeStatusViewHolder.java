@@ -7,5 +7,6 @@ public class ParkedModeStatusViewHolder {
 
 	public TextView domain;
 	public TextView status;
+	public TextView geoRef;
 	public View goDetail;
 }

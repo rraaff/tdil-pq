@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -20,7 +19,7 @@ import android.widget.TabHost.TabSpec;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
@@ -51,7 +50,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 @Deprecated
-public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivity, IAlarmsActivity {
+public class HomeAlarmsActivity extends LoJackLoggedActivity implements ILightsActivity, IAlarmsActivity {
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
 	public static final String TAB_ALARMAS = "ALARMAS";
@@ -276,14 +275,6 @@ public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivit
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		
-		return true;
-	}
-
 	public void onItemClick(int mPosition) {
 		Alarm tempValues = (Alarm) alarms.get(mPosition);
 	}
@@ -336,11 +327,6 @@ public class HomeAlarmsActivity extends LoJackActivity implements ILightsActivit
 		Alarm alarm = alarms.get(mPosition);
 		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());
 		startActivity(intent);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

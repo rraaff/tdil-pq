@@ -66,6 +66,21 @@
         </activity>
         
         <activity
+            android:name="com.tdil.thalamus.android.LegalesNotLoggedActivity"
+            android:label="@string/title_activity_login_for_action_bar"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name="com.tdil.thalamus.android.LegalesLoggedActivity"
+            android:label="@string/title_activity_login_for_action_bar"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+        </activity>
+        
+        <activity
             android:name="com.tdil.thalamus.android.IndexActivity"
             android:label="@string/empty_text_view"
 	        android:configChanges="orientation"

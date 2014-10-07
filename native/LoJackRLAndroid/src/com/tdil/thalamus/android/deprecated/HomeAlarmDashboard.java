@@ -18,7 +18,7 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
@@ -41,7 +41,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 @Deprecated
-public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivity{
+public class HomeAlarmDashboard extends LoJackLoggedActivity implements IAlarmsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -169,14 +169,6 @@ public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivit
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-
 	public void toggleAlarmActivation(int mPosition) {
 		AlarmsLogic.toggleAlarmActivation(this, mPosition);
 	}
@@ -256,11 +248,6 @@ public class HomeAlarmDashboard extends LoJackActivity implements IAlarmsActivit
 		Intent intent = new Intent(getBaseContext(), HomeLogAlarmActivity.class);
 		intent.putExtra(HomeLogAlarmActivity.IDENTIDAD, alarm.getIdEntidad());
 		startActivity(intent);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

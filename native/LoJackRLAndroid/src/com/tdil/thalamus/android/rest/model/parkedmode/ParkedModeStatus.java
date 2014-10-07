@@ -8,6 +8,10 @@ public class ParkedModeStatus implements Serializable {
 
 	private String vehicleID;
 	private String domain;
+	private String latitude;
+	private String longitude;
+	private String geoRef;
+	
 	// ON/OFF
 	private String status;
 
@@ -44,6 +48,30 @@ public class ParkedModeStatus implements Serializable {
 
 	public void setDomain(String domain) {
 		this.domain = domain;
+	}
+
+	public String getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
+	}
+
+	public String getGeoRef() {
+		return geoRef;
+	}
+
+	public void setGeoRef(String geoRef) {
+		this.geoRef = geoRef;
 	}
 
 }

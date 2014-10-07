@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -15,7 +14,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.home.ILightsActivity;
@@ -35,7 +34,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 @Deprecated
-public class HomeLightsActivity extends LoJackActivity implements ILightsActivity {
+public class HomeLightsActivity extends LoJackLoggedActivity implements ILightsActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -87,13 +86,6 @@ public class HomeLightsActivity extends LoJackActivity implements ILightsActivit
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
 	public void onItemClick(int mPosition) {
 		Light tempValues = (Light) ligths.get(mPosition);
 	}
@@ -111,11 +103,6 @@ public class HomeLightsActivity extends LoJackActivity implements ILightsActivit
 	@Override
 	public void viewLightLog(int mPosition) {
 		LigthsLogic.viewLightLog(this, mPosition);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

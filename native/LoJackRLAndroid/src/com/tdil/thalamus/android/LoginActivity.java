@@ -10,7 +10,6 @@ import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.protocol.HttpContext;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -45,7 +44,6 @@ import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
-import com.tdil.thalamus.android.rest.model.DocumentTypeCollection;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.utils.Login;
 import com.tdil.thalamus.android.utils.Messages;
@@ -54,7 +52,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends LoJackActivity implements IRestClientObserver,
+public class LoginActivity extends LoJackNotLoggedActivity implements IRestClientObserver,
 		ValidationListener {
 
 	/*
@@ -359,19 +357,6 @@ public class LoginActivity extends LoJackActivity implements IRestClientObserver
 						RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(
 						RESTConstants.P_PASSWORD, mPassword), null);
 		mAuthTask.execute((Void) null);
-	}
-
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-		// TODO Auto-generated method stub
-		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		// getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
 	}
 
 	@Override

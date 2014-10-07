@@ -18,7 +18,7 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
@@ -41,7 +41,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 @Deprecated
-public class HomeLightDashboard extends LoJackActivity implements ILightsActivity{
+public class HomeLightDashboard extends LoJackLoggedActivity implements ILightsActivity{
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -186,14 +186,6 @@ public class HomeLightDashboard extends LoJackActivity implements ILightsActivit
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-
 	public void toggleLightActivation(int mPosition) {
 		LigthsLogic.toggleLightActivation(this, mPosition);
 	}
@@ -290,11 +282,6 @@ public class HomeLightDashboard extends LoJackActivity implements ILightsActivit
 		intent.putExtra(HomeLogLightActivity.IDENTIDAD, light.getIdEntidad());
 		intent.putExtra(HomeLogLightActivity.IDLUZ, light.getIdLuz());
 		startActivity(intent);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

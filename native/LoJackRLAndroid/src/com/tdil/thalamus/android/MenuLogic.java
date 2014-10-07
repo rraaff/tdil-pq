@@ -43,6 +43,8 @@ public class MenuLogic {
 			}, RESTConstants.LOGOUT, null, null).execute((Void) null);
 
 			return true;
+		case R.id.menu_action_user: 
+			return true;
 		case R.id.menu_action_home: 
 			HeaderLogic.handleHomeAccess(activity, true);
 			return true;
@@ -82,6 +84,12 @@ public class MenuLogic {
 			return true;
 		case R.id.menu_back:
 			activity.finish();
+			return true;
+		case R.id.menu_action_legales_not_logged:
+			activity.startActivity(new Intent(activity, LegalesNotLoggedActivity.class));
+			return true;
+		case R.id.menu_action_legales:
+			activity.startActivity(new Intent(activity, LegalesLoggedActivity.class));
 			return true;
 		//case R.id.secondaryMenu:
 			//return true;

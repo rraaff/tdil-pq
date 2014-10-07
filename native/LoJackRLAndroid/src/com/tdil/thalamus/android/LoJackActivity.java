@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,10 +23,11 @@ import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.NotificationBeanCollection;
 import com.tdil.thalamus.android.utils.Login;
 
-public class LoJackActivity extends ActionBarActivity {
+public abstract class LoJackActivity extends ActionBarActivity {
 
 	private static Typeface normalFont;
 	private static Typeface boldFont;
@@ -198,6 +201,29 @@ public class LoJackActivity extends ActionBarActivity {
 		
     }
 	
+	@Override
+	public final boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(menuResourceId(), menu);
+		MenuItem menuItem = menu.findItem(R.id.menu_action_user);
+		if (menuItem != null) {
+			LoginResponse loggedUser = Login.getLoggedUser(this);
+			if (loggedUser != null && loggedUser.getLogged()) {
+				menuItem.setTitle(loggedUser.getName());
+			} else {
+				menuItem.setTitle("-");
+			}
+		}
+		return true;
+	}
+	
+	
+	public abstract int menuResourceId();
+	
+	@Override
+	public final boolean onOptionsItemSelected(MenuItem item) {
+		return MenuLogic.handleOnOptionsItemSelected(this, item);
+	}
 	
 	@Override
 	protected void onResume() {

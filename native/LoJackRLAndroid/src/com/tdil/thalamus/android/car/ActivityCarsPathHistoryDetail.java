@@ -58,16 +58,4 @@ public class ActivityCarsPathHistoryDetail extends LoJackWithProductMenuActivity
 		((TextView)findViewById(R.id.positionHistoryLatitude)).setText(positionHistoryBean.getLatitude());
     }
     
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
-	}
-	
 }

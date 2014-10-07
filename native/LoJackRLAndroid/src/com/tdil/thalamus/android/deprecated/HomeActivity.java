@@ -1,7 +1,6 @@
 package com.tdil.thalamus.android.deprecated;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -11,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.UpdateActivity;
@@ -20,7 +19,7 @@ import com.tdil.thalamus.android.UpdateActivity;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeActivity extends LoJackActivity {
+public class HomeActivity extends LoJackLoggedActivity {
 
 	/**
 	 * The default email to populate the email field with.
@@ -78,18 +77,6 @@ public class HomeActivity extends LoJackActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 	
 	/**

@@ -3,7 +3,6 @@ package com.tdil.thalamus.android.deprecated;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
@@ -14,7 +13,7 @@ import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.home.CameraListAdapter;
@@ -32,7 +31,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * well.
  */
 @Deprecated
-public class HomeCamerasActivity extends LoJackActivity {
+public class HomeCamerasActivity extends LoJackLoggedActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -79,13 +78,6 @@ public class HomeCamerasActivity extends LoJackActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
 	}
 
 	public void onItemClick(int mPosition) {
@@ -141,11 +133,6 @@ public class HomeCamerasActivity extends LoJackActivity {
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
 		}*/
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

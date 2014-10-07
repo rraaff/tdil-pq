@@ -21,7 +21,7 @@ import com.tdil.lojack.rl.R;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class NotClientActivity extends LoJackActivity {
+public class NotClientActivity extends LoJackNotLoggedActivity {
 
 	// UI references.
 	private WebView parkingsWebView;
@@ -136,18 +136,6 @@ public class NotClientActivity extends LoJackActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.menu_full, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

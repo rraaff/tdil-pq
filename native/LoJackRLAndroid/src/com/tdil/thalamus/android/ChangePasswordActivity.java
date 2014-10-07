@@ -32,13 +32,14 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.ChangePasswordBean;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
+import com.tdil.thalamus.android.utils.Login;
 import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ChangePasswordActivity extends LoJackActivity implements
+public class ChangePasswordActivity extends LoJackLoggedActivity implements
 		IRestClientObserver, ValidationListener {
 
 	/*
@@ -154,18 +155,6 @@ public class ChangePasswordActivity extends LoJackActivity implements
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	@Override

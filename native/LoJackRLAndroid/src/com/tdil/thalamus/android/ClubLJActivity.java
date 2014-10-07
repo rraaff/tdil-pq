@@ -19,7 +19,7 @@ import com.tdil.thalamus.android.utils.Login;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class ClubLJActivity extends LoJackActivity {
+public class ClubLJActivity extends LoJackLoggedActivity {
 
 	/**
 	 * The default email to populate the email field with.
@@ -52,18 +52,6 @@ public class ClubLJActivity extends LoJackActivity {
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
-	}
-	
 	/**
 	 * Shows the progress UI and hides the login form.
 	 */

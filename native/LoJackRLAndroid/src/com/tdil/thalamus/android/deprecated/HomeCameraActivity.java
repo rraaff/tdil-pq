@@ -1,7 +1,6 @@
 package com.tdil.thalamus.android.deprecated;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -10,12 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.camera.IPCamera;
@@ -23,9 +21,7 @@ import com.tdil.thalamus.android.camera.PanasonicBLC131;
 import com.tdil.thalamus.android.camera.TPLinkSC4171G;
 import com.tdil.thalamus.android.camera.TrendnetTVIP851;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
-import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.Camera;
-import com.tdil.thalamus.android.utils.DownloadCameraImageTask;
 import com.tdil.thalamus.android.utils.MoveCameraDownTask;
 import com.tdil.thalamus.android.utils.MoveCameraLeftTask;
 import com.tdil.thalamus.android.utils.MoveCameraRightTask;
@@ -36,7 +32,7 @@ import com.tdil.thalamus.android.utils.MoveCameraUpTask;
  * well.
  */
 @Deprecated
-public class HomeCameraActivity extends LoJackActivity {
+public class HomeCameraActivity extends LoJackLoggedActivity {
 
 	public static final String TAB_CAMARAS = "CAMARAS";
 	public static final String TAB_LUCES = "LUCES";
@@ -173,18 +169,6 @@ public class HomeCameraActivity extends LoJackActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

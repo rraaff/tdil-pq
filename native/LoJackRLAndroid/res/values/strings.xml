@@ -143,6 +143,7 @@
     <string name="action_parkings">LUGARES</string>
     <string name="action_parked_mode">ESTACIONAME</string>
     <string name="action_club_lj">CLUB LOJACK</string>
+    <string name="action_legales">LEGALES</string>
     
     <string name="btn_home">  </string>
     <string name="btn_prevent">  </string>

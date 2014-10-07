@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_action_legales_not_logged"
+          android:icon="@drawable/icon_main_parkings"
+          android:showAsAction="always"
+          android:title="@string/action_legales"/>
+
+</menu>

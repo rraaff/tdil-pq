@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.tdil.lojack.rl.R;
 
 @SuppressLint("ResourceAsColor")
-public class FirstAccessActivity extends LoJackActivity {
+public class FirstAccessActivity extends LoJackNotLoggedActivity {
 
 
 	/**
@@ -95,19 +95,6 @@ public class FirstAccessActivity extends LoJackActivity {
 	public Toast textView(View findViewById) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		//getMenuInflater().inflate(R.menu.menu_full, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//return MenuLogic.handleOnOptionsItemSelected(this, item);
-		return false;
 	}
 
 	/**

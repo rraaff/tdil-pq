@@ -17,7 +17,7 @@ import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ApplicationConfig;
-import com.tdil.thalamus.android.LoJackActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.UnCaughtException;
 import com.tdil.thalamus.android.utils.Login;
@@ -27,7 +27,7 @@ import com.tdil.thalamus.android.utils.Login;
  * well.
  */
 @Deprecated
-public class ParkingsActivity extends LoJackActivity {
+public class ParkingsActivity extends LoJackLoggedActivity {
 
 	// UI references.
 	private WebView parkingsWebView;
@@ -138,18 +138,6 @@ public class ParkingsActivity extends LoJackActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.menu_parkings, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

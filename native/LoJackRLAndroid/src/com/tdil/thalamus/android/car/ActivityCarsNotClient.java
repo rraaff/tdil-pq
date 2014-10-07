@@ -8,13 +8,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -23,14 +18,14 @@ import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ApplicationConfig;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
-import com.tdil.thalamus.android.home.DemoActivityHome.GeoWebChromeClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.utils.Login;
 
 
 
-public class ActivityCarsNotClient extends ActionBarActivity {
+public class ActivityCarsNotClient extends LoJackLoggedActivity {
 
 	private WebView webView;
 	
@@ -118,17 +113,5 @@ public class ActivityCarsNotClient extends ActionBarActivity {
 			e.printStackTrace();
 		}
     }
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
-	}
 
 }

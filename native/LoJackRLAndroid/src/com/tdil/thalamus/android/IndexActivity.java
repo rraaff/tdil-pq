@@ -37,7 +37,7 @@ import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
-public class IndexActivity extends LoJackActivity {
+public class IndexActivity extends LoJackLoggedActivity {
 
 	private static final String HOME = "HOME";
 	private static final String PARKINGS = "PARKINGS";
@@ -440,18 +440,6 @@ public class IndexActivity extends LoJackActivity {
 	public Toast textView(View findViewById) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

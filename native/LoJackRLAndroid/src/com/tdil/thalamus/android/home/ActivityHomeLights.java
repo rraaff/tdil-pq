@@ -44,18 +44,6 @@ public class ActivityHomeLights extends HomeActivity {
         lightsList = (ListView) findViewById(R.id.lightsList);
         lightsList.setAdapter(lightsListAdapter);
     }
-    
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
-	}
 	
 	@Override
 	public boolean isAlarmsTab() {

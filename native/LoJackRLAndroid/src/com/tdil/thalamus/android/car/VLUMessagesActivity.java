@@ -1,44 +1,28 @@
 package com.tdil.thalamus.android.car;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.annotation.TargetApi;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.preference.PreferenceActivity.Header;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
-import com.tdil.thalamus.android.MenuLogic;
-import com.tdil.thalamus.android.UnCaughtException;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
-import com.tdil.thalamus.android.rest.client.HttpMethod;
-import com.tdil.thalamus.android.rest.client.IRestClientObserver;
-import com.tdil.thalamus.android.rest.client.IRestClientTask;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
-import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.VLUDataDTO;
 import com.tdil.thalamus.android.rest.model.VLUMessagesCollection;
-import com.tdil.thalamus.android.utils.Messages;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class VLUMessagesActivity extends LoJackActivity {
+public class VLUMessagesActivity extends LoJackLoggedActivity {
 	
 
 	public static final String VLU_MESSAGES_COUNT = "VLU_MESSAGES_COUNT";
@@ -158,18 +142,6 @@ public class VLUMessagesActivity extends LoJackActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
 		super.onConfigurationChanged(newConfig);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

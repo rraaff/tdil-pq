@@ -20,7 +20,7 @@ import android.view.Menu;
 
 import com.tdil.lojack.rl.R;
 
-public class CheckForUpdateActivity extends LoJackActivity {
+public class CheckForUpdateActivity extends LoJackNotLoggedActivity {
 	
 	private Handler mHandler;
 
@@ -32,13 +32,6 @@ public class CheckForUpdateActivity extends LoJackActivity {
 		checkUpdate.start();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.check_for_update, menu);
-		return true;
-	}
-	
 	@Override
 	protected boolean mustUpdateMessages() {
 		return false;

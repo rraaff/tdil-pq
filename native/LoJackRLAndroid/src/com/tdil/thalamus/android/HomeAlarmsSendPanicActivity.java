@@ -30,7 +30,7 @@ import com.tdil.thalamus.android.utils.Messages;
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class HomeAlarmsSendPanicActivity extends LoJackActivity {
+public class HomeAlarmsSendPanicActivity extends LoJackLoggedActivity {
 	/**
 	 * The default email to populate the email field with.
 	 */
@@ -76,13 +76,6 @@ public class HomeAlarmsSendPanicActivity extends LoJackActivity {
 		super.onConfigurationChanged(newConfig);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
 	public void sendPanic(int mPosition) {
 		Alarm alarm = (Alarm) CustomListViewValuesArr.get(mPosition);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -105,11 +98,6 @@ public class HomeAlarmsSendPanicActivity extends LoJackActivity {
 				Messages.connectionErrorMessage(HomeAlarmsSendPanicActivity.this);
 			}
 		}, RESTConstants.SEND_PANIC_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 	/**

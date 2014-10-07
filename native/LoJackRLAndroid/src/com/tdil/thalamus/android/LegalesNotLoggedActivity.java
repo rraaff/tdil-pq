@@ -1,9 +1,5 @@
 package com.tdil.thalamus.android;
 
-import java.util.List;
-
-import org.apache.http.cookie.Cookie;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -20,17 +16,15 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.rest.client.RESTClientTask;
-import com.tdil.thalamus.android.utils.Login;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class PreventActivity extends LoJackLoggedActivity {
+public class LegalesNotLoggedActivity extends LoJackNotLoggedActivity {
 
 	// UI references.
-	private WebView parkingsWebView;
+	private WebView webView;
 
 	/**
 	 * The default email to populate the email field with.
@@ -38,11 +32,16 @@ public class PreventActivity extends LoJackLoggedActivity {
 	@Override
 	public void onBackPressed() {
 		// Pop the browser back stack or exit the activity
-		if (parkingsWebView.canGoBack()) {
-			parkingsWebView.goBack();
+		if (webView.canGoBack()) {
+			webView.goBack();
 		} else {
 			super.onBackPressed();
 		}
+	}
+	
+	@Override
+	protected boolean mustUpdateMessages() {
+		return false;
 	}
 
 	// To handle "Back" key press event for WebView to go back to previous
@@ -64,7 +63,7 @@ public class PreventActivity extends LoJackLoggedActivity {
 		@Override
 		public void onProgressChanged(WebView view, int newProgress) {
 			// TODO Auto-generated method stub
-			PreventActivity.this.setProgress(newProgress * 100);
+			LegalesNotLoggedActivity.this.setProgress(newProgress * 100);
 			super.onProgressChanged(view, newProgress);
 		}
 	}
@@ -72,23 +71,22 @@ public class PreventActivity extends LoJackLoggedActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_prevent);
+		setContentView(R.layout.activity_legales_notlogged);
 		customizeActionBar();
 
-		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
+		webView = (WebView) findViewById(R.id.parkingsWebView);
 		
-		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
-		setContentView(parkingsWebView);
+//		setContentView(parkingsWebView);
 		setProgressBarVisibility(true);
-		WebSettings webSettings = parkingsWebView.getSettings();
+		WebSettings webSettings = webView.getSettings();
 		webSettings.setJavaScriptEnabled(true);
 		webSettings.setGeolocationEnabled(true);
 		final ProgressDialog pd = new ProgressDialog(this);
 		pd.setMessage("Cargando, por favor espere...");
 
 		final Activity activity = this;
-		parkingsWebView.setWebChromeClient(new GeoWebChromeClient());
-		parkingsWebView.setWebViewClient(new WebViewClient() {
+		webView.setWebChromeClient(new GeoWebChromeClient());
+		webView.setWebViewClient(new WebViewClient() {
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				try {
@@ -96,7 +94,7 @@ public class PreventActivity extends LoJackLoggedActivity {
 					if (!pd.isShowing()) {
 						pd.show();
 					}
-					parkingsWebView.loadUrl(url);
+					webView.loadUrl(url);
 					return false;
 				} catch (Exception e) {
 					return false;
@@ -127,7 +125,7 @@ public class PreventActivity extends LoJackLoggedActivity {
 			}
 		});
 		try {
-			parkingsWebView.loadUrl(ApplicationConfig.URL_PREVENT + "&apkToken=" + Login.getLoggedUser(this).getApkToken());
+			webView.loadUrl(ApplicationConfig.URL_LEGALES_NOT_LOGGED);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

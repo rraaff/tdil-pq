@@ -65,18 +65,6 @@ public class ActivityHomeAlarmLog extends HomeActivity {
     }
     
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
-	}
-	
-	@Override
 	public boolean isAlarmsTab() {
 		return true;
 	}
