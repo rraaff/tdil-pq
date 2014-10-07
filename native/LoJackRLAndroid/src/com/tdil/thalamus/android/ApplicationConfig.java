@@ -13,11 +13,15 @@ public class ApplicationConfig {
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PABLO
-//	public static final String APP_DOMAIN = "192.168.252.107:8180";
+//	public static final String APP_DOMAIN = "192.168.252.104:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
 //MARCOS
-	public static final String APP_DOMAIN = "192.168.0.134:8180";
+//	public static final String APP_DOMAIN = "192.168.0.134:8180";
+//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
+	
+//RODRIGO
+	public static final String APP_DOMAIN = "192.168.1.106:8180";
 	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
