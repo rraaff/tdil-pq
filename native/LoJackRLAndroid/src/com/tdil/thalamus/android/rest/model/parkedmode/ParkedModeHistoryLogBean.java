@@ -6,7 +6,7 @@ public class ParkedModeHistoryLogBean implements Serializable {
 
 	private static final long serialVersionUID = 4830779533951262329L;
 
-	/* 1 activacion, 2 desactivacion, 3 movimiento indebido*/
+	/* 1 activacion, 2 desactivacion, 3 movimiento indebido, 4 posicion actual*/
 	private int idaccion;
 	private String fecha;
 	private String longitud;
