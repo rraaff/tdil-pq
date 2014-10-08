@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+	<LinearLayout style="@style/row_twocols_container" >
+
+		<LinearLayout style="@style/row_innercolumn_container" >
+		    
+		    <LinearLayout style="@style/row_innercontent" >
+		        
+		        <LinearLayout style="@style/gen_fil_and_wrap" >
+
+					<TextView
+					    android:id="@+id/pmHistoryActionTextView"
+					    style="@style/item_title_01"
+					    android:text="ACTIVACION" />
+					
+				</LinearLayout>
+
+				<LinearLayout style="@style/row_innerrow_data_container" >
+					
+					<TextView
+					    android:id="@+id/pmHistoryDateTextView"
+					    style="@style/innerrow_labelfield"
+					    android:paddingBottom="10dp"
+					    android:paddingLeft="20dp"
+					    android:text="2014-05-04 23:50" />
+	
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+
+		<LinearLayout
+		    style="@style/row_innercolumn_containerImageSmall" >
+
+			<ImageButton
+			    android:id="@+id/pmHistoryViewInMap"
+			    style="@style/icon_inrow_gomap" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</TableLayout>

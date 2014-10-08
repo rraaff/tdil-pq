@@ -1,0 +1,152 @@
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".LoginActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        style="@style/main_container" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/table_portalogo"
+            android:layout_marginBottom="80dp" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                style="@style/logo_on_top"
+                android:contentDescription="@string/action_loading" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/table_portamodal"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp" >
+
+            <LinearLayout 
+                style="@style/modal_container" >
+
+                <TextView
+                    android:id="@+id/loadingInfoText"
+                    style="@style/modal_maintitle"
+                    android:text="@string/title_activity_login" />
+
+                <LinearLayout
+                    style="@style/form_layout" >
+
+                    <Spinner
+                        android:id="@+id/documentType"
+                        style="@style/text_inputs_white_01" />
+
+                    <EditText
+                        android:id="@+id/documentNumber"
+                        style="@style/text_inputs_white_01"
+                        android:hint="@string/hnt_doc_number"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:hint="@string/hnt_doc_password"
+                        android:inputType="textPassword"
+                        style="@style/text_inputs_white_01" />
+
+                    <CheckBox
+                        android:id="@+id/rememberPasswordCheckbox"
+                        style="@style/checkbox_white_01"
+                        android:text="@string/crt_tag_rememberme"
+                        android:textAlignment="center"
+                        android:visibility="visible" />
+
+                    <LinearLayout
+                        style="@style/block_specialitems" >
+
+                        <Button
+                            android:id="@+id/requestResetPassword"
+                            style="@style/btn_inlist_witharrow"
+                            android:focusable="false"
+                            android:text="@string/btn_tag_forgotpass"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/appVersion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="TextView"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|fill_horizontal"
+                    android:layout_margin="15dp"
+                    android:gravity="center_vertical|fill_horizontal"
+                    android:orientation="horizontal" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center_vertical"
+                        android:layout_weight="1"
+                        android:gravity="left|center_vertical"
+                        android:orientation="vertical" >
+
+                        <!-- Button
+                            android:id="@+id/requestRegistration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:background="@drawable/transparente"
+                            android:drawableLeft="@drawable/btn_rojo"
+                            android:focusable="false"
+                            android:gravity="left|center_vertical"
+                            android:minHeight="24dp"
+                            android:text="@string/btn_tag_register"
+                            android:textColor="@color/bgBaseGray"
+                            android:textSize="12sp"
+                            android:visibility="visible" /> -->
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/loginButtons"
+                        android:onClick="@string/dologin"
+                        android:text="@string/btn_tag_login"
+                        style="@style/btn_forward" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/main_promo_title"
+                    style="@style/txt_mainpromo"
+                    android:text="@string/rd_main_promo_title" />
+
+                <TextView
+                    android:id="@+id/main_hookline"
+                    style="@style/txt_hookline"
+                    android:text="@string/rd_main_hookline" />
+
+            </LinearLayout>
+        </TableRow>
+
+    </LinearLayout>
+</merge>

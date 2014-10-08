@@ -16,7 +16,7 @@ public class ApplicationConfig {
 //	public static final String APP_DOMAIN = "192.168.252.104:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
-	//MARCOS
+//MARCOS
 //	public static final String APP_DOMAIN = "192.168.0.134:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	

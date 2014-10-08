@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+	<LinearLayout
+	    style="@style/modal_container"
+	    android:layout_margin="0dp"
+	    android:background="@color/grayLightBase" >
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:orientation="vertical" >
+
+			<TextView
+			    android:id="@+id/textView1"
+			    style="@style/modal_maintitle_fordialogs"
+			    android:text="@string/title_assist_center" />
+
+		</LinearLayout>
+    
+		<LinearLayout
+		    android:id="@+id/assistCenterButtonsContainer"
+		    style="@style/form_layout"
+		    android:orientation="vertical" >
+			
+		    <Button
+		        android:id="@+id/homeAssistCallButton"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/bg_textfields_02"
+		        android:drawableRight="@drawable/icon_arrow_inlist"
+		        android:gravity="left|center_vertical"
+		        android:paddingLeft="15dp"
+		        android:text="Home Assist 0800-333-0911"
+		        android:textAlignment="textStart"
+		        android:textAllCaps="true"
+		        android:textColor="@color/black" />
+		    
+		   <Button
+		       android:id="@+id/carAssistCallButton"
+		       android:layout_width="match_parent"
+		       android:layout_height="wrap_content"
+		       android:background="@drawable/bg_textfields_02"
+		       android:drawableRight="@drawable/icon_arrow_inlist"
+		       android:gravity="left|center_vertical"
+		       android:paddingLeft="15dp"
+		       android:text="Car assist 0800-333-0911"
+		       android:textAlignment="textStart"
+		       android:textAllCaps="true"
+		       android:textColor="@color/black" />
+
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:id="@+id/notEmergencyContainer"
+		    style="@style/form_layout"
+		    android:orientation="vertical"
+		    android:visibility="gone">
+			
+		    <TextView 
+		        android:layout_width="match_parent"
+			    android:layout_height="50dp"
+			    android:gravity="left|center_vertical"
+			    android:paddingLeft="10dp"
+			    android:textSize="14sp"
+			    android:textColor="@color/black"
+		        android:text="No posees servicios de emergencias"
+		        android:textAllCaps="true"
+			    android:textAlignment="textStart"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:background="@color/bgBase"
+		    android:orientation="vertical" >
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content" >
+
+				<ImageView
+				    android:id="@+id/imageView1"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:src="@drawable/undertitle" />
+
+			</LinearLayout>
+	
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="vertical"
+			    android:padding="15dp" >
+	
+				<Button
+					android:id="@+id/assistCenterCancel"
+					style="@style/btn_backwards"
+					android:text="@string/btn_lbl_back" />
+	
+			</LinearLayout>
+
+       </LinearLayout>
+
+	</LinearLayout>
+
+</RelativeLayout>

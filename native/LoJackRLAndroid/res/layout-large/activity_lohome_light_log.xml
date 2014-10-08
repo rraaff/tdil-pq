@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ActivityHomeAlarms" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/incl"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlohome_application_fullmenu" />
+        </TableRow>
+        <include layout="@layout/inlohome_application_submenu" />
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+
+            <!-- TODO: (Marcos) Quiero meter el título de esto acá y no me funciona.
+            
+            <TextView
+                android:id="@+id/lastChanges"
+                style="@style/modal_subtitleinform"
+                android:text="@string/lst_title_last_changes" />
+            
+             -->
+            
+            <ListView
+	            android:id="@+id/lightLogList"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:background="@color/grayLightBase"
+	            android:divider="@drawable/bg_item_inlist" >
+        </ListView>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forhome" />
+        </TableRow>
+    </LinearLayout>
+</merge>

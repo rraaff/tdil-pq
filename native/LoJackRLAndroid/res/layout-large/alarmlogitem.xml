@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <LinearLayout style="@style/row_twocols_container">
+
+        <LinearLayout style="@style/row_innercolumn_container">
+
+            <LinearLayout style="@style/row_innercontent" >
+
+                <LinearLayout style="@style/gen_fil_and_wrap" >
+
+                    <TextView
+                        android:id="@+id/logAlarmUser"
+                        style="@style/item_title_01"
+                        android:paddingBottom="2dp"
+                        android:text="Alarma cochera" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/row_innerrow_data_container" >
+
+                    <TextView
+                        android:id="@+id/TextView02"
+                        style="@style/innerrow_label"
+                        android:layout_marginBottom="0dp"
+                        android:paddingBottom="3dp"
+                        android:paddingLeft="20dp"
+                        android:text="@string/lst_itm_action" />
+
+                    <TextView
+                        android:id="@+id/logAlarmStatus"
+                        style="@style/innerrow_labelfield"
+                        android:paddingBottom="3dp"
+                        android:text="Desarmada" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/row_innerrow_data_container" >
+
+                    <TextView
+                        android:id="@+id/TextView03"
+                        style="@style/innerrow_label"
+                        android:layout_marginBottom="0dp"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="20dp"
+                        android:text="@string/lst_itm_last_change" />
+
+                    <TextView
+                        android:id="@+id/logAlarmDate"
+                        style="@style/innerrow_labelfield"
+                        android:paddingBottom="10dp"
+                        android:text="2013-05-04 18:20" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/row_innercolumn_containerImage" >
+
+            <ImageView
+                android:id="@+id/logAlarmAvatar"
+                style="@style/icon_inrow_avatar" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</TableLayout>

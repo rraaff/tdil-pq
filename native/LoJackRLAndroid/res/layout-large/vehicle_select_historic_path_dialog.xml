@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+		
+	<LinearLayout
+	    style="@style/modal_container"
+	    android:layout_margin="0dp"
+	    android:background="@color/grayLightBase" >
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:orientation="vertical" >
+
+			<TextView
+			    android:id="@+id/textView1"
+			    style="@style/modal_maintitle_fordialogs"
+			    android:text="@string/title_choose_date" />
+
+		</LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:background="@color/bgBase"
+		    android:gravity="center_horizontal"
+		    android:orientation="vertical" >
+
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" >
+
+				<TextView
+				    android:id="@+id/textView2"
+				    style="@style/label_plate"
+				    android:text="@string/lbl_plate" />
+
+				<TextView
+				    android:id="@+id/vehiclePathDomainTextView"
+				    style="@style/label_plate_var" />
+
+			</LinearLayout>
+
+			<ImageView
+			    android:id="@+id/imageView2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:src="@drawable/undertitle" />
+
+				<RadioGroup
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_margin="15dp" >
+				    
+				    <RadioButton
+				        android:id="@+id/pathLastHourRadioButton"
+				        style="@style/radiobutton_inlist"
+				        android:text="ULTIMA HORA" />
+				    
+				    <RadioButton
+						android:id="@+id/pathTodayRadioButton"
+				        android:text="HOY"
+				        style="@style/radiobutton_inlist" />
+				    
+				    <RadioButton
+						android:id="@+id/pathYesterdayRadioButton"
+				        android:text="AYER"
+				        style="@style/radiobutton_inlist" />
+				    
+				    <RadioButton
+						android:id="@+id/pathLastWeekRadioButton"
+				        android:text="ULTIMA SEMANA"
+				        style="@style/radiobutton_inlist" />
+				</RadioGroup>
+
+		</LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:background="@color/bgBase"
+		    android:orientation="vertical" >
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content" >
+
+				<ImageView
+				    android:id="@+id/imageView1"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:src="@drawable/undertitle" />
+
+			</LinearLayout>
+	
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal"
+			    android:padding="15dp" >
+
+				<LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_weight="1"
+				    android:orientation="horizontal" >
+
+				    <Button
+				        android:id="@+id/vehiclePathButtonCancel"
+				        style="@style/btn_backwards"
+						android:text="@string/btn_lbl_back" />
+				</LinearLayout>
+				
+				<LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="left"
+				    android:layout_weight="1"
+				    android:gravity="right"
+				    android:orientation="horizontal" >
+
+				    <Button
+				        android:id="@+id/vehiclePathButtonOK"
+				        style="@style/btn_forward"
+				        android:layout_gravity="right|center_horizontal"
+				        android:text="@string/btn_lbl_next" />
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+       </LinearLayout>
+    
+    </LinearLayout>
+
+</RelativeLayout>

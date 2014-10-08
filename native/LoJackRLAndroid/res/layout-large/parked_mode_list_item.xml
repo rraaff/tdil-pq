@@ -12,7 +12,7 @@
 			<LinearLayout
 			    android:layout_width="wrap_content"
 			    android:layout_height="match_parent"
-			    android:gravity="center_horizontal|center_vertical" >
+			    android:gravity="center_vertical" >
 
 				<ToggleButton
 				    android:id="@+id/pmStatusSwitch"
@@ -70,7 +70,7 @@
 				<ImageButton
 				    android:id="@+id/pmGoToPosition"
 				    style="@style/icon_inrow_gomap"
-				    android:layout_marginRight="8dp" />
+				    android:layout_marginRight="15dp" />
 
 				<ImageButton
 				    android:id="@+id/pmGoToDashboard"

@@ -1,0 +1,180 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/main_square"
+    tools:context=".HomeAlarmsActivity" >
+
+    <include layout="@layout/footer" />
+
+    <TabHost
+        android:id="@+id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" 
+        android:layout_above="@+id/footer"
+        android:layout_below="@+id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/grayTabBase" >
+
+            </TabWidget>
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/bgBase" >
+
+                <ListView
+                    android:id="@+id/alarmsList"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                </ListView>
+
+                <ListView
+		            android:id="@+id/lightsList"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content" >
+		        </ListView>
+
+	            <ListView
+	                android:id="@+id/camerasList"
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content" >
+
+		        </ListView>
+                
+                <RelativeLayout
+                    android:id="@+id/homeContent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="top|center" >
+		            
+		            <LinearLayout
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:orientation="vertical" >
+		
+		                <ImageView
+		                    android:id="@+id/LogoLoHome"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="100dp"
+		                    android:layout_gravity="top"
+		                    android:src="@drawable/img_logo_lojack" />
+		
+		                <LinearLayout
+		                    android:layout_width="fill_parent"
+		                    android:layout_height="wrap_content"
+		                    android:layout_gravity="center_vertical"
+		                    android:layout_marginTop="50dp"
+		                    android:layout_weight="1"
+		                    android:gravity="center_vertical" >
+		
+		                    <LinearLayout
+		                        android:layout_width="wrap_content"
+		                        android:layout_height="match_parent"
+		                        android:layout_marginLeft="10dp"
+		                        android:layout_weight="1"
+		                        android:orientation="vertical" >
+		
+		                        <TextView
+		                            android:id="@+id/placaLandingTitle1"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:layout_marginBottom="5dp"
+		                            android:text="alarma digital"
+		                            android:textAllCaps="true"
+		                            android:textAppearance="?android:attr/textAppearanceLarge"
+		                            android:textColor="@color/orangeTitles"
+		                            android:textSize="8sp" />
+		
+		                        <TextView
+		                            android:id="@+id/placaLandingBajada1"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:text="Controlá tu alarma desde tu celular. Estés donde estés."
+		                            android:textAllCaps="true"
+		                            android:textColor="@color/bgBase"
+		                            android:textSize="8sp" />
+		
+		                    </LinearLayout>
+		
+		                    <LinearLayout
+		                        android:layout_width="wrap_content"
+		                        android:layout_height="match_parent"
+		                        android:layout_marginLeft="10dp"
+		                        android:layout_weight="1"
+		                        android:orientation="vertical" >
+		
+		                        <TextView
+		                            android:id="@+id/placaLandingTitle2"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:layout_marginBottom="5dp"
+		                            android:text="bienvenida al hogar"
+		                            android:textAllCaps="true"
+		                            android:textAppearance="?android:attr/textAppearanceLarge"
+		                            android:textColor="@color/orangeTitles"
+		                            android:textSize="8sp" />
+		
+		                        <TextView
+		                            android:id="@+id/placaLandingBajada2"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:text="Podés controlar las luces de tu casa desde donde quieras."
+		                            android:textAllCaps="true"
+		                            android:textColor="@color/bgBase"
+		                            android:textSize="8sp" />
+		
+		                    </LinearLayout>
+		                    
+		                    <LinearLayout
+		                        android:layout_width="wrap_content"
+		                        android:layout_height="match_parent"
+		                        android:layout_marginLeft="10dp"
+		                        android:layout_marginRight="10dp"
+		                        android:layout_weight="1"
+		                        android:orientation="vertical" >
+		
+		                        <TextView
+		                            android:id="@+id/placaLandingTitle3"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:layout_marginBottom="5dp"
+		                            android:text="Cámaras y video"
+		                            android:textAllCaps="true"
+		                            android:textAppearance="?android:attr/textAppearanceLarge"
+		                            android:textColor="@color/orangeTitles"
+		                            android:textSize="8sp" />
+		
+		                        <TextView
+		                            android:id="@+id/placaLandingBajada21"
+		                            android:layout_width="wrap_content"
+		                            android:layout_height="wrap_content"
+		                            android:text="Podés monitorear tu casa las 24hs desde donde estés."
+		                            android:textAllCaps="true"
+		                            android:textColor="@color/bgBase"
+		                            android:textSize="9sp" />
+		
+		                    </LinearLayout>                    
+		                </LinearLayout>
+		
+		            </LinearLayout>
+
+                </RelativeLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+    </TabHost>
+
+</RelativeLayout>

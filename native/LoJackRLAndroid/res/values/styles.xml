@@ -616,7 +616,17 @@
 		<item name="android:textColor">@color/lst_itm_title</item>
 		<item name="android:textSize">16sp</item>
 	</style>
-	
+
+	<style name="toggleSwitchIOSish">
+	    <item name="android:layout_width">48dp</item>
+		<item name="android:layout_height">48dp</item>
+		<item name="android:layout_margin">5dp</item>
+		<item name="android:background">@drawable/btn_toggle_fake_switch</item>
+		<item name="android:minHeight">48dp</item>
+		<item name="android:paddingLeft">0dp</item>
+		<item name="android:textSize">14sp</item>
+	</style>
+
 	<style name="icon_inrow_go">
 	    <item name="android:layout_width">24dp</item>
 	    <item name="android:layout_height">24dp</item>

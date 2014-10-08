@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+	<TableRow
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@color/bgBase" >
+
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >
+
+			<TextView
+			    android:id="@+id/vluMessage"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="10dp"
+			    android:layout_marginRight="10dp"
+			    android:layout_marginTop="10dp"
+			    android:text="REQUIERE MANTENIMIENTO"
+			    android:textColor="@color/state_wrong"
+			    android:textSize="20sp"
+			    android:visibility="gone" />
+		    
+			<TextView
+			    android:id="@+id/vluMessage_prima"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="10dp"
+			    android:layout_marginRight="10dp"
+			    android:layout_marginTop="10dp"
+			    android:text="REQUIERE MANTENIMIENTO"
+			    android:textColor="@color/state_wrong"
+			    android:textSize="20sp" />
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal" >
+
+			    <TextView
+			        android:id="@+id/textView1"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:paddingBottom="10dp"
+			        android:paddingLeft="10dp"
+			        android:paddingRight="10dp"
+			        android:paddingTop="5dp"
+			        android:text="EL EQUIPO INSTALADO EN EL VEHÍCULO"
+			        android:textColor="@color/bgBaseGray"
+			        android:textSize="16sp" />
+
+			    <TextView
+			        android:id="@+id/vluDomain"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:gravity="center_horizontal"
+			        android:text="CZP-075"
+			        android:textColor="@color/black"
+			        android:textSize="16sp" />
+
+
+			</LinearLayout>
+			
+
+		</LinearLayout>
+	
+	</TableRow>
+ 	
+     
+</TableLayout>

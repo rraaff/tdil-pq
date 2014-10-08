@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlocar_application_fullmenu" />
+        </TableRow>
+
+		<TableRow
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+		
+			<TextView
+				android:id="@+id/vluDescription"
+				style="@style/modal_subtitleinform"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:text="@string/lst_title_vlu" />
+		
+		</TableRow>
+
+         <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+
+            <LinearLayout
+                android:id="@+id/vluMessagesListLoadingContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|top"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+		
+		        <TextView
+		            android:id="@+id/vluMessagesListLoading"
+		            android:layout_width="wrap_content"
+		            android:layout_height="80dp"
+		            android:layout_marginTop="30dp"
+		            android:background="@drawable/fake_vlu_progressbar_000_per"
+		            android:gravity="center_horizontal|center_vertical"
+		            android:paddingBottom="45dp"
+		            android:text="@string/lst_title_last_news"
+		            android:textAllCaps="true"
+		            android:textSize="14sp" />
+
+		    </LinearLayout>
+            
+			<LinearLayout
+			    android:id="@+id/vluMessagesListEmptyContainer"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:background="@color/bgBase"
+			    android:orientation="vertical"
+			    android:visibility="gone" >
+		
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp"
+		            android:paddingTop="10dp"
+		            android:text="Tu equipo funciona correctamente"
+		            android:textAllCaps="true"
+		            android:textColor="@color/state_ok"
+		            android:textSize="18sp" />
+
+		        <TextView
+		            android:id="@+id/textView1"
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:paddingBottom="10dp"
+		            android:paddingLeft="10dp"
+		            android:paddingRight="10dp"
+		            android:paddingTop="5dp"
+		            android:text="NO ENCONTRAMOS ERRORES EN TUS EQUIPOS"
+		            android:textColor="@color/bgBaseGray"
+		            android:textSize="15sp" />
+
+		        <ImageView
+		            android:id="@+id/imageView1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:src="@drawable/bg_item_inlist_off" />
+
+		    </LinearLayout>
+            
+            <LinearLayout
+                android:id="@+id/vluMessagesListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+		
+		        <TextView
+		            android:id="@+id/lastChanges"
+		            style="@style/modal_subtitleinform"
+		            android:text="@string/lst_title_last_news"
+		            android:visibility="gone" />
+		
+		        <ListView
+		            android:id="@+id/vluMessagesList"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:background="@color/grayLightBase"
+		            android:divider="@drawable/bg_item_inlist" >
+
+		        </ListView>
+
+		        <LinearLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:background="@color/bgCream"
+		            android:orientation="vertical" >
+	
+		            <TextView
+		                android:id="@+id/textView2"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:padding="10dp"
+		                android:text="SI UNO DE TUS EQUIPOS REQUIERE MANTENIMIENTO COMUNICATE AL 0800-122-5652"
+		                android:textColor="@color/black"
+		                android:textSize="15sp" />
+	
+		            <ImageView
+		                android:id="@+id/imageView2"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:src="@drawable/bg_item_inlist_off" />
+
+	        </LinearLayout>
+		
+		    </LinearLayout>
+
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forcar" />
+        </TableRow>
+    </LinearLayout>
+</merge>

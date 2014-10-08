@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inloplaces_application_fullmenu" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+
+            <!-- RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:gravity="bottom" -->
+
+				<RelativeLayout
+					android:id="@+id/content"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					
+					android:gravity="center" >
+
+	                <com.google.android.gms.maps.MapView
+	                    android:id="@+id/mapview"
+	                    android:layout_width="fill_parent"
+	                    android:layout_height="fill_parent" />
+
+                </RelativeLayout>
+
+            <!-- /RelativeLayout  android:layout_above="@id/footer" -->
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toplayer85"
+            android:gravity="center_horizontal" >
+
+            <ImageButton
+                android:id="@+id/placesParkingsButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_parkings" />
+
+            <ImageButton
+                android:id="@+id/placesPetrolButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_gasstations" />
+
+            <ImageButton
+                android:id="@+id/placesLojackButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_places_lojack" />
+
+            <ImageButton
+                android:id="@+id/placesLocateButton"
+                style="@style/btn_cars"
+                android:contentDescription="@string/action_home"
+                android:background="@drawable/ic_cars_position_off" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer" />
+        </TableRow>
+    </LinearLayout>
+</merge>

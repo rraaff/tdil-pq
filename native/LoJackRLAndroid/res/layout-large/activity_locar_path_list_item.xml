@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+	<LinearLayout style="@style/row_twocols_container" >
+
+		<LinearLayout style="@style/row_innercolumn_container" >
+		    
+		    <LinearLayout style="@style/row_innercontent" >
+		        
+		        <LinearLayout style="@style/gen_fil_and_wrap" >
+
+					<TextView
+					    android:id="@+id/pathItemDescription"
+					    style="@style/item_title_01"
+					    android:text="Alarma cochera" />
+					
+				</LinearLayout>
+
+				<LinearLayout
+				    style="@style/row_innerrow_data_container" >
+
+					<TextView
+					    android:id="@+id/pathItemDate"
+					    style="@style/innerrow_labelfield"
+					    android:paddingBottom="10dp"
+					    android:paddingLeft="20dp"
+					    android:text="2013-05-04 18:20"
+					    android:textColor="@color/black" />
+
+					<TextView
+					    android:id="@+id/textView1"
+					    style="@style/innerrow_labelfield"
+					    android:paddingLeft="20dp"
+					    android:text="@string/lbl_speed" />
+
+					<TextView
+					    android:id="@+id/pathItemSpeed"
+					    style="@style/innerrow_labelfield"
+					    android:textColor="@color/black"
+					    android:text="0" />
+
+					<TextView
+					    android:id="@+id/textView2"
+					    style="@style/innerrow_labelfield"
+					    android:paddingLeft="5dp"
+					    android:text="@string/lbl_speed_unit" />
+	
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+
+		<LinearLayout style="@style/row_innercolumn_containerImageSmall">
+
+			<ImageButton style="@style/icon_inrow_go"
+			    android:id="@+id/goToPathDetail" />
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</TableLayout>
