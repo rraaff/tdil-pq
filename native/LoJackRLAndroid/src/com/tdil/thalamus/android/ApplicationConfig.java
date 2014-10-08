@@ -9,20 +9,20 @@ public class ApplicationConfig {
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PREPRO
-//	public static final String APP_DOMAIN = "www.lojack-app.com.ar:82";
-//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
+	public static final String APP_DOMAIN = "www.lojack-app.com.ar:82";
+	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PABLO
 //	public static final String APP_DOMAIN = "192.168.252.104:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
-//MARCOS
+	//MARCOS
 //	public static final String APP_DOMAIN = "192.168.0.134:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
 //RODRIGO
-	public static final String APP_DOMAIN = "192.168.1.106:8180";
-	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
+//	public static final String APP_DOMAIN = "192.168.1.106:8180";
+//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
@@ -36,11 +36,10 @@ public class ApplicationConfig {
 	public static final String URL_CARS_NOT_CLIENT =		URL_WEBSITE + "locar_notclient.jsp";
 	public static final String URL_PETS_NOT_CLIENT =		URL_WEBSITE + "lopet_notclient.jsp";
 	public static final String URL_PARKED_MODE_NOT_CLIENT =	URL_WEBSITE + "lopet_notclient.jsp";
-//	public static final String URL_CLUB_NOT_CLIENT =		"http://localhost:8180/LoJackWeb/loclub_notclient.jsp";
 	
 	public static final String URL_NOT_CLIENT = URL_WEBSITE + "loapp_notclient.jsp";
 	
-	public static final String URL_LEGALES_NOT_LOGGED = URL_WEBSITE + "loapp_notclient.jsp";
+	public static final String URL_LEGALES_NOT_LOGGED = URL_WEBSITE + "legales_webview.jsp";
 	
 	public static final String ALERT_CENTER_PHONE = "08003330911";
 	public static final String HOME_ASSIST_CENTER_PHONE = "08003330911";
