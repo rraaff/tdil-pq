@@ -185,7 +185,7 @@ public class ActivityParkedModeVehicleDetail extends LoJackWithProductMenuActivi
 		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
 		                       public void onClick(DialogInterface dialog, int whichButton) {
 		                    	   dialog.dismiss();
-		                    	   activity.finish();
+//		                    	   activity.finish();
 		                       }
 		               }).show();
 				} else {
