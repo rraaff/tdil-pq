@@ -9,7 +9,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
-		<TextView
+		<com.tdil.thalamus.android.gui.components.StyledTextView
             android:id="@+id/lastChanges"
             style="@style/modal_subtitleinform"
             android:text="@string/lst_title_cameras_list" />

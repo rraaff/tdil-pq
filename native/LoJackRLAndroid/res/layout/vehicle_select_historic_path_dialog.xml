@@ -15,7 +15,7 @@
 		    android:gravity="center_vertical|center_horizontal"
 		    android:orientation="vertical" >
 
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 			    android:id="@+id/textView1"
 			    style="@style/modal_maintitle_fordialogs"
 			    android:text="@string/title_choose_date" />
@@ -34,12 +34,12 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content" >
 
-				<TextView
+				<com.tdil.thalamus.android.gui.components.StyledTextView
 				    android:id="@+id/textView2"
 				    style="@style/label_plate"
 				    android:text="@string/lbl_plate" />
 
-				<TextView
+				<com.tdil.thalamus.android.gui.components.StyledTextView
 				    android:id="@+id/vehiclePathDomainTextView"
 				    style="@style/label_plate_var" />
 
@@ -55,22 +55,22 @@
 				    android:layout_width="match_parent"
 				    android:layout_height="wrap_content">
 				    
-				    <RadioButton
+				    <com.tdil.thalamus.android.gui.components.StyleRadioButton
 				        android:id="@+id/pathLastHourRadioButton"
 				        style="@style/radiobutton_inlist"
 				        android:text="ULTIMA HORA" />
 				    
-				    <RadioButton
+				    <com.tdil.thalamus.android.gui.components.StyleRadioButton
 						android:id="@+id/pathTodayRadioButton"
 				        android:text="HOY"
 				        style="@style/radiobutton_inlist" />
 				    
-				    <RadioButton
+				    <com.tdil.thalamus.android.gui.components.StyleRadioButton
 						android:id="@+id/pathYesterdayRadioButton"
 				        android:text="AYER"
 				        style="@style/radiobutton_inlist" />
 				    
-				    <RadioButton
+				    <com.tdil.thalamus.android.gui.components.StyleRadioButton
 						android:id="@+id/pathLastWeekRadioButton"
 				        android:text="ULTIMA SEMANA"
 				        style="@style/radiobutton_inlist" />
@@ -109,7 +109,7 @@
 				    android:layout_weight="1"
 				    android:orientation="horizontal" >
 
-				    <Button
+				    <com.tdil.thalamus.android.gui.components.StyledButton
 				        android:id="@+id/vehiclePathButtonCancel"
 				        style="@style/btn_backwards"
 						android:text="@string/btn_lbl_back" />
@@ -123,7 +123,7 @@
 				    android:gravity="right"
 				    android:orientation="horizontal" >
 
-				    <Button
+				    <com.tdil.thalamus.android.gui.components.StyledButton
 				        android:id="@+id/vehiclePathButtonOK"
 				        style="@style/btn_forward"
 				        android:layout_gravity="right|center_horizontal"

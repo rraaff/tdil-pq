@@ -35,6 +35,7 @@ public class ActivityCarsPathHistory extends LoJackWithProductMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_path);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
 		Bundle extras = getIntent().getExtras();
 		positionHistoryCollection = (PositionHistoryCollection)extras.getSerializable(Position_History_Collection);

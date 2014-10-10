@@ -28,6 +28,7 @@ public class CheckForUpdateActivity extends LoJackNotLoggedActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_check_for_update);
+		customizeActionBar(false);
 		mHandler = new Handler();
 		checkUpdate.start();
 	}

@@ -117,6 +117,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_main);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         mapView = (MapView) this.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);

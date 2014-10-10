@@ -61,6 +61,7 @@ public class ActivityHomeNotClient extends LoJackWithProductMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_not_client);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         
         webView = (WebView) findViewById(R.id.webView);

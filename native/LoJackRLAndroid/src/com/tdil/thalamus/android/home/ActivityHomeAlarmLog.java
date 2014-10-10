@@ -40,6 +40,7 @@ public class ActivityHomeAlarmLog extends HomeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_alarm_log);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
 		Bundle extras = getIntent().getExtras();

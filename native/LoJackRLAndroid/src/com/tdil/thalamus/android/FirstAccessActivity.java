@@ -27,9 +27,6 @@ public class FirstAccessActivity extends LoJackNotLoggedActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_first_access);
-		setTypeface(this, R.id.alreadyClientButton);
-		setTypeface(this, R.id.notClientButton);
-
 		customizeActionBar(false);
 
 		//View sendEmergencyButton = findViewById(R.id.sendEmergencyButton);

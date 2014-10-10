@@ -64,7 +64,7 @@ public abstract class LoJackActivity extends ActionBarActivity {
 					}
 				}
 			}
-			setTypeface(this, actionBarLayout.findViewById(R.id.actionBarTitle)); 
+//			setTypeface(this, actionBarLayout.findViewById(R.id.actionBarTitle)); 
 			this.getSupportActionBar().setCustomView(actionBarLayout);
 			/** START ALERTA */
 //			AlertLogic.installLogic(this);
@@ -97,7 +97,7 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		
 		TextView titleTextView = (TextView)actionBarLayout.findViewById(R.id.actionBarTitle);
 		titleTextView.setText(title);
-		setTypeface(this, titleTextView); 
+//		setTypeface(this, titleTextView); 
 		this.getSupportActionBar().setCustomView(actionBarLayout);
 		/** START ALERTA */
 //		AlertLogic.installLogic(this);
@@ -264,16 +264,32 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		}
 	}
 	
+	public static void setCustomTypeface(Context context, TextView view) {
+		view.setTypeface(getNormalFont(context));
+	}
+	
+	public static void setCustomTypeface(Context context, EditText view) {
+		view.setTypeface(getNormalFont(context));
+	}
+	
+	public static void setCustomTypeface(Context context, Button view) {
+		view.setTypeface(getNormalFont(context));
+	}
+	
+	public static void setCustomTypeface(Context context, CheckBox view) {
+		view.setTypeface(getNormalFont(context));
+	}
+	
 	public static Typeface getNormalFont(Context context) {
         if(normalFont == null) {
-            normalFont = Typeface.createFromAsset(context.getAssets(),"Peugeot_Normal_v2.ttf");
+            normalFont = Typeface.createFromAsset(context.getAssets(),"blackbooktwo.ttf");
         }
         return normalFont;
     }
 	
 	public static Typeface getLightFont(Context context) {
         if(boldFont == null) {
-            boldFont = Typeface.createFromAsset(context.getAssets(),"Peugeot_Light_v2.ttf");
+            boldFont = Typeface.createFromAsset(context.getAssets(),"blackbooktwo.ttf");
         }
         return boldFont;
     }

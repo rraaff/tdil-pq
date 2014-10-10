@@ -23,7 +23,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 		
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 				android:id="@+id/lightDescription"
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"

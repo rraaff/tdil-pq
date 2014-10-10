@@ -32,7 +32,7 @@
             <LinearLayout 
                 style="@style/modal_container" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/loadingInfoText"
                     style="@style/modal_maintitle"
                     android:text="@string/title_activity_update" />
@@ -76,7 +76,7 @@
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_apellido" />
 			
-			                <TextView
+			                <com.tdil.thalamus.android.gui.components.StyledTextView
 			                    style="@style/modal_subtitleinform"
 			                    android:text="@string/subtitle_sex" />
 			                
@@ -84,12 +84,12 @@
 							    android:layout_width="match_parent" 
 							    android:layout_height="wrap_content">
 			
-							    <RadioButton
+							    <com.tdil.thalamus.android.gui.components.StyleRadioButton
 				                    android:id="@+id/chkMale"
 				                    style="@style/checkbox_white_01"
 				                    android:text="@string/btn_male" />
 			
-				                <RadioButton
+				                <com.tdil.thalamus.android.gui.components.StyleRadioButton
 				                    android:id="@+id/chkFemale"
 				                    style="@style/checkbox_white_01"
 				                    android:text="@string/btn_female" />
@@ -104,11 +104,11 @@
 			                    android:hint="@string/hnt_email"
 			                    android:inputType="textEmailAddress" />
 			
-			                <TextView
+			                <com.tdil.thalamus.android.gui.components.StyledTextView
 			                    android:id="@+id/birthDate"
 			                    style="@style/modal_subtitleinform" />
 
-			               <TextView
+			               <com.tdil.thalamus.android.gui.components.StyledTextView
 			                    style="@style/modal_subtitleinform"
 			                    android:text="@string/subtitle_address" />
 
@@ -152,12 +152,12 @@
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_postal_code" />
 			
-			                <CheckBox
+			                <com.tdil.thalamus.android.gui.components.StyledCheckbox
 			                    android:id="@+id/optIn"
 			                    style="@style/checkbox_white_01"
 			                    android:text="@string/btn_optIn" />
 			
-				            <Button
+				            <com.tdil.thalamus.android.gui.components.StyledButton
 				                android:id="@+id/updateButton"
 				                style="@style/btn_forward"
 				                android:layout_margin="8dp"
@@ -186,7 +186,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_promo_title"
                     android:text="@string/rd_main_promo_title"
                     style="@style/txt_mainpromo" />

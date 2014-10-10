@@ -41,7 +41,7 @@ public class VLUMessagesActivity extends LoJackLoggedActivity {
 		super.onCreate(savedInstanceState);
 		HeaderLogic.installTabLogic(this);
 		setContentView(R.layout.activity_vlu_messages);
-		customizeActionBar();
+		customizeActionBar(true);
 		
 		Bundle extras = getIntent().getExtras();
 		vluMessagesCount = extras.getInt(VLU_MESSAGES_COUNT);

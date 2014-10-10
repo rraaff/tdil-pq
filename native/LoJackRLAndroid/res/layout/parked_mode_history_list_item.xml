@@ -12,7 +12,7 @@
 		        
 		        <LinearLayout style="@style/gen_fil_and_wrap" >
 
-					<TextView
+					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/pmHistoryActionTextView"
 					    style="@style/item_title_01"
 					    android:text="ACTIVACION" />
@@ -21,7 +21,7 @@
 
 				<LinearLayout style="@style/row_innerrow_data_container" >
 					
-					<TextView
+					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/pmHistoryDateTextView"
 					    style="@style/innerrow_labelfield"
 					    android:paddingBottom="10dp"

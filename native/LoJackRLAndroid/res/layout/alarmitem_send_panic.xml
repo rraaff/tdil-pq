@@ -15,11 +15,11 @@
 		    android:layout_height="wrap_content"
 		    android:orientation="vertical" >
 
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 			    android:id="@+id/alarmDescription"
 			    style="@style/modal_subtitleinform" />
 	
-			<Button
+			<com.tdil.thalamus.android.gui.components.StyledButton
 			    android:id="@+id/sendPanicSignalButton"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"

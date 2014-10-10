@@ -15,12 +15,12 @@
 		    android:gravity="center_vertical|center_horizontal"
 		    android:orientation="vertical" >
 
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 			    android:id="@+id/selectVehicleForActionTextView"
 			    style="@style/modal_maintitle_fordialogs"
 			    android:text="@string/title_select_vehicle" />
 		    
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 			    android:id="@+id/textView1"
 			    style="@style/modal_subtitle_fordialogs"
 			    android:text="@string/title_select_vehicle" />
@@ -61,7 +61,7 @@
 			    android:orientation="vertical"
 			    android:padding="10dp" >
 	
-				<Button
+				<com.tdil.thalamus.android.gui.components.StyledButton
 					android:id="@+id/selectVehicleCancel"
 					style="@style/btn_backwards"
 					android:text="@string/btn_lbl_back" />

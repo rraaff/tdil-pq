@@ -31,7 +31,7 @@
             <LinearLayout 
                 style="@style/modal_container" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/loadingInfoText"
                     style="@style/modal_maintitle"
                     android:text="@string/title_activity_login" />
@@ -55,7 +55,7 @@
                         android:inputType="textPassword"
                         style="@style/text_inputs_white_01" />
 
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/rememberPasswordCheckbox"
                         style="@style/checkbox_white_01"
                         android:paddingLeft="30dp"
@@ -66,7 +66,7 @@
                     <LinearLayout
                         style="@style/block_specialitems" >
 
-                        <Button
+                        <com.tdil.thalamus.android.gui.components.StyledButton
                             android:id="@+id/requestResetPassword"
                             style="@style/btn_inlist_witharrow"
                             android:focusable="false"
@@ -75,7 +75,8 @@
 
                     </LinearLayout>
 
-                    <TextView
+
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/appVersion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -116,7 +117,7 @@
 
                     </LinearLayout>
 
-                    <Button
+                    <com.tdil.thalamus.android.gui.components.StyledButton
                         android:id="@+id/loginButtons"
                         android:onClick="@string/dologin"
                         android:text="@string/btn_tag_login"
@@ -140,13 +141,13 @@
                 android:layout_marginTop="5dp"
                 android:orientation="vertical" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_promo_title"
                     style="@style/txt_mainpromo"
                     android:text="@string/rd_main_promo_title"
                     android:textSize="18sp" />
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_hookline"
                     style="@style/txt_hookline"
                     android:paddingTop="2dp"

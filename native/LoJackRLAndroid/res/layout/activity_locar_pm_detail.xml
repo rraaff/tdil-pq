@@ -23,7 +23,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 		
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 				android:id="@+id/parkModeDashboardTitle"
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"
@@ -55,12 +55,12 @@
 
                         <LinearLayout style="@style/title_dashboard_container" >
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/pmDetailDomainTextView"
                                 style="@style/title_dashboard"
                                 android:text="KBY852" />
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/pmDetailStatusTextView"
                                 style="@style/title_dashboard_state"
                                 android:text="@string/status_unknown" />
@@ -73,7 +73,7 @@
 
                         <LinearLayout style="@style/toggle_button_container" >
 
-                            <ToggleButton
+                            <com.tdil.thalamus.android.gui.components.StyledToggleButton
                                 android:id="@+id/pmStatusSwitch"
                                 android:layout_width="match_parent"
                                 android:layout_height="48dp"
@@ -95,19 +95,19 @@
 
                         <LinearLayout style="@style/btn_inlist_witharrow" >
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/positionHistorySpeedTextView"
                                 style="@style/label_data_indatalist"
                                 android:text="Telefono 1 para SMS" />
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/pmStatusPhoneTextView"
                                 style="@style/label_datastring_indatalist"
                                 android:text="TextView" />
                         </LinearLayout>
                     </TableRow>
 
-	                <TextView
+	                <com.tdil.thalamus.android.gui.components.StyledTextView
 	                    style="@style/modal_subtitleinform"
 	                    android:text="@string/subtitle_pm_config_alarmsgen" />
                     
@@ -119,12 +119,12 @@
 						    android:layout_width="match_parent"
 						    android:layout_height="wrap_content">
 
-	                        <RadioButton
+	                        <com.tdil.thalamus.android.gui.components.StyleRadioButton
 	                            android:id="@+id/pmStatusAlwaysRadioButton"
 	                            style="@style/radiobutton_inlist" 
 	                            android:text="@string/lbl_always" />
 
-	                        <RadioButton
+	                        <com.tdil.thalamus.android.gui.components.StyleRadioButton
 	                            android:id="@+id/pmStatusWithoutContactRadioButton"
 	                            style="@style/radiobutton_inlist" 
 	                            android:text="@string/lbl_nocontact" />
@@ -152,7 +152,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" >
 
-                <Button
+                <com.tdil.thalamus.android.gui.components.StyledButton
                     android:id="@+id/pmVehicleDetailBack"
                     style="@style/btn_backwards"
                     android:focusable="false"
@@ -167,7 +167,7 @@
                 android:layout_weight="1"
                 android:gravity="right" >
 
-                <Button
+                <com.tdil.thalamus.android.gui.components.StyledButton
                     android:id="@+id/pmVehicleDetailSave"
                     style="@style/btn_forward"
                     android:focusable="false"

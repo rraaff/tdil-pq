@@ -22,7 +22,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 		
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 				android:id="@+id/parkModeDashboardTitle"
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"
@@ -54,11 +54,11 @@
 				        
 				        <LinearLayout style="@style/title_dashboard_container" >
 				            
-				            <TextView style="@style/title_dashboard"
+				            <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/title_dashboard"
 				                android:id="@+id/pmDetailDomainTextView"
 				                android:text="KBY852" />
 				            
-							<TextView style="@style/title_dashboard_state"
+							<com.tdil.thalamus.android.gui.components.StyledTextView style="@style/title_dashboard_state"
 							    android:id="@+id/pmDetailStatusTextView"
 							    android:text="@string/status_unknown" />
 	
@@ -72,7 +72,7 @@
 	
 						<LinearLayout style="@style/toggle_button_container" >
 	
-	                    	<ToggleButton
+	                    	<com.tdil.thalamus.android.gui.components.StyledToggleButton
 								android:id="@+id/pmStatusSwitch"
 								android:layout_width="match_parent"
 								android:layout_height="48dp"
@@ -97,7 +97,7 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 					
-					    <Button
+					    <com.tdil.thalamus.android.gui.components.StyledButton
 					        android:id="@+id/pmVehicleGoConfig"
 					        style="@style/ButtonLoginList"
 					        android:drawableLeft="@drawable/icon_config_off"
@@ -112,7 +112,7 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 					
-					    <Button style="@style/ButtonLoginList"
+					    <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonLoginList"
 					        android:id="@+id/pmVehicleGoHistory"
 					        android:text="@string/btn_tag_history" />
 					
@@ -130,7 +130,7 @@
             android:gravity="left"
             android:padding="5dp" >
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/pmVehicleHomeBack"
                 style="@style/btn_backwards"
                 android:focusable="false"

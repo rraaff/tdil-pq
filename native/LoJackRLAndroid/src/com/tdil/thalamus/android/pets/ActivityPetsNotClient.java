@@ -23,6 +23,7 @@ import android.webkit.WebViewClient;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ApplicationConfig;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.home.DemoActivityHome.GeoWebChromeClient;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
@@ -30,7 +31,7 @@ import com.tdil.thalamus.android.utils.Login;
 
 
 
-public class ActivityPetsNotClient extends ActionBarActivity {
+public class ActivityPetsNotClient extends LoJackLoggedActivity {
 
 	private WebView webView;
 	
@@ -59,7 +60,7 @@ public class ActivityPetsNotClient extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pets_not_client);
-
+        customizeActionBar(true);
     	webView = (WebView) findViewById(R.id.webView);
 		
 		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
@@ -118,17 +119,5 @@ public class ActivityPetsNotClient extends ActionBarActivity {
 			e.printStackTrace();
 		}
     }
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
-	}
 
 }

@@ -22,7 +22,7 @@
             android:background="@color/grayTabBase"
             android:orientation="horizontal" >
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/alarmas"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -34,7 +34,7 @@
                 android:textSize="14sp"
                 style="@android:attr/buttonBarButtonStyle" />
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/lights"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -46,7 +46,7 @@
                 android:textSize="14sp"
                 style="@android:attr/buttonBarButtonStyle" />
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/cameras"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
@@ -58,7 +58,7 @@
                 android:textSize="14sp"
                 style="@android:attr/buttonBarButtonStyle" />
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/updateButton"
                 style="@android:attr/buttonBarButtonStyle"
                 android:layout_width="24dp"
@@ -68,7 +68,7 @@
                 android:text="@string/btn_tag_modify_my_data"
                 android:textColor="@color/bgBase" />
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/changePassword"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"

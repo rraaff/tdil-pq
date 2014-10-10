@@ -59,6 +59,7 @@ public class DemoActivityHome extends LoJackWithProductMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.demo_activity_lohome_main);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         
         webView = (WebView) findViewById(R.id.webView);

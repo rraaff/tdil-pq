@@ -7,7 +7,7 @@
     android:gravity="center" >
 
 
-    <Button
+    <com.tdil.thalamus.android.gui.components.StyledButton
         android:id="@+id/btnPanic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

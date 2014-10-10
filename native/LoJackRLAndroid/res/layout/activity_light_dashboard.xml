@@ -54,7 +54,7 @@
 					        android:layout_height="wrap_content"
 					        android:orientation="horizontal">
 			
-					        <TextView
+					        <com.tdil.thalamus.android.gui.components.StyledTextView
 					            android:id="@+id/lightDescription"
 					            android:layout_width="fill_parent"
 					            android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
 				        
 					    	<!-- hide switch -->
 
-						    <ToggleButton
+						    <com.tdil.thalamus.android.gui.components.StyledToggleButton
 						        android:id="@+id/switchActivate"
 						        android:layout_width="0dp"
 						        android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
 						        android:textOff="OFF"
 						        android:textOn="ON" />
 						    
-						    <ToggleButton
+						    <com.tdil.thalamus.android.gui.components.StyledToggleButton
 						        android:id="@+id/switchRandom"
 						        android:layout_width="0dp"
 						        android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
 					    android:paddingTop="6dp"
 					    android:background="@color/bgBase">
 			
-						<TextView
+						<com.tdil.thalamus.android.gui.components.StyledTextView
 						    android:id="@+id/textView2"
 						    android:layout_width="wrap_content"
 						    android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
 						    android:textColor="@color/lst_itm_normal"
 						    android:textSize="12sp" />
 						
-						<TextView
+						<com.tdil.thalamus.android.gui.components.StyledTextView
 						    android:id="@+id/lightStatus"
 						    android:layout_width="wrap_content"
 						    android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
 					    android:paddingTop="6dp"
 					    android:background="@color/bgBase">
 				
-					   <TextView
+					   <com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/loadingInfoText"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
 						    android:textColor="@color/lst_itm_normal"
 						    android:textSize="12sp" />
 					
-					   <TextView
+					   <com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/lastChangeDate"
 							android:layout_width="wrap_content"
 							android:layout_height="fill_parent"
@@ -167,7 +167,7 @@
 					    android:paddingRight="12dp"
 					    android:paddingTop="6dp" >
 			
-					    <TextView
+					    <com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/lastChangeStatus"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
 							android:textColor="@color/black"
 							android:textSize="12sp"  />
 			
-					   <TextView
+					   <com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/textView3"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
 							android:textColor="@color/lst_itm_normal"
 							android:textSize="12sp" />
 			
-					   <TextView
+					   <com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/lastChangeUser"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
 					    android:padding="12dp"
 					    android:background="@color/bgBase" >
 			
-					    <Button
+					    <com.tdil.thalamus.android.gui.components.StyledButton
 						    android:id="@+id/goToViewLightLog"
 						    android:layout_width="fill_parent"
 						    android:layout_height="wrap_content"

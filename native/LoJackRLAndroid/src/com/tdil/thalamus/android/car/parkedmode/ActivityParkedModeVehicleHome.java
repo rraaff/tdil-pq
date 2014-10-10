@@ -36,6 +36,7 @@ public class ActivityParkedModeVehicleHome extends LoJackWithProductMenuActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_pm_home);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
 		Bundle extras = getIntent().getExtras();
 		parkedModeStatus = (ParkedModeStatus)extras.getSerializable(VEHICLE);

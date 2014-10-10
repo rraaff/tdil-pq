@@ -28,7 +28,7 @@
 
             <!-- TODO: (Marcos) Quiero meter el título de esto acá y no me funciona.
             
-            <TextView
+            <com.tdil.thalamus.android.gui.components.StyledTextView
                 android:id="@+id/lastChanges"
                 style="@style/modal_subtitleinform"
                 android:text="@string/lst_title_last_changes" />

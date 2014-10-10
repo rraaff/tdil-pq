@@ -38,7 +38,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|center_horizontal" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/textView1"
                     style="@style/appmenu_button_basic"
                     android:text="@string/btn_tag_appmenu_home" />
@@ -48,7 +48,7 @@
                 style="@style/appmenu_tab_basic"
                 android:layout_height="match_parent" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/textView2"
                     style="@style/appmenu_button_basic"
                     android:text="@string/btn_tag_appmenu_cars" />
@@ -58,7 +58,7 @@
                 style="@style/appmenu_tab_basic"
                 android:layout_height="match_parent" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/textView3"
                     style="@style/appmenu_button_selected"
                     android:text="@string/btn_tag_appmenu_pets" />
@@ -68,7 +68,7 @@
                 style="@style/appmenu_tab_basic"
                 android:layout_height="match_parent" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/textView4"
                     style="@style/appmenu_button_basic"
                     android:text="@string/btn_tag_appmenu_apps" />

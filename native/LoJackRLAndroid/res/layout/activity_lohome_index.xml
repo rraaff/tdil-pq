@@ -64,9 +64,9 @@
 
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-                                    <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10dp" android:text="MONITOREA TUS ALARMAS" android:textColor="@color/black" android:textSize="18sp" />
+                                    <com.tdil.thalamus.android.gui.components.StyledTextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10dp" android:text="MONITOREA TUS ALARMAS" android:textColor="@color/black" android:textSize="18sp" />
 
-                                    <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="10dp" android:paddingTop="2dp" android:text="Controlar a distancia la alarma de tu hogar." android:textColor="@color/lojack_red" android:textSize="11sp" />
+                                    <com.tdil.thalamus.android.gui.components.StyledTextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="10dp" android:paddingTop="2dp" android:text="Controlar a distancia la alarma de tu hogar." android:textColor="@color/lojack_red" android:textSize="11sp" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -93,9 +93,9 @@
 
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10dp" android:text="ENCENDÉ/APAGÁ LUCES" android:textColor="@color/black" android:textSize="18sp" />
+                                    <com.tdil.thalamus.android.gui.components.StyledTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10dp" android:text="ENCENDÉ/APAGÁ LUCES" android:textColor="@color/black" android:textSize="18sp" />
 
-                                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="10dp" android:paddingTop="2dp" android:text="Activar o desactivar las luces." android:textColor="@color/lojack_red" android:textSize="11sp" />
+                                    <com.tdil.thalamus.android.gui.components.StyledTextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="10dp" android:paddingTop="2dp" android:text="Activar o desactivar las luces." android:textColor="@color/lojack_red" android:textSize="11sp" />
 
                                 </LinearLayout>
                             </LinearLayout>
@@ -122,9 +122,9 @@
 
                                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-                                    <TextView  android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10dp" android:text="MONITOREA TUS CÁMARAS" android:textColor="@color/black" android:textSize="18sp" />
+                                    <com.tdil.thalamus.android.gui.components.StyledTextView  android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingTop="10dp" android:text="MONITOREA TUS CÁMARAS" android:textColor="@color/black" android:textSize="18sp" />
 
-                                    <TextView  android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="10dp" android:paddingTop="2dp" android:text="Modificar la posición de las cámaras." android:textColor="@color/lojack_red" android:textSize="11sp" />
+                                    <com.tdil.thalamus.android.gui.components.StyledTextView  android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingBottom="10dp" android:paddingTop="2dp" android:text="Modificar la posición de las cámaras." android:textColor="@color/lojack_red" android:textSize="11sp" />
 
                                 </LinearLayout>
                             </LinearLayout>

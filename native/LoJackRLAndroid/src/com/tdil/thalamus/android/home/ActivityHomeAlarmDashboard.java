@@ -55,6 +55,7 @@ public class ActivityHomeAlarmDashboard extends HomeActivity implements IAlarmsA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_alarms_dashboard);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
         Resources res = getResources();

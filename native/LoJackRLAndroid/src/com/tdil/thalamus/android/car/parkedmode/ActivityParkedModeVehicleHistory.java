@@ -31,6 +31,7 @@ public class ActivityParkedModeVehicleHistory extends LoJackWithProductMenuActiv
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_pm_history_list);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
 		Bundle extras = getIntent().getExtras();
 		parkedModeHistoryLogBeanCollection = (ParkedModeHistoryLogBeanCollection)extras.getSerializable(HISTORY_LIST);

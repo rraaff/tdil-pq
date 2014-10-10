@@ -101,7 +101,7 @@
                      android:layout_alignParentLeft="true"
                      android:background="@drawable/toplayer80_white" >
 
-                     <TextView
+                     <com.tdil.thalamus.android.gui.components.StyledTextView
                          android:id="@+id/vluMessagesAlertTextView"
                          style="@style/btn_inlist_witharrow"
                          android:text="@string/vlu_message_alert"
@@ -117,7 +117,7 @@
                      android:layout_alignParentLeft="true"
                      android:background="@drawable/toplayer80_white" >
 
-                     <TextView
+                     <com.tdil.thalamus.android.gui.components.StyledTextView
                          android:id="@+id/vluMessagesOkTextView"
                          style="@style/btn_inlist_witharrow"
                          android:text="@string/vlu_message_ok"

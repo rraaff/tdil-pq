@@ -28,7 +28,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_promo_title"
                     style="@style/txt_mainpromo"
                     android:text="@string/rd_main_promo_title" />
@@ -54,7 +54,7 @@
 	            android:gravity="center"
 	            android:orientation="horizontal" >
 	
-	            <Button
+	            <com.tdil.thalamus.android.gui.components.StyledButton
 	                android:id="@+id/btnFooterParkings"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
 	                android:text="@string/btn_parkings"
 	                android:visibility="visible" />
 	
-	            <Button
+	            <com.tdil.thalamus.android.gui.components.StyledButton
 	                android:id="@+id/btnFooterPrevent"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
 	                android:text="@string/btn_prevent"
 	                android:textColor="@color/new_wheel_link" />
 	            
-	            <Button
+	            <com.tdil.thalamus.android.gui.components.StyledButton
 	                android:id="@+id/btnFooterHome"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
 	                android:text="@string/btn_prevent"
 	                android:textColor="@color/new_wheel_link" />
 	
-	            <Button
+	            <com.tdil.thalamus.android.gui.components.StyledButton
 	                android:id="@+id/btnFooterPets"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
 	                android:text="@string/btn_prevent"
 	                android:textColor="@color/new_wheel_link" />
 	            
-	            <Button
+	            <com.tdil.thalamus.android.gui.components.StyledButton
 	                android:id="@+id/btnFooterEstacioname"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
 	                android:text="@string/btn_prevent"
 	                android:textColor="@color/new_wheel_link" />
 	            
-	            <Button
+	            <com.tdil.thalamus.android.gui.components.StyledButton
 	                android:id="@+id/btnClubLJ"
 	                android:layout_width="wrap_content"
 	                android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_hookline"
                     style="@style/txt_hookline"
                     android:text="@string/rd_main_hookline" />
@@ -145,7 +145,7 @@
 
 
     
-    <TextView
+    <com.tdil.thalamus.android.gui.components.StyledTextView
         android:id="@+id/dropTarget"
         android:layout_width="124dp"
         android:layout_height="124dp"

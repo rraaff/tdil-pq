@@ -31,7 +31,7 @@
             <LinearLayout 
                 style="@style/modal_container" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/loadingInfoText"
                     style="@style/modal_maintitle"
                     android:text="@string/title_request_reset" />
@@ -67,7 +67,7 @@
 		                    android:layout_height="match_parent"
 		                    android:orientation="vertical" >
 
-		                    <Button
+		                    <com.tdil.thalamus.android.gui.components.StyledButton
 		                        android:id="@+id/resetPasswordBack"
 		                        style="@style/btn_backwards"
 		                        android:onClick="@string/dologin"
@@ -81,7 +81,7 @@
 		                    android:layout_gravity="fill_horizontal|center_vertical"
 		                    android:gravity="right" >
 
-		                    <Button
+		                    <com.tdil.thalamus.android.gui.components.StyledButton
 		                        android:id="@+id/resetPasswordButton"
 		                        style="@style/btn_forward"
 		                        android:onClick="@string/dologin"
@@ -110,12 +110,12 @@
                 android:layout_marginTop="50dp"
                 android:orientation="vertical" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_promo_title"
                     android:text="@string/rd_main_promo_title"
                     style="@style/txt_mainpromo" />
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_hookline"
                     style="@style/txt_hookline"
                     android:text="@string/rd_main_hookline" />

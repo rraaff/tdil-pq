@@ -51,7 +51,7 @@
                             android1:orientation="horizontal"
                             android1:weightSum="6" >
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android1:id="@+id/alarmDescription"
                                 android1:layout_width="0dp"
                                 android1:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                                 android1:textColor="@color/lst_itm_title"
                                 android1:textSize="16sp" />
 
-                            <ToggleButton
+                            <com.tdil.thalamus.android.gui.components.StyledToggleButton
                                 android1:id="@+id/btnToggleAlarm"
                                 android1:layout_width="0dp"
                                 android1:layout_height="12sp"
@@ -83,7 +83,7 @@
                         android1:paddingRight="12dp"
                         android1:paddingTop="6dp" >
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/textView2"
                             android1:layout_width="wrap_content"
                             android1:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                             android1:textColor="@color/lst_itm_normal"
                             android1:textSize="12sp" />
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/alarmStatus"
                             android1:layout_width="wrap_content"
                             android1:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                         android1:paddingRight="12dp"
                         android1:paddingTop="6dp" >
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/loadingInfoText"
                             android1:layout_width="wrap_content"
                             android1:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                             android1:textColor="@color/lst_itm_normal"
                             android1:textSize="12sp" />
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/lastChangeDate"
                             android1:layout_width="wrap_content"
                             android1:layout_height="fill_parent"
@@ -137,7 +137,7 @@
                         android1:paddingRight="12dp"
                         android1:paddingTop="6dp" >
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/lastChangeStatus"
                             android1:layout_width="wrap_content"
                             android1:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                             android1:textColor="@color/black"
                             android1:textSize="12sp" />
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/textView3"
                             android1:layout_width="wrap_content"
                             android1:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                             android1:textColor="@color/lst_itm_normal"
                             android1:textSize="12sp" />
 
-                        <TextView
+                        <com.tdil.thalamus.android.gui.components.StyledTextView
                             android1:id="@+id/lastChangeUser"
                             android1:layout_width="wrap_content"
                             android1:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                         android1:background="@color/bgBase"
                         android1:padding="12dp" >
 
-                        <Button
+                        <com.tdil.thalamus.android.gui.components.StyledButton
                             android1:id="@+id/goToAlarmViewLog"
                             android1:layout_width="fill_parent"
                             android1:layout_height="wrap_content"

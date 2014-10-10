@@ -29,6 +29,7 @@ public class ActivityParkedModeMapView extends LoJackWithProductMenuActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_locar_pm_position);
+		customizeActionBar(true);
 		HeaderLogic.installTabLogic(this);
 		mapView = (MapView) this.findViewById(R.id.mapview);
 		mapView.onCreate(savedInstanceState);

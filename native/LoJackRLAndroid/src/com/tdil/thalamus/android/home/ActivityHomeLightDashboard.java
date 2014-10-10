@@ -57,6 +57,7 @@ public class ActivityHomeLightDashboard extends HomeActivity implements ILightsA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_lights_dashboard);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
         Bundle extras = getIntent().getExtras();

@@ -8,7 +8,7 @@
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content">
 					
-						<TextView
+						<com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/titleAlarmAgendasList"
 							style="@style/modal_subtitleinform"
 							android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 
-                        <Button style="@style/ButtonNewAgenda"
+                        <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonNewAgenda"
                             android:id="@+id/goToNewAgenda"
                             android:text="@string/btn_new_agenda" />
 
@@ -38,7 +38,7 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 
-                        <Button style="@style/ButtonAgendaGrayinList"
+                        <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonAgendaGrayinList"
                             android:id="@+id/goToAlarmViewLog"
                             android:text="Los JUEVES a la noche" />
 
@@ -51,7 +51,7 @@
 						android:layout_width="fill_parent"
 						android:layout_height="wrap_content">
 					
-						<TextView
+						<com.tdil.thalamus.android.gui.components.StyledTextView
 							android:id="@+id/titleAgendasEditor"
 							style="@style/modal_subtitleinform"
 							android:layout_width="match_parent"
@@ -68,41 +68,41 @@
 	                <!-- Fecha desde/hasta -->
 	                <!-- Horario desde/hasta -->
 	                
-	                <TextView
+	                <com.tdil.thalamus.android.gui.components.StyledTextView
 	                    style="@style/modal_subtitleinform"
 	                    android:text="@string/subtitle_agendas_repetitions" />
 
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepMonday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_monday" />
                     
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepTuesday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_tuesday" />
                     
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepWednesday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_wednesday" />
                     
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepThursday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_thursday" />
                     
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepFriday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_friday" />
                     
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepSaturday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_saturday" />
                     
-                    <CheckBox
+                    <com.tdil.thalamus.android.gui.components.StyledCheckbox
                         android:id="@+id/agendaRepSunday"
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_sunday" />

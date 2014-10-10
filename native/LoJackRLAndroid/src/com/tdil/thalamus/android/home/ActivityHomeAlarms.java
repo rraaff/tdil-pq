@@ -33,6 +33,7 @@ public class ActivityHomeAlarms extends HomeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lohome_alarms);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
         Resources res = getResources();

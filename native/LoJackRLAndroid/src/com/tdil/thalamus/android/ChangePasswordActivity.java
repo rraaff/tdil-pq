@@ -73,7 +73,7 @@ public class ChangePasswordActivity extends LoJackLoggedActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		customizeActionBar(true);
 		validator = new Validator(this);
 		validator.setValidationListener(this);
 

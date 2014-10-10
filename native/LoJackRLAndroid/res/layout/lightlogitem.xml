@@ -12,7 +12,7 @@
 
                 <LinearLayout style="@style/gen_fil_and_wrap" >
 
-                    <TextView
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/logLightUser"
                         style="@style/item_title_01"
                         android:paddingBottom="2dp"
@@ -22,14 +22,14 @@
 
                 <LinearLayout style="@style/row_innerrow_data_container" >
 
-                    <TextView
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/TextView02"
                         style="@style/innerrow_label"
                         android:layout_marginBottom="0dp"
                         android:paddingLeft="20dp"
                         android:text="@string/lst_itm_action" />
 
-                    <TextView
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/logLightStatus"
                         style="@style/innerrow_labelfield"
                         android:text="Desarmada" />
@@ -38,14 +38,14 @@
 
                 <LinearLayout style="@style/row_innerrow_data_container" >
 
-                    <TextView
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/TextView03"
                         style="@style/innerrow_label"
                         android:paddingBottom="10dp"
                         android:paddingLeft="20dp"
                         android:text="@string/lst_itm_last_change" />
 
-                    <TextView
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/logLightDate"
                         style="@style/innerrow_labelfield"
                         android:text="2013-05-04 18:20" />

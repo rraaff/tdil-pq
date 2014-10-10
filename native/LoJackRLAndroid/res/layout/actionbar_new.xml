@@ -29,7 +29,7 @@
                 style="@style/btn_cars"
                 android:background="@drawable/ic_places_parkings_active" />
 
-        <TextView
+        <com.tdil.thalamus.android.gui.components.StyledTextView
             android:id="@+id/actionBarMessagesCountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:textColor="@color/actionBarYellow"
             android:textSize="16sp" />
         
-        <TextView
+        <com.tdil.thalamus.android.gui.components.StyledTextView
             android:id="@+id/actionBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

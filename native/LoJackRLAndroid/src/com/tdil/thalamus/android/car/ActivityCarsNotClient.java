@@ -54,7 +54,7 @@ public class ActivityCarsNotClient extends LoJackLoggedActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_not_client);
-
+        customizeActionBar(true);
     	webView = (WebView) findViewById(R.id.webView);
 		
 		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();

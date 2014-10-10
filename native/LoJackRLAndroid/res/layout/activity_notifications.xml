@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 		
-		        <TextView
+		        <com.tdil.thalamus.android.gui.components.StyledTextView
 		            android:id="@+id/lastChanges"
 		            style="@style/modal_subtitleinform"
 		            android:layout_marginTop="0dp"

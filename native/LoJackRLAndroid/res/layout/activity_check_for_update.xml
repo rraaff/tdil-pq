@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal" />
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/loadingInfoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -84,12 +84,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_promo_title"
                     android:text="@string/rd_main_promo_title"
                     style="@style/txt_mainpromo" />
 
-                <TextView
+                <com.tdil.thalamus.android.gui.components.StyledTextView
                     android:id="@+id/main_hookline"
                     style="@style/txt_hookline"
                     android:text="@string/rd_main_hookline" />

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     tools:context=".LoginActivity" >
 
-<Button  android:id="@+id/vehicleButton" android:layout_width="match_parent"
+<com.tdil.thalamus.android.gui.components.StyledButton  android:id="@+id/vehicleButton" android:layout_width="match_parent"
     android:layout_height="36dp"
     android:gravity="left|center_vertical"
     android:paddingLeft="10dp"
@@ -15,5 +15,5 @@
     android:textColor="@color/black"
     android:textAllCaps="true"
     android:textAlignment="textStart">
-</Button>
+</com.tdil.thalamus.android.gui.components.StyledButton>
 </LinearLayout>

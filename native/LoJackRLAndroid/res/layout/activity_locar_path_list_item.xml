@@ -12,7 +12,7 @@
 		        
 		        <LinearLayout style="@style/gen_fil_and_wrap" >
 
-					<TextView style="@style/item_title_01"
+					<com.tdil.thalamus.android.gui.components.StyledTextView style="@style/item_title_01"
 					    android:id="@+id/pathItemDescription"
 					    android:text="Alarma cochera" />
 					
@@ -20,7 +20,7 @@
 
 				<LinearLayout style="@style/row_innerrow_data_container" >
 
-					<TextView
+					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/pathItemDate"
 					    style="@style/innerrow_labelfield"
 					    android:paddingBottom="10dp"
@@ -28,19 +28,19 @@
 					    android:text="2013-05-04 18:20"
 					    android:textColor="@color/black" />
 
-					<TextView
+					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/textView1"
 					    style="@style/innerrow_labelfield"
 					    android:paddingLeft="20dp"
 					    android:text="@string/lbl_speed" />
 
-					<TextView
+					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/pathItemSpeed"
 					    style="@style/innerrow_labelfield"
 					    android:textColor="@color/black"
 					    android:text="0" />
 
-					<TextView
+					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/textView2"
 					    style="@style/innerrow_labelfield"
 					    android:paddingLeft="5dp"

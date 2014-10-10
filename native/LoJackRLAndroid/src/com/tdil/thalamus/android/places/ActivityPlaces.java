@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -35,7 +36,7 @@ import com.tdil.thalamus.android.utils.Messages;
 
 
 
-public class ActivityPlaces extends ActionBarActivity {
+public class ActivityPlaces extends LoJackLoggedActivity {
 
 	private MapView mapView;
 	
@@ -111,6 +112,7 @@ public class ActivityPlaces extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loplaces_main);
+        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         
         mapView = (MapView) this.findViewById(R.id.mapview);
@@ -257,18 +259,6 @@ public class ActivityPlaces extends ActionBarActivity {
 	protected void onPause() {
 		super.onPause();
 		mapView.onPause();
-	}
-    
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
 	}
 
 }

@@ -12,7 +12,7 @@
 
                 <LinearLayout style="@style/gen_fil_and_wrap" >
 
-                    <TextView
+                    <com.tdil.thalamus.android.gui.components.StyledTextView
                         android:id="@+id/cameraDescription"
                         style="@style/item_title_01"
                         android:paddingBottom="10dp"

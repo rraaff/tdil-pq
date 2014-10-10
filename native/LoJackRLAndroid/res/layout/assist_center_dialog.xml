@@ -15,7 +15,7 @@
 		    android:gravity="center_vertical|center_horizontal"
 		    android:orientation="vertical" >
 
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 			    android:id="@+id/textView1"
 			    style="@style/modal_maintitle_fordialogs"
 			    android:text="@string/title_assist_center" />
@@ -27,7 +27,7 @@
 		    style="@style/form_layout"
 		    android:orientation="vertical" >
 			
-		    <Button 
+		    <com.tdil.thalamus.android.gui.components.StyledButton 
 		        android:id="@+id/homeAssistCallButton"
 		        android:layout_width="match_parent"
 			    android:layout_height="36dp"
@@ -41,7 +41,7 @@
 			    android:textAllCaps="true"
 			    android:textAlignment="textStart"/>
 		    
-		   <Button 
+		   <com.tdil.thalamus.android.gui.components.StyledButton 
 		        android:id="@+id/carAssistCallButton"
 		        android:layout_width="match_parent"
 			    android:layout_height="36dp"
@@ -63,7 +63,7 @@
 		    android:orientation="vertical"
 		    android:visibility="gone">
 			
-		    <TextView 
+		    <com.tdil.thalamus.android.gui.components.StyledTextView 
 		        android:layout_width="match_parent"
 			    android:layout_height="50dp"
 			    android:gravity="left|center_vertical"
@@ -101,7 +101,7 @@
 			    android:orientation="vertical"
 			    android:padding="10dp" >
 	
-				<Button
+				<com.tdil.thalamus.android.gui.components.StyledButton
 					android:id="@+id/assistCenterCancel"
 					style="@style/btn_backwards"
 					android:text="@string/btn_lbl_back" />

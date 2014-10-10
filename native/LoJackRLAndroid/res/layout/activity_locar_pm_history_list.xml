@@ -23,7 +23,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 		
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 				android:id="@+id/parkModeHistoricTitle"
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:gravity="left"
             android:padding="5dp" >
 
-            <Button
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/pmHistoryBack"
                 style="@style/btn_backwards"
                 android:focusable="false"

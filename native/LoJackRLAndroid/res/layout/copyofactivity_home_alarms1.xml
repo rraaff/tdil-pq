@@ -20,19 +20,19 @@
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal" android:gravity="center" >
 	        
-	        <Button
+	        <com.tdil.thalamus.android.gui.components.StyledButton
 	        android:id="@+id/btnHeaderAlarms"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/btnHeaderAlarms" />
 	        
-	        <Button
+	        <com.tdil.thalamus.android.gui.components.StyledButton
 	        android:id="@+id/btnHeaderLights"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="@string/btnHeaderLights" />
 	        
-	        <Button
+	        <com.tdil.thalamus.android.gui.components.StyledButton
 	        android:id="@+id/btnHeaderCameras"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"

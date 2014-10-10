@@ -30,7 +30,7 @@
           android:layout_width="fill_parent"
           android:layout_gravity="fill_horizontal" >
 
-	     <TextView
+	     <com.tdil.thalamus.android.gui.components.StyledTextView
 	         android:id="@+id/logAlarmStatus"
 	         android:layout_width="fill_parent"
 	         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
 
 	    <TableRow android:layout_width="fill_parent" >
 
-	        <TextView
+	        <com.tdil.thalamus.android.gui.components.StyledTextView
 	            android:id="@+id/logAlarmUser"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
 	    </TableRow>
 	    <TableRow android:layout_width="fill_parent" >
 
-	        <Button
+	        <com.tdil.thalamus.android.gui.components.StyledButton
 	            android:id="@+id/viewAlarmLogButton"
 	            style="?android:attr/buttonStyleSmall"
 	            android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
 
 	  </TableLayout>
 
-    <ToggleButton
+    <com.tdil.thalamus.android.gui.components.StyledToggleButton
         android:id="@+id/toggleAlarmActivation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

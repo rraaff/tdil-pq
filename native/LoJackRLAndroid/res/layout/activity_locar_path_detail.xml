@@ -22,7 +22,7 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 		
-			<TextView
+			<com.tdil.thalamus.android.gui.components.StyledTextView
 				android:id="@+id/historyPathDetail"
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"
@@ -51,12 +51,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryDateTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="fecha" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryDate"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
@@ -66,12 +66,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryStreetTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="street" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryStreet"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
@@ -81,12 +81,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryNumberTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="number" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryNumber"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
@@ -96,12 +96,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistorySpeedTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="speed" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistorySpeed"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
@@ -111,12 +111,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryDirectionTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="direction" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryDirection"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
@@ -126,12 +126,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryLongitudeTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="longitude" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryLongitude"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
@@ -141,12 +141,12 @@
 	                <LinearLayout
 	                    style="@style/btn_inlist_witharrow" >
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryLatitudeTextView"
 	                        style="@style/label_data_indatalist"
 	                        android:text="latitude" />
 	
-	                    <TextView
+	                    <com.tdil.thalamus.android.gui.components.StyledTextView
 	                        android:id="@+id/positionHistoryLatitude"
 	                        style="@style/label_datastring_indatalist"
 	                        android:text="TextView" />
