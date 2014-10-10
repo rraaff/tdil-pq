@@ -60,7 +60,7 @@
 					
 					</TableRow>
 
-	                <EditText
+	                <com.tdil.thalamus.android.gui.components.StyledEditText
 	                    android:id="@+id/agendaName"
 	                    style="@style/text_inputs_white_01"
 	                    android:hint="@string/hnt_agenda_name" />

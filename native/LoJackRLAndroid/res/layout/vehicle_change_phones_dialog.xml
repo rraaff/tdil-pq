@@ -60,13 +60,13 @@
 					    android:layout_height="wrap_content"
 					    android:orientation="horizontal" >
 					
-						<EditText
+						<com.tdil.thalamus.android.gui.components.StyledEditText
 							android:id="@+id/countryCode1EditText"
 							android:inputType="number" 
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"/>
 					
-						<EditText
+						<com.tdil.thalamus.android.gui.components.StyledEditText
 						    android:id="@+id/number1EditText"
 						    android:layout_width="match_parent"
 						    android:layout_height="wrap_content"
@@ -79,13 +79,13 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content">
 					
-						<EditText
+						<com.tdil.thalamus.android.gui.components.StyledEditText
 							android:id="@+id/countryCode2EditText"
 							android:inputType="number" 
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"/>
 
-						<EditText
+						<com.tdil.thalamus.android.gui.components.StyledEditText
 						    android:id="@+id/number2EditText"
 						    android:layout_width="match_parent"
 						    android:layout_height="wrap_content"

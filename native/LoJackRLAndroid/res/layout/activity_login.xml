@@ -43,13 +43,13 @@
                         android:id="@+id/documentType"
                         style="@style/text_inputs_white_01" />
 
-                    <EditText
+                    <com.tdil.thalamus.android.gui.components.StyledEditText
                         android:id="@+id/documentNumber"
                         style="@style/text_inputs_white_01"
                         android:hint="@string/hnt_doc_number"
                         android:inputType="number" />
 
-                    <EditText
+                    <com.tdil.thalamus.android.gui.components.StyledEditText
                         android:id="@+id/password"
                         android:hint="@string/hnt_doc_password"
                         android:inputType="textPassword"

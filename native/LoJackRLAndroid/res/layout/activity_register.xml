@@ -48,7 +48,7 @@
                     <requestFocus />
                 </Spinner>
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/documentNumber"
                     android:layout_width="fill_parent"
                     android:layout_height="32dp"
@@ -60,7 +60,7 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/firstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,9 +68,9 @@
                     android:ems="10"
                     android:hint="@string/hnt_firstname" >
 
-                </EditText>
+                </com.tdil.thalamus.android.gui.components.StyledEditText>
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/lastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                     android:text="@string/btn_female" />
 				</RadioGroup>
                 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                     android:hint="@string/hnt_birthdate"
                     android:textSize="20sp" />
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                     android:textSize="16sp"
                     android:textStyle="normal" />
 
-            <EditText
+            <com.tdil.thalamus.android.gui.components.StyledEditText
                 android:id="@+id/retypePassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                 android:hint="@string/hnt_doc_password1"
                 android:inputType="textPassword" />
                 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/areaCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                     android:hint="@string/hnt_area_code"
                     android:inputType="number" />
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/mobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -159,7 +159,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp" />
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                     android:ems="10"
                     android:hint="@string/hnt_city" />
                 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/street1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                     android:ems="10"
                     android:hint="@string/hnt_calle1" />
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/street2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp" />
 
-                <EditText
+                <com.tdil.thalamus.android.gui.components.StyledEditText
                     android:id="@+id/postalCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -2,6 +2,8 @@ package com.tdil.thalamus.android.gui;
 
 import java.util.List;
 
+import com.tdil.thalamus.android.LoJackActivity;
+
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,8 +70,10 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
     @Override
     public View getView(final int position, final View convertView, final ViewGroup parent) {
         final TextView view = (TextView) super.getView(position, convertView, parent);
-
         view.setText(mapFunction.value(getItem(position)));
+        if (!view.isInEditMode()) {
+    		LoJackActivity.setCustomTypeface(this.getContext(), view);
+        }
         return view;
     }
 
@@ -79,8 +83,10 @@ public class BeanMappingListAdapter<T> extends ArrayAdapter<T> {
     @Override
     public View getDropDownView(final int position, final View convertView, final ViewGroup parent) {
         final TextView view = (TextView) super.getDropDownView(position, convertView, parent);
-
         view.setText(mapFunction.value(getItem(position)));
+        if (!view.isInEditMode()) {
+    		LoJackActivity.setCustomTypeface(this.getContext(), view);
+        }
         return view;
     }
 

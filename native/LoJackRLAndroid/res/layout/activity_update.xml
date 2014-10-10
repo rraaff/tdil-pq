@@ -55,7 +55,7 @@
 			                    android:id="@+id/documentType"
 			                    style="@style/text_inputs_white_01" />
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/documentNumber"
 			                    style="@style/text_inputs_white_01"
 			                    android:clickable="false"
@@ -63,15 +63,15 @@
 			                    android:hint="@string/hnt_doc_number"
 			                    android:inputType="number" />
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/firstName"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_firstname" >
 			
 			                    <requestFocus />
-			                </EditText>
+			                </com.tdil.thalamus.android.gui.components.StyledEditText>
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/lastName"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_apellido" />
@@ -95,7 +95,7 @@
 				                    android:text="@string/btn_female" />
 							</RadioGroup>
 			                
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/email"
 			                    style="@style/text_inputs_white_01"
 			                    android:layout_marginTop="8dp"
@@ -112,13 +112,13 @@
 			                    style="@style/modal_subtitleinform"
 			                    android:text="@string/subtitle_address" />
 
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/areaCode"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_area_code"
 			                    android:inputType="number" />
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/mobile"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_mobile"
@@ -128,17 +128,17 @@
 			                    android:id="@+id/state"
 			                    style="@style/text_inputs_white_01" />
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/city"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_city" />
 			                
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/street1"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_calle1" />
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/street2"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_calle2" />
@@ -147,7 +147,7 @@
 			                    android:id="@+id/addressType"
 			                    style="@style/text_inputs_white_01" />
 			
-			                <EditText
+			                <com.tdil.thalamus.android.gui.components.StyledEditText
 			                    android:id="@+id/postalCode"
 			                    style="@style/text_inputs_white_01"
 			                    android:hint="@string/hnt_postal_code" />

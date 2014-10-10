@@ -43,14 +43,14 @@
 		                android:id="@+id/documentType"
 		                style="@style/text_inputs_white_01" />
 		
-		            <EditText
+		            <com.tdil.thalamus.android.gui.components.StyledEditText
 		                android:id="@+id/documentNumber"
 		                android:hint="@string/hnt_doc_number"
 		                android:inputType="number"
 		                style="@style/text_inputs_white_01" >
 		
 		                <requestFocus />
-		            </EditText>
+		            </com.tdil.thalamus.android.gui.components.StyledEditText>
 
 		            <LinearLayout
 		                android:layout_width="fill_parent"
