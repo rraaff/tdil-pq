@@ -309,14 +309,14 @@ public abstract class LoJackActivity extends ActionBarActivity {
 
 	public static Typeface getNormalFont(Context context) {
 		if (normalFont == null) {
-			normalFont = Typeface.createFromAsset(context.getAssets(), "blackbooktwo.ttf");
+			normalFont = Typeface.createFromAsset(context.getAssets(), "gotham-light.ttf");
 		}
 		return normalFont;
 	}
 
 	public static Typeface getLightFont(Context context) {
 		if (boldFont == null) {
-			boldFont = Typeface.createFromAsset(context.getAssets(), "blackbooktwo.ttf");
+			boldFont = Typeface.createFromAsset(context.getAssets(), "gotham-medium.ttf");
 		}
 		return boldFont;
 	}

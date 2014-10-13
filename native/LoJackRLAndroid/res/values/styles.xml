@@ -30,7 +30,7 @@
         <item name="android:gravity">center_horizontal</item>
         <item name="android:padding">15dp</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">17sp</item>
   	    
   	</style>
 
@@ -42,7 +42,7 @@
         <item name="android:paddingBottom">15dp</item>
         <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
         <item name="android:textColor">@color/bgBase</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">17sp</item>
   	    
   	</style>
   	
@@ -52,7 +52,7 @@
         <item name="android:layout_gravity">center_vertical</item>
         
         <item name="android:textColor">@color/lightBlue</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">19sp</item>
   	    
   	</style>
   	
@@ -70,7 +70,7 @@
          <item name="android:maxLines">1</item>
          <item name="android:paddingRight">10dp</item>
          <item name="android:textColor">@color/labels</item>
-         <item name="android:textSize">12sp</item>
+         <item name="android:textSize">11sp</item>
 	</style>
 	
   	<style name="textFieldsOne">
@@ -82,7 +82,7 @@
 		<item name="android:shadowColor">@color/black</item>
 		<item name="android:textColor">@color/labels</item>
 		<item name="android:textColorLink">@color/lightBlue</item>
-		<item name="android:textSize">12sp</item>
+		<item name="android:textSize">11sp</item>
 		<item name="android:textStyle">normal</item>
   	</style>
  
@@ -95,7 +95,7 @@
 		<item name="android:shadowColor">@color/black</item>
 		<item name="android:textColor">@color/labels</item>
 		<item name="android:textColorLink">@color/lightBlue</item>
-		<item name="android:textSize">24sp</item>
+		<item name="android:textSize">23sp</item>
 		<item name="android:textStyle">normal</item>
   	</style>
   	
@@ -110,7 +110,7 @@
 		<item name="android:shadowColor">@color/black</item>
 		<item name="android:textColor">@color/black</item>
 		<item name="android:textColorLink">@color/lightBlue</item>
-		<item name="android:textSize">16sp</item>
+		<item name="android:textSize">15sp</item>
 		<item name="android:textStyle">normal</item>
   	</style>
 
@@ -121,7 +121,7 @@
 	    <item name="android:layout_marginTop">3dp</item>
 		<item name="android:textColor">@color/bgBase</item>
 		<item name="android:textColorLink">@color/lightBlue</item>
-		<item name="android:textSize">16sp</item>
+		<item name="android:textSize">15sp</item>
 		<item name="android:textStyle">normal</item>
   	</style>
   	
@@ -138,7 +138,7 @@
 	    <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/bgBase</item>
         <item name="android:textColorHint">@color/lightBlue</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">12sp</item>
         
         
         <item name="android:visibility">visible</item>
@@ -159,7 +159,7 @@
 	    <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/bgBase</item>
         <item name="android:textColorHint">@color/lightBlue</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">12sp</item>
         
         
         <item name="android:visibility">visible</item>
@@ -180,7 +180,7 @@
 	    <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/backButtonsText</item>
         <item name="android:textColorHint">@color/lightBlue</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">12sp</item>
         
         
         <item name="android:visibility">visible</item>
@@ -201,7 +201,7 @@
 	    <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/bgBase</item>
         <item name="android:textColorHint">@color/lightBlue</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">12sp</item>
         
         
         <item name="android:visibility">visible</item>
@@ -222,7 +222,7 @@
         <item name="android:textColor">@color/bgBaseGray</item>
 	    <item name="android:gravity">left|center_vertical</item>
 	    <item name="android:textColor">@color/bgBaseGray</item>
-	    <item name="android:textSize">13sp</item>
+	    <item name="android:textSize">12sp</item>
 		<item name="android:layout_margin">0dp</item>
 	    
 	</style>
@@ -339,7 +339,7 @@
 	    <item name="android:layout_gravity">center_horizontal</item>
 	    <item name="android:textAlignment">center</item>
 	    <item name="android:textColor">@color/bgBase</item>
-	    <item name="android:textSize">20sp</item>
+	    <item name="android:textSize">19sp</item>
 	</style>
 	
 	<style name="txt_hookline">
@@ -347,9 +347,10 @@
 	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:gravity">center_horizontal</item>
 	    <item name="android:paddingTop">5dp</item>
+	    <item name="android:lineSpacingExtra">2dp</item>
 	    <item name="android:textAlignment">center</item>
 	    <item name="android:textColor">@color/bgBase</item>
-	    <item name="android:textSize">13sp</item>
+	    <item name="android:textSize">12sp</item>
 	</style>
 	
 	<style name="modal_maintitle">
@@ -358,7 +359,7 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
 	    <item name="android:layout_marginBottom">8dp</item>
 	    <item name="android:textColor">@color/orangeTitles</item>
-	    <item name="android:textSize">16sp</item>
+	    <item name="android:textSize">15sp</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
@@ -369,7 +370,7 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
 	    <item name="android:layout_marginBottom">8dp</item>
 	    <item name="android:textColor">@color/orangeTitles</item>
-	    <item name="android:textSize">16sp</item>
+	    <item name="android:textSize">15sp</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
@@ -379,7 +380,7 @@
 	    <item name="android:layout_height">36dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
 	    <item name="android:textColor">@color/black</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
 		
@@ -389,7 +390,7 @@
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:layout_marginTop">5dp</item>
 	    <item name="android:textColor">@color/black</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
@@ -409,7 +410,7 @@
 	    <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">8dp</item>
 	    <item name="android:background">@drawable/bg_textfields</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	    <item name="android:textColor">@color/black</item>
 	</style>
 	
@@ -419,7 +420,7 @@
 	    <item name="android:paddingLeft">30dp</item>
         <item name="android:paddingRight">8dp</item>
 	    <item name="android:background">@drawable/bg_textfields_02</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	    <item name="android:textColor">@color/black</item>
 	</style>
 	
@@ -428,7 +429,7 @@
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:background">@drawable/bg_textfields</item>
 		<item name="android:paddingLeft">30dp</item>
-		<item name="android:textSize">13sp</item>
+		<item name="android:textSize">12sp</item>
 	</style>
 	
 	<style name="title_dashboard_container">
@@ -446,7 +447,7 @@
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:textColor">@color/black</item>
-	    <item name="android:textSize">20sp</item>
+	    <item name="android:textSize">19sp</item>
 	</style>
 	
 	<style name="title_dashboard_state">
@@ -462,7 +463,7 @@
 	    <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">8dp</item>
 	    <item name="android:background">@drawable/bg_textfields</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	    <item name="android:textColor">@color/black</item>
 	</style>
 	
@@ -540,7 +541,7 @@
 	    <item name="android:textColor">@color/lst_itm_normal</item>
 	    <item name="android:layout_marginRight">3dp</item>
 	    <item name="android:layout_marginBottom">10dp</item>
-	    <item name="android:textSize">11sp</item>
+	    <item name="android:textSize">10sp</item>
 	</style>
 	
 	<style name="innerrow_labelfield">
@@ -548,14 +549,14 @@
 	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:textColor">@color/lst_itm_unk</item>
 	    <item name="android:layout_marginRight">5dp</item>
-	    <item name="android:textSize">11sp</item>
+	    <item name="android:textSize">10sp</item>
 	</style>
 	
 	<style name="label_indash">
 	    <item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">@color/lst_itm_normal</item>
-		<item name="android:textSize">12sp</item>
+		<item name="android:textSize">10sp</item>
 	</style>
 
 	<style name="label_data_indash">
@@ -563,14 +564,14 @@
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:paddingLeft">4dp</item>
 		<item name="android:textColor">@color/black</item>
-		<item name="android:textSize">12sp</item>
+		<item name="android:textSize">10sp</item>
 	</style>
 	
 	<style name="label_data_indatalist">
 	    <item name="android:layout_width">80dp</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textAllCaps">true</item>
-		<item name="android:textSize">13dp</item>
+		<item name="android:textSize">10dp</item>
 		<item name="android:textColor">@color/bgBaseGray</item>
 	</style>
 	
@@ -578,7 +579,7 @@
 	    <item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textAllCaps">true</item>
-		<item name="android:textSize">13dp</item>
+		<item name="android:textSize">10dp</item>
 		<item name="android:textColor">@color/black</item>
 	</style>
 
@@ -589,7 +590,7 @@
 		<item name="android:paddingBottom">5dp</item>
 		<item name="android:paddingTop">5dp</item>
 		<item name="android:textColor">@color/bgBaseGray</item>
-		<item name="android:textSize">18sp</item>
+		<item name="android:textSize">17sp</item>
 		<item name="android:textAllCaps">true</item>
 	</style>
 
@@ -599,7 +600,7 @@
 		<item name="android:paddingBottom">5dp</item>
 		<item name="android:paddingTop">5dp</item>
 		<item name="android:textColor">@color/black</item>
-		<item name="android:textSize">18sp</item>
+		<item name="android:textSize">17sp</item>
 		<item name="android:textAllCaps">true</item>
 	</style>
 
@@ -614,7 +615,7 @@
 		<item name="android:layout_span">1</item>
 		<item name="android:textAllCaps">true</item>
 		<item name="android:textColor">@color/lst_itm_title</item>
-		<item name="android:textSize">16sp</item>
+		<item name="android:textSize">15sp</item>
 	</style>
 
 	<style name="toggleSwitchIOSish">
@@ -624,7 +625,7 @@
 		<item name="android:background">@drawable/btn_toggle_fake_switch</item>
 		<item name="android:minHeight">48dp</item>
 		<item name="android:paddingLeft">0dp</item>
-		<item name="android:textSize">14sp</item>
+		<item name="android:textSize">13sp</item>
 	</style>
 
 	<style name="icon_inrow_go">
@@ -696,7 +697,7 @@
 	    <item name="android:paddingBottom">6dp</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:textColor">@color/grayLightTabUnactive</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	</style>
 
 	<style name="appmenu_button_selected">
@@ -721,7 +722,7 @@
 	    <item name="android:paddingLeft">10dp</item>
 	    <item name="android:background">@drawable/bg_btnrojo</item>
 	    <item name="android:drawableRight">@drawable/icon_arrow_whiteforbuttons_right</item>
-	   	<item name="android:textSize">14sp</item>
+	   	<item name="android:textSize">13sp</item>
 	    <item name="android:textColor">@color/bgBase</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:textAlignment">textStart</item>
@@ -747,7 +748,7 @@
 	    <item name="android:paddingRight">10dp</item>
 	    <item name="android:background">@drawable/bg_btnback</item>
 	    <item name="android:drawableLeft">@drawable/icon_arrow_whiteforbuttons_left</item>
-	   	<item name="android:textSize">14sp</item>
+	   	<item name="android:textSize">13sp</item>
 	    <item name="android:textColor">@color/bgBase</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:textAlignment">textStart</item>
@@ -772,7 +773,7 @@
         <item name="android:paddingLeft">10dp</item>
 	    <item name="android:background">@drawable/bg_textfields_02</item>
 	    <item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
-	    <item name="android:textSize">14sp</item>
+	    <item name="android:textSize">13sp</item>
 	    <item name="android:textColor">@color/black</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:textAlignment">textStart</item>
@@ -796,7 +797,7 @@
 		<item name="android:gravity">left|center_vertical</item>
 		<item name="android:minHeight">48dp</item>
 		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">15sp</item>
+		<item name="android:textSize">13sp</item>
 	</style>
 
 	<style name="ButtonAgendainList">
@@ -809,7 +810,7 @@
 		<item name="android:gravity">left|center_vertical</item>
 		<item name="android:minHeight">48dp</item>
 		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">15sp</item>
+		<item name="android:textSize">13sp</item>
 	</style>
 	
 	<style name="ButtonAgendaGrayinList">
@@ -822,7 +823,7 @@
 		<item name="android:gravity">left|center_vertical</item>
 		<item name="android:minHeight">48dp</item>
 		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">15sp</item>
+		<item name="android:textSize">13sp</item>
 	</style>
 	
 	<style name="ButtonNewAgenda">
@@ -835,7 +836,7 @@
 		<item name="android:gravity">left|center_vertical</item>
 		<item name="android:minHeight">48dp</item>
 		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">15sp</item>
+		<item name="android:textSize">13sp</item>
 	</style>
 	
 </resources>
