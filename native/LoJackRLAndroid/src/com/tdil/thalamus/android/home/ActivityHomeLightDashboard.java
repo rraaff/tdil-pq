@@ -2,8 +2,6 @@ package com.tdil.thalamus.android.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
@@ -13,10 +11,6 @@ import android.widget.ToggleButton;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
-import com.tdil.thalamus.android.MenuLogic;
-import com.tdil.thalamus.android.UnCaughtException;
-import com.tdil.thalamus.android.deprecated.HomeLightsActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 import com.tdil.thalamus.android.home.logic.LigthsLogic;
@@ -70,6 +64,8 @@ public class ActivityHomeLightDashboard extends HomeActivity implements ILightsA
 		viewlog.setOnClickListener(new ViewLightLogListener(this));
 		light = (Light)extras.getSerializable(LIGHT);
 		hasMore = !"FALSE".equals((String)extras.getSerializable(HAS_MORE));
+		View goToAgenda = findViewById(R.id.goToAgenda);
+		goToAgenda.setOnClickListener(new GoToAgendaList(this));
 		init();
     }
     
@@ -115,6 +111,19 @@ public class ActivityHomeLightDashboard extends HomeActivity implements ILightsA
 			randomSwitch.setEnabled(true);
 		}
 		ignore = false;
+	}
+	
+	private static class GoToAgendaList implements OnClickListener {
+		private ActivityHomeLightDashboard activity;
+		
+		GoToAgendaList(ActivityHomeLightDashboard activity) {
+			this.activity = activity;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			AgendasFacade.startLightAgendasListActivity(activity);
+		}
 	}
     
 	public void toggleLightRandom(int mPosition) {
@@ -272,5 +281,13 @@ public class ActivityHomeLightDashboard extends HomeActivity implements ILightsA
 	@Override
 	public boolean isLightsTab() {
 		return true;
+	}
+
+	public Light getLight() {
+		return light;
+	}
+
+	public void setLight(Light light) {
+		this.light = light;
 	}
 }

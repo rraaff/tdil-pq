@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+	<LinearLayout style="@style/row_twocols_container" >
+	    
+
+		<LinearLayout style="@style/row_innercolumn_container" >
+                 
+            <LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="match_parent"
+			    android:gravity="center_horizontal|center_vertical" >
+		    </LinearLayout>
+		        
+		    <LinearLayout style="@style/row_innercontent" >
+		        
+		        
+		        
+		        <LinearLayout style="@style/gen_fil_and_wrap" >
+
+					<com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/alarmAgendaDescriptionTextView"
+					    style="@style/item_title_01"
+					    android:paddingLeft="5dp"
+					    android:text="Alarma cochera" />
+					
+				</LinearLayout>
+
+				<LinearLayout style="@style/row_innerrow_data_container" >
+				</LinearLayout>
+
+				<LinearLayout style="@style/row_innerrow_data_container" >
+	
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+		
+		<LinearLayout
+		    style="@style/row_innercolumn_containerImageSmall"
+		    android:layout_width="wrap_content" >
+
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="match_parent" >
+
+				<ImageButton
+				    android:id="@+id/alarmAgendaGoToDashboard"
+				    style="@style/icon_inrow_go" />
+
+			</LinearLayout>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</TableLayout>

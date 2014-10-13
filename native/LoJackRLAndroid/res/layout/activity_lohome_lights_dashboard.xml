@@ -156,6 +156,19 @@
 					        android:text="@string/btn_view_log" />
 
 					</TableRow>
+					
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+
+                        <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonAgendainList"
+                            android:id="@+id/goToAgenda"
+                            android:text="@string/btn_agendas_list" />
+
+                    </TableRow>
 
 				</LinearLayout>
 

@@ -69,6 +69,9 @@ public class ActivityHomeAlarmDashboard extends HomeActivity implements IAlarmsA
 		activateDeactivate.setOnCheckedChangeListener(new ToggleActivateListener(this));
 		View viewlog = findViewById(R.id.goToAlarmViewLog);
 		viewlog.setOnClickListener(new ViewAlarmLogListener(this));
+		
+		View goToAgenda = findViewById(R.id.goToAgenda);
+		goToAgenda.setOnClickListener(new GoToAgendaList(this));
 		init();
     }
     
@@ -129,6 +132,19 @@ public class ActivityHomeAlarmDashboard extends HomeActivity implements IAlarmsA
 		@Override
 		public void onClick(View arg0) {
 			activity.viewAlarmLog(0);
+		}
+	}
+    
+    private static class GoToAgendaList implements OnClickListener {
+		private ActivityHomeAlarmDashboard activity;
+		
+		GoToAgendaList(ActivityHomeAlarmDashboard activity) {
+			this.activity = activity;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			AgendasFacade.startAlarmAgendasListActivity(activity);
 		}
 	}
     
@@ -224,6 +240,14 @@ public class ActivityHomeAlarmDashboard extends HomeActivity implements IAlarmsA
 	@Override
 	public boolean isLightsTab() {
 		return false;
+	}
+
+	public Alarm getAlarm() {
+		return alarm;
+	}
+
+	public void setAlarm(Alarm alarm) {
+		this.alarm = alarm;
 	}
 	
 }

@@ -53,19 +53,19 @@ public interface RESTConstants {
 	public static final String ALARMS = "/alarms/list";
 	public static final String ACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/activate";
 	public static final String DEACTIVATE_ALARM =  "/alarms/" + ID_ENTIDAD + "/deactivate";
-	
 	public static final String SEND_PANIC_ALARM =  "/alarms/" + ID_ENTIDAD + "/sendPanic";
-	
 	public static final String LOG_ALARM =  "/alarms/" + ID_ENTIDAD + "/log";
 	
 	public static final String LIGHTS = "/lights/list";
 	public static final String ACTIVATE_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/activate";
 	public static final String DEACTIVATE_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/deactivate";
-	
 	public static final String ACTIVATE_RANDOM_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/randomOn";
 	public static final String DEACTIVATE_RANDOM_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/randomOff";
-	
 	public static final String LOG_LIGHT =  "/lights/" + ID_ENTIDAD + "/" + ID_LUZ + "/log";
+	
+	// Agendas
+	public static final String GET_ALARM_AGENDAS =  "/alarmAgendas/" + ID_ENTIDAD + "/list";
+	public static final String GET_LIGHT_AGENDAS =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/list";
 	
 	public static final String CAMERAS = "/cameras/list";
 	
