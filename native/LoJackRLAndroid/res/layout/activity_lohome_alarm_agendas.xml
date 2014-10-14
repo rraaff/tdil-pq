@@ -31,6 +31,19 @@
 				android:text="@string/lst_title_alarms_agendas_list" />
 		
 		</TableRow>
+		
+		<TableRow
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@color/bgBase"
+		    android:gravity="left"
+		    android:textAlignment="viewStart" >
+
+            <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonNewAgenda"
+                android:id="@+id/goToNewAgenda"
+                android:text="@string/btn_new_agenda" />
+
+        </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"

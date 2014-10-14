@@ -266,6 +266,13 @@
 	        android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name="com.tdil.thalamus.android.home.ActivityHomeAlarmAgendaEdit"
+            android:label="Agendas"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
             android:name="com.tdil.thalamus.android.home.ActivityHomeLightsAgendas"
             android:label="Agendas"
 	        android:configChanges="orientation"
