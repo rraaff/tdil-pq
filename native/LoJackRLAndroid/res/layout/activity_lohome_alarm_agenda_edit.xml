@@ -134,7 +134,7 @@
                 android:gravity="right" >
 
                 <com.tdil.thalamus.android.gui.components.StyledButton
-                    android:id="@+id/pmVehicleDetailSave"
+                    android:id="@+id/agendaSave"
                     style="@style/btn_forward"
                     android:focusable="false"
                     android:text="@string/btn_lbl_save"
