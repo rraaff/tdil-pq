@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ActivityRestClientObserver;
@@ -156,7 +158,23 @@ public class HeaderLogic {
 
 	public static void handlePreventAccess(final Activity activity) {
 		if (Login.getLoggedUser(activity).getPreventUser()) {
-			activity.startActivity(new Intent(activity, ActivityCars.class));
+			int googlePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+			if (googlePlayServicesAvailable != ConnectionResult.SUCCESS) {
+	            // Handle the case here
+	        	new AlertDialog.Builder(activity)
+	            .setIcon(R.drawable.ic_launcher)
+	            .setTitle("Lojack")
+	            .setMessage("Para acceder a esta funcionalidad debe tener instalado Google Play (code: " + String.valueOf(googlePlayServicesAvailable) + ")")
+	            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int whichButton) {
+	                        /* User clicked OK so do some stuff */
+	                        //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojack.real.life"));
+	                    }
+	            })
+	            .show();
+	        } else {
+	        	activity.startActivity(new Intent(activity, ActivityCars.class));
+	        }
 		} else {
 			if (Login.getLoggedUser(activity).getVluClient()) {
 				Intent intent = new Intent(activity.getBaseContext(), VLUMessagesActivity.class);
@@ -170,7 +188,23 @@ public class HeaderLogic {
 	}
 
 	public static void handleParkingsAccess(final Activity activity) {
-		activity.startActivity(new Intent(activity, ActivityPlaces.class));
+		int googlePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+		if (googlePlayServicesAvailable != ConnectionResult.SUCCESS) {
+            // Handle the case here
+        	new AlertDialog.Builder(activity)
+            .setIcon(R.drawable.ic_launcher)
+            .setTitle("Lojack")
+            .setMessage("Para acceder a esta funcionalidad debe tener instalado Google Play (code: " + String.valueOf(googlePlayServicesAvailable) + ")")
+            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        /* User clicked OK so do some stuff */
+                        //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojack.real.life"));
+                    }
+            })
+            .show();
+        } else {
+        	activity.startActivity(new Intent(activity, ActivityPlaces.class));
+        }
 	}
 
 	public static void handlePetsAccess(final Activity activity) {

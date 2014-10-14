@@ -3,13 +3,14 @@ package com.tdil.thalamus.android.car;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -17,6 +18,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,8 +32,8 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.CheckForUpdateActivity;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
-import com.tdil.thalamus.android.MenuLogic;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -119,6 +122,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         setContentView(R.layout.activity_locar_main);
         customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
+        
         mapView = (MapView) this.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
 
@@ -159,43 +163,43 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 				}
 			});
         }
-
-        // Updates the location and zoom of the MapView
-//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);
-//        map.animateCamera(cameraUpdate);
- /*      
-        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new CarsPositionsOnClick(this));
-        ((View)findViewById(R.id.carSpeedButton)).setOnClickListener(new CarsSpeedOnClick(this));
-        ((View)findViewById(R.id.carZoneButton)).setOnClickListener(new CarsZoneOnClick(this));
-        ((View)findViewById(R.id.carPhoneButton)).setOnClickListener(new CarsPhoneOnClick(this));
-        ((View)findViewById(R.id.carPathButton)).setOnClickListener(new CarsPathOnClick(this));
-        ((View)findViewById(R.id.carParkedModeButton)).setOnClickListener(new CarsParkedModeOnClick(this));
-        
-*/        
-//        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//		        final Dialog dialog = new Dialog(ActivityCars.this);
-//				dialog.setContentView(R.layout.selection_vehicle_dialog);
-//				dialog.setTitle("Title...");
-//		
-//				// set the custom dialog components - text, image and button
-//				TextView text = (TextView) dialog.findViewById(R.id.text);
-//				text.setText("Android custom dialog example!");
-//				ImageView image = (ImageView) dialog.findViewById(R.id.image);
-//				image.setImageResource(R.drawable.ic_launcher);
-//		
-//				Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-//				// if button is clicked, close the custom dialog
-//				dialogButton.setOnClickListener(new OnClickListener() {
-//					@Override
-//					public void onClick(View v) {
-//						dialog.dismiss();
-//					}
-//				});
-//				dialog.show();
-//			}
-//        });
+	
+	        // Updates the location and zoom of the MapView
+	//        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(-34.6093546,-58.51752859999999), 16);
+	//        map.animateCamera(cameraUpdate);
+	 /*      
+	        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new CarsPositionsOnClick(this));
+	        ((View)findViewById(R.id.carSpeedButton)).setOnClickListener(new CarsSpeedOnClick(this));
+	        ((View)findViewById(R.id.carZoneButton)).setOnClickListener(new CarsZoneOnClick(this));
+	        ((View)findViewById(R.id.carPhoneButton)).setOnClickListener(new CarsPhoneOnClick(this));
+	        ((View)findViewById(R.id.carPathButton)).setOnClickListener(new CarsPathOnClick(this));
+	        ((View)findViewById(R.id.carParkedModeButton)).setOnClickListener(new CarsParkedModeOnClick(this));
+	        
+	*/        
+	//        ((View)findViewById(R.id.carPositionsButton)).setOnClickListener(new View.OnClickListener() {
+	//			@Override
+	//			public void onClick(View v) {
+	//		        final Dialog dialog = new Dialog(ActivityCars.this);
+	//				dialog.setContentView(R.layout.selection_vehicle_dialog);
+	//				dialog.setTitle("Title...");
+	//		
+	//				// set the custom dialog components - text, image and button
+	//				TextView text = (TextView) dialog.findViewById(R.id.text);
+	//				text.setText("Android custom dialog example!");
+	//				ImageView image = (ImageView) dialog.findViewById(R.id.image);
+	//				image.setImageResource(R.drawable.ic_launcher);
+	//		
+	//				Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+	//				// if button is clicked, close the custom dialog
+	//				dialogButton.setOnClickListener(new OnClickListener() {
+	//					@Override
+	//					public void onClick(View v) {
+	//						dialog.dismiss();
+	//					}
+	//				});
+	//				dialog.show();
+	//			}
+	//        });
 
     }
 

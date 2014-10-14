@@ -3,6 +3,8 @@ package com.tdil.thalamus.android.car.parkedmode;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ActivityRestClientObserver;
 import com.tdil.thalamus.android.gui.AbstractListAdapter;
@@ -164,16 +168,32 @@ public class ParkedModeStatusListAdapter extends AbstractListAdapter<ParkedModeS
 
 		@Override
 		public void onClick(View arg0) {
-			ParkedModeHistoryLogBean parkedModeHistoryLogBean = new ParkedModeHistoryLogBean();
-			parkedModeHistoryLogBean.setIdaccion(4);
-			parkedModeHistoryLogBean.setFecha("");
-			parkedModeHistoryLogBean.setLatitud(parkedModeStatus.getLatitude());
-			parkedModeHistoryLogBean.setLongitud(parkedModeStatus.getLongitude());
-			
-			Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeMapView.class);
-			intent.putExtra(ActivityParkedModeMapView.POSITION, parkedModeHistoryLogBean);
-			activity.startActivity(intent);
-			activity.finish();
+			int googlePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+			if (googlePlayServicesAvailable != ConnectionResult.SUCCESS) {
+	            // Handle the case here
+	        	new AlertDialog.Builder(activity)
+	            .setIcon(R.drawable.ic_launcher)
+	            .setTitle("Lojack")
+	            .setMessage("Para acceder a esta funcionalidad debe tener instalado Google Play (code: " + String.valueOf(googlePlayServicesAvailable) + ")")
+	            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int whichButton) {
+	                        /* User clicked OK so do some stuff */
+	                        //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojack.real.life"));
+	                    }
+	            })
+	            .show();
+	        } else {
+				ParkedModeHistoryLogBean parkedModeHistoryLogBean = new ParkedModeHistoryLogBean();
+				parkedModeHistoryLogBean.setIdaccion(4);
+				parkedModeHistoryLogBean.setFecha("");
+				parkedModeHistoryLogBean.setLatitud(parkedModeStatus.getLatitude());
+				parkedModeHistoryLogBean.setLongitud(parkedModeStatus.getLongitude());
+				
+				Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeMapView.class);
+				intent.putExtra(ActivityParkedModeMapView.POSITION, parkedModeHistoryLogBean);
+				activity.startActivity(intent);
+				activity.finish();
+	        }
 		}
 	}
 

@@ -3,12 +3,16 @@ package com.tdil.thalamus.android.car.parkedmode;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.gui.AbstractListAdapter;
 import com.tdil.thalamus.android.rest.model.parkedmode.ParkedModeHistoryLogBean;
@@ -69,9 +73,25 @@ public class ParkedModeHistoryListAdapter extends AbstractListAdapter<ParkedMode
 
 		@Override
 		public void onClick(View arg0) {
-			Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeMapView.class);
-			intent.putExtra(ActivityParkedModeMapView.POSITION, parkedModeStatus);
-			activity.startActivity(intent);
+			int googlePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+			if (googlePlayServicesAvailable != ConnectionResult.SUCCESS) {
+	            // Handle the case here
+	        	new AlertDialog.Builder(activity)
+	            .setIcon(R.drawable.ic_launcher)
+	            .setTitle("Lojack")
+	            .setMessage("Para acceder a esta funcionalidad debe tener instalado Google Play (code: " + String.valueOf(googlePlayServicesAvailable) + ")")
+	            .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int whichButton) {
+	                        /* User clicked OK so do some stuff */
+	                        //Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:lojack.real.life"));
+	                    }
+	            })
+	            .show();
+	        } else {
+	        	Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeMapView.class);
+	        	intent.putExtra(ActivityParkedModeMapView.POSITION, parkedModeStatus);
+	        	activity.startActivity(intent);
+	        }
 		}
 	}
 }
