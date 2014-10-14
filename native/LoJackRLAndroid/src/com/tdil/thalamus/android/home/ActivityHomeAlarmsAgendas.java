@@ -2,8 +2,11 @@ package com.tdil.thalamus.android.home;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 import com.tdil.lojack.rl.R;
@@ -39,7 +42,27 @@ public class ActivityHomeAlarmsAgendas extends HomeActivity {
 				alarms, res);
 		alarmsList = (ListView) findViewById(R.id.agendaList);
 		alarmsList.setAdapter(alarmListAdapter);
+		
+		View goToNewAgenda = findViewById(R.id.goToNewAgenda);
+		goToNewAgenda.setOnClickListener(new GoToNewAgenda(this));
     }
+    
+    private static class GoToNewAgenda implements OnClickListener {
+		private ActivityHomeAlarmsAgendas activity;
+		
+		public GoToNewAgenda(ActivityHomeAlarmsAgendas activity) {
+			this.activity = activity;
+		}
+
+		@Override
+		public void onClick(View arg0) {
+			Intent intent = new Intent(activity, ActivityHomeAlarmAgendaEdit.class);
+			this.activity.startActivity(intent);
+			this.activity.finish();
+		}
+	}
+    
+    //TODO reeler la lista cuando vuelve
     
 	@Override
 	public boolean isAlarmsTab() {
