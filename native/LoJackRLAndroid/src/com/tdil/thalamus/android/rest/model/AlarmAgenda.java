@@ -106,4 +106,88 @@ public class AlarmAgenda implements Serializable {
 		this.idAgenda = idAgenda;
 	}
 
+	public boolean monday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Lu);
+	}
+	public boolean tuesday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Ma);
+	}
+	public boolean wednesday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Mi);
+	}
+	public boolean thursday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Ju);
+	}
+	public boolean friday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Vi);
+	}
+	public boolean saturday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return false;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return true;
+		}
+		return this.getCustomDays().contains(Sa);
+	}
+	public boolean sunday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return false;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return true;
+		}
+		return this.getCustomDays().contains(Do);
+	}
 }
