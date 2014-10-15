@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.gui.AbstractListAdapter;
@@ -34,6 +35,14 @@ public class AlarmAgendaListAdapter extends AbstractListAdapter<AlarmAgenda, Ala
 	protected AlarmAgendaViewHolder createViewHolder(View vi) {
 		AlarmAgendaViewHolder holder = new AlarmAgendaViewHolder();
 		holder.description = (TextView)vi.findViewById(R.id.alarmAgendaDescriptionTextView);
+		holder.lun = (TextView)vi.findViewById(R.id.luTextView);
+		holder.mar = (TextView)vi.findViewById(R.id.maTextView);
+		holder.mie = (TextView)vi.findViewById(R.id.miTextView);
+		holder.jue = (TextView)vi.findViewById(R.id.juTextView);
+		holder.vie = (TextView)vi.findViewById(R.id.viTextView);
+		holder.sab = (TextView)vi.findViewById(R.id.saTextView);
+		holder.dom = (TextView)vi.findViewById(R.id.doTextView);
+		holder.statusSwitch = (ToggleButton)vi.findViewById(R.id.alarmStatusSwitch);
 		holder.goDetail = (View)vi.findViewById(R.id.alarmAgendaGoToDashboard);
 		return holder;
 	}
