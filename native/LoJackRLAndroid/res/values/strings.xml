@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <string name="cancel">CANCELAR</string>
+    <string name="time_set">OK</string>
+    
     <string name="app_name">LoJack</string>
     <string name="action_settings">Buscando actualizaciones</string>
     <string name="action_loading">Cargando Información</string>

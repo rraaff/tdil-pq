@@ -3,6 +3,7 @@ package com.tdil.thalamus.android.home;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -55,10 +56,10 @@ public class AlarmAgendaListAdapter extends AbstractListAdapter<AlarmAgenda, Ala
 
 		@Override
 		public void onClick(View arg0) {
-//			Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicleHome.class);
-//			intent.putExtra(ActivityParkedModeVehicleHome.VEHICLE, parkedModeStatus);
-//			activity.startActivity(intent);
-//			activity.finish();
+			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeAlarmAgendaEdit.class);
+			intent.putExtra(ActivityHomeAlarmAgendaEdit.AGENDA, alarmAgenda);
+			activity.startActivity(intent);
+			activity.finish();
 		}
 	}
 }

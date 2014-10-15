@@ -1,9 +1,8 @@
 package com.tdil.thalamus.android.home;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -25,8 +24,10 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.Validator.ValidationListener;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.gui.components.MyTimePickerDialog;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
+import com.tdil.thalamus.android.rest.model.AlarmAgenda;
 
 /**
  * Esta pagina maneja el listado de alarmas
@@ -37,6 +38,8 @@ import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
 public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements ValidationListener {
 
 	public static final String AGENDA = "AGENDA";
+	
+	private AlarmAgenda alarmAgenda = null;
 	
 	@TextRule(order = 1, minLength = 1, maxLength = 100, message = "Ingrese la descripcion.")
 	private EditText agendaDescription;
@@ -50,10 +53,12 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 	private TextView agendaHourFrom;
 	private int hourFrom = -1;
 	private int minuteFrom = -1;
+	private int secondFrom = -1;
 
 	private TextView agendaHourTo;
 	private int hourTo = -1;
 	private int minuteTo = -1;
+	private int secondTo = -1;
 	
 	private CheckBox agendaRepMonday;
 	private CheckBox agendaRepTuesday;
@@ -78,7 +83,6 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		Resources res = getResources();
 		Bundle extras = getIntent().getExtras();
 		
-		// alarms = (ArrayList<AlarmAgenda>)extras.getSerializable(AGENDAS);
 		// alarmListAdapter = new
 		// AlarmAgendaListAdapter(ActivityHomeAlarmAgendaEdit.this,
 		// alarms, res);
@@ -111,8 +115,25 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		agendaHourFrom.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DialogFragment newFragment = new TimeFromPickerFragment(ActivityHomeAlarmAgendaEdit.this);
-				newFragment.show(getSupportFragmentManager(), "timePicker");
+				final Calendar c = Calendar.getInstance();
+				int hour = c.get(Calendar.HOUR_OF_DAY);
+				int minute = c.get(Calendar.MINUTE);
+				int second = c.get(Calendar.SECOND);
+				if (ActivityHomeAlarmAgendaEdit.this.hourFrom != -1 && ActivityHomeAlarmAgendaEdit.this.minuteFrom != -1 && ActivityHomeAlarmAgendaEdit.this.secondFrom != -1) {
+					hour = ActivityHomeAlarmAgendaEdit.this.hourFrom;
+					minute = ActivityHomeAlarmAgendaEdit.this.minuteFrom;
+					second = ActivityHomeAlarmAgendaEdit.this.secondFrom;
+				} 
+				MyTimePickerDialog mTimePicker = new MyTimePickerDialog(ActivityHomeAlarmAgendaEdit.this, new MyTimePickerDialog.OnTimeSetListener() {
+					@Override
+					public void onTimeSet(com.tdil.thalamus.android.gui.components.TimePicker view, int hourOfDay, int minute, int seconds) {
+						ActivityHomeAlarmAgendaEdit.this.agendaHourFrom.setText(String.valueOf(hourOfDay) + ":" + minute + ":" + seconds);
+						ActivityHomeAlarmAgendaEdit.this.hourFrom = hourOfDay;
+						ActivityHomeAlarmAgendaEdit.this.minuteFrom = minute;
+						ActivityHomeAlarmAgendaEdit.this.secondFrom = seconds;
+					}
+				}, hour, minute, second, true);
+				mTimePicker.show();
 
 			}
 		});
@@ -121,8 +142,25 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		agendaHourTo.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				DialogFragment newFragment = new TimeToPickerFragment(ActivityHomeAlarmAgendaEdit.this);
-				newFragment.show(getSupportFragmentManager(), "timePicker");
+				final Calendar c = Calendar.getInstance();
+				int hour = c.get(Calendar.HOUR_OF_DAY);
+				int minute = c.get(Calendar.MINUTE);
+				int second = c.get(Calendar.SECOND);
+				if (ActivityHomeAlarmAgendaEdit.this.hourTo != -1 && ActivityHomeAlarmAgendaEdit.this.minuteTo != -1 && ActivityHomeAlarmAgendaEdit.this.secondTo != -1) {
+					hour = ActivityHomeAlarmAgendaEdit.this.hourTo;
+					minute = ActivityHomeAlarmAgendaEdit.this.minuteTo;
+					second = ActivityHomeAlarmAgendaEdit.this.secondTo;
+				} 
+				MyTimePickerDialog mTimePicker = new MyTimePickerDialog(ActivityHomeAlarmAgendaEdit.this, new MyTimePickerDialog.OnTimeSetListener() {
+					@Override
+					public void onTimeSet(com.tdil.thalamus.android.gui.components.TimePicker view, int hourOfDay, int minute, int seconds) {
+						ActivityHomeAlarmAgendaEdit.this.agendaHourTo.setText(String.valueOf(hourOfDay) + ":" + minute + ":" + seconds);
+						ActivityHomeAlarmAgendaEdit.this.hourTo = hourOfDay;
+						ActivityHomeAlarmAgendaEdit.this.minuteTo = minute;
+						ActivityHomeAlarmAgendaEdit.this.secondTo = seconds;
+					}
+				}, hour, minute, second, true);
+				mTimePicker.show();
 
 			}
 		});
@@ -133,6 +171,41 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		agendaRepFriday = (CheckBox)findViewById(R.id.agendaRepFriday);
 		agendaRepSaturday = (CheckBox)findViewById(R.id.agendaRepSaturday);
 		agendaRepSunday = (CheckBox)findViewById(R.id.agendaRepSunday);
+		
+		if (extras != null && extras.containsKey(AGENDA)) {
+			alarmAgenda = (AlarmAgenda)extras.getSerializable(AGENDA);
+		}
+		if (alarmAgenda != null) {
+			try {
+				agendaDescription.setText(alarmAgenda.getDescription());
+				dateFrom.setText(alarmAgenda.getFrom());
+				dateFromObj = Calendar.getInstance();
+				dateFromObj.setTime(SIMPLE_DATE_FORMAT.parse(alarmAgenda.getFrom()));
+				dateTo.setText(alarmAgenda.getTo());
+				dateToObj = Calendar.getInstance();
+				dateToObj.setTime(SIMPLE_DATE_FORMAT.parse(alarmAgenda.getTo()));
+				agendaHourFrom.setText(alarmAgenda.getActivateTime());
+				String arr[] = alarmAgenda.getActivateTime().split(":");
+				hourFrom = Integer.parseInt(arr[0]);
+				minuteFrom = Integer.parseInt(arr[1]);
+				secondFrom = Integer.parseInt(arr[2]);
+				agendaHourTo.setText(alarmAgenda.getDeactivateTime());
+				String arr1[] = alarmAgenda.getDeactivateTime().split(":");
+				hourTo = Integer.parseInt(arr1[0]);
+				minuteTo = Integer.parseInt(arr1[1]);
+				secondTo = Integer.parseInt(arr1[2]);
+				agendaRepMonday.setChecked(alarmAgenda.monday());
+				agendaRepTuesday.setChecked(alarmAgenda.tuesday());
+				agendaRepWednesday.setChecked(alarmAgenda.wednesday());
+				agendaRepThursday.setChecked(alarmAgenda.thursday());
+				agendaRepFriday.setChecked(alarmAgenda.friday());
+				agendaRepSaturday.setChecked(alarmAgenda.saturday());
+				agendaRepSunday.setChecked(alarmAgenda.sunday());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		validator = new Validator(this);
 	    validator.setValidationListener(this);
@@ -326,36 +399,36 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		}
 	}
 
-	public static class TimeFromPickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
-		private ActivityHomeAlarmAgendaEdit activity;
-		
-		public TimeFromPickerFragment(ActivityHomeAlarmAgendaEdit activity) {
-			super();
-			this.activity = activity;
-		}
-
-		@Override
-		public Dialog onCreateDialog(Bundle savedInstanceState) {
-			// TODO ver si se abrio o no o si fue edicion o no
-			final Calendar c = Calendar.getInstance();
-			int hour = c.get(Calendar.HOUR_OF_DAY);
-			int minute = c.get(Calendar.MINUTE);
-			if (this.activity.hourFrom != -1 && this.activity.minuteFrom != -1) {
-				hour = this.activity.hourFrom;
-				minute = this.activity.minuteFrom;
-			} 
-
-			// Create a new instance of TimePickerDialog and return it
-			return new TimePickerDialog(getActivity(), this, hour, minute, true);
-		}
-
-		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-			this.activity.hourFrom = hourOfDay;
-			this.activity.minuteFrom = minute;
-			this.activity.agendaHourFrom.setText(String.valueOf(hourOfDay) + ":" + minute);
-			
-		}
-	}
+//	public static class TimeFromPickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
+//		private ActivityHomeAlarmAgendaEdit activity;
+//		
+//		public TimeFromPickerFragment(ActivityHomeAlarmAgendaEdit activity) {
+//			super();
+//			this.activity = activity;
+//		}
+//
+//		@Override
+//		public Dialog onCreateDialog(Bundle savedInstanceState) {
+//			// TODO ver si se abrio o no o si fue edicion o no
+//			final Calendar c = Calendar.getInstance();
+//			int hour = c.get(Calendar.HOUR_OF_DAY);
+//			int minute = c.get(Calendar.MINUTE);
+//			if (this.activity.hourFrom != -1 && this.activity.minuteFrom != -1) {
+//				hour = this.activity.hourFrom;
+//				minute = this.activity.minuteFrom;
+//			} 
+//
+//			// Create a new instance of TimePickerDialog and return it
+//			return new TimePickerDialog(getActivity(), this, hour, minute, true);
+//		}
+//
+//		public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//			this.activity.hourFrom = hourOfDay;
+//			this.activity.minuteFrom = minute;
+//			this.activity.agendaHourFrom.setText(String.valueOf(hourOfDay) + ":" + minute);
+//			
+//		}
+//	}
 	
 	public static class TimeToPickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener {
 		private ActivityHomeAlarmAgendaEdit activity;
