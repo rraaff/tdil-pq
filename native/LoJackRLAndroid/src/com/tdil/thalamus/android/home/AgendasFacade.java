@@ -44,12 +44,14 @@ public class AgendasFacade {
 					LightAgendaCollection.class).execute((Void) null);
 	}
 
-	private static IRestClientObserver getLightAgendasListObserver(final ActivityHomeLightDashboard activity) {
-		return new ActivityRestClientObserver(activity) {
+	private static IRestClientObserver getLightAgendasListObserver(final ActivityHomeLightDashboard pActivity) {
+		return new ActivityRestClientObserver(pActivity) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
 				LightAgendaCollection pos = ((RESTClientTaskOpt<LightAgendaCollection>)restClientTask).getCastedResult();
 				Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightsAgendas.class);
+				intent.putExtra(ActivityHomeLightsAgendas.ID_ENTIDAD, pActivity.getLight().getIdEntidad());
+				intent.putExtra(ActivityHomeLightsAgendas.ID_LUZ, String.valueOf(pActivity.getLight().getIdLuz()));
 				intent.putExtra(ActivityHomeLightsAgendas.AGENDAS, new ArrayList<LightAgenda>(pos.getList()));
 				activity.startActivity(intent);
 			}

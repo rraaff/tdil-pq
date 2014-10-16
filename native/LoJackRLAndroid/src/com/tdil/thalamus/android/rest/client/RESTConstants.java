@@ -66,11 +66,15 @@ public interface RESTConstants {
 	
 	// Agendas
 	public static final String GET_ALARM_AGENDAS =  "/alarmAgendas/" + ID_ENTIDAD + "/list";
-	public static final String GET_LIGHT_AGENDAS =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/list";
 	public static final String POST_ACTIVATE_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/" + ID_AGENDA + "/activate";
 	public static final String POST_DELETE_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/" + ID_AGENDA + "/delete";
 	public static final String POST_CREATE_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/create";
 	public static final String POST_MODIFY_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/modify";
+	public static final String GET_LIGHT_AGENDAS =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/list";
+	public static final String POST_ACTIVATE_LIGHT_AGENDA =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/" + ID_AGENDA + "/activate";
+	public static final String POST_DELETE_LIGHT_AGENDA =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/" + ID_AGENDA + "/delete";
+	public static final String POST_CREATE_LIGHT_AGENDA =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/create";
+	public static final String POST_MODIFY_LIGHT_AGENDA =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/modify";
 	
 	public static final String CAMERAS = "/cameras/list";
 	

@@ -18,7 +18,7 @@ public class LightAgenda implements Serializable {
 	public static final String Sa = "Sa";
 	public static final String Do = "Do";
 
-	private String id;
+	private String idAgenda;
 	private String description;
 	
 	private String from; // Fechas en formato YYYY-MM-DD
@@ -33,6 +33,9 @@ public class LightAgenda implements Serializable {
 	private String activateTime;
 	private String deactivateTime;
 	
+	private int idEntidad;
+	private int idLuz;
+	
 	public String getTypeDescription() {
 		if (CUSTOM.equals(this.getType())) {
 			return this.getCustomDays();
@@ -41,11 +44,11 @@ public class LightAgenda implements Serializable {
 		}
 	}
 	
-	public String getId() {
-		return id;
+	public String getIdAgenda() {
+		return idAgenda;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setIdAgenda(String id) {
+		this.idAgenda = id;
 	}
 	public String getDescription() {
 		return description;
@@ -101,4 +104,107 @@ public class LightAgenda implements Serializable {
 	public void setActive(boolean active) {
 		this.active = active;
 	}
+	
+	public boolean monday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Lu);
+	}
+	public boolean tuesday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Ma);
+	}
+	public boolean wednesday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Mi);
+	}
+	public boolean thursday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Ju);
+	}
+	public boolean friday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return false;
+		}
+		return this.getCustomDays().contains(Vi);
+	}
+	public boolean saturday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return false;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return true;
+		}
+		return this.getCustomDays().contains(Sa);
+	}
+	public boolean sunday() {
+		if (ALL_DAYS.equals(this.getType())) {
+			return true;
+		}
+		if (BUSINESS_DAYS.equals(this.getType())) {
+			return false;
+		}
+		if (WEEKENDS.equals(this.getType())) {
+			return true;
+		}
+		return this.getCustomDays().contains(Do);
+	}
+
+	public int getIdEntidad() {
+		return idEntidad;
+	}
+
+	public void setIdEntidad(int idEntidad) {
+		this.idEntidad = idEntidad;
+	}
+
+	public int getIdLuz() {
+		return idLuz;
+	}
+
+	public void setIdLuz(int idLuz) {
+		this.idLuz = idLuz;
+	}
+
+
 }
