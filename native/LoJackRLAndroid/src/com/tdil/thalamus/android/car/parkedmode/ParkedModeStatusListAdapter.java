@@ -128,6 +128,8 @@ public class ParkedModeStatusListAdapter extends AbstractListAdapter<ParkedModeS
 			@Override
 			public void error(IRestClientTask task) {
 				super.error(task);
+				toggleButton.setChecked(true);
+				parkedModeListener.parkedModeStatus.setStatus("ON");
 				parkedModeListener.ignore = false;
 			}
 		};
@@ -151,6 +153,8 @@ public class ParkedModeStatusListAdapter extends AbstractListAdapter<ParkedModeS
 			@Override
 			public void error(IRestClientTask task) {
 				super.error(task);
+				toggleButton.setChecked(false);
+				parkedModeListener.parkedModeStatus.setStatus("OFF");
 				parkedModeListener.ignore = false;
 			}
 		};

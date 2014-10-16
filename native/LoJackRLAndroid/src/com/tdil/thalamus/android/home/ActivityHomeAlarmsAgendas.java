@@ -22,8 +22,10 @@ import com.tdil.thalamus.android.rest.model.AlarmAgenda;
  */
 public class ActivityHomeAlarmsAgendas extends HomeActivity {
 
+	public static final String ID_ENTIDAD = "ID_ENTIDAD";
 	public static final String AGENDAS = "AGENDAS";
 	
+	private int idEntidad;
 	private AlarmAgendaListAdapter alarmListAdapter;
 	public ArrayList<AlarmAgenda> alarms = new ArrayList<AlarmAgenda>();
 	private ListView alarmsList;
@@ -37,6 +39,7 @@ public class ActivityHomeAlarmsAgendas extends HomeActivity {
         HomeHeaderLogic.installHomeMenuLogic(this);
         Resources res = getResources();
         Bundle extras = getIntent().getExtras();
+        idEntidad = extras.getInt(ID_ENTIDAD);
         alarms = (ArrayList<AlarmAgenda>)extras.getSerializable(AGENDAS);
 		alarmListAdapter = new AlarmAgendaListAdapter(ActivityHomeAlarmsAgendas.this,
 				alarms, res);
@@ -57,6 +60,7 @@ public class ActivityHomeAlarmsAgendas extends HomeActivity {
 		@Override
 		public void onClick(View arg0) {
 			Intent intent = new Intent(activity, ActivityHomeAlarmAgendaEdit.class);
+			intent.putExtra(ActivityHomeAlarmAgendaEdit.ID_ENTIDAD, activity.idEntidad);
 			this.activity.startActivity(intent);
 			this.activity.finish();
 		}

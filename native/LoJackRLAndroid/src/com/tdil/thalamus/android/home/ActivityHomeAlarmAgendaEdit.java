@@ -4,9 +4,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -19,15 +21,24 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.mobsandgeeks.saripaar.Rule;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.Validator.ValidationListener;
 import com.mobsandgeeks.saripaar.annotation.TextRule;
 import com.tdil.lojack.rl.R;
+import com.tdil.thalamus.android.ActivityRestClientObserver;
 import com.tdil.thalamus.android.gui.components.MyTimePickerDialog;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.header.logic.HomeHeaderLogic;
+import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.AlarmAgenda;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
 
 /**
  * Esta pagina maneja el listado de alarmas
@@ -37,8 +48,10 @@ import com.tdil.thalamus.android.rest.model.AlarmAgenda;
  */
 public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements ValidationListener {
 
+	public static final String ID_ENTIDAD = "ID_ENTIDAD";
 	public static final String AGENDA = "AGENDA";
 	
+	private int idEntidad;
 	private AlarmAgenda alarmAgenda = null;
 	
 	@TextRule(order = 1, minLength = 1, maxLength = 100, message = "Ingrese la descripcion.")
@@ -172,6 +185,7 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		agendaRepSaturday = (CheckBox)findViewById(R.id.agendaRepSaturday);
 		agendaRepSunday = (CheckBox)findViewById(R.id.agendaRepSunday);
 		
+		idEntidad = extras.getInt(ID_ENTIDAD);
 		if (extras != null && extras.containsKey(AGENDA)) {
 			alarmAgenda = (AlarmAgenda)extras.getSerializable(AGENDA);
 		}
@@ -220,18 +234,6 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 	}
 	
 	private void setupValidations() {
-//		validator.put(agendaDescription, new Rule<EditText>("Ingrese la descripcion (hasta 100 caracteres)") {
-//			public boolean isValid(EditText view) {
-//				String text = view.getText().toString();
-//				if (text.length() == 0) {
-//					return false;
-//				}
-//				if (text.length() > 100) {
-//					return false;
-//				}
-//				return true;
-//			};
-//		});
 		validator.put(dateFrom, new Rule<TextView>("Seleccione la fecha de inicio") {
 			public boolean isValid(TextView view) {
 				return ActivityHomeAlarmAgendaEdit.this.dateFromObj != null;
@@ -313,9 +315,126 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
     }
     @Override
     public void onSuccess() {
-    	//updatePerson();
-    	Toast.makeText(this, "SUCCESS", Toast.LENGTH_SHORT).show();
+    	AlarmAgenda modifyAlarm = new AlarmAgenda();
+    	if (alarmAgenda != null) {
+    		modifyAlarm.setIdAgenda(alarmAgenda.getIdAgenda());
+    	} else {
+    		modifyAlarm.setActive(true);
+    	}
+    	modifyAlarm.setDescription(agendaDescription.getText().toString());
+    	modifyAlarm.setFrom(SIMPLE_DATE_FORMAT.format(dateFromObj.getTime()));
+    	modifyAlarm.setTo(SIMPLE_DATE_FORMAT.format(dateToObj.getTime()));
+    	modifyAlarm.setActivateTime(getActivateTimeFormatted());
+    	modifyAlarm.setDeactivateTime(getDeactivateTimeFormatted());
+    	modifyAlarm.setType(AlarmAgenda.CUSTOM);
+    	modifyAlarm.setCustomDays(getCustomDays());
+    	Gson gson = new Gson();
+		String json = gson.toJson(modifyAlarm);
+    	if (alarmAgenda != null) {
+    		new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, getPostSaveConfObserver(), 
+    			RESTConstants.POST_MODIFY_ALARM_AGENDA, 
+    				new RestParams(RESTConstants.ID_ENTIDAD, idEntidad)
+    				,json,RESTResponse.class)
+    				.execute((Void) null);
+    	} else {
+    		new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, getPostSaveConfObserver(), 
+        			RESTConstants.POST_CREATE_ALARM_AGENDA, 
+        				new RestParams(RESTConstants.ID_ENTIDAD, idEntidad)
+        				,json,RESTResponse.class)
+        				.execute((Void) null);
+    	}
+    		
     }
+    
+    private String getCustomDays() {
+    	StringBuilder sb = new StringBuilder();
+    	if (agendaRepMonday.isChecked()) {
+    		sb.append("Lu,");
+    	}
+    	if (agendaRepTuesday.isChecked()) {
+    		sb.append("Ma,");
+    	}
+    	if (agendaRepWednesday.isChecked()) {
+    		sb.append("Mi,");
+    	}
+    	if (agendaRepThursday.isChecked()) {
+    		sb.append("Ju,");
+    	}
+    	if (agendaRepFriday.isChecked()) {
+    		sb.append("Vi,");
+    	}
+    	if (agendaRepSaturday.isChecked()) {
+    		sb.append("Sa,");
+    	}
+    	if (agendaRepSunday.isChecked()) {
+    		sb.append("Do,");
+    	}
+    	String result = sb.toString();
+    	result = result.substring(0, result.length() - 1);
+		return result;
+	}
+
+	private String getActivateTimeFormatted() {
+		StringBuilder sb = new StringBuilder();
+		if (hourFrom < 10) {
+			sb.append("0");
+		}
+		sb.append(hourFrom);
+		sb.append(":");
+		if (minuteFrom < 10) {
+			sb.append("0");
+		}
+		sb.append(minuteFrom);
+		sb.append(":");
+		if (secondFrom < 10) {
+			sb.append("0");
+		}
+		sb.append(secondFrom);
+		return sb.toString();
+	}
+    
+    private String getDeactivateTimeFormatted() {
+		StringBuilder sb = new StringBuilder();
+		if (hourTo < 10) {
+			sb.append("0");
+		}
+		sb.append(hourTo);
+		sb.append(":");
+		if (minuteTo < 10) {
+			sb.append("0");
+		}
+		sb.append(minuteTo);
+		sb.append(":");
+		if (secondTo < 10) {
+			sb.append("0");
+		}
+		sb.append(secondTo);
+		return sb.toString();
+	}
+
+	private IRestClientObserver getPostSaveConfObserver() {
+		return new ActivityRestClientObserver(this) { 
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+				if (response.getOk()) {
+					new AlertDialog.Builder(activity)
+		               .setIcon(R.drawable.ic_launcher)
+		               .setTitle("Alarma")
+		               .setMessage("Se ha guardado la alarma")
+		               .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		                       public void onClick(DialogInterface dialog, int whichButton) {
+		                    	   dialog.dismiss();
+		                    	   activity.finish();
+		                       }
+		               }).show();
+				} else {
+					error(restClientTask);
+				}
+			}
+		};
+	}
+    
     @Override
     public void onValidationCancelled() {
     }

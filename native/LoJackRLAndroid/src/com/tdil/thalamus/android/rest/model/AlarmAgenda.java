@@ -23,6 +23,8 @@ public class AlarmAgenda implements Serializable {
 	private int idAgenda;
 	private String description;
 	
+	private int idEntidad;
+	
 	private String from; // Fechas en formato YYYY-MM-DD
 	private String to;
 	
@@ -189,5 +191,13 @@ public class AlarmAgenda implements Serializable {
 			return true;
 		}
 		return this.getCustomDays().contains(Do);
+	}
+
+	public int getIdEntidad() {
+		return idEntidad;
+	}
+
+	public void setIdEntidad(int idEntidad) {
+		this.idEntidad = idEntidad;
 	}
 }

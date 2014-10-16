@@ -24,12 +24,13 @@ public class AgendasFacade {
 				AlarmAgendaCollection.class).execute((Void) null);
 	}
 
-	private static IRestClientObserver getAlarmAgendasListObserver(final ActivityHomeAlarmDashboard activity) {
-		return new ActivityRestClientObserver(activity) {
+	private static IRestClientObserver getAlarmAgendasListObserver(final ActivityHomeAlarmDashboard pActivity) {
+		return new ActivityRestClientObserver(pActivity) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
 				AlarmAgendaCollection pos = ((RESTClientTaskOpt<AlarmAgendaCollection>)restClientTask).getCastedResult();
 				Intent intent = new Intent(activity.getBaseContext(), ActivityHomeAlarmsAgendas.class);
+				intent.putExtra(ActivityHomeAlarmsAgendas.ID_ENTIDAD, pActivity.getAlarm().getIdEntidad());
 				intent.putExtra(ActivityHomeAlarmsAgendas.AGENDAS, new ArrayList<AlarmAgenda>(pos.getList()));
 				activity.startActivity(intent);
 			}

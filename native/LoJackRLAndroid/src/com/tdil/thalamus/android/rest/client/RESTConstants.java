@@ -6,7 +6,8 @@ public interface RESTConstants {
 
 	public static final String ID_ENTIDAD = "{idEntidad}";
 	public static final String ID_LUZ = "{idluz}";
-
+	public static final String ID_AGENDA = "{idAgenda}";
+	
 	public static final String P_PASSWORD = "{password}";
 
 	public static final String P_DOCUMENT_NUMBER = "{documentNumber}";
@@ -66,6 +67,10 @@ public interface RESTConstants {
 	// Agendas
 	public static final String GET_ALARM_AGENDAS =  "/alarmAgendas/" + ID_ENTIDAD + "/list";
 	public static final String GET_LIGHT_AGENDAS =  "/lightAgendas/" + ID_ENTIDAD + "/" + ID_LUZ + "/list";
+	public static final String POST_ACTIVATE_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/" + ID_AGENDA + "/activate";
+	public static final String POST_DELETE_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/" + ID_AGENDA + "/delete";
+	public static final String POST_CREATE_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/create";
+	public static final String POST_MODIFY_ALARM_AGENDA =  "/alarmAgendas/" + ID_ENTIDAD + "/modify";
 	
 	public static final String CAMERAS = "/cameras/list";
 	
