@@ -21,6 +21,17 @@
 		        
 		        <LinearLayout style="@style/gen_fil_and_wrap" >
 
+					<LinearLayout
+					    android:layout_width="wrap_content"
+					    android:layout_height="match_parent"
+					    android:gravity="center_horizontal|center_vertical" >
+					           
+			        <com.tdil.thalamus.android.gui.components.StyledToggleButton
+			                android:id="@+id/alarmStatusSwitch"
+						    style="@style/toggleSwitchIOSish"
+						    android:textOff=""
+						    android:textOn="" />
+				    </LinearLayout>
 					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/lightAgendaDescriptionTextView"
 					    style="@style/item_title_01"
@@ -30,6 +41,41 @@
 				</LinearLayout>
 
 				<LinearLayout style="@style/row_innerrow_data_container" >
+				<com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/luTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Lu," />
+				    <com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/maTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Ma," />
+				    <com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/miTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Mi," />
+				    <com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/juTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Ju," />
+				    <com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/viTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Vi," />
+				    <com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/saTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Sa," />
+				    <com.tdil.thalamus.android.gui.components.StyledTextView
+					    android:id="@+id/doTextView"
+					    android:layout_width="wrap_content"
+			   			android:layout_height="wrap_content"
+					    android:text="Do" />
 				</LinearLayout>
 
 				<LinearLayout style="@style/row_innerrow_data_container" >
