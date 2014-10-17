@@ -202,7 +202,7 @@ public class LightAgendaListAdapter extends AbstractListAdapter<LightAgenda, Lig
 		public void onClick(View arg0) {
 			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightAgendaEdit.class);
 			intent.putExtra(ActivityHomeLightAgendaEdit.ID_ENTIDAD, alarmAgenda.getIdEntidad());
-			intent.putExtra(ActivityHomeLightAgendaEdit.ID_LUZ, alarmAgenda.getIdLuz());
+			intent.putExtra(ActivityHomeLightAgendaEdit.ID_LUZ, String.valueOf(alarmAgenda.getIdLuz()));
 			intent.putExtra(ActivityHomeLightAgendaEdit.AGENDA, alarmAgenda);
 			activity.startActivity(intent);
 			activity.finish();

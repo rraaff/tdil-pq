@@ -5,7 +5,7 @@ import com.tdil.thalamus.android.ApplicationConfig;
 public interface RESTConstants {
 
 	public static final String ID_ENTIDAD = "{idEntidad}";
-	public static final String ID_LUZ = "{idluz}";
+	public static final String ID_LUZ = "{idLuz}";
 	public static final String ID_AGENDA = "{idAgenda}";
 	
 	public static final String P_PASSWORD = "{password}";
