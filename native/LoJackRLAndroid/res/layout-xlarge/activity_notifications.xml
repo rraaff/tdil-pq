@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+	
+	    <TableRow
+	        android:id="@+id/tableRow"
+	        android:layout_width="match_parent"
+	        android:layout_height="56dp"
+	        android:layout_weight=".05"
+	        android:background="@drawable/bg_logoredbar"
+	        android:orientation="horizontal" >
+	
+	        <ImageView
+	            android:id="@+id/imageView1"
+	            android:layout_width="wrap_content"
+	            android:layout_height="48dp"
+	            android:layout_gravity="center_vertical|center_horizontal"
+	            android:layout_weight="1"
+	            android:src="@drawable/logo_lojack_forheader" />
+	
+	    </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+    
+            <LinearLayout
+                android:id="@+id/vluMessagesListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+		
+		        <TextView
+		            android:id="@+id/lastChanges"
+		            style="@style/modal_subtitleinform"
+		            android:layout_marginTop="0dp"
+		            android:text="@string/lst_title_notifications" />
+		
+		        <ListView
+		            android:id="@+id/notificationsListView"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:background="@color/grayLightBase"
+		            android:divider="@drawable/bg_item_inlist" >
+
+		        </ListView>
+
+		    </LinearLayout>
+
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forcar" />
+        </TableRow>
+    </LinearLayout>
+</merge>

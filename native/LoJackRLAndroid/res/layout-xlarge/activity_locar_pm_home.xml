@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ActivityHomeAlarms" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/incl"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlocar_application_fullmenu" />
+        </TableRow>
+
+		<TableRow
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+		
+			<TextView
+				android:id="@+id/parkModeDashboardTitle"
+				style="@style/modal_subtitleinform"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:text="@string/lst_title_parkmode_dashboard" />
+		
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+	            <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical" >
+	                 
+				    <TableRow
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content" >
+				        
+				        <LinearLayout style="@style/title_dashboard_container" >
+				            
+				            <TextView style="@style/title_dashboard"
+				                android:id="@+id/pmDetailDomainTextView"
+				                android:text="KBY852" />
+				            
+							<TextView style="@style/title_dashboard_state"
+							    android:id="@+id/pmDetailStatusTextView"
+							    android:text="@string/status_unknown" />
+	
+				        </LinearLayout>
+	
+			        </TableRow>
+	
+				    <TableRow
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
+	
+						<LinearLayout style="@style/toggle_button_container" >
+	
+	                    	<ToggleButton
+	                    	    android:id="@+id/pmStatusSwitch"
+	                    	    style="@style/toggleSwitchIOSishWithText"
+	                    	    android:drawableRight="@drawable/btn_toggle_fake_switch"
+	                    	    android:gravity="center_vertical|left"
+	                    	    android:textOff="Activar"
+	                    	    android:textOn="Desactivar" />
+					    
+						</LinearLayout>
+			
+				    </TableRow>
+	
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+					
+					    <Button
+					        android:id="@+id/pmVehicleGoConfig"
+					        style="@style/ButtonLoginList"
+					        android:drawableLeft="@drawable/icon_config_off"
+					        android:text="@string/btn_tag_config" />
+					
+					</TableRow>
+	
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+					
+					    <Button style="@style/ButtonLoginList"
+					        android:id="@+id/pmVehicleGoHistory"
+					        android:text="@string/btn_tag_history" />
+					
+					</TableRow>
+	
+	            </LinearLayout>
+	            
+            </ScrollView>
+
+        </TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="15dp" >
+
+            <Button
+                android:id="@+id/pmVehicleHomeBack"
+                style="@style/btn_backwards"
+                android:focusable="false"
+                android:text="@string/btn_lbl_back"
+                android:visibility="visible" />
+
+        </LinearLayout>
+        
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forcar" />
+        </TableRow>
+    </LinearLayout>
+</merge>

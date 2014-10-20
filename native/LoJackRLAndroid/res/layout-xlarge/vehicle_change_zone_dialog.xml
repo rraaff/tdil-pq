@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grayLightBase"
+        android:orientation="vertical" >
+		
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:orientation="vertical" >
+
+			<TextView
+			    android:id="@+id/textView1"
+			    style="@style/modal_maintitle_fordialogs"
+			    android:text="@string/title_select_zone" />
+
+		</LinearLayout>
+        
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_horizontal"
+		    android:background="@color/bgBase"
+		    android:gravity="center_horizontal"
+		    android:orientation="vertical" >
+
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content" >
+
+				<TextView
+				    android:id="@+id/textView2"
+				    style="@style/label_plate"
+				    android:text="@string/lbl_plate" />
+
+				<TextView
+				    android:id="@+id/vehicleZoneDomainTextView"
+				    style="@style/label_plate_var" />
+
+			</LinearLayout>
+
+			<Spinner
+			    android:id="@+id/changeZoneSpinner"
+			    style="@style/text_inputs_white_01"
+			    android:layout_margin="10dp" />
+
+		</LinearLayout>
+		
+		<LinearLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="10dp"
+		    android:background="@color/bgBase"
+		    android:orientation="vertical" >
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content" >
+
+				<ImageView
+				    android:id="@+id/imageView1"
+				    android:layout_width="match_parent"
+				    android:layout_height="wrap_content"
+				    android:src="@drawable/undertitle" />
+
+			</LinearLayout>
+	
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal"
+			    android:padding="15dp" >
+
+				<LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_weight="1"
+				    android:orientation="horizontal" >
+
+				    <Button
+				        android:id="@+id/vehicleChangeZoneButtonCancel"
+				        style="@style/btn_backwards"
+						android:text="@string/btn_lbl_back" />
+
+				</LinearLayout>
+				
+				<LinearLayout
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="left"
+				    android:layout_weight="1"
+				    android:gravity="right"
+				    android:orientation="horizontal" >
+
+				    <Button
+				        android:id="@+id/vehicleChangeZoneButtonOK"
+				        style="@style/btn_forward"
+				        android:layout_gravity="right|center_horizontal"
+				        android:text="@string/btn_lbl_save" />
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+       </LinearLayout>
+    
+    </LinearLayout>
+
+</RelativeLayout>

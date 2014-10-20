@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <LinearLayout style="@style/row_twocols_container">
+
+        <LinearLayout style="@style/row_innercolumn_container">
+
+            <LinearLayout style="@style/row_innercontent" >
+
+                <LinearLayout style="@style/gen_fil_and_wrap" >
+
+                    <TextView
+                        android:id="@+id/cameraDescription"
+                        style="@style/item_title_01"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="Cámara cochera" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/row_innercolumn_containerImageSmall" >
+
+            <ImageView
+                android:id="@+id/viewCameraButton"
+                style="@style/icon_inrow_go" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</TableLayout>

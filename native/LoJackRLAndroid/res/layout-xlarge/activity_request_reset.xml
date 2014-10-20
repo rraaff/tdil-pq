@@ -1,0 +1,124 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".LoginActivity" >
+
+    <LinearLayout
+        android:id="@+id/loginObjects"
+        style="@style/main_container" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/table_portalogo"
+            android:layout_marginBottom="90dp" >
+
+            <ImageView
+                android:id="@+id/ImageView01"
+                style="@style/logo_on_top"
+                android:contentDescription="@string/action_loading" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/table_portamodal"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp" >
+
+            <LinearLayout 
+                style="@style/modal_container" >
+
+                <TextView
+                    android:id="@+id/loadingInfoText"
+                    style="@style/modal_maintitle"
+                    android:text="@string/title_request_reset" />
+
+                <LinearLayout
+                    style="@style/form_layout" >
+
+		            <Spinner
+		                android:id="@+id/documentType"
+		                style="@style/text_inputs_white_01" />
+		
+		            <EditText
+		                android:id="@+id/documentNumber"
+		                android:hint="@string/hnt_doc_number"
+		                android:inputType="number"
+		                style="@style/text_inputs_white_01" >
+		
+		                <requestFocus />
+		            </EditText>
+
+		            <LinearLayout
+		                android:layout_width="fill_parent"
+		                android:layout_height="wrap_content"
+		                android:layout_marginBottom="15dp"
+		                android:layout_marginLeft="15dp"
+		                android:layout_marginRight="15dp"
+		                android:layout_marginTop="25dp"
+		                android:orientation="horizontal" >
+		                
+
+		                <LinearLayout
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="match_parent"
+		                    android:orientation="vertical" >
+
+		                    <Button
+		                        android:id="@+id/resetPasswordBack"
+		                        style="@style/btn_backwards"
+		                        android:onClick="@string/dologin"
+		                        android:text="@string/btn_tag_reset_password_back" />
+
+		                </LinearLayout>
+
+		                <LinearLayout
+		                    android:layout_width="match_parent"
+		                    android:layout_height="match_parent"
+		                    android:layout_gravity="fill_horizontal|center_vertical"
+		                    android:gravity="right" >
+
+		                    <Button
+		                        android:id="@+id/resetPasswordButton"
+		                        style="@style/btn_forward"
+		                        android:onClick="@string/dologin"
+		                        android:text="@string/btn_tag_reset_password" />
+
+		                </LinearLayout>
+
+			        </LinearLayout>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/main_promo_title"
+                    android:text="@string/rd_main_promo_title"
+                    style="@style/txt_mainpromo" />
+
+                <TextView
+                    android:id="@+id/main_hookline"
+                    style="@style/txt_hookline"
+                    android:text="@string/rd_main_hookline" />
+
+            </LinearLayout>
+        </TableRow>
+
+    </LinearLayout>
+</merge>

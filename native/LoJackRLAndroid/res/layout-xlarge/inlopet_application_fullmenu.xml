@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/application_fullmenu"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_logoredbar"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="68dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:src="@drawable/logo_lojack_forheader" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        style="@style/tab_locar_container" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="68dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                style="@style/appmenu_tab_basic"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|center_horizontal" >
+
+                <TextView
+                    android:id="@+id/textView1"
+                    style="@style/appmenu_button_basic"
+                    android:text="@string/btn_tag_appmenu_home" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/appmenu_tab_basic"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/appmenu_button_basic"
+                    android:text="@string/btn_tag_appmenu_cars" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/appmenu_tab_basic"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/appmenu_button_selected"
+                    android:text="@string/btn_tag_appmenu_pets" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/appmenu_tab_basic"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/appmenu_button_basic"
+                    android:text="@string/btn_tag_appmenu_apps" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </TableRow>
+
+    <!-- TAB LOHOME -->
+
+</LinearLayout>

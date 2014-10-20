@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".HomeAlarmsActivity" >
+
+    <!-- Login progress -->
+
+    <!-- Login form -->
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" 
+	    android:layout_above="@+id/footer"
+	    android:layout_below="@+id/header">
+        
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" android:gravity="center" >
+	        
+	        <com.tdil.thalamus.android.gui.components.StyledButton
+	        android:id="@+id/btnHeaderAlarms"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btnHeaderAlarms" />
+	        
+	        <com.tdil.thalamus.android.gui.components.StyledButton
+	        android:id="@+id/btnHeaderLights"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btnHeaderLights" />
+	        
+	        <com.tdil.thalamus.android.gui.components.StyledButton
+	        android:id="@+id/btnHeaderCameras"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btnHeaderCameras" />
+	        
+	    </LinearLayout>
+
+	    <ScrollView
+    android:id="@+id/container"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_horizontal"
+      android:orientation="vertical" >
+	
+	        <ListView
+	            android:id="@+id/alarmsList"
+	            android:layout_width="fill_parent"
+	            android:layout_height="match_parent" >
+
+	        </ListView>
+	
+	    </LinearLayout>
+  </ScrollView>
+
+	    </LinearLayout>
+            
+    
+    <!-- Footer aligned to bottom -->
+  	<include layout="@layout/footer"/>
+    
+
+</RelativeLayout>

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom">
 
-            <include layout="@layout/footer" />
+            <include layout="@layout/footer_not_logged" />
         </TableLayout>
     </LinearLayout>
     

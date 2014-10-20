@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlocar_application_fullmenu" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="0dp"
+            android:layout_weight=".97" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom" >
+
+                 <RelativeLayout
+			        android:id="@+id/content"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:layout_above="@id/footer"
+			        android:gravity="center" >
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+                
+                 <com.tdil.thalamus.android.menu.cars.CarsViewGroup
+                     android:id="@+id/carsMenu"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerHorizontal="true"
+                     android:layout_centerVertical="true"
+                     android:layout_margin="100dp"
+                     android:background="@drawable/ic_cars_whm_menu_connector" >
+		            
+                    <ImageButton
+                        android:id="@+id/carMenuButton"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_menu_on" />
+                     
+                     <ImageButton
+		                android:id="@+id/carPositionsButtonMenu"
+		                style="@style/btn_cars"
+		                android:background="@drawable/ic_cars_whm_position_off"
+		                android:contentDescription="@string/action_home" />
+                     
+		            <ImageButton
+                        android:id="@+id/carSpeedButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_velocidades_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carZoneButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_zone_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carPhoneButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_telefonos_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carPathButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_recorridos_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carParkedModeButtonMenu"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_estacioname_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carMenuOpenButton"
+                        style="@style/btn_cars"
+                        android:background="@drawable/ic_cars_whm_menu_off" 
+                        android:visibility="gone"/>
+		          </com.tdil.thalamus.android.menu.cars.CarsViewGroup>
+
+                 <TableRow
+                     android:id="@+id/vluMessagesAlertRow"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentBottom="true"
+                     android:layout_alignParentLeft="true"
+                     android:background="@drawable/toplayer80_white" >
+
+                     <TextView
+                         android:id="@+id/vluMessagesAlertTextView"
+                         style="@style/btn_inlist_witharrow"
+                         android:text="@string/vlu_message_alert"
+                         android:textSize="16sp" />
+
+                 </TableRow>
+                 
+                 <TableRow
+                     android:id="@+id/vluMessagesOkRow"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_alignParentBottom="true"
+                     android:layout_alignParentLeft="true"
+                     android:background="@drawable/toplayer80_white" >
+
+                     <TextView
+                         android:id="@+id/vluMessagesOkTextView"
+                         style="@style/btn_inlist_witharrow"
+                         android:text="@string/vlu_message_ok"
+                         android:textSize="16sp" />
+
+                 </TableRow>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </TableRow>
+
+        <!-- TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toplayer85"
+            android:gravity="center_horizontal" >
+
+            <ImageButton
+                android:id="@+id/carPositionsButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_position_off"
+                android:contentDescription="@string/action_home" />
+
+            <ImageButton
+                android:id="@+id/carSpeedButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_velocidades_off" />
+            
+            <ImageButton
+                android:id="@+id/carZoneButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_zone_off" />
+            
+            <ImageButton
+                android:id="@+id/carPhoneButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_telefonos_off" />
+            
+            <ImageButton
+                android:id="@+id/carPathButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_recorridos_off" />
+            
+            <ImageButton
+                android:id="@+id/carParkedModeButton"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_cars_estacioname_off" />
+        </TableRow -->
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forcar" />
+        </TableRow>
+    </LinearLayout>
+</merge>
