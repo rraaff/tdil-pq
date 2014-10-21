@@ -2,6 +2,9 @@
 <resources>
 
     <string name="app_name">La Cerrajeria</string>
+    <string name="action_location">Donde estamos</string>
+    <string name="action_services">Servicios</string>
+    <string name="action_emergency">Urgencias</string>
     <string name="action_about">Acerca de</string>
 
 </resources>

@@ -7,24 +7,24 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class AboutActivity extends BaseActivity {
+public class LocationActivity extends BaseActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_about);
+		setContentView(R.layout.activity_location);
 		
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(false);
 //		actionBar.setDisplayShowCustomEnabled(true);
 //		actionBar.setDisplayShowTitleEnabled(false);
-		actionBar.setTitle("Acerca de");
+		actionBar.setTitle("Donde estamos");
 
 		findViewById(R.id.backButton).setOnClickListener(
 			new View.OnClickListener() {
 				@Override
 				public void onClick(View view) {
-					AboutActivity.this.finish();
+					LocationActivity.this.finish();
 				}
 			});
 	}
