@@ -73,6 +73,9 @@ public class CheckForUpdateActivity extends LoJackNotLoggedActivity {
                 } else {
                 	// activate activity
                 	StartHistory appStart = checkAppStart();
+                	if (appStart.getAppStart() != AppStart.NORMAL) {
+                		IndexActivity.isUpdate = true;
+                	}
                 	if (!appStart.isClient()) {
                 		Intent intent = new Intent(CheckForUpdateActivity.this, FirstAccessActivity.class);
 	                	startActivity(intent);

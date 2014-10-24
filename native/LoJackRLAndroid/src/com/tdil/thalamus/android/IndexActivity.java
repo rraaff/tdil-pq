@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
@@ -20,14 +21,25 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.car.CarsDialogs;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.IRestClientTask;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
+import com.tdil.thalamus.android.rest.model.RegisterAndroidBean;
 import com.tdil.thalamus.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
 public class IndexActivity extends LoJackLoggedActivity {
 
+	public static boolean isUpdate;
+	
 	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	public static final String EXTRA_MESSAGE = "message";
 	public static final String PROPERTY_REG_ID = "registration_id";
@@ -258,10 +270,7 @@ public class IndexActivity extends LoJackLoggedActivity {
 			Log.d(TAG, "Registration ID not found.");
 			return "";
 		}
-		int registeredVersion = prefs.getInt(PROPERTY_APP_VERSION, Integer.MIN_VALUE);
-		int currentVersion = getAppVersion(context);
-		if (registeredVersion != currentVersion) {
-			Log.d(TAG, "App version changed.");
+		if (isUpdate){
 			return "";
 		}
 		return registrationId;
@@ -269,15 +278,6 @@ public class IndexActivity extends LoJackLoggedActivity {
 
 	private SharedPreferences getGCMPreferences(Context context) {
 		return getSharedPreferences(IndexActivity.class.getSimpleName(), Context.MODE_PRIVATE);
-	}
-
-	private static int getAppVersion(Context context) {
-		try {
-			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-			return packageInfo.versionCode;
-		} catch (NameNotFoundException e) {
-			throw new RuntimeException("Could not get package name: " + e);
-		}
 	}
 
 	private void registerInBackground() {
@@ -292,6 +292,7 @@ public class IndexActivity extends LoJackLoggedActivity {
 					regid = gcm.register(SENDER_ID);
 					Log.d(TAG, "########################################");
 					Log.d(TAG, "Current Device's Registration ID is: " + regid);
+					
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 					ex.printStackTrace();
@@ -300,12 +301,35 @@ public class IndexActivity extends LoJackLoggedActivity {
 			}
 
 			protected void onPostExecute(Object result) { // to do here
+				Gson gson = new Gson();
+				String json = gson.toJson(new RegisterAndroidBean(regid));
+				new RESTClientTaskOpt<RESTResponse>(IndexActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)IndexActivity.this), 
+						RESTConstants.POST_REG_ID,null,json, RESTResponse.class).execute((Void) null);
 			};
 
 		}.execute(null, null, null);
 	}
 
 	// findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
+
+	protected IRestClientObserver getPostSaveObserver(final LoJackActivity loJackActivity) {
+		return new LoJackRestClientObserver(loJackActivity) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+				if (response.getOk()) {
+					final SharedPreferences prefs = getGCMPreferences(loJackActivity);
+					Editor e = prefs.edit();
+					e.putString(PROPERTY_REG_ID, regid);
+					e.commit();
+				} 
+			}
+			@Override
+			public void error(IRestClientTask task) {
+			}
+		};
+		
+	}
 
 	public static class ViewVLUMessagesListener implements OnClickListener {
 		private LoJackActivity activity;
