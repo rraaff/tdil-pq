@@ -20,8 +20,8 @@ public class ApplicationConfig {
 //	public static final String APP_DOMAIN = "192.168.0.134:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
-//RODRIGO
-//	public static final String APP_DOMAIN = "192.168.1.106:8180";
+//MARCOS
+//	public static final String APP_DOMAIN = "192.168.0.105:8180";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 
 //	public static final String APP_DOMAIN = "10.0.2.2:8180";
@@ -41,10 +41,6 @@ public class ApplicationConfig {
 	
 	public static final String URL_LEGALES_NOT_LOGGED = URL_WEBSITE + "legales_webview.jsp";
 	
-	public static final String ALERT_CENTER_PHONE = "08003330911";
-	public static final String HOME_ASSIST_CENTER_PHONE = "08003330911";
-	public static final String CAR_ASSIST_CENTER_PHONE = "08003330911";
-
 	public static int default_timeout = 10000;
 	
 	public static int thalamus_timeout = 10000;
