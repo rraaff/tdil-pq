@@ -60,7 +60,7 @@ public class OpenAssistCenterButton extends Button {
 					@Override
 					public void onClick(View v) {
 						try {
-							String uri = "tel:" + ApplicationConfig.HOME_ASSIST_CENTER_PHONE;
+							String uri = "tel:" + Login.getLoggedUser(context).getHomeAssistPhone();
 							Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
 							context.startActivity(callIntent);
 						} catch (Exception e) {
@@ -73,7 +73,7 @@ public class OpenAssistCenterButton extends Button {
 					@Override
 					public void onClick(View v) {
 						try {
-							String uri = "tel:" + ApplicationConfig.CAR_ASSIST_CENTER_PHONE;
+							String uri = "tel:" + Login.getLoggedUser(context).getCarAssistPhone();
 							Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
 							context.startActivity(callIntent);
 						} catch (Exception e) {

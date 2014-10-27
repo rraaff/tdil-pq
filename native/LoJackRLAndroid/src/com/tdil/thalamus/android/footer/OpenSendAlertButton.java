@@ -90,7 +90,7 @@ public class OpenSendAlertButton extends Button {
 				@Override
 				public void onClick(View v) {
 					try {
-						String uri = "tel:" + ApplicationConfig.ALERT_CENTER_PHONE;
+						String uri = "tel:" + Login.getLoggedUser(activity).getVehicleRecoveryPhone();
 						Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
 						activity.startActivity(callIntent);
 					} catch (Exception e) {

@@ -41,6 +41,10 @@ public class LoginResponse {
 	// LOW 0 /MEDIUM 1/HIGHT 2
 	private int messagesPriority;
 	
+	private String homeAssistPhone;
+	private String carAssistPhone;
+	private String vehicleRecoveryPhone;
+	
 	public String getGenericLinkDestination() {
 		return genericLinkDestination;
 	}
@@ -239,6 +243,30 @@ public class LoginResponse {
 
 	public void setMessagesPriority(int messagesPriority) {
 		this.messagesPriority = messagesPriority;
+	}
+
+	public String getHomeAssistPhone() {
+		return homeAssistPhone;
+	}
+
+	public void setHomeAssistPhone(String homeAssistPhone) {
+		this.homeAssistPhone = homeAssistPhone;
+	}
+
+	public String getCarAssistPhone() {
+		return carAssistPhone;
+	}
+
+	public void setCarAssistPhone(String carAssistPhone) {
+		this.carAssistPhone = carAssistPhone;
+	}
+
+	public String getVehicleRecoveryPhone() {
+		return vehicleRecoveryPhone;
+	}
+
+	public void setVehicleRecoveryPhone(String vehicleRecoveryPhone) {
+		this.vehicleRecoveryPhone = vehicleRecoveryPhone;
 	}
 
 }
