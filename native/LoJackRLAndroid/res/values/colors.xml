@@ -18,9 +18,9 @@
 	<color name="orangeTitles">#F05524</color>
 	<color name="orangeDark">#BC2800</color>
 	
-	<color name="actionBarGreen">#000000</color>
-	<color name="actionBarYellow">#FFF100</color>
-	<color name="actionBarRed">#FF0000</color>
+	<color name="actionBarGreen">#4c4c4c</color>
+	<color name="actionBarYellow">#a97b00</color>
+	<color name="actionBarRed">#a50000</color>
 	
 	<!-- Item list -->
 	<color name="lst_itm_title">#222222</color>

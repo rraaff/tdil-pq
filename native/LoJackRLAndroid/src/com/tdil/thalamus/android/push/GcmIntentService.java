@@ -54,12 +54,17 @@ public class GcmIntentService extends IntentService {
 		mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, IndexActivity.class), 0);
 
-		int icon = R.drawable.ic_launcher;
+		/* Icono para notificaciones genéricas */
+		int icon = R.drawable.ic_stat_loapp;
+		
+		/* Icono para notificaciones de CAR */
 		if (type == NotificationType.CAR) {
-			icon = R.drawable.icon_main_cars;
+			icon = R.drawable.ic_stat_locar;
 		}
+		
+		/* Icono para notificaciones de HOME */
 		if (type == NotificationType.HOME) {
-			icon = R.drawable.icon_main_home;
+			icon = R.drawable.ic_stat_lohome;
 		}
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this).setSmallIcon(icon).setContentTitle(title)
 				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg)).setContentText(msg)
