@@ -31,8 +31,8 @@ public class GcmIntentService extends IntentService {
 		String messageType = gcm.getMessageType(intent);
 		if (!extras.isEmpty()) {
 			if (extras.containsKey("type") && extras.containsKey("level") && extras.containsKey("title") && extras.containsKey("message")) {
-				int type = extras.getInt("type");
-				int level = extras.getInt("level");
+				int type = Integer.valueOf(extras.getString("type"));
+				int level = Integer.valueOf(extras.getString("level"));
 				String title = extras.getString("title");
 				String message = extras.getString("message");
 				Log.d(TAG, "Notification Data Json :" + message);
@@ -52,7 +52,7 @@ public class GcmIntentService extends IntentService {
 	// a GCM message.
 	private void sendNotification(int type, int level, String title, String msg) {
 		mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, IndexActivity.class), 0);
+//		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, IndexActivity.class), 0);
 
 		/* Icono para notificaciones genéricas */
 		int icon = R.drawable.ic_stat_loapp;
@@ -70,7 +70,7 @@ public class GcmIntentService extends IntentService {
 				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg)).setContentText(msg)
 				.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
 
-		mBuilder.setContentIntent(contentIntent);
+//		mBuilder.setContentIntent(contentIntent);
 		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 	}
 }
