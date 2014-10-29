@@ -69,6 +69,11 @@ public class BaseActivity extends ActionBarActivity {
 			this.startActivity(intent);
 			return true;
 		}
+		if (id == R.id.action_emergency) {
+			Intent intent = new Intent(this.getBaseContext(), EmergencyActivity.class);
+			this.startActivity(intent);
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 }

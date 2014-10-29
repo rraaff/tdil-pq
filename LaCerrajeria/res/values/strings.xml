@@ -6,5 +6,8 @@
     <string name="action_services">Servicios</string>
     <string name="action_emergency">Urgencias</string>
     <string name="action_about">Acerca de</string>
+    
+    <string name="btn_lbl_back">Volver</string>
+    
 
 </resources>

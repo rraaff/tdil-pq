@@ -40,6 +40,11 @@
             android:name="com.tdil.lacerrajeria.LocationActivity"
             android:label="@string/app_name" >
         </activity>
+        
+        <activity
+            android:name="com.tdil.lacerrajeria.EmergencyActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

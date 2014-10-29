@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+	<LinearLayout
+	    android:layout_margin="0dp"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:orientation="vertical" >
+
+			<TextView
+			    android:id="@+id/textView1"
+			    android:text="@string/action_emergency" 
+			    android:layout_width="match_parent"
+		   	 android:layout_height="wrap_content"/>
+
+		</LinearLayout>
+    
+		<LinearLayout
+		    android:id="@+id/assistCenterButtonsContainer"
+		    android:orientation="vertical" 
+		    android:layout_width="fill_parent"
+		    android:layout_weight=".97"
+	   		 android:layout_height="wrap_content">
+			
+		    <Button
+		        android:id="@+id/sebastianCallButton"
+		        android:layout_width="match_parent"
+			    android:layout_height="36dp"
+			    android:gravity="left|center_vertical"
+			    android:paddingLeft="10dp"
+			    android:textSize="14sp"
+			    android:text="Telefono 1"
+			    android:textAllCaps="true"/>
+		    
+		   <Button
+		        android:id="@+id/fernandoCallButton"
+		        android:layout_width="match_parent"
+			    android:layout_height="36dp"
+			    android:gravity="left|center_vertical"
+			    android:paddingLeft="10dp"
+			    android:textSize="14sp"
+			    android:text="Telefono 2"
+			    android:textAllCaps="true"/>
+
+		</LinearLayout>
+		
+		<RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+        
+    
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	             android:weightSum="1.0">
+	
+	    <Button
+	        android:id="@+id/backButton"
+	        android:layout_width="0dip"
+	        android:layout_height="80dp"
+	        android:layout_weight="1"
+	        android:text="Volver" />
+	
+	    </LinearLayout>
+	
+	</RelativeLayout>
+
+	</LinearLayout>
+
+</RelativeLayout>
