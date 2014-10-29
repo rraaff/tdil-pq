@@ -36,7 +36,7 @@
     <string name="lst_title_history_point">Detalle</string>
     
     <string name="lst_title_vlu">ESTADO DE TUS EQUIPOS</string>
-    <string name="vlu_message_alert">Revisá tu equipo LOJACK</string>
+    <string name="vlu_message_alert">Verificá el estado de tu equipo</string>
     <string name="vlu_message_ok">Tu equipo funciona correctamente</string>
     
     <string name="lst_itm_status">Estado:</string>

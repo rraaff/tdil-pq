@@ -120,7 +120,7 @@
                      <com.tdil.thalamus.android.gui.components.StyledTextView
                          android:id="@+id/vluMessagesOkTextView"
                          style="@style/btn_inlist_witharrow"
-                         android:text="@string/vlu_message_ok"
+                         android:text="@string/vlu_message_alert"
                          android:textSize="13sp" />
 
                  </TableRow>
