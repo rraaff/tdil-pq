@@ -9,6 +9,13 @@
         android:layout_height="fill_parent"
         android:orientation="vertical" >
 
+        <TableRow
+            android:id="@+id/tableRow1"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlojack_application_header" />
+        </TableRow>
+        
         <WebView
             android:id="@+id/parkingsWebView"
             android:layout_width="fill_parent"

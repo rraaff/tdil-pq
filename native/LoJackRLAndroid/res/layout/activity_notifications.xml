@@ -65,7 +65,7 @@
             android:id="@+id/tableRow3"
             style="@style/format_page_3rows1col_footer" >
 
-            <include layout="@layout/footer_forcar" />
+            <include layout="@layout/footer" />
         </TableRow>
     </LinearLayout>
 </merge>

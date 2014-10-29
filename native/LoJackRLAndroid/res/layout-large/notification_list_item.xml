@@ -37,7 +37,7 @@
 
 			<ImageButton
 			    android:id="@+id/notificationDismissImageButton"
-			    style="@style/icon_inrow_dismiss" />
+			    style="@style/icon_inrow_erase" />
 
 		</LinearLayout>
 
