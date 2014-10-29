@@ -98,7 +98,7 @@
                             <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/positionHistorySpeedTextView"
                                 style="@style/label_data_indatalist"
-                                android:text="Telefono 1 para SMS" />
+                                android:text="@string/lbl_phone_for_sms" />
 
                             <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/pmStatusPhoneTextView"
@@ -121,12 +121,14 @@
 
 	                        <com.tdil.thalamus.android.gui.components.StyleRadioButton
 	                            android:id="@+id/pmStatusAlwaysRadioButton"
-	                            style="@style/radiobutton_inlist" 
+	                            style="@style/radiobutton_inlist"
+	                            android:drawableRight="@drawable/ic_help_gray"
 	                            android:text="@string/lbl_always" />
 
 	                        <com.tdil.thalamus.android.gui.components.StyleRadioButton
 	                            android:id="@+id/pmStatusWithoutContactRadioButton"
-	                            style="@style/radiobutton_inlist" 
+	                            style="@style/radiobutton_inlist"
+	                            android:drawableRight="@drawable/ic_help_gray"
 	                            android:text="@string/lbl_nocontact" />
 	                        
 						</RadioGroup>

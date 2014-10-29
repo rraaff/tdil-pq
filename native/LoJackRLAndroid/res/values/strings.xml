@@ -59,6 +59,10 @@
     <string name="lbl_car_assist">Car assist</string>
     <string name="lbl_home_assist">Home assist</string>
     
+    <string name="lbl_phone_for_sms">Tel. para SMS</string>
+
+    <string name="lbl_tip_always">Recibirás una alerta cuando tu auto se mueva. Tené en cuenta que deberás desactivar la función cada vez que estés en tu auto.</string>
+    <string name="lbl_tip_onlycontact">Solo recibirás una alerta cuando tu auto es remolcado.</string>
 
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>

@@ -116,12 +116,14 @@
 
 	                        <RadioButton
 	                            android:id="@+id/pmStatusAlwaysRadioButton"
-	                            style="@style/radiobutton_inlist" 
+	                            style="@style/radiobutton_inlist"
+	                            android:drawableRight="@drawable/ic_help_gray"
 	                            android:text="@string/lbl_always" />
 
 	                        <RadioButton
 	                            android:id="@+id/pmStatusWithoutContactRadioButton"
-	                            style="@style/radiobutton_inlist" 
+	                            style="@style/radiobutton_inlist"
+	                            android:drawableRight="@drawable/ic_help_gray"
 	                            android:text="@string/lbl_nocontact" />
 	                        
 						</RadioGroup>
