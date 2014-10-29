@@ -37,7 +37,7 @@
 			    android:drawableRight="@drawable/icon_arrow_inlist"
 			    android:textSize="14sp"
 			    android:textColor="@color/black"
-			    android:text="Home Assist 0800-333-0911"
+			    android:text="@string/lbl_home_assist"
 			    android:textAllCaps="true"
 			    android:textAlignment="textStart"/>
 		    
@@ -51,7 +51,7 @@
 			    android:drawableRight="@drawable/icon_arrow_inlist"
 			    android:textSize="14sp"
 			    android:textColor="@color/black"
-			    android:text="Car assist 0800-333-0911"
+			    android:text="@string/lbl_car_assist"
 			    android:textAllCaps="true"
 			    android:textAlignment="textStart"/>
 
