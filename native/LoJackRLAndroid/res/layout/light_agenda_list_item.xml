@@ -13,6 +13,13 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="match_parent"
 			    android:gravity="center_horizontal|center_vertical" >
+
+                <com.tdil.thalamus.android.gui.components.StyledToggleButton
+                    android:id="@+id/alarmStatusSwitch"
+                    style="@style/toggleSwitchIOSish"
+                    android:textOff=" "
+					android:textOn=" "  />
+
 		    </LinearLayout>
 		        
 		    <LinearLayout style="@style/row_innercontent" >
@@ -25,22 +32,20 @@
 					    android:layout_width="wrap_content"
 					    android:layout_height="match_parent"
 					    android:gravity="center_horizontal|center_vertical" >
-					           
-			        <com.tdil.thalamus.android.gui.components.StyledToggleButton
-			                android:id="@+id/alarmStatusSwitch"
-						    style="@style/toggleSwitchIOSish"
-						    android:textOff=""
-						    android:textOn="" />
 				    </LinearLayout>
+
 					<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/lightAgendaDescriptionTextView"
 					    style="@style/item_title_01"
-					    android:paddingLeft="5dp"
+					    android:paddingLeft="0dp"
 					    android:text="Alarma cochera" />
 					
 				</LinearLayout>
 
-				<LinearLayout style="@style/row_innerrow_data_container" >
+				<LinearLayout
+				    style="@style/row_innerrow_data_container"
+				    android:paddingBottom="10dp" >
+
 				<com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/luTextView"
 					    android:layout_width="wrap_content"

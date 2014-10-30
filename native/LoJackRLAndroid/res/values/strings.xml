@@ -145,7 +145,7 @@
     <string name="btn_tag_see_log">Ver log</string>
     <string name="btn_view_log">Ver log completo</string>
     <string name="btn_agendas_list">Agendas de encendido</string>
-    <string name="btn_new_agenda">Crear agenda</string>
+    <string name="btn_new_agenda">CREAR AGENDA</string>
     <string name="btn_tag_go">Ir</string>
     
     <string name="btn_tag_gotomap">Ver en mapa</string>

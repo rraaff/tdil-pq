@@ -16,7 +16,9 @@
 
                 <com.tdil.thalamus.android.gui.components.StyledToggleButton
                     android:id="@+id/alarmStatusSwitch"
-                    style="@style/toggleSwitchIOSish" />
+                    style="@style/toggleSwitchIOSish"
+                    android:textOff=" "
+					android:textOn=" " />
 
 		    </LinearLayout>
 		        
@@ -38,7 +40,10 @@
 					
 				</LinearLayout>
 
-				<LinearLayout style="@style/row_innerrow_data_container" >
+				<LinearLayout
+				    style="@style/row_innerrow_data_container"
+				    android:paddingBottom="10dp" >
+
 				    <com.tdil.thalamus.android.gui.components.StyledTextView
 					    android:id="@+id/luTextView"
 					    android:layout_width="wrap_content"
