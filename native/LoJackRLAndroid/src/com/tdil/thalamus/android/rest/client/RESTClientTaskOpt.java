@@ -29,6 +29,13 @@ public class RESTClientTaskOpt<T> extends RESTClientTask {
 		this.classResult = classResult;
 	}
 	
+	public RESTClientTaskOpt(Context context, HttpMethod method,
+			IRestClientObserver observer, String url, RestParams restParams,
+			String body, Class<T> classResult,boolean showProgress, boolean showError) {
+		super(context, method, observer, url, restParams, body, showProgress, showError);
+		this.classResult = classResult;
+	}
+	
 	@Override
 	protected Boolean doInBackground(Void... params) {
 		if (incomplete) {

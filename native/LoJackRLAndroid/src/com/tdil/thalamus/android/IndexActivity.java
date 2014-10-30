@@ -1,38 +1,17 @@
 package com.tdil.thalamus.android;
 
-import java.io.IOException;
-
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.car.CarsDialogs;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
-import com.tdil.thalamus.android.rest.client.HttpMethod;
-import com.tdil.thalamus.android.rest.client.IRestClientObserver;
-import com.tdil.thalamus.android.rest.client.IRestClientTask;
-import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
-import com.tdil.thalamus.android.rest.client.RESTConstants;
-import com.tdil.thalamus.android.rest.client.RestParams;
-import com.tdil.thalamus.android.rest.model.RESTResponse;
-import com.tdil.thalamus.android.rest.model.RegisterAndroidBean;
 import com.tdil.thalamus.android.utils.Login;
 
 @SuppressLint("ResourceAsColor")
@@ -40,16 +19,6 @@ public class IndexActivity extends LoJackLoggedActivity {
 
 	public static boolean isUpdate;
 	
-	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
-	public static final String EXTRA_MESSAGE = "message";
-	public static final String PROPERTY_REG_ID = "registration_id";
-	private static final String PROPERTY_APP_VERSION = "appVersion";
-	private final static String TAG = "LaunchActivity";
-	protected String SENDER_ID = "453786616923";
-	private GoogleCloudMessaging gcm = null;
-	private String regid = null;
-	private Context context = null;
-
 	private static final String HOME = "HOME";
 	private static final String PARKINGS = "PARKINGS";
 	private static final String TV = "TV";
@@ -212,16 +181,7 @@ public class IndexActivity extends LoJackLoggedActivity {
 			}
 		});
 
-		if (checkPlayServices()) {
-			gcm = GoogleCloudMessaging.getInstance(this);
-			regid = getRegistrationId(context);
-
-			if (regid.isEmpty()) {
-				registerInBackground();
-			} else {
-				Log.d(TAG, "No valid Google Play Services APK found.");
-			}
-		}
+		
 		/*
 		 * Button button = (Button)findViewById(R.id.vluCount); int
 		 * vluMessagesCount = Login.getLoggedUser(this).getVluMessages(); if
@@ -242,94 +202,8 @@ public class IndexActivity extends LoJackLoggedActivity {
 		 */
 	}
 
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		checkPlayServices();
-	}
 
-	private boolean checkPlayServices() {
-		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-		if (resultCode != ConnectionResult.SUCCESS) {
-			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-				GooglePlayServicesUtil.getErrorDialog(resultCode, this, PLAY_SERVICES_RESOLUTION_REQUEST).show();
-			} else {
-				Log.d(TAG, "This device is not supported - Google Play Services.");
-				finish();
-			}
-			return false;
-		}
-		return true;
-	}
 
-	private String getRegistrationId(Context context) {
-		final SharedPreferences prefs = getGCMPreferences(context);
-		String registrationId = prefs.getString(PROPERTY_REG_ID, "");
-		if (registrationId.isEmpty()) {
-			Log.d(TAG, "Registration ID not found.");
-			return "";
-		}
-		if (isUpdate){
-			return "";
-		}
-		return registrationId;
-	}
-
-	private SharedPreferences getGCMPreferences(Context context) {
-		return getSharedPreferences(IndexActivity.class.getSimpleName(), Context.MODE_PRIVATE);
-	}
-
-	private void registerInBackground() {
-		new AsyncTask() {
-			@Override
-			protected Object doInBackground(Object... params) {
-				String msg = "";
-				try {
-					if (gcm == null) {
-						gcm = GoogleCloudMessaging.getInstance(context);
-					}
-					regid = gcm.register(SENDER_ID);
-					Log.d(TAG, "########################################");
-					Log.d(TAG, "Current Device's Registration ID is: " + regid);
-					
-				} catch (IOException ex) {
-					msg = "Error :" + ex.getMessage();
-					ex.printStackTrace();
-				}
-				return null;
-			}
-
-			protected void onPostExecute(Object result) { // to do here
-				Gson gson = new Gson();
-				String json = gson.toJson(new RegisterAndroidBean(regid));
-				new RESTClientTaskOpt<RESTResponse>(IndexActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)IndexActivity.this), 
-						RESTConstants.POST_REG_ID,null,json, RESTResponse.class).execute((Void) null);
-			};
-
-		}.execute(null, null, null);
-	}
-
-	// findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
-
-	protected IRestClientObserver getPostSaveObserver(final LoJackActivity loJackActivity) {
-		return new LoJackRestClientObserver(loJackActivity) {
-			@Override
-			public void sucess(IRestClientTask restClientTask) {
-				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
-				if (response.getOk()) {
-					final SharedPreferences prefs = getGCMPreferences(loJackActivity);
-					Editor e = prefs.edit();
-					e.putString(PROPERTY_REG_ID, regid);
-					e.commit();
-				} 
-			}
-			@Override
-			public void error(IRestClientTask task) {
-			}
-		};
-		
-	}
 
 	public static class ViewVLUMessagesListener implements OnClickListener {
 		private LoJackActivity activity;

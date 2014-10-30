@@ -14,11 +14,14 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +31,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.gson.Gson;
 import com.mobsandgeeks.saripaar.Rule;
 import com.mobsandgeeks.saripaar.Validator;
@@ -41,10 +47,13 @@ import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.DocumentTypeBean;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
+import com.tdil.thalamus.android.rest.model.RegisterAndroidBean;
 import com.tdil.thalamus.android.utils.Login;
 import com.tdil.thalamus.android.utils.Messages;
 
@@ -55,6 +64,16 @@ import com.tdil.thalamus.android.utils.Messages;
 public class LoginActivity extends LoJackNotLoggedActivity implements IRestClientObserver,
 		ValidationListener {
 
+	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+	public static final String EXTRA_MESSAGE = "message";
+	public static final String PROPERTY_REG_ID = "registration_id";
+	private static final String PROPERTY_APP_VERSION = "appVersion";
+	private final static String TAG = "LaunchActivity";
+	protected String SENDER_ID = "453786616923";
+	private GoogleCloudMessaging gcm = null;
+	private String regid = null;
+	private Context context = null;
+	
 	/*
 	 * public static final String URL_WEBSITE = "http://www.lojack-app.com.ar/";
 	 * public static final String URL_ANDROID_VERSION = URL_WEBSITE +
@@ -394,6 +413,12 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 							arg0.addHeader("apkToken", resp.getApkToken());
 						}
 					});
+			
+			if (checkPlayServices()) {
+				gcm = GoogleCloudMessaging.getInstance(this);
+				registerInBackground();
+			}
+			
 			Intent intent = new Intent(this, IndexActivity.class);
 			// Intent intent = new Intent(this, HomeAlarmsActivity.class);
 			startActivity(intent);
@@ -415,6 +440,77 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 							}).show();
 		}
 		this.mAuthTask = null;
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		checkPlayServices();
+	}
+	
+	private boolean checkPlayServices() {
+		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+		if (resultCode != ConnectionResult.SUCCESS) {
+			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+				GooglePlayServicesUtil.getErrorDialog(resultCode, this, PLAY_SERVICES_RESOLUTION_REQUEST).show();
+			} else {
+				Log.d(TAG, "This device is not supported - Google Play Services.");
+				finish();
+			}
+			return false;
+		}
+		return true;
+	}
+	
+
+	private SharedPreferences getGCMPreferences(Context context) {
+		return getSharedPreferences(IndexActivity.class.getSimpleName(), Context.MODE_PRIVATE);
+	}
+
+	private void registerInBackground() {
+		new AsyncTask() {
+			@Override
+			protected Object doInBackground(Object... params) {
+				String msg = "";
+				try {
+					if (gcm == null) {
+						gcm = GoogleCloudMessaging.getInstance(context);
+					}
+					regid = gcm.register(SENDER_ID);
+					Log.d(TAG, "########################################");
+					Log.d(TAG, "Current Device's Registration ID is: " + regid);
+					
+				} catch (IOException ex) {
+					msg = "Error :" + ex.getMessage();
+					ex.printStackTrace();
+				}
+				return null;
+			}
+
+			protected void onPostExecute(Object result) { // to do here
+				Gson gson = new Gson();
+				String json = gson.toJson(new RegisterAndroidBean(regid));
+				new RESTClientTaskOpt<RESTResponse>(LoginActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)LoginActivity.this), 
+						RESTConstants.POST_REG_ID,null,json, RESTResponse.class, false, false).execute((Void) null);
+			};
+
+		}.execute(null, null, null);
+	}
+
+	// findViewById(R.id.dropTarget).setOnDragListener(dragListener1);
+
+	protected IRestClientObserver getPostSaveObserver(final LoJackActivity loJackActivity) {
+		return new LoJackRestClientObserver(loJackActivity) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>)restClientTask).getCastedResult();
+			}
+			@Override
+			public void error(IRestClientTask task) {
+			}
+		};
+		
 	}
 
 	/**

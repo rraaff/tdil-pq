@@ -51,6 +51,8 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	protected String body;
 	
 	protected boolean incomplete = false;
+	protected boolean showProgress = true;
+	protected boolean showError = true;
 	
 	public static DefaultHttpClient httpClient = new DefaultHttpClient();
 	
@@ -75,6 +77,20 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		this.url = url;
 		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
+	}
+	
+	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
+			String body, boolean showProgress, boolean showError) {
+		this.contextRef = new WeakReference<Context>(context);
+		this.contextStrong = context;
+		this.method = method;
+		this.observerRef = new WeakReference<IRestClientObserver>(observer);
+		this.observerStrong = observer;
+		this.url = url;
+		this.urlParams = restParams == null? null : restParams.getParams();
+		this.body = body;
+		this.showProgress = showProgress;
+		this.showError = showError;
 	}
 	
 	public static DefaultHttpClient get1HttpClient(final Context context) {
@@ -107,7 +123,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			return;
 		}
 		Context context = contextRef.get();
-		if (context != null) {
+		if (context != null && showProgress) {
 			ProgressDialog progressDialog = new ProgressDialog(context);
 			progressDialog.setMessage("Por favor, espere...");
 			progressDialog.show();
@@ -193,7 +209,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			return;
 		}
 		try {
-			if (this.progressDialogRef != null) {
+			if (this.progressDialogRef != null && showProgress) {
 				ProgressDialog progressDialog = progressDialogRef.get();
 				if (progressDialog != null) {
 					progressDialog.dismiss();
@@ -206,10 +222,14 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 						observer.sucess(this);
 					} catch (Exception e) {
 						e.printStackTrace();
-						observer.error(this);
+						if (showError) {
+							observer.error(this);
+						}
 					}
 				} else {
-					observer.error(this);
+					if (showError) {
+						observer.error(this);
+					}
 				}
 			}
 		} catch (Exception e) {
