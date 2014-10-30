@@ -104,7 +104,7 @@ public class NotificationsListAdapter extends AbstractListAdapter<NotificationBe
 
 	@Override
 	protected NotificationsViewHolder createViewHolder(View vi) {
-		vi.setOnTouchListener(onSwipeTouchListener);
+//		vi.setOnTouchListener(onSwipeTouchListener);
 		NotificationsViewHolder holder = new NotificationsViewHolder();
 		holder.notificationTitleTextView = (TextView) vi.findViewById(R.id.notificationTitleTextView);
 		holder.notificationDescriptionTextView = (TextView) vi.findViewById(R.id.notificationDescriptionTextView);
