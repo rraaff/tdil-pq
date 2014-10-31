@@ -169,7 +169,7 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 			// holder.image.setImageResource(res.getIdentifier("com.androidexample.customlistview:drawable/"+tempValues.getStatus(),null,null));
 
 			/******** Set Item Click Listner for LayoutInflater for each row ***********/
-			vi.setOnClickListener(new OnItemClickListener(position));
+			vi.setOnClickListener(new OnItemClickListener(iterLight));
 		}
 		return vi;
 	}
@@ -181,17 +181,14 @@ public class LightListAdapter extends BaseAdapter implements OnClickListener {
 
 	/********* Called when Item click in ListView ************/
 	private class OnItemClickListener implements OnClickListener {
-		private int mPosition;
+		private Light light;
 
-		OnItemClickListener(int position) {
-			mPosition = position;
+		OnItemClickListener(Light light) {
+			this.light = light;
 		}
 
 		@Override
 		public void onClick(View arg0) {
-			HomeLightsActivity sct = (HomeLightsActivity) activity;
-			sct.onItemClick(mPosition);
-			Light light = sct.getLight(mPosition);
 			Intent intent = new Intent(activity.getBaseContext(), ActivityHomeLightDashboard.class);
 			intent.putExtra(ActivityHomeLightDashboard.LIGHT, light);
 			activity.startActivity(intent);
