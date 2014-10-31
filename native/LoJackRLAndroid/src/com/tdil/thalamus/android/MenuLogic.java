@@ -14,6 +14,7 @@ import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTask;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.utils.Login;
 
 public class MenuLogic {
 	
@@ -25,6 +26,8 @@ public class MenuLogic {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
 				public void sucess(IRestClientTask task) {
+					Login.getLoggedUser(activity).setLogged(false);
+					Login.save(activity);
 					Intent intent = new Intent(activity, LoginActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent.putExtra("EXIT", true);
@@ -34,6 +37,8 @@ public class MenuLogic {
 				}
 				@Override
 				public void error(IRestClientTask task) {
+					Login.getLoggedUser(activity).setLogged(false);
+					Login.save(activity);
 					Intent intent = new Intent(activity, LoginActivity.class);
 					intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
 					intent.putExtra("EXIT", true);

@@ -12,7 +12,7 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.IndexActivity;
+import com.tdil.thalamus.android.NotificationsActivity;
 
 public class GcmIntentService extends IntentService {
 	public static final int NOTIFICATION_ID = 1;
@@ -52,7 +52,7 @@ public class GcmIntentService extends IntentService {
 	// a GCM message.
 	private void sendNotification(int type, int level, String title, String msg) {
 		mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-//		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, IndexActivity.class), 0);
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, NotificationsActivity.class), 0);
 
 		/* Icono para notificaciones genéricas */
 		int icon = R.drawable.ic_stat_loapp;
@@ -70,7 +70,7 @@ public class GcmIntentService extends IntentService {
 				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg)).setContentText(msg)
 				.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);
 
-//		mBuilder.setContentIntent(contentIntent);
+		mBuilder.setContentIntent(contentIntent);
 		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 	}
 }

@@ -32,4 +32,12 @@ public class Login {
 		editor.putString(USER, gson.toJson(loggedUser));
 		editor.commit();
 	}
+	
+	public static void save(Context context) {
+		SharedPreferences sharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = sharedPref.edit();
+		Gson gson = new Gson();
+		editor.putString(USER, gson.toJson(loggedUser));
+		editor.commit();
+	}
 }
