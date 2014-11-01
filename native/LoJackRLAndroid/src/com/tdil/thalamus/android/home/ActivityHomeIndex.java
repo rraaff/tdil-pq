@@ -21,27 +21,103 @@ public class ActivityHomeIndex extends HomeActivity {
         HomeHeaderLogic.installHomeMenuLogic(this);
 
         View v = findViewById(R.id.goAlarmsImageView);
-        v.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener goAlarms = new View.OnClickListener() {
 							@Override
 							public void onClick(View view) {
 								HomeHeaderLogic.loadAlarms(ActivityHomeIndex.this);
 							}
-						});
+						};
+		v.setOnClickListener(goAlarms);
+		v = findViewById(R.id.alarmsRow);
+		if (v != null) {
+			v.setOnClickListener(goAlarms);
+		}
+		v = findViewById(R.id.alarmsImageView);
+		if (v != null) {
+			v.setOnClickListener(goAlarms);
+		}
+		v = findViewById(R.id.alarmsTextRow);
+		if (v != null) {
+			v.setOnClickListener(goAlarms);
+		}
+		v = findViewById(R.id.alarmsTextRow1);
+		if (v != null) {
+			v.setOnClickListener(goAlarms);
+		}
+		v = findViewById(R.id.alarmsTitle);
+		if (v != null) {
+			v.setOnClickListener(goAlarms);
+		}
+		v = findViewById(R.id.alarmsSubtitle);
+		if (v != null) {
+			v.setOnClickListener(goAlarms);
+		}
 						
 		v = findViewById(R.id.goLightsImageView);
-        v.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener goLights = new View.OnClickListener() {
 							@Override
 							public void onClick(View view) {
 								HomeHeaderLogic.loadLights(ActivityHomeIndex.this);
 							}
-						});
+						};
+		v.setOnClickListener(goLights);
+		v = findViewById(R.id.lightsRow);
+		if (v != null) {
+			v.setOnClickListener(goLights);
+		}
+		v = findViewById(R.id.lightsImageView);
+		if (v != null) {
+			v.setOnClickListener(goLights);
+		}
+		v = findViewById(R.id.lightsTextRow);
+		if (v != null) {
+			v.setOnClickListener(goLights);
+		}
+		v = findViewById(R.id.lightsTextRow1);
+		if (v != null) {
+			v.setOnClickListener(goLights);
+		}
+		v = findViewById(R.id.lightsTitle);
+		if (v != null) {
+			v.setOnClickListener(goLights);
+		}
+		v = findViewById(R.id.lightsSubtitle);
+		if (v != null) {
+			v.setOnClickListener(goLights);
+		}
+		
 		v = findViewById(R.id.goCamerasImageView);
-        v.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener goCameras = new View.OnClickListener() {
 							@Override
 							public void onClick(View view) {
 								HomeHeaderLogic.loadCameras(ActivityHomeIndex.this);
 							}
-						});
+						};
+		v.setOnClickListener(goCameras);
+		v = findViewById(R.id.camerasRow);
+		if (v != null) {
+			v.setOnClickListener(goCameras);
+		}
+		v = findViewById(R.id.camerasImageView);
+		if (v != null) {
+			v.setOnClickListener(goCameras);
+		}
+		v = findViewById(R.id.camerasTextRow);
+		if (v != null) {
+			v.setOnClickListener(goCameras);
+		}
+		v = findViewById(R.id.camerasTextRow1);
+		if (v != null) {
+			v.setOnClickListener(goCameras);
+		}
+		v = findViewById(R.id.camerasTitle);
+		if (v != null) {
+			v.setOnClickListener(goCameras);
+		}
+		v = findViewById(R.id.camerasSubtitle);
+		if (v != null) {
+			v.setOnClickListener(goCameras);
+		}
     }
 	
 	@Override
