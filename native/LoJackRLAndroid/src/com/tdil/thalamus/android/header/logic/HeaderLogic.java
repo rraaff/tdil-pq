@@ -228,7 +228,7 @@ public class HeaderLogic {
 				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
-			}, RESTConstants.LOGIN_PETS, new RestParams(), null).execute((Void) null);
+			}, RESTConstants.LOGIN_PETS, new RestParams(), null).executeSerial((Void) null);
 
 		} else {
 			Intent intent = new Intent(activity, ActivityPetsNotClient.class);

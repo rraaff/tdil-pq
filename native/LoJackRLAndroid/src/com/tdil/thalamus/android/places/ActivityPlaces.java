@@ -212,7 +212,7 @@ public class ActivityPlaces extends LoJackLoggedActivity {
     }
 
     protected void reloadPois(IRestClientObserver observer, String type) {
-    	new RESTClientTask(this, HttpMethod.GET, observer, RESTConstants.POIS, new RestParams(RESTConstants.P_POI_TYPES, type),null).execute((Void) null);
+    	new RESTClientTask(this, HttpMethod.GET, observer, RESTConstants.POIS, new RestParams(RESTConstants.P_POI_TYPES, type),null).executeSerial((Void) null);
 	}
     
     private void updateParkingsMap(PoiCollection col) {

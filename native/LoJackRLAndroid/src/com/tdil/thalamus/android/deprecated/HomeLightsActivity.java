@@ -72,7 +72,7 @@ public class HomeLightsActivity extends LoJackLoggedActivity implements ILightsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLightsActivity.this);
 			}
-		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+		}, RESTConstants.LIGHTS, null, null).executeSerial((Void) null);
 	}
 	
 	@Override

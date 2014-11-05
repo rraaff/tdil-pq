@@ -100,12 +100,12 @@ public class ParkedModeStatusListAdapter extends AbstractListAdapter<ParkedModeS
 					new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, getPostDeactivatePM(activity, toggleButton, this), RESTConstants.POST_DEACTIVATE_PM, 
 			    			new RestParams(RESTConstants.P_VEHICLE, this.parkedModeStatus.getVehicleID())
 			    				,null,RESTResponse.class)
-			    				.execute((Void) null);
+			    				.executeSerial((Void) null);
 				} else {
 					new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, getPostActivatePM(activity, toggleButton, this), RESTConstants.POST_ACTIVATE_PM, 
 			    			new RestParams(RESTConstants.P_VEHICLE, this.parkedModeStatus.getVehicleID())
 			    				,null,RESTResponse.class)
-			    				.execute((Void) null); 
+			    				.executeSerial((Void) null); 
 				}
 			}
 		}

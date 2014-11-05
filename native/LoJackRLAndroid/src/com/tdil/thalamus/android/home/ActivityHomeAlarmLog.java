@@ -62,7 +62,7 @@ public class ActivityHomeAlarmLog extends HomeActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(ActivityHomeAlarmLog.this);
 			}
-		}, RESTConstants.LOG_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)), null).execute((Void) null);
+		}, RESTConstants.LOG_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)), null).executeSerial((Void) null);
     }
     
 	@Override

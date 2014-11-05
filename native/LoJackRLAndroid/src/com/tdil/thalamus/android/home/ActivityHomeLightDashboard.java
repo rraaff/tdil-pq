@@ -155,7 +155,7 @@ public class ActivityHomeLightDashboard extends HomeActivity implements ILightsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(ActivityHomeLightDashboard.this);
 			}
-		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+		}, RESTConstants.LIGHTS, null, null).executeSerial((Void) null);
 	}
     
 	public Light getLight(int i) {

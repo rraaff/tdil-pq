@@ -124,7 +124,7 @@ public class LightAgendaListAdapter extends AbstractListAdapter<LightAgenda, Lig
 								.put(RESTConstants.ID_LUZ, this.agenda.getIdLuz())
 								.put(RESTConstants.ID_AGENDA, this.agenda.getIdAgenda())
 			    			,null,RESTResponse.class)
-			    				.execute((Void) null);
+			    				.executeSerial((Void) null);
 				} else {
 					new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, getPostActivate(activity, toggleButton, this), 
 							RESTConstants.POST_ACTIVATE_LIGHT_AGENDA, 
@@ -132,7 +132,7 @@ public class LightAgendaListAdapter extends AbstractListAdapter<LightAgenda, Lig
 								.put(RESTConstants.ID_LUZ, this.agenda.getIdLuz())
 								.put(RESTConstants.ID_AGENDA, this.agenda.getIdAgenda())
 			    				,null,RESTResponse.class)
-			    				.execute((Void) null); 
+			    				.executeSerial((Void) null); 
 				}
 			}
 		}

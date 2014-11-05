@@ -21,7 +21,7 @@ public class AgendasFacade {
 	public static void startAlarmAgendasListActivity(ActivityHomeAlarmDashboard activity) {
 		new RESTClientTaskOpt<AlarmAgendaCollection>(activity, HttpMethod.GET, getAlarmAgendasListObserver(activity), RESTConstants.GET_ALARM_AGENDAS, 
 				new RestParams(RESTConstants.ID_ENTIDAD, activity.getAlarm().getIdEntidad()),null, 
-				AlarmAgendaCollection.class).execute((Void) null);
+				AlarmAgendaCollection.class).executeSerial((Void) null);
 	}
 
 	private static IRestClientObserver getAlarmAgendasListObserver(final ActivityHomeAlarmDashboard pActivity) {
@@ -41,7 +41,7 @@ public class AgendasFacade {
 		new RESTClientTaskOpt<LightAgendaCollection>(activity, HttpMethod.GET, getLightAgendasListObserver(activity), RESTConstants.GET_LIGHT_AGENDAS, 
 				new RestParams(RESTConstants.ID_ENTIDAD, activity.getLight().getIdEntidad())
 					.put(RESTConstants.ID_LUZ, activity.getLight().getIdLuz()),null, 
-					LightAgendaCollection.class).execute((Void) null);
+					LightAgendaCollection.class).executeSerial((Void) null);
 	}
 
 	private static IRestClientObserver getLightAgendasListObserver(final ActivityHomeLightDashboard pActivity) {

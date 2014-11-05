@@ -20,7 +20,7 @@ public class ParkedModeRestFacade {
 	
 	public static void startParkedModeStatusActivity(Activity activity) {
 		new RESTClientTaskOpt<ParkedModeStatusCollection>(activity, HttpMethod.GET, getParkedModeObserver(activity), RESTConstants.GET_PM_VEHICLES, null,null, 
-				ParkedModeStatusCollection.class).execute((Void) null);
+				ParkedModeStatusCollection.class).executeSerial((Void) null);
 	}
 	
 	public static void goParkedModeConfigActivity(LoJackActivity activity, ParkedModeStatus parkedModeStatus) {
@@ -29,7 +29,7 @@ public class ParkedModeRestFacade {
 				new RestParams(
 						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID())
 						.put(RESTConstants.P_DOMAIN, parkedModeStatus.getDomain()),null, 
-				ParkedModeConfiguration.class).execute((Void) null);
+				ParkedModeConfiguration.class).executeSerial((Void) null);
 	}
 	
 	public static void goParkedModeHistoryActivity(LoJackActivity activity, ParkedModeStatus parkedModeStatus) {
@@ -39,7 +39,7 @@ public class ParkedModeRestFacade {
 						RESTConstants.P_VEHICLE, parkedModeStatus.getVehicleID()).
 						put(RESTConstants.P_PM_RECORDS, "15"),
 				null, 
-				ParkedModeHistoryLogBeanCollection.class).execute((Void) null);
+				ParkedModeHistoryLogBeanCollection.class).executeSerial((Void) null);
 	}
 	
 	public static IRestClientObserver getGoParkedModeConfigObserver(LoJackActivity activity) {

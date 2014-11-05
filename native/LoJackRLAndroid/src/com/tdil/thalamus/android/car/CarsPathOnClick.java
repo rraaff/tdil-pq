@@ -23,7 +23,7 @@ public final class CarsPathOnClick implements View.OnClickListener {
 		menuListener.toggle();
 		activity.option = VehicleOption.PATH;
 		if (activity.vehicles == null) {
-			new RESTClientTaskOpt<VehicleCollection>(activity, HttpMethod.GET, activity.selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
+			new RESTClientTaskOpt<VehicleCollection>(activity, HttpMethod.GET, activity.selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).executeSerial((Void) null);
 		} else {
 			activity.selectVehicleAndContinue();
 		}

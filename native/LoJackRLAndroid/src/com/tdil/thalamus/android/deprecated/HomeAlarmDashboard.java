@@ -192,7 +192,7 @@ public class HomeAlarmDashboard extends LoJackLoggedActivity implements IAlarmsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmDashboard.this);
 			}
-		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+		}, RESTConstants.ALARMS, null, null).executeSerial((Void) null);
 	}
 	
 	@Override

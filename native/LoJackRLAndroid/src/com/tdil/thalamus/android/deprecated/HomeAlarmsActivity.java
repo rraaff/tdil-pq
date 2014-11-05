@@ -203,7 +203,7 @@ public class HomeAlarmsActivity extends LoJackLoggedActivity implements ILightsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
-		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+		}, RESTConstants.ALARMS, null, null).executeSerial((Void) null);
 	}
 	
 	public void loadLights() {
@@ -234,7 +234,7 @@ public class HomeAlarmsActivity extends LoJackLoggedActivity implements ILightsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
-		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+		}, RESTConstants.LIGHTS, null, null).executeSerial((Void) null);
 	}
 	
 	public void loadCameras() {
@@ -266,7 +266,7 @@ public class HomeAlarmsActivity extends LoJackLoggedActivity implements ILightsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsActivity.this);
 			}
-		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
+		}, RESTConstants.CAMERAS, null, null).executeSerial((Void) null);
 	}
 
 	@Override

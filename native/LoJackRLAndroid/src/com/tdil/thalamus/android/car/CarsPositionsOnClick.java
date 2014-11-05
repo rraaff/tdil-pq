@@ -21,6 +21,6 @@ public final class CarsPositionsOnClick implements View.OnClickListener {
 	@Override
 	public void onClick(View v) {
 		menuListener.toggle();
-		new RESTClientTaskOpt<VehicleCollection>(activity, HttpMethod.GET, activity.positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
+		new RESTClientTaskOpt<VehicleCollection>(activity, HttpMethod.GET, activity.positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).executeSerial((Void) null);
 	}
 }

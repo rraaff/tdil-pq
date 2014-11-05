@@ -94,7 +94,7 @@ public class CarsDialogs {
 				String selectSpeedId = ((SpeedLimitBean)speedSpinner.getSelectedItem()).getId();
 				new RESTClientTaskOpt<RESTResponse>(activityCars, HttpMethod.POST, getPostSpeedObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_SPEED_LIMITS, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
-						.put(RESTConstants.P_SPEED_LIMIT_ID, selectSpeedId),null, RESTResponse.class).execute((Void) null);
+						.put(RESTConstants.P_SPEED_LIMIT_ID, selectSpeedId),null, RESTResponse.class).executeSerial((Void) null);
 			}
 		});
 		dialog.show();
@@ -151,7 +151,7 @@ public class CarsDialogs {
 				String selectSpeedId = ((SecureZoneBean)speedSpinner.getSelectedItem()).getId();
 				new RESTClientTaskOpt<RESTResponse>(activityCars, HttpMethod.POST, getPostZoneObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_SECURE_ZONE, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
-						.put(RESTConstants.P_SECURE_ZONE_ID, selectSpeedId),null,RESTResponse.class).execute((Void) null);
+						.put(RESTConstants.P_SECURE_ZONE_ID, selectSpeedId),null,RESTResponse.class).executeSerial((Void) null);
 			}
 		});
 		dialog.show();
@@ -208,7 +208,7 @@ public class CarsDialogs {
 				Gson gson = new Gson();
 				String update = gson.toJson(phoneNumbersBean);
 				new RESTClientTaskOpt<RESTResponse>(activityCars, HttpMethod.POST, getPostNumbersObserver(dialog, activityCars), RESTConstants.POST_VEHICLE_PHONES, new RestParams(
-						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId()),update,RESTResponse.class).execute((Void) null);
+						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId()),update,RESTResponse.class).executeSerial((Void) null);
 			}
 		});
 		dialog.show();
@@ -281,7 +281,7 @@ public class CarsDialogs {
 				new RESTClientTaskOpt<PositionHistoryCollection>(activityCars, HttpMethod.GET, getPathObserver(dialog, activityCars), RESTConstants.GET_VEHICLE_PATH, new RestParams(
 						RESTConstants.P_VEHICLE, activityCars.getSelectedVehicle().getId())
 						.put(RESTConstants.P_DATE_START, dateFrom)
-						.put(RESTConstants.P_DATE_END, dateTo),null, PositionHistoryCollection.class).execute((Void) null);
+						.put(RESTConstants.P_DATE_END, dateTo),null, PositionHistoryCollection.class).executeSerial((Void) null);
 			}
 		});
 		dialog.show();
@@ -365,7 +365,7 @@ public class CarsDialogs {
 			startVLUMessagesActivity(context, null);
 		} else {
 			new RESTClientTaskOpt<VLUMessagesCollection>(context, HttpMethod.GET, getPostMessagesVLUObserver(context), 
-				RESTConstants.VLU_MESSAGES, new RestParams(), null, VLUMessagesCollection.class).execute((Void) null);
+				RESTConstants.VLU_MESSAGES, new RestParams(), null, VLUMessagesCollection.class).executeSerial((Void) null);
 		}
 	}
 	

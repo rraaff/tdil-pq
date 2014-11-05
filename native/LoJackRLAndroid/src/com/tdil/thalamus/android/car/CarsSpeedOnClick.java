@@ -23,7 +23,7 @@ public final class CarsSpeedOnClick implements View.OnClickListener {
 		menuListener.toggle();
 		activityCars.option = VehicleOption.SPEED;
 		if (activityCars.vehicles == null) {
-			new RESTClientTaskOpt<VehicleCollection>(activityCars, HttpMethod.GET, activityCars.selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
+			new RESTClientTaskOpt<VehicleCollection>(activityCars, HttpMethod.GET, activityCars.selectVehicleSpeedObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).executeSerial((Void) null);
 		} else {
 			activityCars.selectVehicleAndContinue();
 		}

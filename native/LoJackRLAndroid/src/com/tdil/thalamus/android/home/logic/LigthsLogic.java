@@ -60,7 +60,7 @@ public class LigthsLogic {
 				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
-			}, RESTConstants.DEACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
+			}, RESTConstants.DEACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).executeSerial((Void) null);
 		} else {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -93,7 +93,7 @@ public class LigthsLogic {
 				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
-			}, RESTConstants.ACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
+			}, RESTConstants.ACTIVATE_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).executeSerial((Void) null);
 		}
 	}
 	
@@ -134,7 +134,7 @@ public class LigthsLogic {
 				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
-			}, RESTConstants.DEACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
+			}, RESTConstants.DEACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).executeSerial((Void) null);
 		} else {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -167,7 +167,7 @@ public class LigthsLogic {
 				public void error(IRestClientTask task) {
 					Messages.connectionErrorMessage(activity);
 				}
-			}, RESTConstants.ACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).execute((Void) null);
+			}, RESTConstants.ACTIVATE_RANDOM_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(light.getIdEntidad())).put(RESTConstants.ID_LUZ, String.valueOf(light.getIdLuz())), null).executeSerial((Void) null);
 		}
 	}
 	

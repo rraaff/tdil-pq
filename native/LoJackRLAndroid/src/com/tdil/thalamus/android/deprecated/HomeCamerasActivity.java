@@ -71,7 +71,7 @@ public class HomeCamerasActivity extends LoJackLoggedActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeCamerasActivity.this);
 			}
-		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
+		}, RESTConstants.CAMERAS, null, null).executeSerial((Void) null);
 	}
 
 	@Override
@@ -111,7 +111,7 @@ public class HomeCamerasActivity extends LoJackLoggedActivity {
 				public void error(RESTClientTask task) {
 					Messages.connectionErrorMessage(HomeLightsActivity.this);
 				}
-			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).executeSerial((Void) null);
 		} else {
 			new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -131,7 +131,7 @@ public class HomeCamerasActivity extends LoJackLoggedActivity {
 				public void error(RESTClientTask task) {
 					Messages.connectionErrorMessage(HomeLightsActivity.this);
 				}
-			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+			}, RESTConstants.ACTIVATE_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).executeSerial((Void) null);
 		}*/
 	}
 

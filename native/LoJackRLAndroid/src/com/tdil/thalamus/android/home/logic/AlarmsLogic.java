@@ -68,7 +68,7 @@ public class AlarmsLogic {
 				}
 			}, RESTConstants.DEACTIVATE_ALARM, new RestParams(
 					RESTConstants.ID_ENTIDAD, String.valueOf(alarm
-							.getIdEntidad())), null).execute((Void) null);
+							.getIdEntidad())), null).executeSerial((Void) null);
 		} else {
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
 				@Override
@@ -112,7 +112,7 @@ public class AlarmsLogic {
 				}
 			}, RESTConstants.ACTIVATE_ALARM, new RestParams(
 					RESTConstants.ID_ENTIDAD, String.valueOf(alarm
-							.getIdEntidad())), null).execute((Void) null);
+							.getIdEntidad())), null).executeSerial((Void) null);
 		}
 	}
 }

@@ -72,7 +72,7 @@ public class HomeLogAlarmActivity extends LoJackLoggedActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLogAlarmActivity.this);
 			}
-		}, RESTConstants.LOG_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)), null).execute((Void) null);
+		}, RESTConstants.LOG_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)), null).executeSerial((Void) null);
 
 	}
 

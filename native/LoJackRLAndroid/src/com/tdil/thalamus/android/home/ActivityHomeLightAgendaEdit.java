@@ -339,13 +339,13 @@ public class ActivityHomeLightAgendaEdit extends HomeActivity implements Validat
     			RESTConstants.POST_MODIFY_LIGHT_AGENDA, 
     				new RestParams(RESTConstants.ID_ENTIDAD, idEntidad).put(RESTConstants.ID_LUZ, idLuz)
     				,json,RESTResponse.class)
-    				.execute((Void) null);
+    				.executeSerial((Void) null);
     	} else {
     		new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, getPostSaveConfObserver(), 
         			RESTConstants.POST_CREATE_LIGHT_AGENDA, 
         				new RestParams(RESTConstants.ID_ENTIDAD, idEntidad).put(RESTConstants.ID_LUZ, idLuz)
         				,json,RESTResponse.class)
-        				.execute((Void) null);
+        				.executeSerial((Void) null);
     	}
     		
     }

@@ -122,14 +122,14 @@ public class AlarmAgendaListAdapter extends AbstractListAdapter<AlarmAgenda, Ala
 			    			new RestParams(RESTConstants.ID_ENTIDAD, this.agenda.getIdEntidad())
 								.put(RESTConstants.ID_AGENDA, this.agenda.getIdAgenda())
 			    			,null,RESTResponse.class)
-			    				.execute((Void) null);
+			    				.executeSerial((Void) null);
 				} else {
 					new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, getPostActivate(activity, toggleButton, this), 
 							RESTConstants.POST_ACTIVATE_ALARM_AGENDA, 
 			    			new RestParams(RESTConstants.ID_ENTIDAD, this.agenda.getIdEntidad())
 								.put(RESTConstants.ID_AGENDA, this.agenda.getIdAgenda())
 			    				,null,RESTResponse.class)
-			    				.execute((Void) null); 
+			    				.executeSerial((Void) null); 
 				}
 			}
 		}

@@ -134,7 +134,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
         MapsInitializer.initialize(this);
         
-        new RESTClientTaskOpt<VehicleCollection>(this, HttpMethod.GET, this.positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).execute((Void) null);
+        new RESTClientTaskOpt<VehicleCollection>(this, HttpMethod.GET, this.positionsObserver, RESTConstants.GET_VEHICLES, null,null,VehicleCollection.class).executeSerial((Void) null);
         
         int vluMessagesCount = Login.getLoggedUser(this).getVluMessages();
         View view = findViewById(R.id.vluMessagesAlertRow);
@@ -335,15 +335,15 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	private void vehicleSelectedAndContinue() {
 		if (option == VehicleOption.SPEED) {
 			new RESTClientTaskOpt<SpeedLimitCollection>(ActivityCars.this, HttpMethod.GET, getSpeedsObserver, RESTConstants.GET_VEHICLE_SPEED_LIMITS, new RestParams(
-					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null, SpeedLimitCollection.class).execute((Void) null);
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null, SpeedLimitCollection.class).executeSerial((Void) null);
 		}
 		if (option == VehicleOption.ZONE) {
 			new RESTClientTaskOpt<SecureZoneCollection>(ActivityCars.this, HttpMethod.GET, getZoneObserver, RESTConstants.GET_VEHICLE_SECURE_ZONES, new RestParams(
-					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null,SecureZoneCollection.class).execute((Void) null);
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null,SecureZoneCollection.class).executeSerial((Void) null);
 		}
 		if (option == VehicleOption.PHONE_NUMBERS) {
 			new RESTClientTaskOpt<PhoneNumbersBean>(ActivityCars.this, HttpMethod.GET, getPhonesObserver, RESTConstants.GET_VEHICLE_PHONES, new RestParams(
-					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null, PhoneNumbersBean.class).execute((Void) null);
+					RESTConstants.P_VEHICLE, selectedVehicle.getId()),null, PhoneNumbersBean.class).executeSerial((Void) null);
 		}
 		
 		if (option == VehicleOption.PATH) {

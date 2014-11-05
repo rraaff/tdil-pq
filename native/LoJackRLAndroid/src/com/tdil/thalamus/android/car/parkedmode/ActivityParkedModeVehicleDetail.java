@@ -108,12 +108,12 @@ public class ActivityParkedModeVehicleDetail extends LoJackWithProductMenuActivi
 					new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, this.activity.getPostDeactivatePM(), RESTConstants.POST_DEACTIVATE_PM, 
 			    			new RestParams(RESTConstants.P_VEHICLE, activity.parkedModeConfiguration.getVehicleID())
 			    				,null,RESTResponse.class)
-			    				.execute((Void) null);
+			    				.executeSerial((Void) null);
 				} else {
 					new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, this.activity.getPostActivatePM(), RESTConstants.POST_ACTIVATE_PM, 
 			    			new RestParams(RESTConstants.P_VEHICLE, activity.parkedModeConfiguration.getVehicleID())
 			    				,null,RESTResponse.class)
-			    				.execute((Void) null);
+			    				.executeSerial((Void) null);
 				}
 			}
 		}
@@ -168,7 +168,7 @@ public class ActivityParkedModeVehicleDetail extends LoJackWithProductMenuActivi
     	new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, getPostSaveConfObserver(), RESTConstants.POST_PM_VEHICLE_CONF, 
     			new RestParams(RESTConstants.P_VEHICLE, parkedModeConfiguration.getVehicleID())
     				.put(RESTConstants.P_PM_PHONE, "-").put(RESTConstants.P_PM_TYPE, always.isChecked() ? "0" : "1"),null,RESTResponse.class)
-    				.execute((Void) null);
+    				.executeSerial((Void) null);
 		
 	}
 

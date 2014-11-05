@@ -107,7 +107,7 @@ public class HomeHeaderLogic {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(activity);
 			}
-		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+		}, RESTConstants.ALARMS, null, null).executeSerial((Void) null);
 	}
 
 	public static void loadLights(final Activity activity) {
@@ -134,7 +134,7 @@ public class HomeHeaderLogic {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(activity);
 			}
-		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+		}, RESTConstants.LIGHTS, null, null).executeSerial((Void) null);
 	}
 	
 	public static void loadCameras(final Activity activity) {
@@ -163,6 +163,6 @@ public class HomeHeaderLogic {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(activity);
 			}
-		}, RESTConstants.CAMERAS, null, null).execute((Void) null);
+		}, RESTConstants.CAMERAS, null, null).executeSerial((Void) null);
 	}
 }

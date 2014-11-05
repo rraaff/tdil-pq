@@ -57,7 +57,7 @@ public class OpenSendAlertButton extends Button {
 		@Override
 		public void onClick(View view) {
 			new RESTClientTaskOpt<AlarmCollection>(context, HttpMethod.GET, getOpenSendAlertDialog(context),
-					RESTConstants.ALARMS, null, null, AlarmCollection.class).execute((Void) null);
+					RESTConstants.ALARMS, null, null, AlarmCollection.class).executeSerial((Void) null);
 		}
 		
 	}
@@ -141,7 +141,7 @@ public class OpenSendAlertButton extends Button {
 		public void onClick(View arg0) {
 			new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.GET, getPostSendAlertDialog(activity, dialog),
 					RESTConstants.SEND_PANIC_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null,
-					RESTResponse.class).execute((Void) null);
+					RESTResponse.class).executeSerial((Void) null);
 		}
 	}
 	

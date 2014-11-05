@@ -335,13 +335,13 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
     			RESTConstants.POST_MODIFY_ALARM_AGENDA, 
     				new RestParams(RESTConstants.ID_ENTIDAD, idEntidad)
     				,json,RESTResponse.class)
-    				.execute((Void) null);
+    				.executeSerial((Void) null);
     	} else {
     		new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, getPostSaveConfObserver(), 
         			RESTConstants.POST_CREATE_ALARM_AGENDA, 
         				new RestParams(RESTConstants.ID_ENTIDAD, idEntidad)
         				,json,RESTResponse.class)
-        				.execute((Void) null);
+        				.executeSerial((Void) null);
     	}
     		
     }

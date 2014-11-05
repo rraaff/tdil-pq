@@ -76,7 +76,7 @@ public class HomeLogLightActivity extends LoJackLoggedActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLogLightActivity.this);
 			}
-		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).execute((Void) null);
+		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).executeSerial((Void) null);
 
 	}
 

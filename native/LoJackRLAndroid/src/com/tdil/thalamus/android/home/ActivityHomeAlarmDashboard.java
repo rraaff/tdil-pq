@@ -182,7 +182,7 @@ public class ActivityHomeAlarmDashboard extends HomeActivity implements IAlarmsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(ActivityHomeAlarmDashboard.this);
 			}
-		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+		}, RESTConstants.ALARMS, null, null).executeSerial((Void) null);
 	}
 
 	public void startAlarmsBackgroundJob() {

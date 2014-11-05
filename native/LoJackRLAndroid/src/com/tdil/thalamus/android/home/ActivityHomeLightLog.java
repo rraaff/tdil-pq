@@ -67,7 +67,7 @@ public class ActivityHomeLightLog extends HomeActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(ActivityHomeLightLog.this);
 			}
-		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).execute((Void) null);
+		}, RESTConstants.LOG_LIGHT, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(identidad)).put(RESTConstants.ID_LUZ, String.valueOf(idluz)), null).executeSerial((Void) null);
     }
 	
 	@Override

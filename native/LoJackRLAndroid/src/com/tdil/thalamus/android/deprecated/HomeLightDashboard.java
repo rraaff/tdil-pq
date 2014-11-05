@@ -215,7 +215,7 @@ public class HomeLightDashboard extends LoJackLoggedActivity implements ILightsA
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeLightDashboard.this);
 			}
-		}, RESTConstants.LIGHTS, null, null).execute((Void) null);
+		}, RESTConstants.LIGHTS, null, null).executeSerial((Void) null);
 	}
 	
 	public Light getLight(int i) {
