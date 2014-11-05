@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.deprecated.HomeLightsActivity;
 import com.tdil.thalamus.android.rest.model.Light;
 
 /********* Adapter class extends with BaseAdapter and implements with OnClickListener ************/
