@@ -45,7 +45,7 @@ public class MenuLogic {
 			    	activity.startActivity(intent);
 			    	activity.finish();
 				}
-			}, RESTConstants.LOGOUT, null, null).execute((Void) null);
+			}, RESTConstants.LOGOUT, null, null).executeSerial((Void) null);
 
 			return true;
 		case R.id.menu_action_user: 

@@ -49,7 +49,7 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 			NotificationBeanCollection collection = null;
 			if (extras == null || !extras.containsKey(NOTIFICATIONS)) {
 				new RESTClientTaskOpt<NotificationBeanCollection>(this, HttpMethod.GET, getNotificationsObserver(this),
-						RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).execute((Void) null);
+						RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).executeSerial((Void) null);
 			} else {
 				collection = (NotificationBeanCollection)extras.get(NOTIFICATIONS);
 				

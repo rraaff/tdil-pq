@@ -66,7 +66,7 @@ public class HomeAlarmsSendPanicActivity extends LoJackLoggedActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsSendPanicActivity.this);
 			}
-		}, RESTConstants.ALARMS, null, null).execute((Void) null);
+		}, RESTConstants.ALARMS, null, null).executeSerial((Void) null);
 
 	}
 
@@ -97,7 +97,7 @@ public class HomeAlarmsSendPanicActivity extends LoJackLoggedActivity {
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(HomeAlarmsSendPanicActivity.this);
 			}
-		}, RESTConstants.SEND_PANIC_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).execute((Void) null);
+		}, RESTConstants.SEND_PANIC_ALARM, new RestParams(RESTConstants.ID_ENTIDAD, String.valueOf(alarm.getIdEntidad())), null).executeSerial((Void) null);
 	}
 
 	/**

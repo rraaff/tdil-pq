@@ -246,7 +246,7 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(LoginActivity.this);
 			}
-		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);*/
+		}, RESTConstants.DOCUMENT_TYPES, null, null).executeSerial((Void) null);*/
 
 		/*
 		 * List<String> list = new ArrayList<String>(); list.add("DNI");
@@ -375,7 +375,7 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 						RESTConstants.P_DOCUMENT_TYPE, mDocType).put(
 						RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(
 						RESTConstants.P_PASSWORD, mPassword), null);
-		mAuthTask.execute((Void) null);
+		mAuthTask.executeSerial((Void) null);
 	}
 
 	@Override
@@ -492,7 +492,7 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 				Gson gson = new Gson();
 				String json = gson.toJson(new RegisterAndroidBean(regid));
 				new RESTClientTaskOpt<RESTResponse>(LoginActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)LoginActivity.this), 
-						RESTConstants.POST_REG_ID,null,json, RESTResponse.class, false, false).execute((Void) null);
+						RESTConstants.POST_REG_ID,null,json, RESTResponse.class, false, false).executeSerial((Void) null);
 			};
 
 		}.execute(null, null, null);

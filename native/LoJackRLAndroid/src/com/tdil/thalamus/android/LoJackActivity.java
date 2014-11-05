@@ -138,7 +138,7 @@ public abstract class LoJackActivity extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					new RESTClientTaskOpt<NotificationBeanCollection>(activity, HttpMethod.GET, getNotificationsObserver(activity),
-							RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).execute((Void) null);
+							RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).executeSerial((Void) null);
 				}
 			});
 		}

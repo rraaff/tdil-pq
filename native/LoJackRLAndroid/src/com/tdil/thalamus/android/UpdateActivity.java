@@ -148,9 +148,9 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
-		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
+		}, RESTConstants.DOCUMENT_TYPES, null, null).executeSerial((Void) null);
 
 		states = (Spinner) findViewById(R.id.state);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -180,9 +180,9 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
-		}, RESTConstants.STATES, null, null).execute((Void) null);
+		}, RESTConstants.STATES, null, null).executeSerial((Void) null);
 
 		addressTypes = (Spinner) findViewById(R.id.addressType);
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -212,9 +212,9 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
-		}, RESTConstants.ADDRESS_TYPES, null, null).execute((Void) null);
+		}, RESTConstants.ADDRESS_TYPES, null, null).executeSerial((Void) null);
 
 		// load personData
 		new RESTClientTask(this, HttpMethod.GET, new IRestClientObserver() {
@@ -229,9 +229,9 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
-		}, RESTConstants.GET_USER, null, null).execute((Void) null);
+		}, RESTConstants.GET_USER, null, null).executeSerial((Void) null);
 
 		findViewById(R.id.updateButton).setOnClickListener(
 				new View.OnClickListener() {
@@ -314,9 +314,9 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 			}
 			@Override
 			public void error(IRestClientTask task) {
-				Messages.connectionErrorMessage(UpdateActivity.this);
+				Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 			}
-		}, RESTConstants.SAVE_USER, new RestParams(), json).execute((Void) null);
+		}, RESTConstants.SAVE_USER, new RestParams(), json).executeSerial((Void) null);
 	}
 
 	private void setPersonData() {
@@ -497,7 +497,7 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 						RESTConstants.P_DOCUMENT_TYPE, mDocType).put(
 						RESTConstants.P_DOCUMENT_NUMBER, mDocNumber).put(
 						RESTConstants.P_PASSWORD, mPassword), null);
-		mAuthTask.execute((Void) null);
+		mAuthTask.executeSerial((Void) null);
 	}
 
 	@Override
@@ -508,7 +508,7 @@ public class UpdateActivity extends LoJackLoggedActivity implements IRestClientO
 
 	@Override
 	public void error(IRestClientTask task) {
-		Messages.connectionErrorMessage(UpdateActivity.this);
+		Messages.connectionErrorMessageAndFinish(UpdateActivity.this);
 		this.mAuthTask = null;
 	}
 

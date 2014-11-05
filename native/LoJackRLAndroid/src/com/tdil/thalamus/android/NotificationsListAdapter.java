@@ -120,7 +120,7 @@ public class NotificationsListAdapter extends AbstractListAdapter<NotificationBe
 	public void dismiss(NotificationBean notificationbean) {
 		new RESTClientTaskOpt<RESTResponse>(activity, HttpMethod.POST, getPostDismissObserver((LoJackActivity) activity, this,
 				notificationbean), RESTConstants.POST_DISMISS_NOTIFICATION, new RestParams(RESTConstants.P_NOTIFICATION_ID,
-				String.valueOf(notificationbean.getId())), null, RESTResponse.class).execute((Void) null);
+				String.valueOf(notificationbean.getId())), null, RESTResponse.class).executeSerial((Void) null);
 	}
 
 	private class DimisssNotification implements OnClickListener {

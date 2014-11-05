@@ -146,7 +146,7 @@ public class UnCaughtException implements UncaughtExceptionHandler {
                         			public void error(IRestClientTask task) {
                         				Messages.connectionErrorMessage(context);
                         			}
-                        		}, RESTConstants.LOG_ERROR_APK, new RestParams(), errorContent.toString()).execute((Void) null);
+                        		}, RESTConstants.LOG_ERROR_APK, new RestParams(), errorContent.toString()).executeSerial((Void) null);
                             }
                         });
                 builder.setMessage("Ha ocurrido un error");

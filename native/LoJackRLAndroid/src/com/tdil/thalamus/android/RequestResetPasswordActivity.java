@@ -88,7 +88,7 @@ public class RequestResetPasswordActivity extends LoJackNotLoggedActivity implem
 			public void error(IRestClientTask task) {
 				Messages.connectionErrorMessage(RequestResetPasswordActivity.this);
 			}
-		}, RESTConstants.DOCUMENT_TYPES, null, null).execute((Void) null);
+		}, RESTConstants.DOCUMENT_TYPES, null, null).executeSerial((Void) null);
 		
 		/*List<String> list = new ArrayList<String>();
 		list.add("DNI");
@@ -132,7 +132,7 @@ public class RequestResetPasswordActivity extends LoJackNotLoggedActivity implem
 		showProgress(true);
 		mAuthTask = new RESTClientTask(this, HttpMethod.GET, this, RESTConstants.REQUEST_RESET_PASSWORD, new RestParams(RESTConstants.P_DOCUMENT_TYPE, mDocType).
 				put(RESTConstants.P_DOCUMENT_NUMBER, mDocNumber), null);
-		mAuthTask.execute((Void) null);
+		mAuthTask.executeSerial((Void) null);
 	}
 
 	@Override
