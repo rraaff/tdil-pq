@@ -47,9 +47,12 @@
                      android:id="@+id/carsMenu"
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
+                     android:layout_alignParentBottom="true"
                      android:layout_centerHorizontal="true"
                      android:layout_centerVertical="true"
-                     android:layout_margin="100dp"
+                     android:layout_marginBottom="20dp"
+                     android:layout_marginLeft="100dp"
+                     android:layout_marginRight="100dp"
                      android:background="@drawable/ic_cars_whm_menu_connector" >
 		            
                     <ImageButton

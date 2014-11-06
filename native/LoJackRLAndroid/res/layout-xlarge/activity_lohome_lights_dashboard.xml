@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ActivityHomeAlarms" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableRow
+            android:id="@+id/incl"
+            style="@style/format_page_3rows1col_header" >
+
+            <include layout="@layout/inlohome_application_fullmenu" />
+        </TableRow>
+        <include layout="@layout/inlohome_application_submenu" />
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight=".97" >
+
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+				<LinearLayout
+				    android:id="@+id/tab2"
+				    android:layout_width="fill_parent"
+				    android:layout_height="wrap_content"
+				    android:layout_gravity="top"
+				    android:orientation="vertical" >
+				
+				    <TableRow
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content" >
+
+				        <LinearLayout style="@style/title_dashboard_container" >
+
+				            <TextView style="@style/title_dashboard"
+				                android:id="@+id/lightDescription"
+				                android:text="@string/title_dashboard_lights" />
+
+				            <TextView
+				                android:id="@+id/lightStatus"
+				                style="@style/title_dashboard_state"
+				                android:text="@string/status_unknown"
+				                android:textSize="15sp" />
+
+				        </LinearLayout>
+
+			        </TableRow>
+			
+				    <TableRow
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
+			
+						<LinearLayout style="@style/toggle_button_container" >
+				        
+					    	<!-- hide switch -->
+
+						    <ToggleButton
+						        android:id="@+id/switchActivate"
+						        style="@style/toggleSwitchIOSishWithText"
+	                    	    android:drawableRight="@drawable/btn_toggle_fake_switch"
+	                    	    android:gravity="center_vertical|left"
+						        android:textOff="Encender"
+						        android:textOn="Apagar" />
+					    
+						</LinearLayout>
+			
+				    </TableRow>
+				    
+					<TableRow
+						android:layout_width="fill_parent"
+						android:layout_height="wrap_content">
+
+						<LinearLayout style="@style/toggle_button_container" >
+
+							<ToggleButton
+							    android:id="@+id/switchRandom"
+						        style="@style/toggleSwitchIOSishWithText"
+	                    	    android:drawableRight="@drawable/btn_toggle_fake_switch"
+	                    	    android:gravity="center_vertical|left"
+							    android:textOff="Encender modo Random"
+							    android:textOn="Apagar modo Random" />
+
+						</LinearLayout>
+					    
+					</TableRow>
+			
+					<TableRow style="@style/data_indashboard_container" >
+				
+					   <TextView style="@style/label_indash"
+							android:id="@+id/loadingInfoText"
+							android:text="@string/lst_itm_last_change_fullword" />
+					
+					   <TextView style="@style/label_data_indash"
+							android:id="@+id/lastChangeDate"
+							android:text="2013-05-04 18:20" />
+			
+					</TableRow>
+			
+					<TableRow
+					    style="@style/data_indashboard_container"
+					    android:paddingBottom="10dp" >
+			
+					    <TextView style="@style/label_data_indash"
+							android:id="@+id/lastChangeStatus"
+							android:text="@string/status_armed" />
+			
+					   <TextView style="@style/label_indash"
+							android:id="@+id/textView3"
+							android:paddingLeft="4dp"
+							android:paddingRight="4dp"
+							android:text="@string/lst_itm_by" />
+			
+					   <TextView style="@style/label_data_indash"
+							android:id="@+id/lastChangeUser"
+							android:text="@string/status_unknown" />
+					</TableRow>
+
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dp"
+					    android:background="@color/grayLightBase">
+					   
+					</TableRow>
+
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+			
+					    <Button style="@style/ButtonLoginList"
+					        android:id="@+id/goToViewLightLog"
+					        android:text="@string/btn_view_log" />
+
+					</TableRow>
+
+				</LinearLayout>
+
+			</ScrollView>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            style="@style/format_page_3rows1col_footer" >
+
+            <include layout="@layout/footer_forhome" />
+        </TableRow>
+    </LinearLayout>
+</merge>

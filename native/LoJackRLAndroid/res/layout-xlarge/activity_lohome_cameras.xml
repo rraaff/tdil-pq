@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".ActivityHomeLightsAgendas" >
+    tools:context=".ActivityHomeCameras" >
 
     <LinearLayout
         android:id="@+id/lohome_format"
@@ -19,32 +19,18 @@
         </TableRow>
         <include layout="@layout/inlohome_application_submenu" />
 
-        
 		<TableRow
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
 		
-			<com.tdil.thalamus.android.gui.components.StyledTextView
+			<TextView
 				android:id="@+id/text1"
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"
 				android:layout_weight="1"
-				android:text="@string/lst_title_lights_agendas_list" />
+				android:text="@string/lst_title_cameras_list" />
 		
 		</TableRow>
-		
-		<TableRow
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:background="@color/bgBase"
-		    android:gravity="left"
-		    android:textAlignment="viewStart" >
-
-            <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonNewAgenda"
-                android:id="@+id/goToNewAgenda"
-                android:text="@string/btn_new_agenda" />
-
-        </TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"
@@ -54,7 +40,7 @@
             android:layout_weight=".97" >
 
                 <ListView
-                    android:id="@+id/agendaList"
+                    android:id="@+id/camerasList"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
                 </ListView>

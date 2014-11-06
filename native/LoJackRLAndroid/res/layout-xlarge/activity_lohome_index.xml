@@ -30,242 +30,208 @@
 
             <ScrollView
                 android:id="@+id/scrollView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
 
 	            <LinearLayout
 	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
+	                android:layout_height="fill_parent"
 	                android:layout_gravity="top"
 	                android:gravity="top"
 	                android:orientation="vertical" >
                     
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="fill_parent"
+                    android:layout_height="420dp"
                     android:background="@color/bgBase"
                     android:orientation="vertical" >
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="fill_parent"
                         android:scaleType="centerCrop"
                         android:src="@drawable/lohome_intro" />
 
-                </LinearLayout>
-                
-                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top" android:gravity="top" android:orientation="vertical">
+                </LinearLayout><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top" android:gravity="top" android:orientation="vertical">
 
-                    <LinearLayout
-                        android:id="@+id/goAlarmsImageView"
-                        android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/alarmsRow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@color/bgBase"
-                            android:clickable="true"
                             android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="15dp" >
 
                             <ImageView
-                                android:id="@+id/alarmsImageView"
+                                android:id="@+id/imageView1"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
+                                android:layout_margin="10dp"
                                 android:padding="5dp"
                                 android:src="@drawable/ic_lohome_alarms" />
 
-                            <LinearLayout
-                                android:id="@+id/alarmsTextRow"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:orientation="vertical" >
+                            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="5" android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:id="@+id/alarmsTextRow1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical" >
+                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-                                    <com.tdil.thalamus.android.gui.components.StyledTextView
-                                        android:id="@+id/alarmsTitle"
+                                    <TextView
+                                        android:id="@+id/textView1"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingTop="10dp"
                                         android:text="MONITOREA TUS ALARMAS"
                                         android:textColor="@color/black"
-                                        android:textSize="16sp" />
+                                        android:textSize="24sp" />
 
-                                    <com.tdil.thalamus.android.gui.components.StyledTextView
-                                        android:id="@+id/alarmsSubtitle"
+                                    <TextView
+                                        android:id="@+id/textView2"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingBottom="10dp"
                                         android:paddingTop="2dp"
                                         android:text="Controlar a distancia la alarma de tu hogar."
                                         android:textColor="@color/lojack_red"
-                                        android:textSize="11sp" />
+                                        android:textSize="16sp" />
 
                                 </LinearLayout>
                             </LinearLayout>
 
-                            <!-- ImageView
-                                
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:src="@drawable/icon_arrow_inlist" /-->
-                            
                             <ImageView
+                                android:id="@+id/goAlarmsImageView"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:src="@drawable/icon_arrow_inlist" />
-                            
+
                         </LinearLayout>
 
-                        <ImageView android:id="@+id/imageView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bg_item_inlist" />
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/bg_item_inlist" />
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/goLightsImageView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" >
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/lightsRow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@color/bgBase"
                             android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="15dp" >
 
                             <ImageView
-                                android:id="@+id/lightsImageView"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
+                                android:layout_margin="10dp"
                                 android:padding="5dp"
                                 android:src="@drawable/ic_lohome_lights" />
 
-                            <LinearLayout
-                                android:id="@+id/lightsTextRow"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:orientation="vertical" >
+                            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="5" android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:id="@+id/lightsTextRow1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical" >
+                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-                                    <com.tdil.thalamus.android.gui.components.StyledTextView
-                                        android:id="@+id/lightsTitle"
+                                    <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingTop="10dp"
                                         android:text="ENCENDÉ/APAGÁ LUCES"
                                         android:textColor="@color/black"
-                                        android:textSize="16sp" />
+                                        android:textSize="24sp" />
 
-                                    <com.tdil.thalamus.android.gui.components.StyledTextView
-                                        android:id="@+id/lightsSubtitle"
+                                    <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingBottom="10dp"
                                         android:paddingTop="2dp"
                                         android:text="Activar o desactivar las luces."
                                         android:textColor="@color/lojack_red"
-                                        android:textSize="11sp" />
+                                        android:textSize="16sp" />
 
                                 </LinearLayout>
                             </LinearLayout>
 
                             <ImageView
-                                
+                                android:id="@+id/goLightsImageView"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:src="@drawable/icon_arrow_inlist" />
 
                         </LinearLayout>
 
-                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bg_item_inlist" />
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/bg_item_inlist" />
 
                     </LinearLayout>
                     
-                    <LinearLayout
-                        android:id="@+id/goCamerasImageView"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/camerasRow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:background="@color/bgBase"
                             android:gravity="center_vertical"
-                            android:orientation="horizontal" >
+                            android:orientation="horizontal"
+                            android:paddingBottom="15dp"
+                            android:paddingTop="15dp" >
 
                             <ImageView
-                                android:id="@+id/camerasImageView"
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
+                                android:layout_margin="10dp"
                                 android:padding="5dp"
                                 android:src="@drawable/ic_lohome_cameras" />
 
-                            <LinearLayout
-                                android:id="@+id/camerasTextRow"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="5"
-                                android:orientation="vertical" >
+                            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="5" android:orientation="vertical">
 
-                                <LinearLayout
-                                    android:id="@+id/camerasTextRow1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="vertical" >
+                                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
 
-                                    <com.tdil.thalamus.android.gui.components.StyledTextView
-                                        android:id="@+id/camerasTitle"
+                                    <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingTop="10dp"
                                         android:text="MONITOREA TUS CÁMARAS"
                                         android:textColor="@color/black"
-                                        android:textSize="16sp" />
+                                        android:textSize="24sp" />
 
-                                    <com.tdil.thalamus.android.gui.components.StyledTextView
-                                        android:id="@+id/camerasSubtitle"
+                                    <TextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingBottom="10dp"
                                         android:paddingTop="2dp"
                                         android:text="Modificar la posición de las cámaras."
                                         android:textColor="@color/lojack_red"
-                                        android:textSize="11sp" />
+                                        android:textSize="16sp" />
 
                                 </LinearLayout>
                             </LinearLayout>
 
                             <ImageView
-                                
+                                android:id="@+id/goCamerasImageView"
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:src="@drawable/icon_arrow_inlist" />
 
                         </LinearLayout>
 
-                        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bg_item_inlist" />
+                        <ImageView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/bg_item_inlist" />
 
                     </LinearLayout>
                 </LinearLayout></LinearLayout>

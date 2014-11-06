@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    tools:context=".ActivityHomeLightsAgendas" >
+    tools:context=".ActivityHomeAlarmsAgendas" >
 
     <LinearLayout
         android:id="@+id/lohome_format"
@@ -19,7 +19,6 @@
         </TableRow>
         <include layout="@layout/inlohome_application_submenu" />
 
-        
 		<TableRow
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content">
@@ -29,7 +28,7 @@
 				style="@style/modal_subtitleinform"
 				android:layout_width="match_parent"
 				android:layout_weight="1"
-				android:text="@string/lst_title_lights_agendas_list" />
+				android:text="@string/lst_title_alarms_agendas_list" />
 		
 		</TableRow>
 		

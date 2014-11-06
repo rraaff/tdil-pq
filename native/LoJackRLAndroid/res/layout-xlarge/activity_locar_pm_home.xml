@@ -94,6 +94,7 @@
 					    <Button
 					        android:id="@+id/pmVehicleGoConfig"
 					        style="@style/ButtonLoginList"
+					        android:layout_height="64dp"
 					        android:drawableLeft="@drawable/icon_config_off"
 					        android:text="@string/btn_tag_config" />
 					
@@ -106,8 +107,10 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 					
-					    <Button style="@style/ButtonLoginList"
+					    <Button
 					        android:id="@+id/pmVehicleGoHistory"
+					        style="@style/ButtonLoginList"
+					        android:layout_height="64dp"
 					        android:text="@string/btn_tag_history" />
 					
 					</TableRow>
