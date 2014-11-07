@@ -117,16 +117,41 @@
 	                        <RadioButton
 	                            android:id="@+id/pmStatusAlwaysRadioButton"
 	                            style="@style/radiobutton_inlist"
-	                            android:drawableRight="@drawable/ic_help_gray"
 	                            android:text="@string/lbl_always" />
 
 	                        <RadioButton
 	                            android:id="@+id/pmStatusWithoutContactRadioButton"
 	                            style="@style/radiobutton_inlist"
-	                            android:drawableRight="@drawable/ic_help_gray"
 	                            android:text="@string/lbl_nocontact" />
 	                        
 						</RadioGroup>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/bgCream"
+                            android:padding="20dp"
+                            android:text="@string/cmnt_pm_alarm_always" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/bgCream"
+                            android:padding="20dp"
+                            android:text="@string/cmnt_pm_alarm_offkey" />
 
                     </TableRow>
 

@@ -110,6 +110,8 @@
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
     <string name="lbl_camera_swipe">DESLIZÁ CON TU DEDO PARA REORIENTAR LA CÁMARA</string>
+    <string name="cmnt_pm_alarm_always">Siempre: Recibirás una alerta cuando tu auto se mueva. Tené en cuenta que deberás desactivar la función cada vez que estés en tu auto.</string>
+    <string name="cmnt_pm_alarm_offkey">Sin contacto: Solo recibirás una alerta cuando tu auto es remolcado.</string>
 
     <!-- Ruedita -->
     <string name="rd_main_promo_title">Viví LOAPP 2.0</string>
