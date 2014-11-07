@@ -109,7 +109,7 @@
     
     <!-- comments -->
     <string name="cmnt_home_page">Mantén presionada la opción y arrastrala al centro de la rueda para ingresar</string>
-    <string name="cmnt_camera_tooltip">Presioná las flechas para orientar la cámara</string>
+    <string name="lbl_camera_swipe">DESLIZÁ CON TU DEDO PARA REORIENTAR LA CÁMARA</string>
 
     <!-- Ruedita -->
     <string name="rd_main_promo_title">Viví LOAPP 2.0</string>

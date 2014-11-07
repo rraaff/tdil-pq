@@ -32,131 +32,35 @@
                 android:layout_height="fill_parent"
                 android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="8" >
-            
-	        <ImageView
-	            android:id="@+id/cameraView"
-	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent"
-	            android:layout_gravity="top|center_horizontal"
-	            android:contentDescription="@string/desc_cam_image" />
-	        
+		        <RelativeLayout
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_weight="8" >
+		            
+			        <ImageView
+			            android:id="@+id/cameraView"
+			            android:layout_width="fill_parent"
+			            android:layout_height="fill_parent"
+			            android:layout_gravity="top|center_horizontal"
+			            android:contentDescription="@string/desc_cam_image"
+			            android:scaleType="centerCrop" />
 
-<!-- 
-	        <LinearLayout
-	            style="@attr/tabLayout"
-	            android:layout_width="fill_parent"
-	            android:layout_height="fill_parent"
-	            android:layout_gravity="center_horizontal|top"
-	            android:layout_weight="1"
-	            android:gravity="top|center_horizontal"
-	            android:orientation="horizontal"
-	            android:padding="5dp" >
-	
-	            <TableLayout
-	                android:layout_width="fill_parent"
-	                android:layout_height="fill_parent"
-	                android:layout_gravity="center_vertical|top" >
-	
-	                <TableRow
-	                    android:id="@+id/tableRow1"
-	                    android:layout_width="fill_parent"
-	                    android:layout_height="48dp"
-	                    android:layout_gravity="top|center_horizontal"
-	                    android:gravity="center_horizontal|top" >
-	
-	                    <RelativeLayout
-	                        android:layout_width="fill_parent"
-	                        android:layout_height="48dp"
-	                        android:layout_gravity="top|center_vertical"
-	                        android:layout_weight="1"
-	                        android:gravity="center_horizontal" >
-	                        
-		                    <Button
-		                        android:id="@+id/upButton"
-		                        android:layout_width="fill_parent"
-		                        android:layout_height="48dp"
-		                        android:layout_alignParentBottom="true"
-		                        android:layout_alignParentRight="true"
-		                        android:background="@drawable/jstk_item_up"
-		                        android:text="@string/btn_cam_up" />
-	
-		                </RelativeLayout>
-	                </TableRow>
-	
-	                <TableRow
-	                    android:id="@+id/tableRow21"
-	                    android:layout_width="fill_parent"
-	                    android:layout_height="fill_parent"
-	                    android:layout_gravity="fill_horizontal|fill_vertical"
-	                    android:layout_weight="1" >
-	                    
-						<RelativeLayout
-						    android:layout_width="fill_parent"
-						    android:layout_height="fill_parent"
-						    android:layout_gravity="fill_horizontal|fill_vertical"
-						    android:layout_marginBottom="8dp"
-						    android:layout_marginTop="8dp"
-						    android:layout_weight="1"
-						    android:gravity="fill_horizontal|fill_vertical" >
-		                    
-		                    <Button
-		                        android:id="@+id/leftButton"
-		                        android:layout_width="48dp"
-		                        android:layout_height="fill_parent"
-		                        android:layout_alignParentLeft="true"
-		                        android:background="@drawable/jstk_item_left"
-		                        android:text="@string/btn_cam_left" />
+			        <TextView
+			            android:id="@+id/textView1"
+			            android:layout_width="fill_parent"
+			            android:layout_height="35dp"
+			            android:layout_alignParentLeft="true"
+			            android:layout_alignParentRight="true"
+			            android:layout_alignParentTop="true"
+			            android:background="@drawable/trans_40"
+			            android:gravity="center_vertical|center_horizontal"
+			            android:text="@string/lbl_camera_swipe"
+			            android:textColor="@color/bgBase"
+			            android:textSize="15sp" />
+
+		        </RelativeLayout>
 		
-		                    <Button
-		                        android:id="@+id/rightButton"
-		                        android:layout_width="48dp"
-		                        android:layout_height="fill_parent"
-		                        android:layout_alignParentRight="true"
-		                        android:background="@drawable/jstk_item_right"
-		                        android:text="@string/btn_cam_right" />
-	
-		                </RelativeLayout>
-	                </TableRow>
-	
-	                <TableRow
-	                    android:id="@+id/tableRow3"
-	                    android:layout_width="fill_parent"
-	                    android:layout_height="wrap_content"
-	                    android:gravity="center_horizontal" >
-	
-	                    <RelativeLayout
-	                        android:layout_width="fill_parent"
-	                        android:layout_height="48dp"
-	                        android:layout_gravity="bottom|center_vertical"
-	                        android:layout_weight="1"
-	                        android:gravity="fill_horizontal|fill_vertical" >
-	
-		                    <Button
-		                        android:id="@+id/downButton"
-		                        android:layout_width="fill_parent"
-		                        android:layout_height="48dp"
-		                        android:layout_alignParentBottom="true"
-		                        android:layout_alignParentRight="true"
-		                        android:background="@drawable/jstk_item_down"
-		                        android:gravity="fill_horizontal|fill_vertical"
-		                        android:text="@string/btn_cam_down" />
-		                    
-						</RelativeLayout>
-						
-	                </TableRow>
-	                
-	            </TableLayout>
-	
-	        </LinearLayout>
-	        -->
-            
-        </RelativeLayout>
-
-    </LinearLayout>
+		    </LinearLayout>
 
         </TableRow>
 

@@ -52,15 +52,15 @@ public class HomeCameraActivity extends LoJackLoggedActivity {
 	 * The default email to populate the email field with.
 	 */
 	// Values for email and password at the time of the login attempt.
-
+/*
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
-		setContentView(R.layout.activity_home_camera);
+	//	setContentView(R.layout.activity_home_camera);
 		customizeActionBar();
 		Bundle extras = getIntent().getExtras();
-		
+	/*	
 		tabHost = (TabHost) findViewById(R.id.tabhost);
 		tabHost.setup();
 		
@@ -78,26 +78,26 @@ public class HomeCameraActivity extends LoJackLoggedActivity {
 		tabCameras.setContent(R.id.tab3);
 		tabCameras.setIndicator(TAB_CAMARAS);
 		tabHost.addTab(tabCameras);
+		*/
+	//	tabHost.setCurrentTab(2);
 		
-		tabHost.setCurrentTab(2);
-		
-		Camera tmpCamera = (Camera)extras.getSerializable(CAMERA);
-		camerasCount = (Integer)extras.getSerializable(CAMERAS_COUNT);
-		
+	//	Camera tmpCamera = (Camera)extras.getSerializable(CAMERA);
+	//	camerasCount = (Integer)extras.getSerializable(CAMERAS_COUNT);
+		/*
 		if (TPLinkSC4171G.TP_LINK_SC4171G.equals(tmpCamera.getModel())) {
 			camera = new TPLinkSC4171G(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
 		}
 		if (PanasonicBLC131.PANASONIC_BLC131.equals(tmpCamera.getModel())) {
 			camera = new PanasonicBLC131(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
-		}
-		
+		}*/
+	/*
 		if (TrendnetTVIP851.TrendnetTVIP851.equals(tmpCamera.getModel())) {
 			camera = new TrendnetTVIP851(tmpCamera.getUrl(), tmpCamera.getUsername(), tmpCamera.getPassword());
-		}
+		}*/
 
 //		new DownloadCameraImageTask(this, (ImageView)this.findViewById(R.id.cameraView), RESTConstants.CAMERA_URL + "").execute();
 		
-		
+	/*	
 		findViewById(R.id.leftButton).setOnClickListener(
 				new View.OnClickListener() {
 					@Override
@@ -163,7 +163,7 @@ public class HomeCameraActivity extends LoJackLoggedActivity {
 	    }
 		
 		HeaderLogic.installTabLogic(this);
-	}
+	}*/
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {

@@ -70,54 +70,19 @@ public class ActivityHomeCamera extends HomeActivity {
 		ImageView cameraImageView = (ImageView)this.findViewById(R.id.cameraView);
 		cameraImageView.setOnTouchListener(new OnSwipeTouchListener(this) {
 		    public void onSwipeTop() {
-		    	new MoveCameraUpTask(camera).execute();
+		    	new MoveCameraDownTask(camera).execute();
 		    }
 		    public void onSwipeRight() {
-		    	new MoveCameraRightTask(camera).execute();
-		    }
-		    public void onSwipeLeft() {
 		    	new MoveCameraLeftTask(camera).execute();
 		    }
+		    public void onSwipeLeft() {
+		    	new MoveCameraRightTask(camera).execute();
+		    }
 		    public void onSwipeBottom() {
-		    	new MoveCameraDownTask(camera).execute();
+		    	new MoveCameraUpTask(camera).execute();
 		    }
 
 		});
-		
-		/*findViewById(R.id.leftButton).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						// left
-						new MoveCameraLeftTask(camera).execute();
-						//new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + frame, "left").execute();
-					}
-				});
-		findViewById(R.id.upButton).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						new MoveCameraUpTask(camera).execute();
-//						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "up").execute();
-					}
-				});
-		findViewById(R.id.downButton).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						new MoveCameraDownTask(camera).execute();
-//						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "down").execute();
-					}
-				});
-		findViewById(R.id.rightButton).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View view) {
-						new MoveCameraRightTask(camera).execute();
-//						new MoveCameraTask(RESTConstants.CAMERA_MOVE_URL + urlCamera, "right").execute();
-					}
-				});
-				*/
     }
     
  
