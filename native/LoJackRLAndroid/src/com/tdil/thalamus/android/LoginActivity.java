@@ -405,14 +405,6 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 				e.putString("mPassword", "");
 				e.commit();
 			}
-			RESTClientTask.httpClient
-					.addRequestInterceptor(new HttpRequestInterceptor() {
-						@Override
-						public void process(HttpRequest arg0, HttpContext arg1)
-								throws HttpException, IOException {
-							arg0.addHeader("apkToken", resp.getApkToken());
-						}
-					});
 			
 			if (checkPlayServices()) {
 				gcm = GoogleCloudMessaging.getInstance(this);

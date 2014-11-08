@@ -77,7 +77,7 @@ public class PreventActivity extends LoJackLoggedActivity {
 
 		parkingsWebView = (WebView) findViewById(R.id.parkingsWebView);
 		
-		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
+		List<Cookie> cookies = RESTClientTask.getHttpClient(this).getCookieStore().getCookies();
 		setContentView(parkingsWebView);
 		setProgressBarVisibility(true);
 		WebSettings webSettings = parkingsWebView.getSettings();

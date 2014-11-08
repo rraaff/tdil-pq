@@ -29,6 +29,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
+import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.utils.Login;
 
 
@@ -54,13 +55,9 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	protected boolean showProgress = true;
 	protected boolean showError = true;
 	
-	public static DefaultHttpClient httpClient = new DefaultHttpClient();
+	private static DefaultHttpClient httpClient = new DefaultHttpClient();
 	
 	private static ExecutorService SERIAL_EXECUTOR = Executors.newFixedThreadPool(1);
-	
-	static {
-		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
-	}
 	
 	public static void recreateClient() {
 		httpClient = new DefaultHttpClient();
@@ -93,14 +90,21 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 		this.showError = showError;
 	}
 	
-	public static DefaultHttpClient get1HttpClient(final Context context) {
-		DefaultHttpClient httpClient = new DefaultHttpClient();
+	public static DefaultHttpClient getHttpClient(final Context context) {
+		if (httpClient != null) {
+			return httpClient;
+		}
+		httpClient = new DefaultHttpClient();
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
 		if (context != null) {
 			httpClient.addRequestInterceptor(new HttpRequestInterceptor() {
 				@Override
 				public void process(HttpRequest arg0, HttpContext arg1)
 						throws HttpException, IOException {
-					arg0.addHeader("apkToken", Login.getLoggedUser(context).getApkToken());
+					LoginResponse loggedUser = Login.getLoggedUser(context);
+					if (loggedUser != null && loggedUser.getLogged()) {
+						arg0.addHeader("apkToken", loggedUser.getApkToken());
+					}
 				}
 			});
 		}
@@ -149,7 +153,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 				((HttpEntityEnclosingRequestBase)httpPost).setEntity(new ByteArrayEntity(
 					    this.body.getBytes("UTF8")));
 			}
-			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpResponse httpResponse = getHttpClient(context).execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			// Read content & Log
 			inputStream = httpEntity.getContent();
@@ -269,4 +273,5 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	public void executeSerial(Void params) {
 		this.executeOnExecutor(SERIAL_EXECUTOR, params);
 	}
+
 }

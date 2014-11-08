@@ -50,7 +50,7 @@ public class RESTClientTaskOpt<T> extends RESTClientTask {
 				((HttpEntityEnclosingRequestBase)httpPost).setEntity(new ByteArrayEntity(
 					    this.body.getBytes("UTF8")));
 			}
-			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpResponse httpResponse = getHttpClient(context).execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			// Read content & Log
 			inputStream = httpEntity.getContent();

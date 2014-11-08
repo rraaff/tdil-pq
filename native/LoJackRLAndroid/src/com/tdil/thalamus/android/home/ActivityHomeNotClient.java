@@ -66,7 +66,7 @@ public class ActivityHomeNotClient extends LoJackWithProductMenuActivity {
         
         webView = (WebView) findViewById(R.id.webView);
 		
-		List<Cookie> cookies = RESTClientTask.httpClient.getCookieStore().getCookies();
+		List<Cookie> cookies = RESTClientTask.getHttpClient(this).getCookieStore().getCookies();
 		//setContentView(webView);
 		setProgressBarVisibility(true);
 		WebSettings webSettings = webView.getSettings();
