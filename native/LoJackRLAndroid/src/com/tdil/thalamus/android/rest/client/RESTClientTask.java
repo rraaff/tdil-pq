@@ -55,13 +55,12 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	protected boolean showProgress = true;
 	protected boolean showError = true;
 	
-	private static DefaultHttpClient httpClient = new DefaultHttpClient();
+	private static DefaultHttpClient httpClient = null;
 	
 	private static ExecutorService SERIAL_EXECUTOR = Executors.newFixedThreadPool(1);
 	
 	public static void recreateClient() {
-		httpClient = new DefaultHttpClient();
-		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
+		httpClient = null;
 	}
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
