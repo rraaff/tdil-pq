@@ -38,13 +38,13 @@ public class SquareViewGroup extends ViewGroup {
 		MathContext context = new MathContext(10,RoundingMode.FLOOR);
 		
 		int widthAndHeightBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(38.00)).divide(BigDecimal.valueOf(100)).intValue();
+		int widthAndHeightTarget = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(38.00)).divide(BigDecimal.valueOf(100)).intValue();
 
 		// Posición LUGARES
 		int topPrimerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(79.70)).divide(BigDecimal.valueOf(100)).intValue();
 		int leftPrimerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(66.30)).divide(BigDecimal.valueOf(100)).intValue();
 		topPrimerBoton = topPrimerBoton - (widthAndHeightBoton / 2);
 		leftPrimerBoton = leftPrimerBoton - (widthAndHeightBoton / 2);
-		
 		View v = getChildAt(0);
 		v.layout(leftPrimerBoton, topPrimerBoton, leftPrimerBoton + widthAndHeightBoton, topPrimerBoton + widthAndHeightBoton);
 
@@ -53,7 +53,6 @@ public class SquareViewGroup extends ViewGroup {
 		int leftSegundoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(16.00)).divide(BigDecimal.valueOf(100)).intValue();
 		topSegundoBoton = topSegundoBoton - (widthAndHeightBoton / 2);
 		leftSegundoBoton = leftSegundoBoton - (widthAndHeightBoton / 2);
-		
 		v = getChildAt(1);
 		v.layout(leftSegundoBoton, topSegundoBoton, leftSegundoBoton + widthAndHeightBoton, topSegundoBoton + widthAndHeightBoton);
 		
@@ -62,7 +61,6 @@ public class SquareViewGroup extends ViewGroup {
 		int leftTercerBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(33.00)).divide(BigDecimal.valueOf(100)).intValue();
 		topTercerBoton = topTercerBoton - (widthAndHeightBoton / 2);
 		leftTercerBoton = leftTercerBoton - (widthAndHeightBoton / 2);
-		
 		v = getChildAt(2);
 		v.layout(leftTercerBoton, topTercerBoton, leftTercerBoton + widthAndHeightBoton, topTercerBoton + widthAndHeightBoton);
 		
@@ -89,16 +87,15 @@ public class SquareViewGroup extends ViewGroup {
 		leftSextoBoton = leftSextoBoton - (widthAndHeightBoton / 2);
 		v = getChildAt(5); // historic
 		v.layout(leftSextoBoton, topSextoBoton, leftSextoBoton + widthAndHeightBoton, topSextoBoton + widthAndHeightBoton);
-	/*	
-		// Posicion VLU BADGE
-		int widthAndHeightBadge = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(6.50)).divide(BigDecimal.valueOf(100)).intValue();
-		int topSeptimoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(50.00)).divide(BigDecimal.valueOf(100)).intValue();
-		int leftSeptimoBoton = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(5.90)).divide(BigDecimal.valueOf(100)).intValue();
-		topSeptimoBoton = topSeptimoBoton - (widthAndHeightBadge / 2);
-		leftSeptimoBoton = leftSeptimoBoton - (widthAndHeightBadge / 2);
-		v = getChildAt(6); // historic
-		v.layout(leftSeptimoBoton, topSeptimoBoton, leftSeptimoBoton + widthAndHeightBadge, topSeptimoBoton + widthAndHeightBadge);
-*/
+		
+		// Ribón dropTarget
+		int topDropTarget = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(49.00)).divide(BigDecimal.valueOf(100)).intValue();
+		int leftDropTarget = BigDecimal.valueOf(width).multiply(BigDecimal.valueOf(49.00)).divide(BigDecimal.valueOf(100)).intValue();
+		topDropTarget = topDropTarget - (widthAndHeightTarget / 2);
+		leftDropTarget = leftDropTarget - (widthAndHeightTarget / 2);
+		v = getChildAt(6); // Ribon
+		v.layout(leftDropTarget, topDropTarget, leftDropTarget + widthAndHeightTarget, topDropTarget + widthAndHeightTarget);
+
 	}
 
 }

@@ -131,50 +131,13 @@
 
         </TableRow>
 
-        <!-- TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/toplayer85"
-            android:gravity="center_horizontal" >
-
-            <ImageButton
-                android:id="@+id/carPositionsButton"
-                style="@style/btn_cars"
-                android:background="@drawable/ic_cars_position_off"
-                android:contentDescription="@string/action_home" />
-
-            <ImageButton
-                android:id="@+id/carSpeedButton"
-                style="@style/btn_cars"
-                android:background="@drawable/ic_cars_velocidades_off" />
-            
-            <ImageButton
-                android:id="@+id/carZoneButton"
-                style="@style/btn_cars"
-                android:background="@drawable/ic_cars_zone_off" />
-            
-            <ImageButton
-                android:id="@+id/carPhoneButton"
-                style="@style/btn_cars"
-                android:background="@drawable/ic_cars_telefonos_off" />
-            
-            <ImageButton
-                android:id="@+id/carPathButton"
-                style="@style/btn_cars"
-                android:background="@drawable/ic_cars_recorridos_off" />
-            
-            <ImageButton
-                android:id="@+id/carParkedModeButton"
-                style="@style/btn_cars"
-                android:background="@drawable/ic_cars_estacioname_off" />
-        </TableRow -->
-
         <TableRow
             android:id="@+id/tableRow3"
             style="@style/format_page_3rows1col_footer" >
 
             <include layout="@layout/footer_forcar" />
         </TableRow>
+
     </LinearLayout>
+
 </merge>

@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".HomeActivity" >
-
     
     <LinearLayout
         android:layout_width="fill_parent"
@@ -111,6 +110,13 @@
 	                android:background="@drawable/badge_alert"
 	                android:textColor="@color/color_transparent"
 	                android:textSize="12sp" /-->
+
+	            <com.tdil.thalamus.android.gui.components.StyledTextView
+	                android:id="@+id/dropTarget"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/transparente"
+	                android:visibility="visible" />
 	            
 	        </com.tdil.thalamus.android.menu.SquareViewGroup>
 	    </TableRow>
@@ -142,19 +148,5 @@
             <include layout="@layout/footer" />
         </TableRow>
     </LinearLayout>
-
-
-    
-    <com.tdil.thalamus.android.gui.components.StyledTextView
-        android:id="@+id/dropTarget"
-        android:layout_width="124dp"
-        android:layout_height="124dp"
-        android:layout_gravity="center"
-        android:background="@drawable/transparente"
-        android:gravity="center"
-        android:paddingTop="5dp"
-        android:text="@string/rd_default_comment"
-        android:textAlignment="center"
-        android:visibility="visible" />
 
 </merge>

@@ -87,18 +87,22 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content" >
 
-                        <LinearLayout style="@style/btn_inlist_witharrow" >
+                        <LinearLayout
+                            style="@style/btn_inlist_witharrow"
+                            android:paddingLeft="20dp" >
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/positionHistorySpeedTextView"
                                 style="@style/label_data_indatalist"
-                                android:layout_width="180dp"
-                                android:text="Telefono 1 para SMS" />
+                                android:layout_width="wrap_content"
+                                android:text="@string/lbl_phone_for_sms" />
 
-                            <TextView
+                            <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/pmStatusPhoneTextView"
                                 style="@style/label_datastring_indatalist"
+                                android:paddingLeft="10dp"
                                 android:text="TextView" />
+
                         </LinearLayout>
                     </TableRow>
 

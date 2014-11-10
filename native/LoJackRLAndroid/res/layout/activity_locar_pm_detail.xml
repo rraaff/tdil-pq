@@ -93,7 +93,9 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content" >
 
-                        <LinearLayout style="@style/btn_inlist_witharrow" >
+                        <LinearLayout
+                            style="@style/btn_inlist_witharrow"
+                            android:paddingLeft="20dp" >
 
                             <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/positionHistorySpeedTextView"
@@ -103,7 +105,9 @@
                             <com.tdil.thalamus.android.gui.components.StyledTextView
                                 android:id="@+id/pmStatusPhoneTextView"
                                 style="@style/label_datastring_indatalist"
+                                android:paddingLeft="10dp"
                                 android:text="TextView" />
+
                         </LinearLayout>
                     </TableRow>
 
