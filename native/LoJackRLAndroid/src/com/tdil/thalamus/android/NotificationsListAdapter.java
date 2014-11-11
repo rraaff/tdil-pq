@@ -150,7 +150,7 @@ public class NotificationsListAdapter extends AbstractListAdapter<NotificationBe
 				RESTResponse response = ((RESTClientTaskOpt<RESTResponse>) restClientTask).getCastedResult();
 				if (response.getOk()) {
 					Login.getLoggedUser(activity).setMessagesCount(Login.getLoggedUser(activity).getMessagesCount() - 1);
-					activity.updateMessagesOnBack(activity.getActionBarLayout());
+					activity.updateMessagesHeader(activity.getActionBarLayout());
 					activity.runOnUiThread(new Runnable() {
 						@Override
 						public void run() {

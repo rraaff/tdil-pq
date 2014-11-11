@@ -8,17 +8,15 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.car.VLUMessagesActivity;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.NotificationBean;
 import com.tdil.thalamus.android.rest.model.NotificationBeanCollection;
 import com.tdil.thalamus.android.utils.Login;
@@ -43,6 +41,9 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 		} else {
 			setContentView(R.layout.activity_notifications);
 			list = (ListView) findViewById(R.id.notificationsListView);
+			LoginResponse login = Login.getLoggedUser(this);
+			login.setMessagesUnread(false);
+			Login.setLoggedUser(this, login);
 			customizeActionBar();
 			
 			Bundle extras = getIntent().getExtras();

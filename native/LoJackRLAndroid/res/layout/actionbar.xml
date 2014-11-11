@@ -13,6 +13,11 @@
         android:paddingBottom="8dp"
         android:paddingTop="8dp" >
 
+       <ImageButton
+                android:id="@+id/actionBarMessagesImage"
+                style="@style/btn_cars"
+                android:background="@drawable/ic_notification_nonews" />
+       
         <com.tdil.thalamus.android.gui.components.StyledTextView
             android:id="@+id/messagesCountTextView"
             android:layout_width="wrap_content"

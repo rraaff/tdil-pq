@@ -40,6 +40,7 @@ public class LoginResponse {
 	private int messagesCount;
 	// LOW 0 /MEDIUM 1/HIGHT 2
 	private int messagesPriority;
+	private boolean messagesUnread;
 	
 	private String homeAssistPhone;
 	private String carAssistPhone;
@@ -267,6 +268,14 @@ public class LoginResponse {
 
 	public void setVehicleRecoveryPhone(String vehicleRecoveryPhone) {
 		this.vehicleRecoveryPhone = vehicleRecoveryPhone;
+	}
+
+	public boolean getMessagesUnread() {
+		return messagesUnread;
+	}
+
+	public void setMessagesUnread(boolean messagesUnread) {
+		this.messagesUnread = messagesUnread;
 	}
 
 }

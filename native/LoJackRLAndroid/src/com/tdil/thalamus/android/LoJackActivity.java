@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tdil.lojack.rl.R;
@@ -58,7 +59,7 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		actionBarLayout = inflator.inflate(R.layout.actionbar, null);
 		if (mustUpdateMessages()) {
-			updateMessages(actionBarLayout, this);
+			updateMessages(actionBarLayout);
 		} else {
 			if (actionBarLayout != null) {
 				View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
@@ -88,7 +89,7 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		actionBarLayout = inflator.inflate(R.layout.actionbar, null);
 		if (mustUpdateMessages()) {
-			updateMessages(actionBarLayout, this);
+			updateMessages(actionBarLayout);
 		} else {
 			if (actionBarLayout != null) {
 				View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
@@ -109,67 +110,43 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		// getSupportActionBar().setCustomView(R.layout.actionbar);
 	}
 
-	protected void updateMessages(final View v, final LoJackActivity activity) {
-		TextView messagesCountTextView = (TextView) v.findViewById(R.id.messagesCountTextView);
-		if (!Login.getLoggedUser(this).getLogged()) {
-			messagesCountTextView.setVisibility(View.GONE);
-			return;
-		}
-		int messageCount = Login.getLoggedUser(this).getMessagesCount();
-		int messagePriority = Login.getLoggedUser(this).getMessagesPriority();
-		if (messageCount == 0) {
-			messagesCountTextView.setVisibility(View.GONE);
-		} else {
-			if (messageCount == 1) {
-				messagesCountTextView.setText("1");
-			} else {
-				messagesCountTextView.setText(messageCount + "");
+	protected void updateMessages(final View v) {
+		ImageView actionBarMessagesImage = (ImageView) v.findViewById(R.id.actionBarMessagesImage);
+		updateMessagesHeader(v);
+		actionBarMessagesImage.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new RESTClientTaskOpt<NotificationBeanCollection>(LoJackActivity.this, HttpMethod.GET, getNotificationsObserver(LoJackActivity.this),
+						RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).executeSerial((Void) null);
 			}
-			if (messagePriority == 0) {
-				messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarGreen));
-			} else {
-				if (messagePriority == 1) {
-					messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarYellow));
-				} else {
-					messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarRed));
-				}
-			}
-			messagesCountTextView.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					new RESTClientTaskOpt<NotificationBeanCollection>(activity, HttpMethod.GET, getNotificationsObserver(activity),
-							RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).executeSerial((Void) null);
-				}
-			});
-		}
+		});
 	}
 
-	protected void updateMessagesOnBack(final View v) {
+	protected void updateMessagesHeader(final View v) {
 		if (v == null) {
 			return;
 		}
-		TextView messagesCountTextView = (TextView) v.findViewById(R.id.messagesCountTextView);
 		if (!Login.getLoggedUser(this).getLogged()) {
-			messagesCountTextView.setVisibility(View.GONE);
 			return;
 		}
 		int messageCount = Login.getLoggedUser(this).getMessagesCount();
 		int messagePriority = Login.getLoggedUser(this).getMessagesPriority();
+		boolean unread = Login.getLoggedUser(this).getMessagesUnread();
+		ImageView actionBarMessagesImage = (ImageView) v.findViewById(R.id.actionBarMessagesImage);
 		if (messageCount == 0) {
-			messagesCountTextView.setVisibility(View.GONE);
+			actionBarMessagesImage.setBackgroundResource(R.drawable.ic_notification_nonews);
 		} else {
-			if (messageCount == 1) {
-				messagesCountTextView.setText("1");
+			if (!unread) {
+				actionBarMessagesImage.setBackgroundResource(R.drawable.ic_notification_oldnews);
 			} else {
-				messagesCountTextView.setText(messageCount + "");
-			}
-			if (messagePriority == 0) {
-				messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarGreen));
-			} else {
-				if (messagePriority == 1) {
-					messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarYellow));
+				if (messagePriority == 0) {
+					actionBarMessagesImage.setBackgroundResource(R.drawable.ic_notification_level0);
 				} else {
-					messagesCountTextView.setTextColor(getResources().getColor(R.color.actionBarRed));
+					if (messagePriority == 1) {
+						actionBarMessagesImage.setBackgroundResource(R.drawable.ic_notification_level1);
+					} else {
+						actionBarMessagesImage.setBackgroundResource(R.drawable.ic_notification_level2);
+					}
 				}
 			}
 		}
@@ -255,16 +232,7 @@ public abstract class LoJackActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if (mustUpdateMessages()) {
-			updateMessagesOnBack(actionBarLayout);
-		} else {
-			if (actionBarLayout != null) {
-				View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
-				if (findViewById != null) {
-					findViewById.setVisibility(View.GONE);
-				}
-			}
-		}
+		updateMessagesHeader(actionBarLayout);
 	}
 
 	protected boolean mustUpdateMessages() {
