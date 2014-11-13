@@ -90,6 +90,12 @@ public class NotificationsListAdapter extends AbstractListAdapter<NotificationBe
 		holder.bean = iter;
 		holder.notificationTitleTextView.setText(iter.getTitle());
 		holder.notificationDescriptionTextView.setText(iter.getMessage());
+		// TODO PABLO
+		if (iter.getUnread()) {
+			holder.notificationTitleTextView.setBackgroundColor(activity.getResources().getColor(R.color.lightBlue));
+		} else {
+			holder.notificationTitleTextView.setBackgroundColor(activity.getResources().getColor(R.color.black));
+		}
 		if (0 == iter.getNotificationlevel()) {
 			holder.notificationTitleTextView.setTextColor(activity.getResources().getColor(R.color.actionBarGreen));
 		} else {

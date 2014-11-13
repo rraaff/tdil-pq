@@ -16,6 +16,7 @@ public class NotificationBean implements Serializable {
 	private Integer notificationtype;
 	private Integer notificationlevel;
 	private String creationdate;
+	private boolean unread;
 	
 	public NotificationBean() {
 	}
@@ -55,5 +56,13 @@ public class NotificationBean implements Serializable {
 	}
 	public void setCreationdate(String creationdate) {
 		this.creationdate = creationdate;
+	}
+
+	public boolean getUnread() {
+		return unread;
+	}
+
+	public void setUnread(boolean unread) {
+		this.unread = unread;
 	}
 }
