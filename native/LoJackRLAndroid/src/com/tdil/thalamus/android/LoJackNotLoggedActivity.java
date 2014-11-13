@@ -8,4 +8,9 @@ public class LoJackNotLoggedActivity extends LoJackActivity {
 	public int menuResourceId() {
 		return R.menu.menu_not_logged;
 	}
+	
+	@Override
+	protected boolean mustBeLogged() {
+		return false;
+	}
 }

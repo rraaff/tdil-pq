@@ -42,6 +42,8 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
 	}
+	
+	protected abstract boolean mustBeLogged();
 
 	protected void customizeActionBar() {
 		customizeActionBar(true);
@@ -58,15 +60,20 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		// this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		actionBarLayout = inflator.inflate(R.layout.actionbar, null);
-		if (mustUpdateMessages()) {
-			updateMessages(actionBarLayout);
-		} else {
-			if (actionBarLayout != null) {
-				View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
-				if (findViewById != null) {
-					findViewById.setVisibility(View.GONE);
+		if (mustBeLogged()) {
+			if (mustUpdateMessages()) {
+				updateMessages(actionBarLayout);
+			} else {
+				if (actionBarLayout != null) {
+					View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
+					if (findViewById != null) {
+						findViewById.setVisibility(View.GONE);
+					}
 				}
 			}
+		} else {
+			ImageView actionBarMessagesImage = (ImageView) actionBarLayout.findViewById(R.id.actionBarMessagesImage);
+			actionBarMessagesImage.setVisibility(View.GONE);
 		}
 		// setTypeface(this, actionBarLayout.findViewById(R.id.actionBarTitle));
 		this.getSupportActionBar().setCustomView(actionBarLayout);
@@ -88,15 +95,20 @@ public abstract class LoJackActivity extends ActionBarActivity {
 		// this.getSupportActionBar().setDisplayShowHomeEnabled(true);
 		LayoutInflater inflator = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		actionBarLayout = inflator.inflate(R.layout.actionbar, null);
-		if (mustUpdateMessages()) {
-			updateMessages(actionBarLayout);
-		} else {
-			if (actionBarLayout != null) {
-				View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
-				if (findViewById != null) {
-					findViewById.setVisibility(View.GONE);
+		if (mustBeLogged()) {
+			if (mustUpdateMessages()) {
+				updateMessages(actionBarLayout);
+			} else {
+				if (actionBarLayout != null) {
+					View findViewById = (View) actionBarLayout.findViewById(R.id.messagesCountTextView);
+					if (findViewById != null) {
+						findViewById.setVisibility(View.GONE);
+					}
 				}
 			}
+		} else {
+			ImageView actionBarMessagesImage = (ImageView) actionBarLayout.findViewById(R.id.actionBarMessagesImage);
+			actionBarMessagesImage.setVisibility(View.GONE);
 		}
 
 		TextView titleTextView = (TextView) actionBarLayout.findViewById(R.id.actionBarTitle);
@@ -127,6 +139,11 @@ public abstract class LoJackActivity extends ActionBarActivity {
 			return;
 		}
 		if (!Login.getLoggedUser(this).getLogged()) {
+			if (mustBeLogged()) {
+				Intent intent = new Intent(this.getBaseContext(), LoginActivity.class);
+				this.startActivity(intent);
+				this.finish();
+			}
 			return;
 		}
 		int messageCount = Login.getLoggedUser(this).getMessagesCount();
@@ -232,7 +249,9 @@ public abstract class LoJackActivity extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		updateMessagesHeader(actionBarLayout);
+		if (this.mustBeLogged()) {
+			updateMessagesHeader(actionBarLayout);
+		}
 	}
 
 	protected boolean mustUpdateMessages() {

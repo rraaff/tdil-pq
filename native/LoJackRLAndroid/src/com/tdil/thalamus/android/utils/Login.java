@@ -18,6 +18,9 @@ public class Login {
 		if (loggedUser == null) {
 			SharedPreferences sharedPref = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 			String jsonUser = sharedPref.getString(USER, USER);
+			if (USER.equals(jsonUser)) {
+				return LoginResponse.failed();
+			}
 			Gson gson = new Gson();
 			loggedUser = gson.fromJson(jsonUser, LoginResponse.class);
 		}
