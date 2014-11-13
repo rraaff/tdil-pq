@@ -9,7 +9,6 @@
        android:layout_width="fill_parent"
        android:layout_height="wrap_content"
        android:layout_gravity="center"
-       android:background="@color/grayTabBase"
        android:orientation="horizontal" >
 
        <ImageButton
@@ -27,8 +26,9 @@
             android:paddingLeft="5dp"
             android:text="@string/app_name"
             android:textColor="@color/actionBarYellow"
-            android:textSize="14sp" />
-        
+            android:textSize="14sp"
+            android:visibility="invisible" />
+
         <com.tdil.thalamus.android.gui.components.StyledTextView
             android:id="@+id/actionBarTitle"
             android:layout_width="2dp"

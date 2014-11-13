@@ -3,6 +3,7 @@ package com.tdil.thalamus.android;
 import com.tdil.thalamus.android.rest.model.NotificationBean;
 
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class NotificationsViewHolder {
@@ -11,4 +12,5 @@ public class NotificationsViewHolder {
 	public TextView notificationTitleTextView;
 	public TextView notificationDescriptionTextView;
 	public View notificationDismissImageButton;
+	public LinearLayout notificationRow;
 }

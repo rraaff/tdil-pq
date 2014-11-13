@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -90,11 +91,10 @@ public class NotificationsListAdapter extends AbstractListAdapter<NotificationBe
 		holder.bean = iter;
 		holder.notificationTitleTextView.setText(iter.getTitle());
 		holder.notificationDescriptionTextView.setText(iter.getMessage());
-		// TODO PABLO
 		if (iter.getUnread()) {
-			holder.notificationTitleTextView.setBackgroundColor(activity.getResources().getColor(R.color.lightBlue));
+			holder.notificationRow.setBackgroundColor(activity.getResources().getColor(R.color.bgCream));
 		} else {
-			holder.notificationTitleTextView.setBackgroundColor(activity.getResources().getColor(R.color.black));
+			holder.notificationRow.setBackgroundColor(activity.getResources().getColor(R.color.white));
 		}
 		if (0 == iter.getNotificationlevel()) {
 			holder.notificationTitleTextView.setTextColor(activity.getResources().getColor(R.color.actionBarGreen));
@@ -112,6 +112,7 @@ public class NotificationsListAdapter extends AbstractListAdapter<NotificationBe
 	protected NotificationsViewHolder createViewHolder(View vi) {
 //		vi.setOnTouchListener(onSwipeTouchListener);
 		NotificationsViewHolder holder = new NotificationsViewHolder();
+		holder.notificationRow = (LinearLayout) vi.findViewById(R.id.notificationRow);
 		holder.notificationTitleTextView = (TextView) vi.findViewById(R.id.notificationTitleTextView);
 		holder.notificationDescriptionTextView = (TextView) vi.findViewById(R.id.notificationDescriptionTextView);
 		holder.notificationDismissImageButton = (View) vi.findViewById(R.id.notificationDismissImageButton);
