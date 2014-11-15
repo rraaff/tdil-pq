@@ -29,6 +29,7 @@ import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
 import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.NotificationBeanCollection;
+import com.tdil.thalamus.android.rest.model.NotificationsSummary;
 import com.tdil.thalamus.android.utils.Login;
 
 public abstract class LoJackActivity extends ActionBarActivity {
@@ -36,6 +37,8 @@ public abstract class LoJackActivity extends ActionBarActivity {
 	private static Typeface normalFont;
 	private static Typeface boldFont;
 	private View actionBarLayout;
+	
+	private static boolean mustUpdateNotifications = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +128,11 @@ public abstract class LoJackActivity extends ActionBarActivity {
 	protected void updateMessages(final View v) {
 		ImageView actionBarMessagesImage = (ImageView) v.findViewById(R.id.actionBarMessagesImage);
 		updateMessagesHeader(v);
+		if (getMustUpdateNotifications()) {
+			setMustUpdateNotifications(false);
+			new RESTClientTaskOpt<NotificationsSummary>(LoJackActivity.this, HttpMethod.GET, getNotificationsSummaryObserver(LoJackActivity.this),
+					RESTConstants.GET_NOTIFICATIONS_SUMMARY, null, null, NotificationsSummary.class).executeSerial((Void) null);
+		}
 		actionBarMessagesImage.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -177,6 +185,21 @@ public abstract class LoJackActivity extends ActionBarActivity {
 				Intent intent = new Intent(activity.getBaseContext(), NotificationsActivity.class);
 				intent.putExtra(NotificationsActivity.NOTIFICATIONS, response);
 				activity.startActivity(intent);
+			}
+		};
+	}
+	
+	public static IRestClientObserver getNotificationsSummaryObserver(final LoJackActivity activity) {
+		return new LoJackRestClientObserver(activity) {
+			@Override
+			public void sucess(IRestClientTask restClientTask) {
+				NotificationsSummary response = ((RESTClientTaskOpt<NotificationsSummary>) restClientTask).getCastedResult();
+				LoginResponse loggedUser = Login.getLoggedUser(activity);
+				loggedUser.setMessagesCount(response.getCount());
+				loggedUser.setMessagesPriority(response.getMaxLevel());
+				loggedUser.setMessagesUnread(response.isUnread());
+				Login.setLoggedUser(activity, loggedUser);
+				activity.updateMessages(activity.getActionBarLayout());
 			}
 		};
 	}
@@ -318,6 +341,14 @@ public abstract class LoJackActivity extends ActionBarActivity {
 
 	public void setActionBarLayout(View actionBarLayout) {
 		this.actionBarLayout = actionBarLayout;
+	}
+
+	public static boolean getMustUpdateNotifications() {
+		return mustUpdateNotifications;
+	}
+
+	public static void setMustUpdateNotifications(boolean mustUpdateNotifications) {
+		LoJackActivity.mustUpdateNotifications = mustUpdateNotifications;
 	}
 
 }
