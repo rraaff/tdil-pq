@@ -108,6 +108,7 @@ public interface RESTConstants {
 	
 	/** Notifications */
 	public static final String GET_NOTIFICATIONS = "/notifications/list";
+	public static final String GET_NOTIFICATIONS_SUMMARY = "/notifications/summary";
 	public static final String POST_DISMISS_NOTIFICATION = "/notifications/dismiss/" + P_NOTIFICATION_ID;
 	public static final String POST_DISMISS_ALL_NOTIFICATIONs = "/notifications/dismissAll";
 	public static final String POST_REG_ID = "/notifications/registerAndroidId";

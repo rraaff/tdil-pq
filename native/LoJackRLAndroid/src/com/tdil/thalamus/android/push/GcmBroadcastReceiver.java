@@ -1,11 +1,12 @@
 package com.tdil.thalamus.android.push;
 
+import com.tdil.thalamus.android.LoJackActivity;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.WakefulBroadcastReceiver;
-import android.widget.Toast;
 
 public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 	@Override
@@ -13,6 +14,9 @@ public class GcmBroadcastReceiver extends WakefulBroadcastReceiver {
 		ComponentName comp = new ComponentName(context.getPackageName(), GcmIntentService.class.getName());
 		startWakefulService(context, (intent.setComponent(comp)));
 		setResultCode(Activity.RESULT_OK);
+		LoJackActivity.setMustUpdateNotifications(true);
+//		context.get
 //		Toast.makeText(context, "wow!! received new push notification", Toast.LENGTH_LONG).show();
+		
 	}
 }
