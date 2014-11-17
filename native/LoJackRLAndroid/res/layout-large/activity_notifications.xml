@@ -45,6 +45,13 @@
 		            android:divider="@drawable/bg_item_inlist" >
 
 		        </ListView>
+		        
+		        <com.tdil.thalamus.android.gui.components.StyledTextView
+		            android:id="@+id/noNotifications"
+		            style="@style/modal_subtitleinform"
+		            android:layout_marginTop="0dp"
+		            android:text="@string/lst_title_nonotifications" 
+		            android:visibility="gone"/>
 
 		    </LinearLayout>
 

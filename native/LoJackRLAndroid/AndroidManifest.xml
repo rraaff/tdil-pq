@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tdil.lojack.rl"
     android:versionCode="20"
-    android:versionName="2.00.00" >
+    android:versionName="2.00.02" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
