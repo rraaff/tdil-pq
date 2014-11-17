@@ -408,7 +408,7 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 			
 			if (checkPlayServices()) {
 				gcm = GoogleCloudMessaging.getInstance(this);
-				registerInBackground();
+				registerInBackground(0);
 			}
 			
 			Intent intent = new Intent(this, IndexActivity.class);
@@ -460,7 +460,10 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 		return getSharedPreferences(IndexActivity.class.getSimpleName(), Context.MODE_PRIVATE);
 	}
 
-	private void registerInBackground() {
+	private void registerInBackground(final int retry) {
+		if (retry > 2) {
+			return;
+		}
 		new AsyncTask() {
 			@Override
 			protected Object doInBackground(Object... params) {
@@ -472,19 +475,24 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 					regid = gcm.register(SENDER_ID);
 					Log.d(TAG, "########################################");
 					Log.d(TAG, "Current Device's Registration ID is: " + regid);
+					return Boolean.TRUE;
 					
 				} catch (IOException ex) {
 					msg = "Error :" + ex.getMessage();
 					ex.printStackTrace();
+					registerInBackground(retry + 1); 
+					return Boolean.FALSE;
 				}
-				return null;
 			}
 
 			protected void onPostExecute(Object result) { // to do here
-				Gson gson = new Gson();
-				String json = gson.toJson(new RegisterAndroidBean(regid));
-				new RESTClientTaskOpt<RESTResponse>(LoginActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)LoginActivity.this), 
-						RESTConstants.POST_REG_ID,null,json, RESTResponse.class, false, false).executeSerial((Void) null);
+				Boolean resultObj = (Boolean)result;
+				if (resultObj) {
+					Gson gson = new Gson();
+					String json = gson.toJson(new RegisterAndroidBean(regid));
+					new RESTClientTaskOpt<RESTResponse>(LoginActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)LoginActivity.this), 
+							RESTConstants.POST_REG_ID,null,json, RESTResponse.class, false, false).executeSerial((Void) null);
+				}
 			};
 
 		}.execute(null, null, null);

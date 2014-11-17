@@ -17,7 +17,7 @@ import com.tdil.thalamus.android.utils.Login;
 public class MenuLogic {
 	
 	public static boolean handleOnOptionsItemSelected(final Activity activity,
-			MenuItem item) {
+			MenuItem item, boolean defaultIndex) {
 		switch (item.getItemId()) {
 		case R.id.menu_logout:
 			new RESTClientTask(activity, HttpMethod.GET, new IRestClientObserver() {
@@ -101,8 +101,15 @@ public class MenuLogic {
 	    	activity.finish();
 			return true;
 		default:
-			activity.finish();
-			return false;
+			if (defaultIndex) {
+				Intent intentIndex = new Intent(activity, IndexActivity.class);
+				activity.startActivity(intentIndex);
+		    	activity.finish();
+				return true;
+			} else {
+				activity.finish();
+				return false;
+			}
 		}
 	}
 

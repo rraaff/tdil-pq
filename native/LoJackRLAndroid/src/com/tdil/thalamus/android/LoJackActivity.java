@@ -265,8 +265,8 @@ public abstract class LoJackActivity extends ActionBarActivity {
 	public abstract int menuResourceId();
 
 	@Override
-	public final boolean onOptionsItemSelected(MenuItem item) {
-		return MenuLogic.handleOnOptionsItemSelected(this, item);
+	public boolean onOptionsItemSelected(MenuItem item) {
+		return MenuLogic.handleOnOptionsItemSelected(this, item, false);
 	}
 
 	@Override

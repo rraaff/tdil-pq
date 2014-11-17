@@ -22,6 +22,7 @@
     <string name="lst_title_last_changes">Últimos cambios</string>
     <string name="lst_title_last_news">Recibiendo información</string>
     <string name="lst_title_notifications">Mensajes</string>
+    <string name="lst_title_nonotifications">Usted no tiene mensajes</string>
     <string name="lst_title_alarms_list">Listado de alarmas</string>
     <string name="lst_title_alarms_agendas_list">Agendas de alarma</string>
     <string name="lst_title_lights_agendas_list">Agendas de luces</string>

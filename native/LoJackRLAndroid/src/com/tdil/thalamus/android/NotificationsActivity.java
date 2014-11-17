@@ -8,7 +8,10 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -30,6 +33,8 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 
 	public static final String NOTIFICATIONS = "NOTIFICATIONS";
 	private ListView list;
+	private TextView noNotifications;
+	private boolean fromNotifications = false;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +46,16 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 		} else {
 			setContentView(R.layout.activity_notifications);
 			list = (ListView) findViewById(R.id.notificationsListView);
+			noNotifications = (TextView)findViewById(R.id.noNotifications);
 			LoginResponse login = Login.getLoggedUser(this);
 			login.setMessagesUnread(false);
 			Login.setLoggedUser(this, login);
-			customizeActionBar();
 			
 			Bundle extras = getIntent().getExtras();
 			NotificationBeanCollection collection = null;
+			customizeActionBar(true);
 			if (extras == null || !extras.containsKey(NOTIFICATIONS)) {
+				fromNotifications = true;
 				new RESTClientTaskOpt<NotificationBeanCollection>(this, HttpMethod.GET, getNotificationsObserver(this),
 						RESTConstants.GET_NOTIFICATIONS, null, null, NotificationBeanCollection.class).executeSerial((Void) null);
 			} else {
@@ -59,6 +66,13 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 				NotificationsListAdapter adapter = new NotificationsListAdapter(this,
 						CustomListViewValuesArr, res);
 				list.setAdapter(adapter);
+				if (collection.getList().size() == 0) {
+					list.setVisibility(View.GONE);
+					noNotifications.setVisibility(View.VISIBLE);
+				} else {
+					list.setVisibility(View.VISIBLE);
+					noNotifications.setVisibility(View.GONE);
+				}
 			}
 			
 		}
@@ -73,7 +87,16 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 				Resources res = activity.getResources();
 				NotificationsListAdapter adapter = new NotificationsListAdapter(activity,
 						CustomListViewValuesArr, res);
-				((NotificationsActivity)activity).list.setAdapter(adapter);
+				NotificationsActivity notificationsActivity = (NotificationsActivity)activity;
+				notificationsActivity.list.setAdapter(adapter);
+				
+				if (response.getList().size() == 0) {
+					notificationsActivity.list.setVisibility(View.GONE);
+					notificationsActivity.noNotifications.setVisibility(View.VISIBLE);
+				} else {
+					notificationsActivity.list.setVisibility(View.VISIBLE);
+					notificationsActivity.noNotifications.setVisibility(View.GONE);
+				}
 			}
 		};
 	}
@@ -84,6 +107,22 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 		super.onConfigurationChanged(newConfig);
 	}
 
+	@Override
+	public void onBackPressed() {
+		if (!fromNotifications) {
+			super.onBackPressed();
+		} else {
+			Intent intent = new Intent(this.getBaseContext(), IndexActivity.class);
+			this.startActivity(intent);
+			this.finish();
+		}
+	}
+
+	@Override
+	public final boolean onOptionsItemSelected(MenuItem item) {
+		return MenuLogic.handleOnOptionsItemSelected(this, item, true);
+	}
+	
 	/**
 	 * Shows the progress UI and hides the login form.
 	 */
