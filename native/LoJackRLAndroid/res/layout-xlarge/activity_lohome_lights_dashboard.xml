@@ -44,13 +44,12 @@
 
 				        <LinearLayout style="@style/title_dashboard_container" >
 
-				            <TextView style="@style/title_dashboard"
+				            <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/title_dashboard"
 				                android:id="@+id/lightDescription"
 				                android:text="@string/title_dashboard_lights" />
 
-				            <TextView
+				            <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/title_dashboard_state"
 				                android:id="@+id/lightStatus"
-				                style="@style/title_dashboard_state"
 				                android:text="@string/status_unknown"
 				                android:textSize="15sp" />
 
@@ -66,13 +65,19 @@
 				        
 					    	<!-- hide switch -->
 
-						    <ToggleButton
+						    <com.tdil.thalamus.android.gui.components.StyledToggleButton
 						        android:id="@+id/switchActivate"
-						        style="@style/toggleSwitchIOSishWithText"
-	                    	    android:drawableRight="@drawable/btn_toggle_fake_switch"
-	                    	    android:gravity="center_vertical|left"
+						        android:layout_width="match_parent"
+						        android:layout_height="48dp"
+						        android:layout_marginBottom="2dp"
+						        android:layout_marginTop="2dp"
+						        android:background="@color/bgBase"
+						        android:drawableRight="@drawable/btn_toggle_fake_switch"
+						        android:gravity="center_vertical|left"
+						        android:paddingLeft="10dp"
 						        android:textOff="Encender"
-						        android:textOn="Apagar" />
+						        android:textOn="Apagar"
+						        android:textSize="15sp" />
 					    
 						</LinearLayout>
 			
@@ -84,13 +89,19 @@
 
 						<LinearLayout style="@style/toggle_button_container" >
 
-							<ToggleButton
+							<com.tdil.thalamus.android.gui.components.StyledToggleButton
 							    android:id="@+id/switchRandom"
-						        style="@style/toggleSwitchIOSishWithText"
-	                    	    android:drawableRight="@drawable/btn_toggle_fake_switch"
-	                    	    android:gravity="center_vertical|left"
+							    android:layout_width="match_parent"
+							    android:layout_height="48dp"
+							    android:layout_marginBottom="2dp"
+							    android:layout_marginTop="2dp"
+							    android:background="@color/bgBase"
+							    android:drawableRight="@drawable/btn_toggle_fake_switch"
+							    android:gravity="center_vertical|left"
+							    android:paddingLeft="10dp"
 							    android:textOff="Encender modo Random"
-							    android:textOn="Apagar modo Random" />
+							    android:textOn="Apagar modo Random"
+							    android:textSize="15sp" />
 
 						</LinearLayout>
 					    
@@ -98,11 +109,11 @@
 			
 					<TableRow style="@style/data_indashboard_container" >
 				
-					   <TextView style="@style/label_indash"
+					   <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_indash"
 							android:id="@+id/loadingInfoText"
 							android:text="@string/lst_itm_last_change_fullword" />
 					
-					   <TextView style="@style/label_data_indash"
+					   <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_data_indash"
 							android:id="@+id/lastChangeDate"
 							android:text="2013-05-04 18:20" />
 			
@@ -112,17 +123,17 @@
 					    style="@style/data_indashboard_container"
 					    android:paddingBottom="10dp" >
 			
-					    <TextView style="@style/label_data_indash"
+					    <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_data_indash"
 							android:id="@+id/lastChangeStatus"
 							android:text="@string/status_armed" />
 			
-					   <TextView style="@style/label_indash"
+					   <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_indash"
 							android:id="@+id/textView3"
 							android:paddingLeft="4dp"
 							android:paddingRight="4dp"
 							android:text="@string/lst_itm_by" />
 			
-					   <TextView style="@style/label_data_indash"
+					   <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_data_indash"
 							android:id="@+id/lastChangeUser"
 							android:text="@string/status_unknown" />
 					</TableRow>
@@ -141,11 +152,24 @@
 					    android:gravity="left"
 					    android:textAlignment="viewStart" >
 			
-					    <Button style="@style/ButtonLoginList"
+					    <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonLoginList"
 					        android:id="@+id/goToViewLightLog"
 					        android:text="@string/btn_view_log" />
 
 					</TableRow>
+					
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:background="@color/bgBase"
+					    android:gravity="left"
+					    android:textAlignment="viewStart" >
+
+                        <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonAgendainList"
+                            android:id="@+id/goToAgenda"
+                            android:text="@string/btn_agendas_list" />
+
+                    </TableRow>
 
 				</LinearLayout>
 
