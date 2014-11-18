@@ -40,11 +40,21 @@
 		    android:gravity="left"
 		    android:textAlignment="viewStart" >
 
-            <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonNewAgenda"
+            <com.tdil.thalamus.android.gui.components.StyledButton
                 android:id="@+id/goToNewAgenda"
+                style="@style/ButtonNewAgenda"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
                 android:text="@string/btn_new_agenda" />
 
         </TableRow>
+
+		<TableRow
+		    android:layout_width="fill_parent"
+		    android:layout_height="2dp"
+		    android:background="@color/grayLightBase" >
+		   
+		</TableRow>
 
         <TableRow
             android:id="@+id/tableRow2"

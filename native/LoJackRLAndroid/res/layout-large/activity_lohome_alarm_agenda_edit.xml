@@ -50,31 +50,38 @@
                             android:text="@string/lst_title_alarms_agendas_list" />
                     </TableRow>
 				    
-                 <com.tdil.thalamus.android.gui.components.StyledEditText
+	                <com.tdil.thalamus.android.gui.components.StyledEditText
 	                    android:id="@+id/agendaName"
 	                    style="@style/text_inputs_white_01"
+	                    android:gravity="center_vertical|center_horizontal"
 	                    android:hint="@string/hnt_agenda_name" />
-                 
-                 <com.tdil.thalamus.android.gui.components.StyledTextView
-			                    android:id="@+id/agendaFrom"
-			                    style="@style/modal_subtitleinform" 
-			                    android:text="Fecha de inicio"/>
-                 
-                 <com.tdil.thalamus.android.gui.components.StyledTextView
-			                    android:id="@+id/agendaTo"
-			                    style="@style/modal_subtitleinform" 
-			                    android:text="Fecha de fin"/>
-                 
-                 <com.tdil.thalamus.android.gui.components.StyledTextView
-			                    android:id="@+id/agendaHourFrom"
-			                    style="@style/modal_subtitleinform" 
-			                    android:text="Hora de inicio"/>
-                 
-                 <com.tdil.thalamus.android.gui.components.StyledTextView
-			                    android:id="@+id/agendaHourTo"
-			                    style="@style/modal_subtitleinform" 
-			                    android:text="Hora de fin"/>
+
+	                <com.tdil.thalamus.android.gui.components.StyledTextView
+						android:id="@+id/agendaFrom"
+						style="@style/date_time_picker" 
+						android:text="@string/lbl_start_date"/>
+	                 
+	                <com.tdil.thalamus.android.gui.components.StyledTextView
+						android:id="@+id/agendaTo"
+						style="@style/date_time_picker" 
+						android:text="@string/lbl_end_date"/>
+	                 
+	                <com.tdil.thalamus.android.gui.components.StyledTextView
+						android:id="@+id/agendaHourFrom"
+						style="@style/date_time_picker" 
+						android:text="@string/lbl_star_time"/>
+	                 
+	                <com.tdil.thalamus.android.gui.components.StyledTextView
+						android:id="@+id/agendaHourTo"
+						style="@style/date_time_picker" 
+						android:text="@string/lbl_end_time"/>
 	                
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="20dp" >
+					    
+					</TableRow>
+	                 
 	                <com.tdil.thalamus.android.gui.components.StyledTextView
 	                    style="@style/modal_subtitleinform"
 	                    android:text="@string/subtitle_agendas_repetitions" />
@@ -114,39 +121,38 @@
                         style="@style/checkbox_white_01"
                         android:text="@string/crt_tag_sunday" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:background="@color/bgBase"
-                        android:gravity="right"
-                        android:padding="5dp" >
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="right" >
-
-                            <com.tdil.thalamus.android.gui.components.StyledButton
-                                android:id="@+id/agendaSave"
-                                style="@style/btn_forward"
-                                android:focusable="false"
-                                android:text="@string/btn_lbl_save"
-                                android:visibility="visible" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    </LinearLayout>
-             </ScrollView>
+				</LinearLayout>
+			</ScrollView>
         </TableRow>
-<!-- 
+
+		<TableRow
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="5dp"
+		    android:background="@color/grayLightBase"
+		    android:gravity="right"
+		    android:padding="5dp" >
+		
+		    <LinearLayout
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:layout_weight="1"
+		        android:gravity="right" >
+		
+		        <com.tdil.thalamus.android.gui.components.StyledButton
+		            android:id="@+id/agendaSave"
+		            style="@style/btn_forward"
+		            android:focusable="false"
+		            android:text="@string/btn_lbl_save"
+		            android:visibility="visible" />
+		    </LinearLayout>
+		</TableRow>
+
         <TableRow
             android:id="@+id/tableRow3"
             style="@style/format_page_3rows1col_footer" >
 
             <include layout="@layout/footer_forhome" />
         </TableRow>
- -->
     </LinearLayout>
 </merge>

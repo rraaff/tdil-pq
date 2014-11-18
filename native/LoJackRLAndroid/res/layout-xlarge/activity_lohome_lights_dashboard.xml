@@ -48,10 +48,10 @@
 				                android:id="@+id/lightDescription"
 				                android:text="@string/title_dashboard_lights" />
 
-				            <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/title_dashboard_state"
+				            <com.tdil.thalamus.android.gui.components.StyledTextView
 				                android:id="@+id/lightStatus"
-				                android:text="@string/status_unknown"
-				                android:textSize="15sp" />
+				                style="@style/title_dashboard_state"
+				                android:text="@string/status_unknown" />
 
 				        </LinearLayout>
 
@@ -77,7 +77,7 @@
 						        android:paddingLeft="10dp"
 						        android:textOff="Encender"
 						        android:textOn="Apagar"
-						        android:textSize="15sp" />
+						        android:textSize="20sp" />
 					    
 						</LinearLayout>
 			
@@ -101,7 +101,7 @@
 							    android:paddingLeft="10dp"
 							    android:textOff="Encender modo Random"
 							    android:textOn="Apagar modo Random"
-							    android:textSize="15sp" />
+							    android:textSize="20sp" />
 
 						</LinearLayout>
 					    
@@ -117,31 +117,30 @@
 							android:id="@+id/lastChangeDate"
 							android:text="2013-05-04 18:20" />
 			
-					</TableRow>
-			
-					<TableRow
-					    style="@style/data_indashboard_container"
-					    android:paddingBottom="10dp" >
-			
-					    <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_data_indash"
-							android:id="@+id/lastChangeStatus"
-							android:text="@string/status_armed" />
+					    <com.tdil.thalamus.android.gui.components.StyledTextView
+					        android:id="@+id/lastChangeStatus"
+					        style="@style/label_data_indash"
+					        android:paddingLeft="25dp"
+					        android:text="@string/status_armed" />
 			
 					   <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_indash"
 							android:id="@+id/textView3"
-							android:paddingLeft="4dp"
-							android:paddingRight="4dp"
+							android:paddingLeft="10dp"
+							android:paddingRight="10dp"
 							android:text="@string/lst_itm_by" />
 			
-					   <com.tdil.thalamus.android.gui.components.StyledTextView style="@style/label_data_indash"
-							android:id="@+id/lastChangeUser"
-							android:text="@string/status_unknown" />
+					   <com.tdil.thalamus.android.gui.components.StyledTextView
+					       android:id="@+id/lastChangeUser"
+					       style="@style/label_data_indash"
+					       android:paddingLeft="0dp"
+					       android:text="@string/status_unknown" />
+
 					</TableRow>
 
 					<TableRow
 					    android:layout_width="fill_parent"
-					    android:layout_height="1dp"
-					    android:background="@color/grayLightBase">
+					    android:layout_height="2dp"
+					    android:background="@color/grayLightBase" >
 					   
 					</TableRow>
 
@@ -157,7 +156,14 @@
 					        android:text="@string/btn_view_log" />
 
 					</TableRow>
-					
+
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="2dp"
+					    android:background="@color/grayLightBase" >
+					   
+					</TableRow>
+
 					<TableRow
 					    android:layout_width="fill_parent"
 					    android:layout_height="wrap_content"
@@ -170,6 +176,13 @@
                             android:text="@string/btn_agendas_list" />
 
                     </TableRow>
+
+					<TableRow
+					    android:layout_width="fill_parent"
+					    android:layout_height="2dp"
+					    android:background="@color/grayLightBase" >
+					   
+					</TableRow>
 
 				</LinearLayout>
 

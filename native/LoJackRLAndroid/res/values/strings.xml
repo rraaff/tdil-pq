@@ -65,6 +65,11 @@
     <string name="lbl_tip_always">Recibirás una alerta cuando tu auto se mueva. Tené en cuenta que deberás desactivar la función cada vez que estés en tu auto.</string>
     <string name="lbl_tip_onlycontact">Solo recibirás una alerta cuando tu auto es remolcado.</string>
 
+    <string name="lbl_start_date">Fecha de inicio</string>
+    <string name="lbl_end_date">Fecha de fin</string>
+    <string name="lbl_star_time">Hora de inicio</string>
+    <string name="lbl_end_time">Hora de fin</string>
+
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
     <string name="title_activity_login">INGRESAR</string>

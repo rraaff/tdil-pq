@@ -388,11 +388,11 @@
 		
 	<style name="modal_subtitleinform">
 	    <item name="android:layout_width">fill_parent</item>
-	    <item name="android:layout_height">48dp</item>
+	    <item name="android:layout_height">68dp</item>
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:layout_marginTop">2dp</item>
 	    <item name="android:textColor">@color/black</item>
-	    <item name="android:textSize">18sp</item>
+	    <item name="android:textSize">36sp</item>
 	    <item name="android:textAllCaps">true</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	</style>
@@ -439,22 +439,23 @@
 	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:background">@drawable/bg_modaltitles</item>
 	    <item name="android:orientation">vertical</item>
-	    <item name="android:paddingBottom">10dp</item>
-		<item name="android:paddingLeft">20dp</item>
-		<item name="android:paddingRight">20dp</item>
-		<item name="android:paddingTop">10dp</item>
+	    <item name="android:paddingBottom">25dp</item>
+		<item name="android:paddingLeft">50dp</item>
+		<item name="android:paddingRight">50dp</item>
+		<item name="android:paddingTop">20dp</item>
 	</style>
 	
 	<style name="title_dashboard">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:textColor">@color/black</item>
-	    <item name="android:textSize">20sp</item>
+	    <item name="android:textSize">36sp</item>
 	</style>
 	
 	<style name="title_dashboard_state">
 	    <item name="android:layout_width">fill_parent</item>
 	    <item name="android:layout_height">wrap_content</item>
+	    <item name="android:textSize">20sp</item>
 	</style>
 	
 	<style name="toggle_button_container">
@@ -462,8 +463,8 @@
 	    <item name="android:layout_height">wrap_content</item>
 	    <item name="android:layout_gravity">center_vertical</item>
 	    <item name="android:gravity">center_vertical</item>
-	    <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">8dp</item>
+	    <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">30dp</item>
 	    <item name="android:background">@drawable/bg_textfields</item>
 	    <item name="android:textSize">14sp</item>
 	    <item name="android:textColor">@color/black</item>
@@ -473,10 +474,10 @@
 		<item name="android:layout_width">fill_parent</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:background">@color/bgBase</item>
-		<!-- item name="android:paddingBottom">10dp</item-->
-		<item name="android:paddingLeft">20dp</item>
-		<item name="android:paddingRight">20dp</item>
-		<item name="android:paddingTop">10dp</item>
+		<item name="android:paddingBottom">25dp</item>
+		<item name="android:paddingLeft">50dp</item>
+		<item name="android:paddingRight">50dp</item>
+		<item name="android:paddingTop">25dp</item>
 	</style>
 	
 	<style name="row_container">
@@ -558,7 +559,7 @@
 	    <item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textColor">@color/lst_itm_normal</item>
-		<item name="android:textSize">16sp</item>
+		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="label_data_indash">
@@ -566,14 +567,14 @@
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:paddingLeft">4dp</item>
 		<item name="android:textColor">@color/black</item>
-		<item name="android:textSize">16sp</item>
+		<item name="android:textSize">20sp</item>
 	</style>
 	
 	<style name="label_data_indatalist">
 	    <item name="android:layout_width">100dp</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textAllCaps">true</item>
-		<item name="android:textSize">16dp</item>
+		<item name="android:textSize">20dp</item>
 		<item name="android:textColor">@color/bgBaseGray</item>
 	</style>
 	
@@ -581,7 +582,7 @@
 	    <item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:textAllCaps">true</item>
-		<item name="android:textSize">16dp</item>
+		<item name="android:textSize">20dp</item>
 		<item name="android:textColor">@color/black</item>
 	</style>
 
@@ -675,7 +676,18 @@
 	    <item name="android:layout_margin">0dp</item>
 	    <item name="android:scaleType">fitCenter</item>
 	</style>
-	
+
+	<style name="date_time_picker">
+	    <item name="android:layout_width">fill_parent</item>
+	    <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:layout_marginTop">5dp</item>
+	    <item name="android:textColor">@color/black</item>
+	    <item name="android:textSize">18sp</item>
+	    <item name="android:textAllCaps">true</item>
+	    <item name="android:background">@drawable/bg_modaltitles</item>
+	</style>
+
 	<!-- GENERICOS -->
 	<style name="gen_fil_and_wrap">
 	    <item name="android:layout_width">fill_parent</item>
@@ -799,54 +811,54 @@
 	
 	<style name="ButtonLoginList">
 		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">48dp</item>
+		<item name="android:layout_height">86dp</item>
 		<item name="android:background">@drawable/transparente</item>
-		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
 		<item name="android:drawableLeft">@drawable/icon_log_off</item>
 		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
 		<item name="android:gravity">left|center_vertical</item>
-		<item name="android:minHeight">48dp</item>
-		<item name="android:paddingLeft">10dp</item>
-		<item name="android:textSize">18sp</item>
+		<item name="android:minHeight">86dp</item>
+		<item name="android:paddingLeft">40dp</item>
+		<item name="android:paddingRight">40dp</item>
+		<item name="android:textSize">20sp</item>
 	</style>
 
 	<style name="ButtonAgendainList">
 		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">48dp</item>
+		<item name="android:layout_height">86dp</item>
 		<item name="android:background">@drawable/transparente</item>
-		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
 		<item name="android:drawableLeft">@drawable/icon_agenda_off</item>
 		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
 		<item name="android:gravity">left|center_vertical</item>
-		<item name="android:minHeight">48dp</item>
-		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">18sp</item>
+		<item name="android:minHeight">86dp</item>
+		<item name="android:paddingLeft">40dp</item>
+		<item name="android:paddingRight">40dp</item>
+		<item name="android:textSize">20sp</item>
 	</style>
 	
 	<style name="ButtonAgendaGrayinList">
 		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">48dp</item>
+		<item name="android:layout_height">86dp</item>
 		<item name="android:background">@drawable/transparente</item>
-		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
 		<item name="android:drawableLeft">@drawable/icon_agenda_gray</item>
 		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
 		<item name="android:gravity">left|center_vertical</item>
-		<item name="android:minHeight">48dp</item>
-		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">18sp</item>
+		<item name="android:minHeight">86dp</item>
+		<item name="android:paddingLeft">40dp</item>
+		<item name="android:paddingRight">40dp</item>
+		<item name="android:textSize">20sp</item>
 	</style>
 	
 	<style name="ButtonNewAgenda">
 		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">48dp</item>
+		<item name="android:layout_height">86dp</item>
 		<item name="android:background">@drawable/transparente</item>
-		<item name="android:drawableBottom">@drawable/bg_item_inlist</item>
 		<item name="android:drawableLeft">@drawable/icon_plus_gray</item>
 		<item name="android:drawableRight">@drawable/icon_arrow_inlist</item>
 		<item name="android:gravity">left|center_vertical</item>
-		<item name="android:minHeight">48dp</item>
-		<item name="android:paddingLeft">5dp</item>
-		<item name="android:textSize">18sp</item>
+		<item name="android:minHeight">86dp</item>
+		<item name="android:paddingLeft">40dp</item>
+		<item name="android:paddingRight">40dp</item>
+		<item name="android:textSize">20sp</item>
 	</style>
 	
 </resources>
