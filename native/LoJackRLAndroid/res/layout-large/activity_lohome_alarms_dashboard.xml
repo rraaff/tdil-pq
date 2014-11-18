@@ -151,7 +151,7 @@
 					    android:textAlignment="viewStart" >
 
                         <com.tdil.thalamus.android.gui.components.StyledButton style="@style/ButtonAgendainList"
-                            android:id="@+id/goToAlarmViewLog"
+                            android:id="@+id/goToAgenda"
                             android:text="@string/btn_agendas_list" />
 
                     </TableRow>
