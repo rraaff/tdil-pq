@@ -5,16 +5,16 @@ public class ApplicationConfig {
 	+ "getNativeAppVersion.st?code=android";
 
 //PRODA
-//	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
-//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
+	public static final String APP_DOMAIN = "www.lojack-app.com.ar";
+	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PREPRO
 //	public static final String APP_DOMAIN = "www.lojack-app.com.ar:82";
 //	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/";
 
 //PABLO
-	public static final String APP_DOMAIN = "192.168.252.125:8180";
-	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
+//	public static final String APP_DOMAIN = "192.168.252.110:8180";
+//	public static final String URL_WEBSITE = "http://" + APP_DOMAIN + "/LoJackWeb/";
 	
 //MARCOS
 //	public static final String APP_DOMAIN = "192.168.0.134:8180";
