@@ -205,10 +205,10 @@ body {
 /* / BARRA LATERAR DERECHA ///////////////////////////////////// */
 #rightCentral {
 	width:323px;
-	min-height:660px;
 	margin-top:20px;
 	background-color:#fafafa;
 	float:left;
+	display:inline-block;
 }
 #punteado {
 	background-image: url(../images/skin_basic/backgrounds/punteadoGrande.gif);
@@ -219,39 +219,32 @@ body {
 	margin-left:20px;
 	float:left;
 }
-#zoneNavigation, #categoryNavigation {
-	padding:16px;
-	padding-bottom:0px;
-}
-#zoneNavigation p, #categoryNavigation p {
-	-moz-column-width: 130px;
-	-moz-column-gap: 15px;
-	-webkit-column-width: 130px;
-	-webkit-column-gap: 15px;
-	/*-webkit-column-rule: 1px solid #ccc;
-	-moz-column-rule: 1px solid #ccc;*/
-
+#zoneNavigation,
+#categoryNavigation {
 	font-size:11px;
 	line-height:18px;
-	width:290px;
-	height:262px;
-	
-	overflow:hidden;
+	width:100%;
+	padding:16px;
+}
+#zoneNavigation {
+	border-top:dotted 1px #ccc;
 }
 #zoneNavigation a, #categoryNavigation a {
 	color:#1399f8;
 	text-transform:uppercase;
+	width:49%;
+	float:left;
 }
-#zoneNavigation h3, #categoryNavigation h3, #zoneNavigation h3 a, #categoryNavigation h3 a {
+#zoneNavigation h3,
+#categoryNavigation h3,
+#zoneNavigation h3 a,
+#categoryNavigation h3 a {
 	color:#035b9c;
 	font-family: "Tahoma", "Trebuchet MS", Arial, sans-serif;
 	font-size:20px;
 	padding-bottom:10px;
 	padding-left:0;
 	text-decoration:none;
-}
-#categoryNavigation h3, #categoryNavigation h3 a {
-	padding-left:0;
-/*	color:#f6b400;*/
-	text-decoration:none;
+	width:100%;
+	float:left;
 }

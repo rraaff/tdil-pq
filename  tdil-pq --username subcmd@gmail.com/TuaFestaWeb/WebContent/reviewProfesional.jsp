@@ -57,7 +57,7 @@ th.sorted {
 				<div class="label"><span class="comment">Desde esta sección podrá revisar los datos del profesional.</span></div>
 			</div>
 			<div class="renglon">Nombre: <strong><bean:write name="ReviewProfesionalForm" property="profesional.firstname"/></strong><br>Apellido: <strong><bean:write name="ReviewProfesionalForm" property="profesional.lastname"/></strong><br>Raz&oacute;n Social: <strong><bean:write name="ReviewProfesionalForm" property="profesional.businessname"/></strong><br>E-mail: <strong><bean:write name="ReviewProfesionalForm" property="profesional.email"/></strong></div>
-			<div class="renglon"><a href="./reviewPersonalData.jsp">Datos Personales <%=reviewProfesionalForm.isPersonalDataModified() ? "*" : ""%></a><br/><a href="./reviewBusinessData.jsp">Datos profesionales <%=reviewProfesionalForm.isBusinessDataModified() ? "*" : ""%></a><br/><a href="./reviewSellData.jsp">Productos/Servicios <%=reviewProfesionalForm.isSellsModified() ? "*" : ""%></a></div>
+			<div class="renglon"><a href="./reviewPersonalData.jsp">Datos Personales <%=reviewProfesionalForm.isPersonalDataModified() ? "sujeto a validaci&oacute;n" : ""%></a><br/><a href="./reviewBusinessData.jsp">Datos profesionales <%=reviewProfesionalForm.isBusinessDataModified() ? "sujeto a validaci&oacute;n" : ""%></a><br/><a href="./reviewSellData.jsp">Productos/Servicios <%=reviewProfesionalForm.isSellsModified() ? "sujeto a validaci&oacute;n" : ""%></a></div>
 			<div class="renglon" align="center">
 				<html:form method="POST" action="/manualValidateProfesionalEmail">
 					<a href="profesionalAdministration.jsp" style="margin-right:50px;">Volver</a>

@@ -52,7 +52,7 @@ th.sorted {
 		<h1>Verificar profesional</h1>
 		<div id="formulariosBase" class="height350">
 			<div class="renglon width100per">
-				<div class="label width100per"><span class="comment">Desde esta sección podrá aprobar o desaprobar nuevos profesionales.</span></div>
+				<div class="label width100per"><span class="comment">Desde esta secci&oacute;n podr&aacute; aprobar o desaprobar nuevos profesionales.</span></div>
 			</div>
 			<html:form method="POST" action="/verifyProfesional">
 				<div class="renglon width100per height100">
