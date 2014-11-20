@@ -84,9 +84,6 @@
 					<% } %>
 				</p>
 			</div>
-		</div>
-	</div>
-</div>
 <%
 	java.util.List servicesSource = form.getSells();
 	com.tdil.struts.pagination.PaginatedListImpl paginatedServices = new com.tdil.struts.pagination.PaginatedListImpl(servicesSource, request, 10);
@@ -107,6 +104,9 @@
 	</display:table>
 	<%=DisplayTagParamHelper.getFields(request)%>
 	<% } %>
+		</div>
+	</div>
+</div>
 <!-- % @ include file="includes/fbShare.jsp" %-->
 <%@ include file="includes/footer.jsp" %>
 </body>

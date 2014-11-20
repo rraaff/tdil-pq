@@ -193,23 +193,17 @@
 			<% } %>
 		</div>
 		<div id="rightCentral">
-			<!-- la aparici&oacute;n o el &oacute;rden de esto se puede administrar desde BO -->
 			<div id="categoryNavigation">
 				<h3><a href="./navigateCategoryAll.do">Todos los rubros</a></h3>
-				<p>
-					<% for (Category cat : CategoryUtils.getAllCategoriesForIndex()) { %>
-						<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a><br />
-					<% } %>
-				</p>
+				<% for (Category cat : CategoryUtils.getAllCategoriesForIndex()) { %>
+					<a href="searchSellsByCategory.do?id=<%=cat.getId() %>&type=<%=cat.getType() %>"><%=cat.getName() %></a>
+				<% } %>
 			</div>
-			<div id="punteado" style="width:284px;"></div>
 			<div id="zoneNavigation">
-				<h3><a href="./navigateGeoAll.do">Todos las zonas</a></h3>
-				<p>
-					<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4LevelsForHome()) { %>
-						<a href="searchSellsByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a><br />
-					<% } %>
-				</p>
+				<h3><a href="./navigateGeoAll.do">Todas las zonas</a></h3>
+				<% for (Geo4 geo4 : GeoLevelUtils.getActiveGeo4LevelsForHome()) { %>
+					<a href="searchSellsByGeoLevel4.do?id=<%=geo4.getId() %>"><%=geo4.getNombre() %></a>
+				<% } %>
 			</div>
 		</div>
 	</div>

@@ -76,7 +76,7 @@ th.sorted {
 			Profesional profesional = reviewProfesionalForm.getProfesional(); 
 			ProfesionalChange change = reviewProfesionalForm.getProfesionalChange(); %>
 		<div id="formulariosBase">
-			<div class="renglon"><span class="comment">Desde esta sección podrá revisar los datos del profesional.</span></div>
+			<div class="renglon"><span class="comment">Desde esta secci&oacute;n podr&aacute; revisar los datos del profesional.</span></div>
 			<div class="renglon">Nombre: <strong><%=profesional.getFirstname()%> <%=!StringUtils.isEmpty(change.getFirstname()) ? " -> " + change.getFirstname() : ""%></strong><br/>Apellido: <strong><%=profesional.getLastname()%> <%=!StringUtils.isEmpty(change.getLastname()) ? " -> " + change.getLastname() : ""%></strong><br/>Sexo: <strong><%=profesional.getSex().equals("m") ? "Masculino" : "Femenino"%> <%=!StringUtils.isEmpty(change.getSex()) ? " -> " + (change.getSex().equals("m") ? "Masculino" : "Femenino") : ""%></strong><br/>C&oacute;digo de &aacute;rea: <strong><%=profesional.getPhoneareacode()%> <%=!StringUtils.isEmpty(change.getPhoneareacode()) ? " -> " + change.getPhoneareacode() : ""%></strong> - N&uacute;mero: <strong><%=profesional.getPhonenumber()%> <%=!StringUtils.isEmpty(change.getPhonenumber()) ? " -> " + change.getPhonenumber() : ""%></strong> - Interno: <strong><%=profesional.getPhoneextension()%> <%=!StringUtils.isEmpty(change.getPhoneextension()) ? " -> " + change.getPhoneextension() : ""%></strong> - Tipo: <strong><%=profesional.getPhonetype()%> <%=!StringUtils.isEmpty(change.getPhonetype()) ? " -> " + change.getPhonetype() : ""%></strong></div>
 			<html:form method="POST" action="/approveProfesionalPersonalDataChange">
 				<div class="renglon" align="center">
