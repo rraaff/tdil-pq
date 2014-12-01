@@ -84,6 +84,7 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 	private Validator validator;
 
 	private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+	private static final SimpleDateFormat SIMPLE_DATE_FORMAT_SHOW = new SimpleDateFormat("dd-MM-yyyy");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -192,10 +193,10 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 		if (alarmAgenda != null) {
 			try {
 				agendaDescription.setText(alarmAgenda.getDescription());
-				dateFrom.setText(alarmAgenda.getFrom());
+				dateFrom.setText(SIMPLE_DATE_FORMAT_SHOW.format(SIMPLE_DATE_FORMAT.parse(alarmAgenda.getFrom())));
 				dateFromObj = Calendar.getInstance();
 				dateFromObj.setTime(SIMPLE_DATE_FORMAT.parse(alarmAgenda.getFrom()));
-				dateTo.setText(alarmAgenda.getTo());
+				dateTo.setText(SIMPLE_DATE_FORMAT_SHOW.format(SIMPLE_DATE_FORMAT.parse(alarmAgenda.getTo())));
 				dateToObj = Calendar.getInstance();
 				dateToObj.setTime(SIMPLE_DATE_FORMAT.parse(alarmAgenda.getTo()));
 				agendaHourFrom.setText(alarmAgenda.getActivateTime());
@@ -482,7 +483,7 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 			Calendar cal = Calendar.getInstance();
 			cal.set(year, month, day);
 			this.activity.dateFromObj = cal;
-			this.activity.dateFrom.setText(SIMPLE_DATE_FORMAT.format(cal.getTime()));
+			this.activity.dateFrom.setText(SIMPLE_DATE_FORMAT_SHOW.format(cal.getTime()));
 		}
 	}
 
@@ -514,7 +515,7 @@ public class ActivityHomeAlarmAgendaEdit extends HomeActivity implements Validat
 			Calendar cal = Calendar.getInstance();
 			cal.set(year, month, day);
 			this.activity.dateToObj = cal;
-			this.activity.dateTo.setText(SIMPLE_DATE_FORMAT.format(cal.getTime()));
+			this.activity.dateTo.setText(SIMPLE_DATE_FORMAT_SHOW.format(cal.getTime()));
 		}
 	}
 
