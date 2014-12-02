@@ -51,7 +51,7 @@
 					    android:id="@+id/alarmLastChangeDate"
 					    style="@style/innerrow_labelfield"
 					    android:paddingBottom="10dp"
-					    android:text="2013-05-04 18:20" />
+					    android:text="04-12-2013 - 18:20" />
 	
 				</LinearLayout>
 			</LinearLayout>
