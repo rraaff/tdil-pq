@@ -1,7 +1,9 @@
 package com.tdil.thalamus.android.places;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -48,10 +50,17 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	private PoiCollection parkings = null;
 	private PoiCollection petrols = null;
 	private PoiCollection lojack = null;
+	
+	
 
 	private List<Marker> currentParkings = new ArrayList<Marker>();
+	private Map<Marker, String> currentParkingsToPhones = new HashMap<Marker, String>();
+	
 	private List<Marker> currentPetrols = new ArrayList<Marker>();
+	private Map<Marker, String> currentPetrolsToPhones = new HashMap<Marker, String>();
+	
 	private List<Marker> currentLojack = new ArrayList<Marker>();
+	private Map<Marker, String> currentLojackToPhones = new HashMap<Marker, String>();
 
 	private boolean placesParkings = false;
 	private boolean placesPetrols = false;
@@ -126,8 +135,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	
 	@Override
 	public void onInfoWindowClick(final Marker marker) {
-		String title = marker.getTitle();
-		if (isNumeric(title) && title.length() >= 8) {
+		String title = getTel(marker);
+		if (title != null) {
 			// handle click here
 			try {
 				String uri = "tel:" + title;
@@ -139,6 +148,19 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 		}
 	}
 
+	private String getTel(Marker marker) {
+		if (currentParkingsToPhones.containsKey(marker)) {
+			return currentParkingsToPhones.get(marker);
+		}
+		if (currentPetrolsToPhones.containsKey(marker)) {
+			return currentPetrolsToPhones.get(marker);
+		}
+		if (currentLojackToPhones.containsKey(marker)) {
+			return currentLojackToPhones.get(marker);
+		}
+		return null;
+	}
+
 	private static final boolean isNumeric(final String s) {
 		final char[] numbers = s.toCharArray();
 		for (int x = 0; x < numbers.length; x++) {
@@ -148,6 +170,17 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 			return false; // invalid
 		}
 		return true; // valid
+	}
+	
+	private static final String getNumeric(final String s) {
+		StringBuilder result = new StringBuilder();
+		final char[] numbers = s.toCharArray();
+		for (int x = 0; x < numbers.length; x++) {
+			final char c = numbers[x];
+			if ((c >= '0') && (c <= '9'))
+				result.append(c);
+		}
+		return result.toString(); // valid
 	}
 	
 	public void centerAtPosition(double updatedLatitude, double updatedLongitude) {
@@ -233,6 +266,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						m.setVisible(false);
 					}
 					currentParkings.clear();
+					currentParkingsToPhones.clear();
 					placesParkingsButton.setBackgroundResource(R.drawable.ic_places_parkings_off);
 				} else {
 					if (parkings == null) {
@@ -256,6 +290,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						m.setVisible(false);
 					}
 					currentPetrols.clear();
+					currentPetrolsToPhones.clear();
 					placesPetrolButton.setBackgroundResource(R.drawable.ic_places_gasstations_off);
 				} else {
 					if (petrols == null) {
@@ -279,6 +314,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						m.setVisible(false);
 					}
 					currentLojack.clear();
+					currentLojackToPhones.clear();
 					placesLojackButton.setBackgroundResource(R.drawable.ic_places_lojack_off);
 				} else {
 					if (lojack == null) {
@@ -302,28 +338,64 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 
 	private void updateParkingsMap(PoiCollection col) {
 		for (PointOfInterestBean poi : col.getList()) {
+			String desc = poi.getDesc();
+			String tel = null;
+			int start = desc.indexOf("<tel>");
+			int end = desc.indexOf("</tel>");
+			if (start != -1 && end != -1 && start < end) {
+				tel = getNumeric(desc.substring(start + 5, end));
+				desc = desc.replace("<tel>", "");
+				desc = desc.replace("</tel>", "");
+			}
 			Marker m = mapView.getMap().addMarker(
 					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
-							.title(poi.getDesc()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
 			currentParkings.add(m);
+			if (tel != null) {
+				currentParkingsToPhones.put(m, tel);
+			}
 		}
 	}
 
 	private void updatePetrolsMap(PoiCollection col) {
 		for (PointOfInterestBean poi : col.getList()) {
+			String desc = poi.getDesc();
+			String tel = null;
+			int start = desc.indexOf("<tel>");
+			int end = desc.indexOf("</tel>");
+			if (start != -1 && end != -1 && start < end) {
+				tel = getNumeric(desc.substring(start + 5, end));
+				desc = desc.replace("<tel>", "");
+				desc = desc.replace("</tel>", "");
+			}
 			Marker m = mapView.getMap().addMarker(
 					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
-							.title(poi.getDesc()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 			currentPetrols.add(m);
+			if (tel != null) {
+				currentPetrolsToPhones.put(m, tel);
+			}
 		}
 	}
 
 	private void updateLojackMap(PoiCollection col) {
 		for (PointOfInterestBean poi : col.getList()) {
+			String desc = poi.getDesc();
+			String tel = null;
+			int start = desc.indexOf("<tel>");
+			int end = desc.indexOf("</tel>");
+			if (start != -1 && end != -1 && start < end) {
+				tel = getNumeric(desc.substring(start + 5, end));
+				desc = desc.replace("<tel>", "");
+				desc = desc.replace("</tel>", "");
+			}
 			Marker m = mapView.getMap().addMarker(
 					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
-							.title(poi.getDesc()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 			currentLojack.add(m);
+			if (tel != null) {
+				currentLojackToPhones.put(m, tel);
+			}
 		}
 	}
 
