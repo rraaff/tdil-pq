@@ -30,7 +30,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackLoggedActivity;
+import com.tdil.thalamus.android.cache.InternalCache;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.rest.client.CachedRestClientTask;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
@@ -43,6 +45,12 @@ import com.tdil.thalamus.android.utils.Messages;
 
 public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindowClickListener {
 
+	private static final String PARKINGS = "1";
+
+	private static final String LJ = "3";
+
+	private static final String PETROL = "2";
+
 	private MapView mapView;
 	
 	private Marker currentPos = null;
@@ -50,8 +58,6 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	private PoiCollection parkings = null;
 	private PoiCollection petrols = null;
 	private PoiCollection lojack = null;
-	
-	
 
 	private List<Marker> currentParkings = new ArrayList<Marker>();
 	private Map<Marker, String> currentParkingsToPhones = new HashMap<Marker, String>();
@@ -83,6 +89,9 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 			Gson gson = new Gson();
 			this.activity.parkings = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
 			activity.updateParkingsMap(this.activity.parkings);
+			if (!(restClientTask instanceof CachedRestClientTask)) {
+				InternalCache.put(activity, "poi-" +PARKINGS, restClientTask.getResult());
+			}
 		}
 
 		@Override
@@ -104,6 +113,9 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 			Gson gson = new Gson();
 			this.activity.petrols = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
 			activity.updatePetrolsMap(this.activity.petrols);
+			if (!(restClientTask instanceof CachedRestClientTask)) {
+				InternalCache.put(activity, "poi-" +PETROL, restClientTask.getResult());
+			}
 		}
 
 		@Override
@@ -125,6 +137,9 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 			Gson gson = new Gson();
 			this.activity.lojack = gson.fromJson(restClientTask.getResult(), PoiCollection.class);
 			activity.updateLojackMap(this.activity.lojack);
+			if (!(restClientTask instanceof CachedRestClientTask)) {
+				InternalCache.put(activity, "poi-" +LJ, restClientTask.getResult());
+			}
 		}
 
 		@Override
@@ -270,7 +285,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 					placesParkingsButton.setBackgroundResource(R.drawable.ic_places_parkings_off);
 				} else {
 					if (parkings == null) {
-						reloadPois(updateParkingsMapObserver, "1");
+						reloadPois(updateParkingsMapObserver, PARKINGS);
 					} else {
 						updateParkingsMap(parkings);
 					}
@@ -294,7 +309,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 					placesPetrolButton.setBackgroundResource(R.drawable.ic_places_gasstations_off);
 				} else {
 					if (petrols == null) {
-						reloadPois(updatePetrolsMapObserver, "2");
+						reloadPois(updatePetrolsMapObserver, PETROL);
 					} else {
 						updatePetrolsMap(petrols);
 					}
@@ -318,7 +333,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 					placesLojackButton.setBackgroundResource(R.drawable.ic_places_lojack_off);
 				} else {
 					if (lojack == null) {
-						reloadPois(updateLojackMapObserver, "3");
+						reloadPois(updateLojackMapObserver, LJ);
 					} else {
 						updateLojackMap(lojack);
 					}
@@ -332,8 +347,13 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	
 
 	protected void reloadPois(IRestClientObserver observer, String type) {
-		new RESTClientTask(this, HttpMethod.GET, observer, RESTConstants.POIS, new RestParams(RESTConstants.P_POI_TYPES, type), null)
+		String resultFromCache = InternalCache.get(this, "poi-" + type, 30);
+		if (resultFromCache != null) {
+			observer.sucess(new CachedRestClientTask(resultFromCache, 200));
+		} else {
+			new RESTClientTask(this, HttpMethod.GET, observer, RESTConstants.POIS, new RestParams(RESTConstants.P_POI_TYPES, type), null)
 				.executeSerial((Void) null);
+		}
 	}
 
 	private void updateParkingsMap(PoiCollection col) {
