@@ -439,14 +439,44 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	private class MyCustomAdapterForClusters implements InfoWindowAdapter {
 	    @Override
 	    public View getInfoContents(Marker marker) {
-	    	View view = getLayoutInflater().inflate(R.layout.places_info_view, null);
+	    	View view = getLayoutInflater().inflate(R.layout.places_cluster_info_view, null);
+	    	TextView parkings = (TextView)view.findViewById(R.id.placesParkings);
+	    	TextView petrols = (TextView)view.findViewById(R.id.placesPetrols);
+	    	TextView lj = (TextView)view.findViewById(R.id.placesLJ);
+	    	int countParkings = 0;
+	    	int countPetrols = 0;
+	    	int countLj = 0;
 	        if (clickedCluster != null) {
 	            for (PlacesItem item : clickedCluster.getItems()) {
-	                // Extract data from each item in the cluster as needed
+	            	if (item.getType() == PARKINGS_INT) {
+	            		countParkings++;
+	            	}
+	            	if (item.getType() == PETROL_INT) {
+	            		countPetrols++;
+	            	}
+	            	if (item.getType() == LJ_INT) {
+	            		countLj++;
+	            	}
 	            }
 	        }
-	        // build your custom view
-	        // ...
+	        if (countParkings != 0) {
+	        	parkings.setVisibility(View.VISIBLE);
+	        	parkings.setText(countParkings + " estacionamiento/s" );
+	        } else {
+	        	parkings.setVisibility(View.GONE);
+	        }
+	        if (countPetrols != 0) {
+	        	petrols.setVisibility(View.VISIBLE);
+	        	petrols.setText(countPetrols + " estacion/es de servicio" );
+	        } else {
+	        	petrols.setVisibility(View.GONE);
+	        }
+	        if (countLj != 0) {
+	        	lj.setVisibility(View.VISIBLE);
+	        	lj.setText(countLj + " punto/s LoJack" );
+	        } else {
+	        	lj.setVisibility(View.GONE);
+	        }
 	        return view;
 	    }
 	    @Override
