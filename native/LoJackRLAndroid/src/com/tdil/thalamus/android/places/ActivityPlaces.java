@@ -14,12 +14,15 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
@@ -28,6 +31,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
+import com.google.maps.android.clustering.Cluster;
+import com.google.maps.android.clustering.ClusterManager;
+import com.google.maps.android.clustering.ClusterManager.OnClusterClickListener;
+import com.google.maps.android.clustering.ClusterManager.OnClusterItemClickListener;
+import com.google.maps.android.clustering.view.DefaultClusterRenderer;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.cache.InternalCache;
@@ -45,12 +53,15 @@ import com.tdil.thalamus.android.utils.Messages;
 
 public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindowClickListener {
 
-	private static final String PARKINGS = "1";
+	public static final String PARKINGS = "1";
+	public static final String PETROL = "2";
+	public static final String LJ = "3";
+	public static final int PARKINGS_INT = 1;
+	public static final int PETROL_INT = 2;
+	public static final int LJ_INT = 3;
 
-	private static final String LJ = "3";
 
-	private static final String PETROL = "2";
-
+	private ClusterManager<PlacesItem> mClusterManager;
 	private MapView mapView;
 	
 	private Marker currentPos = null;
@@ -60,13 +71,14 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	private PoiCollection lojack = null;
 
 	private List<Marker> currentParkings = new ArrayList<Marker>();
-	private Map<Marker, String> currentParkingsToPhones = new HashMap<Marker, String>();
+	private List<PlacesItem> currentParkingsItems = new ArrayList<PlacesItem>();
+	private Map<Marker, String> currentMarkerToPhones = new HashMap<Marker, String>();
 	
 	private List<Marker> currentPetrols = new ArrayList<Marker>();
-	private Map<Marker, String> currentPetrolsToPhones = new HashMap<Marker, String>();
+	private List<PlacesItem> currentPetrolsItems = new ArrayList<PlacesItem>();
 	
 	private List<Marker> currentLojack = new ArrayList<Marker>();
-	private Map<Marker, String> currentLojackToPhones = new HashMap<Marker, String>();
+	private List<PlacesItem> currentLojackItems = new ArrayList<PlacesItem>();
 
 	private boolean placesParkings = false;
 	private boolean placesPetrols = false;
@@ -75,6 +87,10 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	private UpdateParkingsMapObserver updateParkingsMapObserver = new UpdateParkingsMapObserver(this);
 	private UpdatePetrolsMapObserver updatePetrolsMapObserver = new UpdatePetrolsMapObserver(this);
 	private UpdateLojackMapObserver updateLojackMapObserver = new UpdateLojackMapObserver(this);
+	
+	
+	private Cluster<PlacesItem> clickedCluster;
+	private PlacesItem clickedClusterItem;
 
 	static final class UpdateParkingsMapObserver implements IRestClientObserver {
 		private ActivityPlaces activity;
@@ -164,14 +180,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	}
 
 	private String getTel(Marker marker) {
-		if (currentParkingsToPhones.containsKey(marker)) {
-			return currentParkingsToPhones.get(marker);
-		}
-		if (currentPetrolsToPhones.containsKey(marker)) {
-			return currentPetrolsToPhones.get(marker);
-		}
-		if (currentLojackToPhones.containsKey(marker)) {
-			return currentLojackToPhones.get(marker);
+		if (currentMarkerToPhones.containsKey(marker)) {
+			return currentMarkerToPhones.get(marker);
 		}
 		return null;
 	}
@@ -208,6 +218,22 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 		CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(updatedLatitude, updatedLongitude), 16);
 		mapView.getMap().animateCamera(cameraUpdate);
 	}
+	
+//	private void addItems() {
+//
+//	    // Set some lat/lng coordinates to start with.
+//	    double lat = 51.5145160;
+//	    double lng = -0.1270060;
+//
+//	    // Add ten cluster items in close proximity, for purposes of this example.
+//	    for (int i = 0; i < 10; i++) {
+//	        double offset = i / 60d;
+//	        lat = lat + offset;
+//	        lng = lng + offset;
+//	        PlacesItem offsetItem = new PlacesItem(lat, lng);
+//	        mClusterManager.addItem(offsetItem);
+//	    }
+//	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -229,6 +255,56 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 		// Needs to call MapsInitializer before doing any CameraUpdateFactory
 		// calls
 		MapsInitializer.initialize(this);
+		
+		
+
+	    // Position the map.
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
+
+	    // Initialize the manager with the context and the map.
+	    // (Activity extends context, so we can pass 'this' in the constructor.)
+	    mClusterManager = new ClusterManager<PlacesItem>(this, map);
+	    mClusterManager.setRenderer(new DefaultClusterRenderer<PlacesItem>(this, map, mClusterManager) {
+	    	@Override
+	    	protected void onBeforeClusterItemRendered(PlacesItem item, MarkerOptions markerOptions) {
+	    		if (item.getType() == PARKINGS_INT) {
+	    			markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+	    		}
+	    		if (item.getType() == PETROL_INT) {
+	    			markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+	    		}
+	    		if (item.getType() == LJ_INT) {
+	    			markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+	    		}
+	    		super.onBeforeClusterItemRendered(item, markerOptions);
+	    	}
+	    });
+	    map.setInfoWindowAdapter(mClusterManager.getMarkerManager());
+	    mClusterManager.getClusterMarkerCollection().setOnInfoWindowAdapter(new MyCustomAdapterForClusters());
+	    mClusterManager.getMarkerCollection().setOnInfoWindowAdapter(new MyCustomAdapterForItems());
+	    map.setOnMarkerClickListener(mClusterManager);
+	    mClusterManager.setOnClusterClickListener(new OnClusterClickListener<PlacesItem>() {
+	        @Override
+	        public boolean onClusterClick(Cluster<PlacesItem> cluster) {
+	            clickedCluster = cluster; // remember for use later in the Adapter
+	            return false;
+	        }
+	    });
+	    mClusterManager.setOnClusterItemClickListener(new OnClusterItemClickListener<PlacesItem>() {
+	        @Override
+	        public boolean onClusterItemClick(PlacesItem item) {
+	            clickedClusterItem = item;
+	            return false;
+	        }
+	    });
+
+	    // Point the map's listeners at the listeners implemented by the cluster
+	    // manager.
+	    map.setOnCameraChangeListener(mClusterManager);
+	    map.setOnMarkerClickListener(mClusterManager);
+
+	    // Add cluster items (markers) to the cluster manager.
+//	    addItems();
 
 		// Updates the location and zoom of the MapView
 		final LocationManager manager = (LocationManager) this.getSystemService( Context.LOCATION_SERVICE );
@@ -281,7 +357,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						m.setVisible(false);
 					}
 					currentParkings.clear();
-					currentParkingsToPhones.clear();
+					mClusterManager.clearItems();
+					reAddItems();
 					placesParkingsButton.setBackgroundResource(R.drawable.ic_places_parkings_off);
 				} else {
 					if (parkings == null) {
@@ -305,7 +382,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						m.setVisible(false);
 					}
 					currentPetrols.clear();
-					currentPetrolsToPhones.clear();
+					mClusterManager.clearItems();
+					reAddItems();
 					placesPetrolButton.setBackgroundResource(R.drawable.ic_places_gasstations_off);
 				} else {
 					if (petrols == null) {
@@ -329,7 +407,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						m.setVisible(false);
 					}
 					currentLojack.clear();
-					currentLojackToPhones.clear();
+					mClusterManager.clearItems();
+					reAddItems();
 					placesLojackButton.setBackgroundResource(R.drawable.ic_places_lojack_off);
 				} else {
 					if (lojack == null) {
@@ -344,7 +423,85 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 		});
 	}
 	
+	protected void reAddItems() {
+		if (placesParkings) {
+			updateParkingsMap(parkings);
+		}
+		if (placesPetrols) {
+			updatePetrolsMap(petrols);
+		}
+		if (placesLojack) {
+			updateLojackMap(lojack);
+		}
+		mClusterManager.cluster();
+	}
+
+	private class MyCustomAdapterForClusters implements InfoWindowAdapter {
+	    @Override
+	    public View getInfoContents(Marker marker) {
+	    	View view = getLayoutInflater().inflate(R.layout.places_info_view, null);
+	        if (clickedCluster != null) {
+	            for (PlacesItem item : clickedCluster.getItems()) {
+	                // Extract data from each item in the cluster as needed
+	            }
+	        }
+	        // build your custom view
+	        // ...
+	        return view;
+	    }
+	    @Override
+	    public View getInfoWindow(Marker arg0) {
+	    	 return null;
+	    }
+	}
 	
+	private class MyCustomAdapterForItems implements InfoWindowAdapter {
+	    @Override
+	    public View getInfoContents(Marker marker) {
+	    	View view = getLayoutInflater().inflate(R.layout.places_info_view, null);
+	        if (clickedClusterItem != null) {
+	            TextView tv = (TextView)view.findViewById(R.id.placesTitle);
+	            tv.setText(clickedClusterItem.getDescription());
+	            clickedClusterItem.setTel("08009995959");
+	            if (clickedClusterItem.getTel() != null) {
+	            	currentMarkerToPhones.put(marker, clickedClusterItem.getTel());
+//	            	OnClickListener onClick = new CallOnClick(ActivityPlaces.this, clickedClusterItem.getTel());
+//	            	tv.setOnClickListener(onClick);
+//	            	view.setOnClickListener(onClick);
+	            }
+	        }
+	        // build your custom view
+	        // ...
+	        return view;
+	    }
+	    @Override
+	    public View getInfoWindow(Marker arg0) {
+	    	 return null;
+	    }
+	}
+	
+//	private class CallOnClick implements OnClickListener {
+//		
+//		private ActivityPlaces activity;
+//		private String tel;
+//
+//		public CallOnClick(ActivityPlaces activity, String tel) {
+//			super();
+//			this.activity = activity;
+//			this.tel = tel;
+//		}
+//		
+//		@Override
+//		public void onClick(View v) {
+//			try {
+//				String uri = "tel:" + this.tel;
+//				Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(uri));
+//				this.activity.startActivity(callIntent);
+//			} catch (Exception e) {
+//				Toast.makeText(this.activity, "Ha ocurrido un error realizando la llamada...", Toast.LENGTH_LONG).show();
+//			}
+//		}
+//	}
 
 	protected void reloadPois(IRestClientObserver observer, String type) {
 		String resultFromCache = InternalCache.get(this, "poi-" + type, 30);
@@ -367,14 +524,20 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 				desc = desc.replace("<tel>", "");
 				desc = desc.replace("</tel>", "");
 			}
-			Marker m = mapView.getMap().addMarker(
-					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
-							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
-			currentParkings.add(m);
-			if (tel != null) {
-				currentParkingsToPhones.put(m, tel);
-			}
+			
+			PlacesItem offsetItem = new PlacesItem(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon()), PARKINGS_INT, desc, tel);
+			currentParkingsItems.add(offsetItem);
+	        mClusterManager.addItem(offsetItem);
+			
+//			Marker m = mapView.getMap().addMarker(
+//					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), ))
+//							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
+//			currentParkings.add(m);
+//			if (tel != null) {
+//				currentParkingsToPhones.put(m, tel);
+//			}
 		}
+		mClusterManager.cluster();
 	}
 
 	private void updatePetrolsMap(PoiCollection col) {
@@ -388,14 +551,18 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 				desc = desc.replace("<tel>", "");
 				desc = desc.replace("</tel>", "");
 			}
-			Marker m = mapView.getMap().addMarker(
-					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
-							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-			currentPetrols.add(m);
-			if (tel != null) {
-				currentPetrolsToPhones.put(m, tel);
-			}
+			PlacesItem offsetItem = new PlacesItem(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon()), PETROL_INT, desc, tel);
+			currentPetrolsItems.add(offsetItem);
+	        mClusterManager.addItem(offsetItem);
+//			Marker m = mapView.getMap().addMarker(
+//					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
+//							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+//			currentPetrols.add(m);
+//			if (tel != null) {
+//				currentPetrolsToPhones.put(m, tel);
+//			}
 		}
+		mClusterManager.cluster();
 	}
 
 	private void updateLojackMap(PoiCollection col) {
@@ -409,14 +576,18 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 				desc = desc.replace("<tel>", "");
 				desc = desc.replace("</tel>", "");
 			}
-			Marker m = mapView.getMap().addMarker(
-					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
-							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-			currentLojack.add(m);
-			if (tel != null) {
-				currentLojackToPhones.put(m, tel);
-			}
+			PlacesItem offsetItem = new PlacesItem(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon()), LJ_INT, desc, tel);
+			currentLojackItems.add(offsetItem);
+	        mClusterManager.addItem(offsetItem);
+//			Marker m = mapView.getMap().addMarker(
+//					new MarkerOptions().position(new LatLng(Double.parseDouble(poi.getLat()), Double.parseDouble(poi.getLon())))
+//							.title(desc).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+//			currentLojack.add(m);
+//			if (tel != null) {
+//				currentLojackToPhones.put(m, tel);
+//			}
 		}
+		mClusterManager.cluster();
 	}
 
 	@Override
