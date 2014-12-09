@@ -1,7 +1,9 @@
 package com.tdil.thalamus.android.car.parkedmode;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.tdil.thalamus.android.ActivityRestClientObserver;
 import com.tdil.thalamus.android.LoJackActivity;
@@ -60,9 +62,17 @@ public class ParkedModeRestFacade {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
 				ParkedModeStatusCollection pos = ((RESTClientTaskOpt<ParkedModeStatusCollection>)restClientTask).getCastedResult();
-				Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicles.class);
-				intent.putExtra(ActivityParkedModeVehicles.VEHICLES_LIST, pos);
-				activity.startActivity(intent);
+				if (pos.getList().isEmpty()) {
+					Context context = activity.getApplicationContext();
+					CharSequence text = "ATENCIÓN: No tienes disponible este producto";
+					int duration = Toast.LENGTH_SHORT;
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+				} else {
+					Intent intent = new Intent(activity.getBaseContext(), ActivityParkedModeVehicles.class);
+					intent.putExtra(ActivityParkedModeVehicles.VEHICLES_LIST, pos);
+					activity.startActivity(intent);
+				}
 			}
 		};
 	}
