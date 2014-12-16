@@ -56,6 +56,9 @@ public class MenuLogic {
 		case R.id.menu_action_pets:
 			HeaderLogic.handlePetsAccess(activity);
 			return true;
+		case R.id.menu_action_notif_conf:
+			HeaderLogic.handleNotificationConfsAccess(activity);
+			return true;
 		case R.id.menu_action_parked_mode:
 			HeaderLogic.handleParkedModeAccess(activity);
 			return true;

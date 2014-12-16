@@ -112,4 +112,7 @@ public interface RESTConstants {
 	public static final String POST_DISMISS_NOTIFICATION = "/notifications/dismiss/" + P_NOTIFICATION_ID;
 	public static final String POST_DISMISS_ALL_NOTIFICATIONs = "/notifications/dismissAll";
 	public static final String POST_REG_ID = "/notifications/registerAndroidId";
+	
+	public static final String GET_NOTIFICATION_CONF = "/notifications/configuration";
+	public static final String POST_NOTIFICATION_CONF = "/notifications/configuration";
 }

@@ -165,6 +165,8 @@
     <string name="action_parked_mode">ESTACIONAME</string>
     <string name="action_club_lj">CLUB LOJACK</string>
     <string name="action_legales">LEGALES</string>
+    <string name="action_notif_conf">NOTIFICACIONES</string>
+    
     
     <string name="btn_home">  </string>
     <string name="btn_prevent">  </string>
@@ -204,6 +206,11 @@
     <string name="btn_lbl_save">Grabar</string>
     <string name="btn_lbl_next">Siguiente</string>
     <string name="btn_lbl_carrecoverycenter">Central de Recupero Vehicular</string>
+    
+    <string name="btn_lojack_notif_conf">LoJack</string>
+    <string name="btn_car_notif_conf">Prevent</string>
+    <string name="btn_home_notif_conf">Home</string>
+    
     
     <string name="message"> </string>
     <string name="messages"> </string>

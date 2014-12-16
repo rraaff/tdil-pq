@@ -23,6 +23,7 @@ import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.ActivityRestClientObserver;
 import com.tdil.thalamus.android.ApplicationConfig;
 import com.tdil.thalamus.android.ClubLJActivity;
+import com.tdil.thalamus.android.NotificationsConfActivity;
 import com.tdil.thalamus.android.car.ActivityCars;
 import com.tdil.thalamus.android.car.ActivityCarsNotClient;
 import com.tdil.thalamus.android.car.VLUMessagesActivity;
@@ -40,6 +41,7 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.client.RestParams;
 import com.tdil.thalamus.android.rest.model.Alarm;
 import com.tdil.thalamus.android.rest.model.AlarmCollection;
+import com.tdil.thalamus.android.rest.model.NotificationConfBean;
 import com.tdil.thalamus.android.rest.model.RESTResponse;
 import com.tdil.thalamus.android.rest.model.URLResponse;
 import com.tdil.thalamus.android.utils.Login;
@@ -234,6 +236,24 @@ public class HeaderLogic {
 			Intent intent = new Intent(activity, ActivityPetsNotClient.class);
 			activity.startActivity(intent);
 		}
+	}
+	
+	public static void handleNotificationConfsAccess(final Activity activity) {
+		new RESTClientTaskOpt<NotificationConfBean>(activity, HttpMethod.GET, new IRestClientObserver() {
+			@Override
+			public void sucess(IRestClientTask task) {
+				NotificationConfBean response = ((RESTClientTaskOpt<NotificationConfBean>)task).getCastedResult();
+				Intent intent = new Intent(activity.getBaseContext(), NotificationsConfActivity.class);
+				intent.putExtra(NotificationsConfActivity.NOTIFICATIONS_CONF, response);
+				activity.startActivity(intent);
+			}
+
+			@Override
+			public void error(IRestClientTask task) {
+				Messages.connectionErrorMessage(activity);
+			}
+		}, RESTConstants.GET_NOTIFICATION_CONF, new RestParams(), null, NotificationConfBean.class).executeSerial((Void) null);
+
 	}
 
 	public static void handleHomeAccess(final Activity activity, final boolean finishOnExit) {

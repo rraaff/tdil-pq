@@ -39,6 +39,11 @@
           android:icon="@drawable/icon_main_parkings"
           android:showAsAction="always"
           android:title="@string/action_legales"/>
+    
+    <item android:id="@+id/menu_action_notif_conf"
+          android:icon="@drawable/icon_main_pets"
+          android:showAsAction="always"
+          android:title="@string/action_notif_conf"/>
 
     <!-- item
 	    android:id="@+id/secondaryMenu"
