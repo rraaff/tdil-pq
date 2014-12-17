@@ -446,7 +446,7 @@
         
         <meta-data
 			android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyDeQWMrFJX5TqOy6c7ZdG8bw4PCqBblgds"/>
+			android:value="AIzaSyA7All9YWKB5kCKQHxFZngJ0xLtFCU0hHY"/>
     </application>
 
 </manifest>
