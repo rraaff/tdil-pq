@@ -492,7 +492,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	        if (clickedClusterItem != null) {
 	            TextView tv = (TextView)view.findViewById(R.id.placesTitle);
 	            tv.setText(clickedClusterItem.getDescription());
-	            clickedClusterItem.setTel("08009995959");
+	            //clickedClusterItem.setTel("08009995959");
 	            if (clickedClusterItem.getTel() != null) {
 	            	currentMarkerToPhones.put(marker, clickedClusterItem.getTel());
 //	            	OnClickListener onClick = new CallOnClick(ActivityPlaces.this, clickedClusterItem.getTel());
