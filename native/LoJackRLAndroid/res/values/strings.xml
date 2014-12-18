@@ -25,6 +25,7 @@
     <string name="lst_title_nonotifications">Usted no tiene mensajes</string>
     <string name="lst_title_alarms_list">Listado de alarmas</string>
     <string name="lst_title_alarms_agendas_list">Agendas de alarma</string>
+    <string name="lst_title_notification_config">Configuración de notificaciones</string>
     <string name="lst_title_lights_agendas_list">Agendas de luces</string>
     <string name="lst_title_agenda_editor">Editar/crear agenda</string>
     <string name="lst_title_lights_list">Listado de luces</string>
