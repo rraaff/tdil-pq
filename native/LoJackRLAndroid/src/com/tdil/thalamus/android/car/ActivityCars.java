@@ -25,6 +25,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -36,6 +37,7 @@ import com.tdil.thalamus.android.CheckForUpdateActivity;
 import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
+import com.tdil.thalamus.android.places.PlacesItem;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
@@ -126,10 +128,12 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
         mapView = (MapView) this.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
 
+        
         // Gets to GoogleMap from the MapView and does initialization stuff
         GoogleMap map = mapView.getMap();
         //map.getUiSettings().setMyLocationButtonEnabled(false);
         map.setMyLocationEnabled(true);
+        map.setInfoWindowAdapter(new MyCustomAdapter());
 
         // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
         MapsInitializer.initialize(this);
@@ -205,7 +209,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
     		for (PositionHistoryBean bean : pos.getList()) {
     			LatLng latLng = new LatLng(Double.parseDouble(bean.getLatitude()),Double.parseDouble(bean.getLongitude()));
     			MarkerOptions marker = new MarkerOptions().position(latLng)
-    					.title(bean.getStreet() + " " + bean.getNumber() + "\n" + bean.getSpeed() + "km/h " + bean.getDirection());
+    					.title(bean.getStreet() + " " + bean.getNumber() + "\n" + bean.getSpeed() + "km/h " + bean.getDirection() + "\n" + bean.getFecha());
     			if (bean.getDirection().equals("N")) {
     				marker.icon(n);
     			} 
@@ -425,5 +429,19 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 
 	public void setSelectedVehicle(VehicleBean selectedVehicle) {
 		this.selectedVehicle = selectedVehicle;
+	}
+	
+	private class MyCustomAdapter implements InfoWindowAdapter {
+	    @Override
+	    public View getInfoContents(Marker marker) {
+	    	View view = getLayoutInflater().inflate(R.layout.cars_info_view, null);
+	    	TextView carsTitle = (TextView)view.findViewById(R.id.carsTitle);
+	    	carsTitle.setText(marker.getTitle());
+	        return view;
+	    }
+	    @Override
+	    public View getInfoWindow(Marker arg0) {
+	    	 return null;
+	    }
 	}
 }

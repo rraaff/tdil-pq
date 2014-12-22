@@ -116,11 +116,7 @@ public class PathListAdapter extends BaseAdapter implements OnClickListener {
 			/************ Set Model values in Holder elements ***********/
 			holder.pathItemDescription.setText(iterLight.getStreet() + " " + iterLight.getNumber());
 			holder.pathItemSpeed.setText(iterLight.getSpeed());
-			try {
-				holder.pathItemDate.setText(dfView.format(df.parse(iterLight.getFecha())));
-			} catch (ParseException e) {
-				holder.pathItemDate.setText("-");
-			}
+			holder.pathItemDate.setText(iterLight.getFecha());
 
 			GoPathDetail goLightDashBoard = new GoPathDetail(iterLight);
 			holder.pathItemDescription.setOnClickListener(goLightDashBoard);
