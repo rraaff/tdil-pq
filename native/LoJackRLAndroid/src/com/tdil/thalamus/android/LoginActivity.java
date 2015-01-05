@@ -69,7 +69,7 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 	public static final String PROPERTY_REG_ID = "registration_id";
 	private static final String PROPERTY_APP_VERSION = "appVersion";
 	private final static String TAG = "LaunchActivity";
-	protected String SENDER_ID = "453786616923";
+	protected String SENDER_ID = "84334825861";
 	private GoogleCloudMessaging gcm = null;
 	private String regid = null;
 	private Context context = null;
