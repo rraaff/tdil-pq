@@ -30,6 +30,7 @@ import com.tdil.thalamus.android.car.VLUMessagesActivity;
 import com.tdil.thalamus.android.car.parkedmode.ParkedModeRestFacade;
 import com.tdil.thalamus.android.home.ActivityHomeIndex;
 import com.tdil.thalamus.android.home.ActivityHomeNotClient;
+import com.tdil.thalamus.android.pets.ActivityPets;
 import com.tdil.thalamus.android.pets.ActivityPetsNotClient;
 import com.tdil.thalamus.android.places.ActivityPlaces;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
@@ -221,7 +222,8 @@ public class HeaderLogic {
 					if (response.getUrl() == null || response.getUrl().length() == 0) {
 						Messages.connectionErrorMessage(activity);
 					} else {
-						Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.getUrl()));
+						Intent intent = new Intent(activity.getBaseContext(), ActivityPets.class);
+						intent.putExtra(ActivityPets.PETS_URL, response.getUrl());
 						activity.startActivity(intent);
 					}
 				}
