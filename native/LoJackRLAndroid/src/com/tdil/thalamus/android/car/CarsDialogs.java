@@ -243,7 +243,7 @@ public class CarsDialogs {
 		dialogOkButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				DateFormat dateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
+				DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 				Date from = null;
 				Date to = null;
 				if (lastHour.isChecked()) {
