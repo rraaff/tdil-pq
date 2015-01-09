@@ -3,12 +3,9 @@ package com.tdil.thalamus.android.car;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +15,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -33,11 +28,9 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.CheckForUpdateActivity;
-import com.tdil.thalamus.android.LoJackWithProductMenuActivity;
+import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
-import com.tdil.thalamus.android.places.PlacesItem;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientTask;
 import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
@@ -54,9 +47,11 @@ import com.tdil.thalamus.android.utils.Login;
 
 
 
-public class ActivityCars extends LoJackWithProductMenuActivity {
+public class ActivityCars extends LoJackLoggedActivity {
 
-	private MapView mapView;
+//	private MapView mapView;
+	private GoogleMap map;
+	private SupportMapFragment mapFragment;
 	
 	private List<Marker> vehiclesMarkers = new ArrayList<Marker>();
 	VehicleCollection vehicles = null;
@@ -122,17 +117,15 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_main);
-        customizeActionBar(true);
+//        customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         
-        mapView = (MapView) this.findViewById(R.id.mapview);
-        mapView.onCreate(savedInstanceState);
-
-        
-        // Gets to GoogleMap from the MapView and does initialization stuff
-        GoogleMap map = mapView.getMap();
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapview);
+		mapFragment.onCreate(savedInstanceState);
+		map = mapFragment.getMap();
+		
         //map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.setMyLocationEnabled(true);
+//        map.setMyLocationEnabled(true);
         map.setInfoWindowAdapter(new MyCustomAdapter());
 
         // Needs to call MapsInitializer before doing any CameraUpdateFactory calls
@@ -236,13 +229,13 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
     			} 
 				// adding marker
     			marker.anchor(0.5f, 0.5f);
-				mapView.getMap().addMarker(marker);
+				map.addMarker(marker);
     		}
     		if (pos.getList().size() > 0) {
     			PositionHistoryBean bean = pos.getList().iterator().next();
     			LatLng latLng = new LatLng(Double.parseDouble(bean.getLatitude()),Double.parseDouble(bean.getLongitude()));
     			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
-    			mapView.getMap().animateCamera(cameraUpdate);
+    			map.animateCamera(cameraUpdate);
     		}
     	}
     }
@@ -354,7 +347,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
             minLon = Math.min(point.longitude, minLon);
         }
         final LatLngBounds bounds = new LatLngBounds.Builder().include(new LatLng(maxLat, maxLon)).include(new LatLng(minLat, minLon)).build();
-        mapView.getMap().animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
+        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
     }
     
     protected void updatePositionsLocations(VehicleCollection vehicles) {
@@ -367,7 +360,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		for (VehicleBean vehicleBean : vehicles.getList()) {
 			LatLng latLng = new LatLng(Double.parseDouble(vehicleBean.getLatitude()),Double.parseDouble(vehicleBean.getLongitude()));
 			points.add(latLng);
-			Marker m = mapView.getMap().addMarker(new MarkerOptions()
+			Marker m = map.addMarker(new MarkerOptions()
 		        .position(latLng)
 		        .title(vehicleBean.getDescription()));
 			 vehiclesMarkers.add(m);
@@ -375,7 +368,7 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 		if (vehicles.getList().size() == 1) {
 			LatLng latLng = new LatLng(points.get(0).latitude - 0.00089832, points.get(0).longitude);
 			CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng, 16);
-			mapView.getMap().animateCamera(cameraUpdate);
+			map.animateCamera(cameraUpdate);
 		} else {
 			centerMap(points);
 		}
@@ -385,19 +378,19 @@ public class ActivityCars extends LoJackWithProductMenuActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mapView.onResume();
+		mapFragment.onResume();
 	}
 	
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mapView.onDestroy();
+//		mapFragment.onDestroy();
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
-		mapView.onPause();
+		mapFragment.onPause();
 	}
 
     static class VehicleButtonOnClickListener implements View.OnClickListener {

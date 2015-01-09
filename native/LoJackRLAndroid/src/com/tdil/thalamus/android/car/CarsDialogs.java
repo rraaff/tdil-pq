@@ -21,8 +21,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
-import com.tdil.thalamus.android.LoJackActivity;
-import com.tdil.thalamus.android.LoJackRestClientObserver;
+import com.tdil.thalamus.android.ContextRestClientObserver;
 import com.tdil.thalamus.android.gui.BeanMappingFunction;
 import com.tdil.thalamus.android.gui.BeanMappingListAdapter;
 import com.tdil.thalamus.android.places.LocarRestClientObserver;
@@ -359,7 +358,7 @@ public class CarsDialogs {
 		};
 	}
 
-	public static void goToVLUMessages(final LoJackActivity context) {
+	public static void goToVLUMessages(final Context context) {
 		int vluMessagesCount = Login.getLoggedUser(context).getVluMessages();
 		if (vluMessagesCount == 0) {
 			startVLUMessagesActivity(context, null);
@@ -369,8 +368,8 @@ public class CarsDialogs {
 		}
 	}
 	
-	public static IRestClientObserver getPostMessagesVLUObserver(final LoJackActivity activity) {
-		return new LoJackRestClientObserver(activity) {
+	public static IRestClientObserver getPostMessagesVLUObserver(final Context activity) {
+		return new ContextRestClientObserver(activity) {
 			@Override
 			public void sucess(IRestClientTask restClientTask) {
 				VLUMessagesCollection pos = ((RESTClientTaskOpt<VLUMessagesCollection>)restClientTask).getCastedResult();
@@ -379,9 +378,9 @@ public class CarsDialogs {
 		};
 	}
 	
-	public static void startVLUMessagesActivity(final LoJackActivity activity, VLUMessagesCollection messages) {
+	public static void startVLUMessagesActivity(final Context activity, VLUMessagesCollection messages) {
 		int vluMessagesCount = Login.getLoggedUser(activity).getVluMessages();
-		Intent intent = new Intent(activity.getBaseContext(), VLUMessagesActivity.class);
+		Intent intent = new Intent(activity, VLUMessagesActivity.class);
 		intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_COUNT, vluMessagesCount);
 		intent.putExtra(VLUMessagesActivity.VLU_MESSAGES_LIST, messages);
 		activity.startActivity(intent);

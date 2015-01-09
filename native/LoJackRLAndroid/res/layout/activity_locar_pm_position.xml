@@ -39,10 +39,11 @@
 			        android:layout_above="@id/footer"
 			        android:gravity="center" >
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapview"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" />
+                <fragment
+				  android:id="@+id/mapview"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+				  class="com.google.android.gms.maps.SupportMapFragment"/>
 
                 </RelativeLayout>
 

@@ -105,7 +105,7 @@ public class MenuLogic {
 			return true;
 		default:
 			if (defaultIndex) {
-				Intent intentIndex = new Intent(activity, IndexActivity.class);
+				Intent intentIndex = new Intent(activity, IndexDispatcher.getIndexClass());
 				activity.startActivity(intentIndex);
 		    	activity.finish();
 				return true;

@@ -411,7 +411,7 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 				registerInBackground(0);
 			}
 			
-			Intent intent = new Intent(this, IndexActivity.class);
+			Intent intent = new Intent(this, IndexDispatcher.getIndexClass());
 			// Intent intent = new Intent(this, HomeAlarmsActivity.class);
 			startActivity(intent);
 			finish();
@@ -455,10 +455,6 @@ public class LoginActivity extends LoJackNotLoggedActivity implements IRestClien
 		return true;
 	}
 	
-
-	private SharedPreferences getGCMPreferences(Context context) {
-		return getSharedPreferences(IndexActivity.class.getSimpleName(), Context.MODE_PRIVATE);
-	}
 
 	private void registerInBackground(final int retry) {
 		if (retry > 2) {

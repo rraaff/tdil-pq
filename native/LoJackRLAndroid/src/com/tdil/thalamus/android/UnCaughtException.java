@@ -117,41 +117,46 @@ public class UnCaughtException implements UncaughtExceptionHandler {
      * <span id="IL_AD12" class="IL_AD">This method</span> for <span id="IL_AD1" class="IL_AD">call alert</span> dialog when application crashed!
      */
     public void sendError(final StringBuilder errorContent) {
+    	Log.e("E", errorContent.toString());
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         new Thread() {
             @Override
             public void run() {
-                Looper.prepare();
-                builder.setTitle("Error de la aplicacion");
-                builder.create();
-                builder.setNegativeButton("Salir",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
-                                System.exit(0);
-                            }
-                        });
-                builder.setPositiveButton("Reportar",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                    int which) {
-                            	new RESTClientTask(context, HttpMethod.POST, new IRestClientObserver() {
-                        			@Override
-                        			public void sucess(IRestClientTask task) {
-                        				System.exit(0);
-                        			}
-                        			@Override
-                        			public void error(IRestClientTask task) {
-                        				Messages.connectionErrorMessage(context);
-                        			}
-                        		}, RESTConstants.LOG_ERROR_APK, new RestParams(), errorContent.toString()).executeSerial((Void) null);
-                            }
-                        });
-                builder.setMessage("Ha ocurrido un error");
-                builder.show();
-                Looper.loop();
+            	try {
+	                Looper.prepare();
+	                builder.setTitle("Error de la aplicacion");
+	                builder.create();
+	                builder.setNegativeButton("Salir",
+	                        new DialogInterface.OnClickListener() {
+	                            @Override
+	                            public void onClick(DialogInterface dialog,
+	                                    int which) {
+	                                System.exit(0);
+	                            }
+	                        });
+	                builder.setPositiveButton("Reportar",
+	                        new DialogInterface.OnClickListener() {
+	                            @Override
+	                            public void onClick(DialogInterface dialog,
+	                                    int which) {
+	                            	new RESTClientTask(context, HttpMethod.POST, new IRestClientObserver() {
+	                        			@Override
+	                        			public void sucess(IRestClientTask task) {
+	                        				System.exit(0);
+	                        			}
+	                        			@Override
+	                        			public void error(IRestClientTask task) {
+	                        				Messages.connectionErrorMessage(context);
+	                        			}
+	                        		}, RESTConstants.LOG_ERROR_APK, new RestParams(), errorContent.toString()).executeSerial((Void) null);
+	                            }
+	                        });
+	                builder.setMessage("Ha ocurrido un error");
+	                builder.show();
+	                Looper.loop();
+            	} catch (Exception e) {
+            		
+            	}
             }
         }.start();
     }

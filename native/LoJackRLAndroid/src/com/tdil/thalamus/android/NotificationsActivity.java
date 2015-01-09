@@ -112,7 +112,7 @@ public class NotificationsActivity extends LoJackLoggedActivity {
 		if (!fromNotifications) {
 			super.onBackPressed();
 		} else {
-			Intent intent = new Intent(this.getBaseContext(), IndexActivity.class);
+			Intent intent = new Intent(this.getBaseContext(), IndexDispatcher.getIndexClass());
 			this.startActivity(intent);
 			this.finish();
 		}

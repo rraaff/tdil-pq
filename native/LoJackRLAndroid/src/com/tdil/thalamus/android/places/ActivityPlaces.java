@@ -14,7 +14,6 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +23,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -62,7 +61,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 
 
 	private ClusterManager<PlacesItem> mClusterManager;
-	private MapView mapView;
+//	private MapView mapView;
 	
 	private Marker currentPos = null;
 
@@ -91,6 +90,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	
 	private Cluster<PlacesItem> clickedCluster;
 	private PlacesItem clickedClusterItem;
+	private GoogleMap map;
+	private SupportMapFragment mapFragment;
 
 	static final class UpdateParkingsMapObserver implements IRestClientObserver {
 		private ActivityPlaces activity;
@@ -213,10 +214,10 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 			currentPos.setVisible(false);
 			currentPos.remove();
 		}
-		currentPos = mapView.getMap().addMarker(new MarkerOptions().position(new LatLng(updatedLatitude, updatedLongitude))
+		currentPos = map.addMarker(new MarkerOptions().position(new LatLng(updatedLatitude, updatedLongitude))
 				.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)).title("Mi ubicacion"));
 		CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(updatedLatitude, updatedLongitude), 16);
-		mapView.getMap().animateCamera(cameraUpdate);
+		map.animateCamera(cameraUpdate);
 	}
 	
 //	private void addItems() {
@@ -239,18 +240,20 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_loplaces_main);
-		customizeActionBar(true);
+//		customizeActionBar(true);
 		HeaderLogic.installTabLogic(this);
 
-		mapView = (MapView) this.findViewById(R.id.mapview);
-		mapView.onCreate(savedInstanceState);
-
-		// Gets to GoogleMap from the MapView and does initialization stuff
-		GoogleMap map = mapView.getMap();
+//		mapView = (MapView) this.findViewById(R.id.mapview);
+//		mapView.onCreate(savedInstanceState);
+		
+		mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapview);
+		mapFragment.onCreate(savedInstanceState);
+		map = mapFragment.getMap();
+		
 		map.setOnInfoWindowClickListener(this);
 
 		map.getUiSettings().setMyLocationButtonEnabled(false);
-		map.setMyLocationEnabled(true);
+//		map.setMyLocationEnabled(true);
 
 		// Needs to call MapsInitializer before doing any CameraUpdateFactory
 		// calls
@@ -623,19 +626,19 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mapView.onResume();
+//		mapFragment.onResume();
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mapView.onDestroy();
+//		mapFragment.onDestroy();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		mapView.onPause();
+//		mapFragment.onPause();
 	}
 
 }

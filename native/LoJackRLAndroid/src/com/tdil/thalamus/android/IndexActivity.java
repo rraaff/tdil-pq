@@ -150,6 +150,8 @@ public class IndexActivity extends LoJackLoggedActivity {
 		 * button.setVisibility(View.GONE); } }
 		 */
 	}
+	
+	
 
 	public static Bitmap drawableToBitmap (Drawable drawable) {
 	    if (drawable instanceof BitmapDrawable) {

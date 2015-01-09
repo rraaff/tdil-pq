@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.tdil.thalamus.android.IndexActivity;
+import com.tdil.thalamus.android.IndexDispatcher;
 
 public class GoIndexImageView extends ImageView {
 
@@ -15,7 +16,7 @@ public class GoIndexImageView extends ImageView {
 		setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				final Intent intent = new Intent(context, IndexActivity.class);
+				final Intent intent = new Intent(context, IndexDispatcher.getIndexClass());
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				context.startActivity(intent);
 			}
@@ -27,7 +28,7 @@ public class GoIndexImageView extends ImageView {
 		setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				final Intent intent = new Intent(context, IndexActivity.class);
+				final Intent intent = new Intent(context, IndexDispatcher.getIndexClass());
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				context.startActivity(intent);
 			}
@@ -39,7 +40,7 @@ public class GoIndexImageView extends ImageView {
 		setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				final Intent intent = new Intent(context, IndexActivity.class);
+				final Intent intent = new Intent(context, IndexDispatcher.getIndexClass());
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				context.startActivity(intent);
 			}
