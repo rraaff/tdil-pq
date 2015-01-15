@@ -19,7 +19,8 @@ public class ActivityHomeIndex extends HomeActivity {
         customizeActionBar(true);
         HeaderLogic.installTabLogic(this);
         HomeHeaderLogic.installHomeMenuLogic(this);
-
+        track("Seccion HOME", "/home/index");
+        
         View v = findViewById(R.id.goAlarmsImageView);
         View.OnClickListener goAlarms = new View.OnClickListener() {
 							@Override

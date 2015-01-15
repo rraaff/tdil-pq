@@ -12,9 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.LoJackLoggedActivity;
 import com.tdil.thalamus.android.header.logic.HeaderLogic;
+import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
+import com.tdil.thalamus.android.rest.model.TrackBean;
 import com.tdil.thalamus.android.rest.model.VLUDataDTO;
 import com.tdil.thalamus.android.rest.model.VLUMessagesCollection;
 
@@ -60,6 +68,7 @@ public class VLUMessagesActivity extends LoJackLoggedActivity {
 					CustomListViewValuesArr, res);
 			list.setAdapter(adapter);
 		}
+		track("Chequeo VLU", "/cars/vluChecking");
 		new Thread() {
 			
 			public void run() {

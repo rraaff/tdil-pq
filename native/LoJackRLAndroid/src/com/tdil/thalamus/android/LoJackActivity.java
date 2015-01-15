@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.rest.client.HttpMethod;
 import com.tdil.thalamus.android.rest.client.IRestClientObserver;
@@ -30,6 +31,8 @@ import com.tdil.thalamus.android.rest.client.RESTConstants;
 import com.tdil.thalamus.android.rest.model.LoginResponse;
 import com.tdil.thalamus.android.rest.model.NotificationBeanCollection;
 import com.tdil.thalamus.android.rest.model.NotificationsSummary;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
+import com.tdil.thalamus.android.rest.model.TrackBean;
 import com.tdil.thalamus.android.utils.Login;
 
 public abstract class LoJackActivity extends ActionBarActivity {
@@ -47,6 +50,15 @@ public abstract class LoJackActivity extends ActionBarActivity {
 	}
 	
 	protected abstract boolean mustBeLogged();
+	
+	protected void track(String title, String url) {
+		TrackBean vluCheck = new TrackBean(title,url);
+		Gson gson = new Gson();
+		String json = gson.toJson(vluCheck);
+		new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, IRestClientObserver.dummy, RESTConstants.POST_TRACK, 
+				null,json,RESTResponse.class, false, false)
+					.executeSerial((Void) null);
+	}
 
 	protected void customizeActionBar() {
 		customizeActionBar(true);

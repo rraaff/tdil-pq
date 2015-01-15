@@ -55,6 +55,7 @@ public class ActivityCarsNotClient extends LoJackLoggedActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_locar_not_client);
         customizeActionBar(true);
+        track("Seccion PREVENT", "/prevent/notClient");
     	webView = (WebView) findViewById(R.id.webView);
 		
 		List<Cookie> cookies = RESTClientTask.getHttpClient(this).getCookieStore().getCookies();

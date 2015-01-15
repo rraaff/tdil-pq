@@ -61,6 +61,7 @@ public class ActivityPetsNotClient extends LoJackLoggedActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pets_not_client);
         customizeActionBar(true);
+        track("Seccion PETS", "/pets/notClient");
     	webView = (WebView) findViewById(R.id.webView);
 		
 		List<Cookie> cookies = RESTClientTask.getHttpClient(this).getCookieStore().getCookies();

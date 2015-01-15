@@ -242,7 +242,8 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 		setContentView(R.layout.activity_loplaces_main);
 //		customizeActionBar(true);
 		HeaderLogic.installTabLogic(this);
-
+		track("Seccion LOTOOLS", "/lotools/index");
+		
 //		mapView = (MapView) this.findViewById(R.id.mapview);
 //		mapView.onCreate(savedInstanceState);
 		
@@ -370,6 +371,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						updateParkingsMap(parkings);
 					}
 					placesParkingsButton.setBackgroundResource(R.drawable.ic_places_parkings_active);
+					track("Seccion LOTOOLS", "/lotools/parkings");
 				}
 
 			}
@@ -395,6 +397,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						updatePetrolsMap(petrols);
 					}
 					placesPetrolButton.setBackgroundResource(R.drawable.ic_places_gasstations_active);
+					track("Seccion LOTOOLS", "/lotools/petrols");
 				}
 
 			}
@@ -420,6 +423,7 @@ public class ActivityPlaces extends LoJackLoggedActivity implements OnInfoWindow
 						updateLojackMap(lojack);
 					}
 					placesLojackButton.setBackgroundResource(R.drawable.ic_places_lojack_active);
+					track("Seccion LOTOOLS", "/lotools/lojack");
 				}
 
 			}
