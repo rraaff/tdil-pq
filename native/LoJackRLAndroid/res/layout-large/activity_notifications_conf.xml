@@ -57,6 +57,12 @@
                     android:id="@+id/homeConf"
                     style="@style/checkbox_white_01"
                     android:text="@string/btn_home_notif_conf" />
+                
+                <com.tdil.thalamus.android.gui.components.StyledCheckbox
+                    android:id="@+id/petConf"
+                    style="@style/checkbox_white_01"
+                    android:text="@string/btn_pet_notif_conf" />
+                
                 <com.tdil.thalamus.android.gui.components.StyledButton
 				                android:id="@+id/updateButton"
 				                style="@style/btn_forward"

@@ -44,6 +44,7 @@ public class NotificationsConfActivity extends LoJackLoggedActivity {
 	private CheckBox lojack;
 	private CheckBox car;
 	private CheckBox home;
+	private CheckBox pet;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class NotificationsConfActivity extends LoJackLoggedActivity {
 		lojack = (CheckBox) findViewById(R.id.lojackConf);
 		car = (CheckBox) findViewById(R.id.carConf);
 		home = (CheckBox) findViewById(R.id.homeConf);
+		pet = (CheckBox) findViewById(R.id.petConf);
 			
 		Bundle extras = getIntent().getExtras();
 		customizeActionBar(true);
@@ -60,12 +62,13 @@ public class NotificationsConfActivity extends LoJackLoggedActivity {
 		lojack.setChecked(confBean.getLojack() == 1);
 		car.setChecked(confBean.getCar() == 1);
 		home.setChecked(confBean.getHome() == 1);
+		pet.setChecked(confBean.getPet() == 1);
 		
 		findViewById(R.id.updateButton).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				Gson gson = new Gson();
-				String json = gson.toJson(new NotificationConfBean(lojack.isChecked() ? 1 : 0, home.isChecked() ? 1 : 0, car.isChecked() ? 1 : 0));
+				String json = gson.toJson(new NotificationConfBean(lojack.isChecked() ? 1 : 0, home.isChecked() ? 1 : 0, car.isChecked() ? 1 : 0, pet.isChecked() ? 1 : 0));
 				new RESTClientTaskOpt<RESTResponse>(NotificationsConfActivity.this, HttpMethod.POST, getPostSaveObserver((LoJackActivity)NotificationsConfActivity.this), 
 						RESTConstants.POST_NOTIFICATION_CONF,null,json, RESTResponse.class, false, false).executeSerial((Void) null);
 			}

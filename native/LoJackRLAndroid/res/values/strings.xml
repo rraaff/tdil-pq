@@ -211,7 +211,7 @@
     <string name="btn_lojack_notif_conf">LoJack</string>
     <string name="btn_car_notif_conf">Prevent</string>
     <string name="btn_home_notif_conf">Home</string>
-    
+    <string name="btn_pet_notif_conf">Pet</string>
     
     <string name="message"> </string>
     <string name="messages"> </string>

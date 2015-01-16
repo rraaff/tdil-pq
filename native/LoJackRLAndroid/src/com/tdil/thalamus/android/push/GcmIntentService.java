@@ -66,6 +66,12 @@ public class GcmIntentService extends IntentService {
 		if (type == NotificationType.HOME) {
 			icon = R.drawable.ic_stat_lohome;
 		}
+		
+		/* Icono para notificaciones de PET */
+		if (type == NotificationType.PET) {
+			icon = R.drawable.ic_stat_lopet;
+		}
+		
 		NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this).setSmallIcon(icon).setContentTitle(title)
 				.setStyle(new NotificationCompat.BigTextStyle().bigText(msg)).setContentText(msg)
 				.setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE);

@@ -13,15 +13,17 @@ public class NotificationConfBean implements Serializable {
 	private int lojack;
 	private int home;
 	private int car;
+	private int pet;
 	
 	public NotificationConfBean() {
 	}
 	
-	public NotificationConfBean(int lojack, int home, int car) {
+	public NotificationConfBean(int lojack, int home, int car, int pet) {
 		super();
 		this.lojack = lojack;
 		this.home = home;
 		this.car = car;
+		this.pet = pet;
 	}
 
 	public int getLojack() {
@@ -46,6 +48,14 @@ public class NotificationConfBean implements Serializable {
 
 	public void setCar(int car) {
 		this.car = car;
+	}
+
+	public int getPet() {
+		return pet;
+	}
+
+	public void setPet(int pet) {
+		this.pet = pet;
 	}
 	
 	
