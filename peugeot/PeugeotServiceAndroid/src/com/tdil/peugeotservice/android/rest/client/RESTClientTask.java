@@ -29,56 +29,81 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
+import com.tdil.peugeotservice.android.rest.model.LoginResponse;
 import com.tdil.peugeotservice.android.utils.Login;
+
 
 
 public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IRestClientTask {
 
-	private HttpMethod method;
-	private WeakReference<Context> contextRef;
-	private WeakReference<IRestClientObserver> observerRef;
-	private WeakReference<ProgressDialog> progressDialogRef;
-	private InputStream inputStream = null;
-	private String result = "";
-	private int statusCode;
-	private String url;
-	private String urlToExecute;
-	private Map<String, String> urlParams;
-	private String body;
+	protected HttpMethod method;
+	protected WeakReference<Context> contextRef;
+	protected WeakReference<IRestClientObserver> observerRef;
+	protected Context contextStrong;
+	protected IRestClientObserver observerStrong;
 	
-	private boolean incomplete = false;
+	protected WeakReference<ProgressDialog> progressDialogRef;
+	protected InputStream inputStream = null;
+	protected String result = "";
+	protected int statusCode;
+	protected String url;
+	protected String urlToExecute;
+	protected Map<String, String> urlParams;
+	protected String body;
 	
-	public static DefaultHttpClient httpClient = new DefaultHttpClient();
+	protected boolean incomplete = false;
+	protected boolean showProgress = true;
+	protected boolean showError = true;
+	
+	private static DefaultHttpClient httpClient = null;
 	
 	private static ExecutorService SERIAL_EXECUTOR = Executors.newFixedThreadPool(1);
 	
-	static {
-		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
-	}
-	
 	public static void recreateClient() {
-		httpClient = new DefaultHttpClient();
-		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
+		httpClient = null;
 	}
 	
 	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
 			String body) {
 		this.contextRef = new WeakReference<Context>(context);
+		this.contextStrong = context;
 		this.method = method;
 		this.observerRef = new WeakReference<IRestClientObserver>(observer);
+		this.observerStrong = observer;
 		this.url = url;
 		this.urlParams = restParams == null? null : restParams.getParams();
 		this.body = body;
 	}
 	
-	public static DefaultHttpClient get1HttpClient(final Context context) {
-		DefaultHttpClient httpClient = new DefaultHttpClient();
+	public RESTClientTask(Context context, HttpMethod method, IRestClientObserver observer, String url, RestParams restParams,
+			String body, boolean showProgress, boolean showError) {
+		this.contextRef = new WeakReference<Context>(context);
+		this.contextStrong = context;
+		this.method = method;
+		this.observerRef = new WeakReference<IRestClientObserver>(observer);
+		this.observerStrong = observer;
+		this.url = url;
+		this.urlParams = restParams == null? null : restParams.getParams();
+		this.body = body;
+		this.showProgress = showProgress;
+		this.showError = showError;
+	}
+	
+	public static DefaultHttpClient getHttpClient(final Context context) {
+		if (httpClient != null) {
+			return httpClient;
+		}
+		httpClient = new DefaultHttpClient();
+		httpClient.getParams().setParameter(CoreProtocolPNames.USER_AGENT,System.getProperty("http.agent"));
 		if (context != null) {
 			httpClient.addRequestInterceptor(new HttpRequestInterceptor() {
 				@Override
 				public void process(HttpRequest arg0, HttpContext arg1)
 						throws HttpException, IOException {
-					arg0.addHeader("apkToken", Login.getLoggedUser(context).getApkToken());
+					LoginResponse loggedUser = Login.getLoggedUser(context);
+					if (loggedUser != null && loggedUser.getLogged()) {
+						arg0.addHeader("apkToken", loggedUser.getApkToken());
+					}
 				}
 			});
 		}
@@ -101,7 +126,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			return;
 		}
 		Context context = contextRef.get();
-		if (context != null) {
+		if (context != null && showProgress) {
 			ProgressDialog progressDialog = new ProgressDialog(context);
 			progressDialog.setMessage("Por favor, espere...");
 			progressDialog.show();
@@ -127,7 +152,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 				((HttpEntityEnclosingRequestBase)httpPost).setEntity(new ByteArrayEntity(
 					    this.body.getBytes("UTF8")));
 			}
-			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpResponse httpResponse = getHttpClient(context).execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			// Read content & Log
 			inputStream = httpEntity.getContent();
@@ -187,7 +212,7 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 			return;
 		}
 		try {
-			if (this.progressDialogRef != null) {
+			if (this.progressDialogRef != null && showProgress) {
 				ProgressDialog progressDialog = progressDialogRef.get();
 				if (progressDialog != null) {
 					progressDialog.dismiss();
@@ -200,10 +225,14 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 						observer.sucess(this);
 					} catch (Exception e) {
 						e.printStackTrace();
-						observer.error(this);
+						if (showError) {
+							observer.error(this);
+						}
 					}
 				} else {
-					observer.error(this);
+					if (showError) {
+						observer.error(this);
+					}
 				}
 			}
 		} catch (Exception e) {
@@ -243,4 +272,5 @@ public class RESTClientTask extends AsyncTask<Void, Void, Boolean> implements IR
 	public void executeSerial(Void params) {
 		this.executeOnExecutor(SERIAL_EXECUTOR, params);
 	}
+
 }

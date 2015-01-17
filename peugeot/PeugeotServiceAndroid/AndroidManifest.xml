@@ -268,6 +268,35 @@
             </intent-filter>
         </activity-->
         
+        <activity
+            android:name="com.tdil.peugeotservice.android.places.ActivityPlaces"
+            android:label="Lugares"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        
+        <activity
+            android:name="com.tdil.peugeotservice.android.car.ActivityCars"
+            android:label="Cars"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.peugeotservice.android.car.ActivityCarsPathHistory"
+            android:label="Cars"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
+        <activity
+            android:name="com.tdil.peugeotservice.android.car.ActivityCarsPathHistoryDetail"
+            android:label="Cars"
+	        android:configChanges="orientation"
+	        android:screenOrientation="portrait">
+        </activity>
+        
         <meta-data
 			android:name="com.google.android.maps.v2.API_KEY"
 			android:value="AIzaSyDeQWMrFJX5TqOy6c7ZdG8bw4PCqBblgds"/>

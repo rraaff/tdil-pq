@@ -27,6 +27,13 @@ public interface RESTConstants {
 	public static final String P_LON = "{lon}";
 	public static final String P_PHONE = "{phone}";
 	public static final String P_ALERTID = "{alertId}";
+	
+	public static final String P_SECURE_ZONE_ID = "{secureZoneId}";
+	public static final String P_SPEED_LIMIT_ID = "{speedLimitId}";
+	public static final String P_DATE_START = "{dateStart}";
+	public static final String P_DATE_END = "{dateEnd}";
+	
+	public static final String P_POI_TYPES = "{types}";
 
 	public static final String REST_URL = ApplicationConfig.URL_WEBSITE + "rest";
 	
@@ -69,4 +76,18 @@ public interface RESTConstants {
 	public static final String GET_CONTACT_DATA_V1 = "/users/v1/contactData";
 	public static final String POST_CONTACT_DATA_V1 = "/users/v1/contactData";
 	
+	/** Prevent */
+	public static final String GET_VEHICLES = "/prevent/vehicles";
+	public static final String GET_VEHICLE_SECURE_ZONES = "/prevent/" + P_VEHICLE + "/secureZones";
+	public static final String POST_VEHICLE_SECURE_ZONE = "/prevent/" + P_VEHICLE + "/secureZone/" + P_SECURE_ZONE_ID;
+	
+	public static final String GET_VEHICLE_SPEED_LIMITS = "/prevent/" + P_VEHICLE + "/speedLimits";
+	public static final String POST_VEHICLE_SPEED_LIMITS = "/prevent/" + P_VEHICLE + "/speedLimit/" + P_SPEED_LIMIT_ID;
+	
+	public static final String GET_VEHICLE_PHONES = "/prevent/" + P_VEHICLE + "/phoneNumbers";
+	public static final String POST_VEHICLE_PHONES = "/prevent/" + P_VEHICLE + "/phoneNumber";
+	
+	public static final String GET_VEHICLE_PATH = "/prevent/" + P_VEHICLE + "/path/" + P_DATE_START + "/" + P_DATE_END;
+
+	public static final String POIS = "/pois/search/" + P_POI_TYPES;
 }
