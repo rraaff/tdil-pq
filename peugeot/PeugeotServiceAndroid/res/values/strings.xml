@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="cancel">CANCELAR</string>
+    <string name="time_set">OK</string>
     
     <string name="app_name">Peugeot Car Safe</string>
     <string name="action_settings">Buscando actualizaciones</string>
@@ -204,4 +206,29 @@
     <!-- Checkboxes and Radiobutton titles -->
     <string name="crt_tag_rememberme">Recordar mis datos</string>
     
+    <string name="lst_title_history_list">Historial de recorridos</string>
+    <string name="lst_title_history_point">Detalle</string>
+    
+    <string name="lbl_plate">Dominio:</string>
+    <string name="lbl_speed">Vel:</string>
+    <string name="lbl_speed_unit">Km/h</string>
+    <string name="btn_tag_gotomap">Ver en mapa</string>
+    
+    
+    <string name="title_select_vehicle">Seleccionar vehículo</string>
+    
+    <string name="selectVehicleForSpeed">Velocidad Máxima</string>
+    <string name="selectVehicleForZone">Determinar zona</string>
+    <string name="selectVehicleForPhoneNumbers">Teléfonos de seguridad</string>
+    <string name="selectVehicleForPath">Recorridos históricos</string>
+    
+    
+    <string name="title_max_speed">Velocidad Máxima</string>
+    <string name="title_select_zone">Determinar zona</string>
+    <string name="title_sms_phones">Teléfonos de seguridad</string>
+    <string name="title_choose_date">Determinar fecha</string>
+    
+    <string name="btn_lbl_back">Volver</string>
+    <string name="btn_lbl_save">Grabar</string>
+    <string name="btn_lbl_next">Siguiente</string>
 </resources>

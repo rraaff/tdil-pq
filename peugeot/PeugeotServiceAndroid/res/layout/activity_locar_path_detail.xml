@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".ActivityHomeAlarms" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+		<TableRow
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content">
+		
+			<com.tdil.peugeotservice.android.gui.components.StyledTextView
+				android:id="@+id/historyPathDetail"
+				style="@style/modal_subtitleinform"
+				android:layout_width="match_parent"
+				android:layout_weight="1"
+				android:text="@string/lst_title_history_point" />
+		
+		</TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            style="@style/format_page_3rows1col_middle"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight=".97" >
+
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent" >
+
+	            <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical" >
+	
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryDateTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="fecha" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryDate"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryStreetTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="street" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryStreet"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	                
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryNumberTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="number" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryNumber"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	                
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistorySpeedTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="speed" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistorySpeed"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	                
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryDirectionTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="direction" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryDirection"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	                
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryLongitudeTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="longitude" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryLongitude"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	                
+	                <LinearLayout
+	                    style="@style/btn_inlist_witharrow" >
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryLatitudeTextView"
+	                        style="@style/label_data_indatalist"
+	                        android:text="latitude" />
+	
+	                    <com.tdil.peugeotservice.android.gui.components.StyledTextView
+	                        android:id="@+id/positionHistoryLatitude"
+	                        style="@style/label_datastring_indatalist"
+	                        android:text="TextView" />
+	
+	                </LinearLayout>
+	                
+	            </LinearLayout>
+
+            </ScrollView>
+
+        </TableRow>
+
+
+    </LinearLayout>
+</merge>

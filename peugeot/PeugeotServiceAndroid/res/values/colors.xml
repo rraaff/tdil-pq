@@ -5,6 +5,7 @@
     
     <color name="gray">#cacaca</color>
 	<color name="grayTabBase">#f0f0f0</color>
+	<color name="grayLightBase">#F2F2F2</color>
 	
 	<color name="bgBase">#FFFFFF</color>
 	<color name="bgBaseGray">#4c4c58</color>
@@ -31,4 +32,7 @@
 	<color name="pressed_example">#CCCC0000</color>
 	
 	<color name="new_wheel_link">#00d8ff</color>
+	
+	<color name="orangeTitles">#F05524</color>
+	<color name="orangeDark">#BC2800</color>
 </resources>

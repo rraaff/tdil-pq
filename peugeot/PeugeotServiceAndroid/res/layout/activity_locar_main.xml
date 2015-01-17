@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".DemoActivityCars" >
+
+    <LinearLayout
+        android:id="@+id/lohome_format"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="0dp"
+            android:layout_weight=".97" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom" >
+
+                 <RelativeLayout
+			        android:id="@+id/content"
+			        android:layout_width="fill_parent"
+			        android:layout_height="fill_parent"
+			        android:gravity="center" >
+
+                <!-- com.google.android.gms.maps.MapView
+                    android:id="@+id/mapview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" /-->
+                    <fragment
+				  android:id="@+id/mapview"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+				  class="com.google.android.gms.maps.SupportMapFragment"/>
+                
+                 <com.tdil.peugeotservice.android.car.menu.CarsViewGroup android:id="@+id/carsMenu"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerVertical="true"
+		            android:layout_centerHorizontal="true">
+		            
+                    <ImageButton
+                        android:id="@+id/carMenuButton"
+                        android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+                        android:background="@drawable/ic_cars_whm_menu_on" />
+                     
+                     <ImageButton
+		                android:id="@+id/carPositionsButtonMenu"
+		                android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		                android:background="@drawable/ic_cars_whm_position_off"
+		                android:contentDescription="@string/action_home" />
+                     
+		            <ImageButton
+                        android:id="@+id/carSpeedButtonMenu"
+                        android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+                        android:background="@drawable/ic_cars_whm_velocidades_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carZoneButtonMenu"
+                        android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+                        android:background="@drawable/ic_cars_whm_zone_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carPhoneButtonMenu"
+                        android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+                        android:background="@drawable/ic_cars_whm_telefonos_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carPathButtonMenu"
+                        android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+                        android:background="@drawable/ic_cars_whm_recorridos_off" />
+                    
+                    <ImageButton
+                        android:id="@+id/carMenuOpenButton"
+                        android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+                        android:background="@drawable/ic_cars_whm_menu_off" 
+                        android:visibility="gone"/>
+		          </com.tdil.peugeotservice.android.car.menu.CarsViewGroup>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </TableRow>
+
+    </LinearLayout>
+
+</merge>
