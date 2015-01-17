@@ -326,14 +326,6 @@ public class LoginActivity extends PeugeotActivity implements IRestClientObserve
 				e.putString("mPassword", "");
 				e.commit();
 			}
-			RESTClientTask.httpClient
-			.addRequestInterceptor(new HttpRequestInterceptor() {
-				@Override
-				public void process(HttpRequest arg0, HttpContext arg1)
-						throws HttpException, IOException {
-					arg0.addHeader("apkToken", resp.getApkToken());
-				}
-			});
 			if (resp.getServicesAdvices()) {
 				Intent intent = new Intent(this, AdvicesActivity.class);
 				// Intent intent = new Intent(this, HomeAlarmsActivity.class);

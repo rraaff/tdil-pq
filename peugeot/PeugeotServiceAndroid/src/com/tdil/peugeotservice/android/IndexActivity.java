@@ -38,6 +38,7 @@ public class IndexActivity extends PeugeotActivity {
 			@Override
 			public void onClick(View arg0) {
 				FooterLogic.handlePreventAccess(IndexActivity.this);
+//				IndexActivity.this.startActivity(new Intent(IndexActivity.this, com.tdil.peugeotservice.android.car.ActivityCars.class));
 			}
 		});
 		

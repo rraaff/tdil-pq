@@ -1,7 +1,5 @@
 package com.tdil.peugeotservice.android;
 
-import com.tdil.peugeotservice.R;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -13,6 +11,9 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.tdil.peugeotservice.R;
+import com.tdil.peugeotservice.android.gui.components.StyledButton;
 
 public class PeugeotActivity extends ActionBarActivity {
 
@@ -113,5 +114,21 @@ public class PeugeotActivity extends ActionBarActivity {
 
 	public void setBackHandler(AlertBackHandler backHandler) {
 		this.backHandler = backHandler;
+	}
+
+	public static void setCustomTypeface(Context context, TextView view) {
+		view.setTypeface(getNormalFont(context));
+	}
+
+	public static void setCustomTypeface(Context context, EditText view) {
+		view.setTypeface(getNormalFont(context));
+	}
+
+	public static void setCustomTypeface(Context context, Button view) {
+		view.setTypeface(getNormalFont(context));
+	}
+
+	public static void setCustomTypeface(Context context, CheckBox view) {
+		view.setTypeface(getNormalFont(context));
 	}
 }
