@@ -70,6 +70,8 @@
     <string name="lbl_end_date">Fecha de fin</string>
     <string name="lbl_star_time">Hora de inicio</string>
     <string name="lbl_end_time">Hora de fin</string>
+    
+    <string name="lbl_notification_config_subtitle">Tildá los productos que pueden enviarte notificaciones.</string>
 
     <!-- Titles -->
     <string name="title_activity_check_for_update">LoJack</string>
@@ -208,10 +210,10 @@
     <string name="btn_lbl_next">Siguiente</string>
     <string name="btn_lbl_carrecoverycenter">Central de Recupero Vehicular</string>
     
-    <string name="btn_lojack_notif_conf">LoJack</string>
-    <string name="btn_car_notif_conf">Prevent</string>
-    <string name="btn_home_notif_conf">Home</string>
-    <string name="btn_pet_notif_conf">Pet</string>
+    <string name="btn_lojack_notif_conf">LO/JACK</string>
+    <string name="btn_car_notif_conf">LO/CAR</string>
+    <string name="btn_home_notif_conf">LO/HOME</string>
+    <string name="btn_pet_notif_conf">LO/PETS</string>
     
     <string name="message"> </string>
     <string name="messages"> </string>
