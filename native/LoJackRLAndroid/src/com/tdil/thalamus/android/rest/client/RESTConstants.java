@@ -115,6 +115,7 @@ public interface RESTConstants {
 	
 	public static final String GET_NOTIFICATION_CONF = "/notifications/configuration";
 	public static final String POST_NOTIFICATION_CONF = "/notifications/configuration";
+	public static final String POST_NOTIFICATION_RECEIVED = "/notifications/markReceived/" + P_NOTIFICATION_ID;
 	
 	/** Tracking */
 	public static final String POST_TRACK = "/users/track";

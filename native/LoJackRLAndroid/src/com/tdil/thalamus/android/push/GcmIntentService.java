@@ -13,6 +13,12 @@ import android.util.Log;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.tdil.lojack.rl.R;
 import com.tdil.thalamus.android.NotificationsActivity;
+import com.tdil.thalamus.android.rest.client.HttpMethod;
+import com.tdil.thalamus.android.rest.client.IRestClientObserver;
+import com.tdil.thalamus.android.rest.client.RESTClientTaskOpt;
+import com.tdil.thalamus.android.rest.client.RESTConstants;
+import com.tdil.thalamus.android.rest.client.RestParams;
+import com.tdil.thalamus.android.rest.model.RESTResponse;
 
 public class GcmIntentService extends IntentService {
 	public static final int NOTIFICATION_ID = 1;
@@ -35,6 +41,12 @@ public class GcmIntentService extends IntentService {
 				int level = Integer.valueOf(extras.getString("level"));
 				String title = extras.getString("title");
 				String message = extras.getString("message");
+				if (extras.containsKey("nId")) {
+					int nId = Integer.valueOf(extras.getString("nId"));
+					new RESTClientTaskOpt<RESTResponse>(this, HttpMethod.POST, IRestClientObserver.dummy, RESTConstants.POST_NOTIFICATION_RECEIVED, 
+							new RestParams(RESTConstants.P_NOTIFICATION_ID, nId),null,RESTResponse.class, false, false)
+								.executeSerial((Void) null);
+				}
 				Log.d(TAG, "Notification Data Json :" + message);
 				if (GoogleCloudMessaging.MESSAGE_TYPE_SEND_ERROR.equals(messageType)) {
 					sendNotification(type, level, title, "Send error: " + extras.toString());
