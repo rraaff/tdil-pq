@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,6 +51,8 @@ public class ChangePasswordActivity extends PeugeotActivity implements
 	 * The default email to populate the email field with.
 	 */
 	public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
+	
+	public static final String FORCED = "FORCED";
 
 	private IRestClientTask mAuthTask = null;
 	
@@ -95,6 +96,24 @@ public class ChangePasswordActivity extends PeugeotActivity implements
 		oldPassword = (EditText)findViewById(R.id.oldPassword);
 		newPassword = (EditText)findViewById(R.id.new_password);
 		retypePassword = (EditText)findViewById(R.id.retype_new_password);
+		
+		Bundle extras = getIntent().getExtras();
+		if (extras != null) {
+			Boolean forced = (Boolean)extras.getBoolean(FORCED);
+			if (forced != null)  {
+				findViewById(R.id.changePasswordForced).setVisibility(View.VISIBLE);
+			} else {
+				findViewById(R.id.changePasswordForced).setVisibility(View.GONE);
+			}
+		} else {
+			findViewById(R.id.changePasswordForced).setVisibility(View.GONE);
+		}
+		
+		
+		if (Login.getLoggedUser(this).getMustChangePassword()){
+			findViewById(R.id.changePasswordForced).setVisibility(View.VISIBLE);
+		} else {
+		}
 		
 		findViewById(R.id.updateButton).setOnClickListener(
 				new View.OnClickListener() {

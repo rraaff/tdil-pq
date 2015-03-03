@@ -37,6 +37,7 @@
     <string name="title_activity_register">Registrate</string>
     <string name="title_activity_update">Mis datos</string>
     <string name="title_activity_change_password">Mi clave</string>
+    <string name="title_activity_change_password_forced">Bienvenido a Peugeot Car Safe, para mas seguridad cambiá tu clave</string>
     <string name="title_activity_login_for_action_bar">Peugeot Car Safe</string>
     
     <string name="title_activity_search_dealers">Buscar concesionarios</string>

@@ -82,7 +82,9 @@ public class IndexActivity extends PeugeotActivity {
 				+ Login.getLoggedUser(IndexActivity.this).getAvatar());
 		
 		if (Login.getLoggedUser(this).getMustChangePassword()) {
-			this.startActivity(new Intent(this, ChangePasswordActivity.class));
+			Intent intent = new Intent(this, ChangePasswordActivity.class);
+			intent.putExtra(ChangePasswordActivity.FORCED, Boolean.TRUE);
+			this.startActivity(intent);
 			Login.getLoggedUser(this).setMustChangePassword(false);
 		} else {
 			if (Login.getLoggedUser(this).getMustCompleteEmergencyData()) {
