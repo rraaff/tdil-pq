@@ -1,5 +1,6 @@
 package com.tdil.thalamus.android;
 
+/** Config */
 public class ApplicationConfig {
 	public static final String URL_ANDROID_VERSION = ApplicationConfig.URL_WEBSITE
 	+ "getNativeAppVersion.st?code=android";
