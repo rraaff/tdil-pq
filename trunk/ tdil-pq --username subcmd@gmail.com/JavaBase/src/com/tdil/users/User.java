@@ -31,6 +31,16 @@ public class User implements Serializable {
 		return this.getRoles().contains(role.getName());
 	}
 	
+	public boolean hasAnyRole(Role role, Role role1) {
+		if (this.getRoles().contains(role.getName())) {
+			return true;
+		}
+		if (this.getRoles().contains(role1.getName())) {
+			return true;
+		}
+		return false;
+	}
+	
 	public String getName() {
 		return String.valueOf(this.getId());
 	}
