@@ -84,6 +84,7 @@ public abstract class AbstractAction extends Action {
 		int i = 0;
 		for (String role : roles) {
 			result[i] = Role.getRole(role); 
+			i = i + 1;
 		}
 		return result;
 	}
